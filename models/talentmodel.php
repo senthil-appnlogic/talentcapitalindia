@@ -949,5 +949,15 @@ if($this->email->send()){
 	return $query=$this->db->query($sql)->result_array();
     }
     
+//    function studentUploads(){
+//	$id=$_POST['id'];
+//	$head_id=$_POST['head_id'];
+//	$sql="SELECT * FROM educational_details where head_id='$head_id' and id='$id'";
+//	return $query=$this->db->query($sql)->result_array();
+//    }
+    function resume_file($id){
+	$sql="SELECT * FROM emp_candidate_details where id='$id'";
+	return $query=$this->db->query($sql)->result_array();
+    }
     
 }

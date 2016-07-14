@@ -720,6 +720,7 @@ $status = $this->session->flashdata('status');
                                 <tr class="odd1 countClass1">
 				  <input name="Add_more_line[]" value="add" class="form-control input-md" type="hidden">
 				  <input name="update_emp[]" id="tests" class="form-control input-md" type="hidden" value="UPDATE">
+				    <input type="hidden" value="<?php echo $row['head_id'];?>" name="headId[]">
 				  <td class="hidden"> <input name="emp_lineid[]" value="<?php echo $row['id'];?>" class="form-control input-md" type="hidden"></td>
                                   <td> <input placeholder="Client Company" name="client_comp[]" value="<?php echo $row['client_comp'];?>" id="client_comp" class="form-control input-md" type="text" ></td>
                                   <td> <input placeholder="Payroll Company" name="payroll_comp[]" value="<?php echo $row['payroll_comp'];?>" id="payroll_comp" class="form-control input-md" type="text" ></td>
@@ -728,19 +729,21 @@ $status = $this->session->flashdata('status');
 				  <td><span class='input-group date'><input type="text" placeholder="" value="<?php echo $row['emp_duration_to'];?>" name="emp_duration_to[]" id="emp_duration_to" class="form-control input-md table_input input-group datepicker-dob"  ><span class="input-group-addon" ><span class="glyphicon glyphicon-calendar"></span></span></span></td>
                                   <td> <input placeholder="Location" name="location[]" value="<?php echo $row['location'];?>" class="form-control input-md" type="text"></td>
 				  <td> <textarea name="empReasonDesc[]" id="empReasonDesc" value="<?php echo $row['empReasonDesc'];?>" class="form-control input-md" rows="1" readonly></textarea></td>
-                                  <td>
-				  <div class="form-group">
-				    <div class="input-group">
-				      <span class="input-group-btn">
-					  <span class="btn btn-primary btn-file">
-					      Browse<input type="file" name="file_employee_upload[<?php echo $count; ?>][]" id="file_employee_upload" value="<?php echo $row['file_employee_upload']?>" onchange="fileAttachment();" multiple disabled>
-					      <input type="hidden" name="file_employee_upload_old[]" value="<?php echo $row['file_employee_upload']; ?>">
-					  </span>
-				      </span>
-				      <input type="text" id="" class="form-control" value="<?php echo $row['file_employee_upload']?>" readonly >
-				    </div>
-				  </div></td>
-				  <td><center><button type="button" class="btn btn-remove btn-default btn-sm removeButton"><i class="fa fa-minus"></i></button></center></td>
+				  
+				  <td><button id="employee_files" data-id="<?php echo $this->uri->segment(3); ?>" class="btn btn-md btn-primary employee_files">click to view</button></td>
+<!--                                  <td>-->
+<!--				  <div class="form-group">-->
+<!--				    <div class="input-group">-->
+<!--				      <span class="input-group-btn">-->
+<!--					  <span class="btn btn-primary btn-file">-->
+<!--					      Browse<input type="file" name="file_employee_upload[<?php echo $count; ?>][]" id="file_employee_upload" value="<?php echo $row['file_employee_upload']?>" onchange="fileAttachment();" multiple disabled>-->
+<!--					      <input type="hidden" name="file_employee_upload_old[]" value="<?php echo $row['file_employee_upload']; ?>">-->
+<!--					  </span>-->
+<!--				      </span>-->
+<!--				      <input type="text" id="" class="form-control" value="<?php echo $row['file_employee_upload']?>" readonly >-->
+<!--				    </div>-->
+<!--				  </div></td>-->
+<!--				  <td><center><button type="button" class="btn btn-remove btn-default btn-sm removeButton"><i class="fa fa-minus"></i></button></center></td>-->
                                 </tr>
 				<?php } ?>
 				
@@ -806,18 +809,20 @@ $status = $this->session->flashdata('status');
                                   <td> <input placeholder="University" value="<?php echo $row['university'];?>" name="university[]" class="form-control input-md" type="text"></td>
                                   <td> <input placeholder="Percentage" value="<?php echo $row['percentage'];?>" name="percentage[]" class="form-control input-md" type="text"></td>
 				  <!--<td> <textarea name="reasonDesc[]"  class="form-control input-md" id="reasonDesc" rows="1" readonly></textarea></td>-->
-                                  <td>
-				  <div class="form-group">
-				    <div class="input-group">
-				      <span class="input-group-btn">
-					  <span class="btn btn-primary btn-file">
-					      Browse<input type="file" name="file_student_upload[<?php echo $count; ?>][]" value="<?php echo $row['file_student_upload']?>" id="PanPreview" multiple disabled>
-					      <input type="hidden" name="file_student_upload_old[]" value="<?php echo $row['file_student_upload']; ?>">
-					  </span>
-				      </span>
-				      <input type="text" id="" class="form-control" value="<?php echo $row['file_student_upload']?>" readonly>
-				    </div>
-				  </div></td>
+<!--                                  <td>-->
+<!--				  <div class="form-group">-->
+<!--				    <div class="input-group">-->
+<!--				      <span class="input-group-btn">-->
+<!--					  <span class="btn btn-primary btn-file">-->
+<!--					      Browse<input type="file" name="file_student_upload[<?php echo $count; ?>][]" value="<?php echo $row['file_student_upload']?>" id="PanPreview" multiple disabled>-->
+<!--					      <input type="hidden" name="file_student_upload_old[]" value="<?php echo $row['file_student_upload']; ?>">-->
+<!--					  </span>-->
+<!--				      </span>-->
+<!--				      <input type="text" id="" class="form-control" value="<?php echo $row['file_student_upload']?>" readonly>-->
+<!--				    </div>-->
+<!--				  </div></td>-->
+
+				    <td><button data-head_id="<?php echo $row['head_id']; ?>" data-id="<?php echo $row['id']; ?>" class="btn btn-md btn-primary student_files">click to view</button></td>
 				  <!--<td><center><button type="button" class="btn btn-remove btn-default btn-sm removeButton"><i class="fa fa-minus"></i></button></center></td>-->
                                 </tr>
 				 <?php } ?>
@@ -852,6 +857,7 @@ $status = $this->session->flashdata('status');
                    <div class="col-md-6 col-md-offset-4" style="padding-bottom: 15px;">
                            <!-- <input type="submit" name="save" value="Update" class="btn btn-sm btn-success">-->
                       <!-- <button type="button" class="btn btn-sm btn-warning">cancel</button>-->
+		      <button class="btn btn-md btn-primary resume_file input-sm" data-id="<?php echo $inter_Edit[0]['id']; ?>" value="<?php echo $inter_Edit[0]['resume'];?>">View Resume</button>
                     </div>                           
                             
                         </form>
@@ -865,6 +871,26 @@ $status = $this->session->flashdata('status');
             </div>
             <!-- end row -->
 		</div>
+
+<div id="myModal" class="modal fade" role="dialog">
+    <div class="modal-dialog modal-lg">
+      <div class="modal-content">
+	<div class="modal-header">
+	  <button type="button" class="close" data-dismiss="modal">&times;</button>
+	  <h4 class="modal-title">View  Uploaded Files</h4>
+	</div>
+	<div class="modal-body">
+	 <div class="row">
+	 </div>
+	 </div>
+	</div>
+	<!--<div class="modal-footer">
+	  <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+	</div>-->
+      </div>
+  
+    </div>
+
 <script type="text/javascript">
   $("#language").chosen();
   $("#Preferedloc").chosen();
@@ -1600,4 +1626,44 @@ $status = $this->session->flashdata('status');
     $(".secondaryName").attr("name","secondary_other_skils");
  }
  
+ 
+ // Created 14-07-16
+ $('.employee_files').click(function(){
+	var head_id=$(this).parents('.odd1').find('[name="headId[]"]').val();
+	var line_id=$(this).parents('.odd1').find('[name="emp_lineid[]"]').val();
+	$.ajax({
+	type: "POST",
+	url:'<?=site_url('admin/employeeUploads');?>',
+	data: {line_id:line_id,head_id:head_id},
+	success: function(response){
+	    $('#myModal').find('.row').html(response);
+	    $('#myModal').modal('show');    
+	}
+        });
+    });
+    $('.student_files').click(function(){
+	$id=$(this).attr('data-id');
+	$head_id=$(this).attr('data-head_id');
+	$.ajax({
+	type: "POST",
+	url:'<?=site_url('admin/studentUploads');?>',
+	data: {id:$id,head_id:$head_id},
+	success: function(response){
+	    $('#myModal').find('.row').html(response);
+	    $('#myModal').modal('show'); 
+	}
+        });
+    });
+    $('.resume_file').click(function(){
+	$id=$(this).attr('data-id');
+	$.ajax({
+	type: "POST",
+	url:'<?=site_url('admin/resume_file');?>',
+	data: {id:$id},
+	success: function(response){
+	    $('#myModal').find('.row').html(response);
+	    $('#myModal').modal('show'); 
+	}
+        });
+    });
 </script>

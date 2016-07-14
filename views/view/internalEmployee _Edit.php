@@ -857,10 +857,30 @@
                             </table>
                         </div>
                         </div>
-                   <div class="col-md-6 col-md-offset-4" style="padding-bottom: 15px;">
-                            <input type="submit" name="save" value="Update" class="btn btn-sm btn-success">
-                      <!-- <button type="button" class="btn btn-sm btn-warning">cancel</button>-->
-                    </div>                           
+                   <!--<div class="col-md-6 col-md-offset-4" style="padding-bottom: 15px;">-->
+                   <!--         <input type="submit" name="save" value="Update" class="btn btn-sm btn-success">-->
+                   <!-- </div>                           -->
+		   
+		   <div class="col-md-6 col-md-offset-4" style="padding-bottom: 15px;">
+		      <div class="row">
+			<div class="col-md-4">
+			  <div class="form-group">
+				    <div class="input-group">
+				      <span class="input-group-btn">
+					  <span class="btn btn-primary btn-file">
+					      Resume<input type="file" name="resume_upload" id="resume_upload"  multiple="multiple">
+					      <input type="hidden" name="old_resume" value="<?php echo $inter_Edit[0]['resume']; ?>">
+					  </span>
+				      </span>
+				      <input type="text" id="" value="<?php echo $inter_Edit[0]['resume']; ?>" class="form-control" readonly >
+				    </div>
+				  </div>
+			</div>
+			<div class="col-md-4">
+			  <input type="submit" name="save" value="Submit" class="btn btn-sm btn-success">
+			</div>
+		      </div>
+                    </div>
                             
                         </form>
           

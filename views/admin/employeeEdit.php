@@ -6,6 +6,7 @@
 </style>
 <?php
 $status = $this->session->flashdata('status');
+//print_r($employeeDetails);exit;
 ?>
 <div class="content" id="content">
 			<!-- begin breadcrumb -->
@@ -525,9 +526,19 @@ $status = $this->session->flashdata('status');
 			 <!-- Modal content-->
 			
 		
-                    <div class="col-md-10 col-md-offset-3" style="padding-bottom: 15px;">
-                           <!-- <input type="submit" name="Update" value="Update" class="btn btn-sm btn-success">-->
+                   <!-- <div class="col-md-10 col-md-offset-3" style="padding-bottom: 15px;">
                         <button type="button" onclick="window.history.back();" class="btn btn-sm btn-warning">cancel</button>
+                    </div>-->
+		    
+		    <div class="col-md-6 col-md-offset-4" style="padding-bottom: 15px;">
+		      <div class="row">
+			<div class="col-md-4">
+			    <button class="btn btn-md btn-primary resume_file input-sm" data-id="<?php echo $employeeEdit[0]['id']; ?>" value="<?php echo $employeeEdit[0]['resume'];?>">View Resume</button>
+			</div>
+			<div class="col-md-4">
+			  <input type="submit" name="save" value="Submit" class="btn btn-sm btn-success">
+			</div>
+		      </div>
                     </div>
                     
                 </form>
@@ -1195,4 +1206,22 @@ $status = $this->session->flashdata('status');
 		}
 		
    }
+   
+   
+   //Modified 14-07-16
+   
+   $('.resume_file').click(function(){
+	$id=$(this).attr('data-id');
+	$.ajax({
+	type: "POST",
+	url:'<?=site_url('admin/resume_file');?>',
+	data: {id:$id},
+	success: function(response){
+	    console.log(response);
+	    $('#myModal').find('.row').html(response);
+	    $('#myModal').modal('show'); 
+	}
+        });
+    });
+   
 </script>

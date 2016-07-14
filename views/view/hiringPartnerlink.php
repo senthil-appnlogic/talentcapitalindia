@@ -887,9 +887,25 @@ $CandMail = $this->uri->segment(4);
                         </div>
                         </div>
                     <div class="col-md-6 col-md-offset-4" style="padding-bottom: 15px;">
-                            <input type="submit" name="save" value="Submit" class="btn btn-sm btn-success">
-                       <!-- <button type="button" class="btn btn-sm btn-warning">cancel</button>-->
-                    </div>                           
+		      <div class="row">
+			<div class="col-md-4">
+			  <div class="form-group">
+				    <div class="input-group">
+				      <span class="input-group-btn">
+					  <span class="btn btn-primary btn-file">
+					      Browse<input type="file" name="resume_upload" id="resume_upload"  multiple="multiple">
+					  </span>
+				      </span>
+				      <input type="text" id="" value="" class="form-control" readonly >
+				    </div>
+				  </div>
+			</div>
+			<div class="col-md-4">
+			  <input type="submit" name="save" value="Submit" class="btn btn-sm btn-success">
+			</div>
+		      </div>
+                    </div>
+		    
                             
                         </form>
           

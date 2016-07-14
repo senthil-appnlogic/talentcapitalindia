@@ -802,5 +802,22 @@ class admin extends CI_Controller {
 	$data['imgslit']=$imgslit;
 	$this->load->view('admin/pdfviewer',$data);
     }
+    
+    //resume upload
+    
+    function resume_file()
+    {
+	$id=$_POST['id'];
+    	$result=$this->talentModel->resume_file($id);
+	  $imag=$result[0]['resume'];
+	  $imgslit=explode(",",$imag);
+	  for($i=0;$i<count($imgslit);$i++){
+	     $imgslit1=explode(".",$imgslit[$i]);
+	    ?>
+		<div class="col-md-3 " style="border:1px solid grey; border-radius:4px;">
+		 <a target="_blank" href="<?php echo base_url();?><?php echo $imgslit[$i];?>"><img src="<?php echo base_url();?>assets/images/index.jpg" height="200" width="200"></a>
+		</div>
+	<?php }
+    }
 
 }	

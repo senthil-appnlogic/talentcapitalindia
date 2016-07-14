@@ -1110,6 +1110,13 @@ function hiringPartnerLinkAdd($code,$loginType)
             $this->upload->do_upload('profile_pic');
             $data = $this->upload->data();
             $profilePic=$folderPath.$data['file_name'];
+	    
+	    $folderPath = $config['upload_path'] = 'upload/';
+            $config['allowed_types'] = 'gif|jpg|png|doc|pdf|docx';     
+            $this->load->library('upload', $config);
+            $this->upload->do_upload('resume_upload');
+            $data = $this->upload->data();
+            $resume=$folderPath.$data['file_name'];
             
             $data= array(
 		'vendor_code'=>$code,
@@ -1151,6 +1158,7 @@ function hiringPartnerLinkAdd($code,$loginType)
 		'email_random_code'=>$ramdomString,
 		'login_types'=>$loginType,
 		'candidate_status'=>'Shortlisted',
+		'resume'=>$resume,
             );
 	    //echo "<pre>";
 	    //print_r($data);
@@ -1639,6 +1647,17 @@ function hiringPartnerLinkAdd($code,$loginType)
 		else {
 		    $secondary=$this->input->post('secondary_other_skils');
 		}
+		
+		    $folderPath = $config['upload_path'] = 'upload/';
+		    $config['allowed_types'] = 'gif|jpg|png|doc|pdf|docx';     
+		    $this->load->library('upload', $config);
+		    $this->upload->do_upload('resume_upload');
+		    $data = $this->upload->data();
+		    $resume=$folderPath.$data['file_name'];
+		    if($_FILES['resume_upload']['name']=="")
+		    {
+		     $resume=$this->input->post('old_resume');
+		    }
 		    $vendor_code=$this->input->post('vendor_code');
 		    $candidate_name=$this->input->post('candidate_name');
 		    $mobile_number=$this->input->post('mobile_number');
@@ -1672,6 +1691,7 @@ function hiringPartnerLinkAdd($code,$loginType)
 		    $team_size_name=$this->input->post('team_size_name');
 		    $team_contact_no=$this->input->post('team_contact_no');
 		    $profile_pic=$profilePic;
+		    //echo $resume;exit;
 		    $sql=mysql_query("UPDATE emp_candidate_details SET 	vendor_code='$vendor_code',candidate_name='$candidate_name',mobile_number='$mobile_number',skills='$skills',primary_other_skils='$primary_other_skils',secondary_other_skils='$secondary_other_skils',
 				     SecondarySkills='$SecondarySkills',total_exp_year='$total_exp_year',total_exp_month='$total_exp_month',current_ctc_thousands='$current_ctc_thousands',expected_ctc_thousands='$expected_ctc_thousands',relevant_exp_year='$relevant_exp_year',
 				     relevant_exp_month='$relevant_exp_month',notice_period='$notice_period',current_ctc_lakhs='$current_ctc_lakhs',expected_ctc_lakhs='$expected_ctc_lakhs',day='$day',month='$month',year='$year',
@@ -1681,7 +1701,8 @@ function hiringPartnerLinkAdd($code,$loginType)
 				     career_gap_year='$career_gap_year',
 				     career_gap_month='$career_gap_month',
 				     team_size_name='$team_size_name',
-				     team_contact_no='$team_contact_no' 
+				     team_contact_no='$team_contact_no',
+				     resume=$resume
 				     where id='$id'");
 		    //echo $sql;exit;
 		    $select = mysql_query($sql);
