@@ -407,7 +407,66 @@ $status = $this->session->flashdata('status');
                                 <input readonly class="form-control input-md" value="<?php echo $employeeEdit[0]['team_contact_no'];?>" name="team_contact_no" type="text" placeholder="Email">
                             </div>
                         </div>
-                               <div class="col-md-6 col-md-offset-3">
+
+                            <div class="col-md-6 col-md-offset-3">
+                            <div class="form-group">
+                                <h2 class="headingLine" id="education" >Educational Details <span style="color:#EB8B11">*</span></h2>
+                            </div>                                                         
+                        </div>
+                        <div class="col-md-10 col-md-offset-2">
+
+                        <div class="table-responsive"> 
+                          <table class="table table-hover">
+                              <thead>
+                                <tr>
+                                  <th><label>Degree</label></th>
+                                  <th><label>Specialisation</label></th>
+                                  <th><label>Duration From</label></th>
+                                  <th><label>Duration To</label></th>
+                                  <th><label>University</label></th>
+                                  <th><label>Percentage</label></th>
+                                  <th><label>File Upload</label></th>
+                                 <!-- <th><button type="button" onclick="addMore();" class="btn-add btn btn-primary"><i class="fa fa-plus"></i></button></th>-->
+                                </tr>   
+                              </thead>
+                              <tbody>
+				
+				<?php if(count($educationalDetails)>0) { foreach($educationalDetails as $row){?>
+                                <tr class="odd" >
+                                  <input type="hidden" value="" name="degree_Status[]">
+				  <input type="hidden" value="<?php echo $row['head_id'];?>" name="headId">
+                                  <td><input readonly type="hidden" name="degree_id[]" value="<?php echo $row['id']; ?>"> <input readonly placeholder="Degree" name="degree[]" id="degree" value="<?php echo $row['degree']; ?>" class="form-control input-md" type="text"></td>
+                                  <td> <input readonly  placeholder="Specialisation" value="<?php echo $row['specialisation']; ?>" name="specialisation[]" id="specialisation" class="form-control input-md" type="text"></td>
+                                  <td><span class='input-group date'><input readonly value="<?php echo $row['edu_duration_from']; ?>" type="text" placeholder="" name="edu_duration_from[]" id="edu_duration_from" class="form-control input-sm table_input input-group datepicker-dob" ><span class="input-group-addon" ><span class="glyphicon glyphicon-calendar"></span></span></span></td>
+				  <td><span class='input-group date'><input readonly value="<?php echo $row['edu_duration_to']; ?>" type="text" placeholder="" name="edu_duration_to[]" id="edu_duration_to" class="form-control input-sm table_input input-group datepicker-dob"  ><span class="input-group-addon" ><span class="glyphicon glyphicon-calendar"></span></span></span></td>
+                                  <td> <input readonly value="<?php echo $row['university']; ?>" placeholder="University" name="university[]" id="university" class="form-control input-md" type="text"></td>
+                                  <td> <input readonly value="<?php echo $row['percentage']; ?>" placeholder="Percentage" name="percentage[]" id="percentage" class="form-control input-md" type="text"></td>
+				  <td><button data-head_id="<?php echo $row['head_id']; ?>" data-id="<?php echo $row['id']; ?>" class="btn btn-md btn-primary student_files">click to view</button></td>
+				  
+				  
+                                 <!-- <td><center><a href="<?php echo site_url('admin/educationDelete/'.$row['head_id'].'/'.$row['id'])?>" onclick="return confirm('Are you sure you want to delete?');"class="btn btn-danger btn-xs"><i class="fa fa-trash"></i> </a></center></td>-->
+
+                                </tr>
+				
+				<?php } }?>
+				
+				
+                                 <tr class="odd hide" id="optionTemplate">
+                                  <input type="hidden" value="" name="degree_Status[]">
+                                  <td> <input readonly placeholder="Degree" id="degree" class="form-control input-md" type="text"></td>
+                                  <td> <input readonly placeholder="Specialisation" id="specialisation" class="form-control input-md" type="text"></td>
+                                  <td><span class='input-group date'><input readonly type="text" placeholder="" id="edu_duration_from" class="form-control input-sm table_input input-group datepicker-dob" ><span class="input-group-addon" ><span class="glyphicon glyphicon-calendar"></span></span></span></td>
+				  <td><span class='input-group date'><input readonly type="text" placeholder="" id="edu_duration_to" class="form-control input-sm table_input input-group datepicker-dob"  ><span class="input-group-addon" ><span class="glyphicon glyphicon-calendar"></span></span></span></td>
+                                  <td> <input readonly placeholder="University" id="university" class="form-control input-md" type="text"></td>
+                                  <td> <input readonly placeholder="Percentage" id="percentage" class="form-control input-md" type="text"></td>
+                                  <!--<td><center><button type="button" onclick="removeButton($(this));" class="btn btn-remove btn-danger btn-xs removeButton"><i class="fa fa-trash"></i></button></center></td>-->
+                                </tr>
+                                 </tbody>
+                            </table>
+                        </div>
+                        </div>
+			
+			<div class="col-md-6 col-md-offset-3">
                             <div class="form-group">
                                 <h2 class="headingLine" id="employement">Employment Details</h2>
                             </div>                                                             
@@ -463,63 +522,6 @@ $status = $this->session->flashdata('status');
 				   <!-- <td><center><button type="button" onclick="removeButton1($(this));" class="btn btn-remove btn-danger btn-xs removeButton"><i class="fa fa-trash"></i></button></center></td>-->
                                 </tr>
                               </tbody>
-                            </table>
-                        </div>
-                        </div>
-                            <div class="col-md-6 col-md-offset-3">
-                            <div class="form-group">
-                                <h2 class="headingLine" id="education" >Educational Details <span style="color:#EB8B11">*</span></h2>
-                            </div>                                                         
-                        </div>
-                        <div class="col-md-10 col-md-offset-2">
-
-                        <div class="table-responsive"> 
-                          <table class="table table-hover">
-                              <thead>
-                                <tr>
-                                  <th><label>Degree</label></th>
-                                  <th><label>Specialisation</label></th>
-                                  <th><label>Duration From</label></th>
-                                  <th><label>Duration To</label></th>
-                                  <th><label>University</label></th>
-                                  <th><label>Percentage</label></th>
-                                  <th><label>File Upload</label></th>
-                                 <!-- <th><button type="button" onclick="addMore();" class="btn-add btn btn-primary"><i class="fa fa-plus"></i></button></th>-->
-                                </tr>   
-                              </thead>
-                              <tbody>
-				
-				<?php if(count($educationalDetails)>0) { foreach($educationalDetails as $row){?>
-                                <tr class="odd" >
-                                  <input type="hidden" value="" name="degree_Status[]">
-				  <input type="hidden" value="<?php echo $row['head_id'];?>" name="headId">
-                                  <td><input readonly type="hidden" name="degree_id[]" value="<?php echo $row['id']; ?>"> <input readonly placeholder="Degree" name="degree[]" id="degree" value="<?php echo $row['degree']; ?>" class="form-control input-md" type="text"></td>
-                                  <td> <input readonly  placeholder="Specialisation" value="<?php echo $row['specialisation']; ?>" name="specialisation[]" id="specialisation" class="form-control input-md" type="text"></td>
-                                  <td><span class='input-group date'><input readonly value="<?php echo $row['edu_duration_from']; ?>" type="text" placeholder="" name="edu_duration_from[]" id="edu_duration_from" class="form-control input-sm table_input input-group datepicker-dob" ><span class="input-group-addon" ><span class="glyphicon glyphicon-calendar"></span></span></span></td>
-				  <td><span class='input-group date'><input readonly value="<?php echo $row['edu_duration_to']; ?>" type="text" placeholder="" name="edu_duration_to[]" id="edu_duration_to" class="form-control input-sm table_input input-group datepicker-dob"  ><span class="input-group-addon" ><span class="glyphicon glyphicon-calendar"></span></span></span></td>
-                                  <td> <input readonly value="<?php echo $row['university']; ?>" placeholder="University" name="university[]" id="university" class="form-control input-md" type="text"></td>
-                                  <td> <input readonly value="<?php echo $row['percentage']; ?>" placeholder="Percentage" name="percentage[]" id="percentage" class="form-control input-md" type="text"></td>
-				  <td><button data-head_id="<?php echo $row['head_id']; ?>" data-id="<?php echo $row['id']; ?>" class="btn btn-md btn-primary student_files">click to view</button></td>
-				  
-				  
-                                 <!-- <td><center><a href="<?php echo site_url('admin/educationDelete/'.$row['head_id'].'/'.$row['id'])?>" onclick="return confirm('Are you sure you want to delete?');"class="btn btn-danger btn-xs"><i class="fa fa-trash"></i> </a></center></td>-->
-
-                                </tr>
-				
-				<?php } }?>
-				
-				
-                                 <tr class="odd hide" id="optionTemplate">
-                                  <input type="hidden" value="" name="degree_Status[]">
-                                  <td> <input readonly placeholder="Degree" id="degree" class="form-control input-md" type="text"></td>
-                                  <td> <input readonly placeholder="Specialisation" id="specialisation" class="form-control input-md" type="text"></td>
-                                  <td><span class='input-group date'><input readonly type="text" placeholder="" id="edu_duration_from" class="form-control input-sm table_input input-group datepicker-dob" ><span class="input-group-addon" ><span class="glyphicon glyphicon-calendar"></span></span></span></td>
-				  <td><span class='input-group date'><input readonly type="text" placeholder="" id="edu_duration_to" class="form-control input-sm table_input input-group datepicker-dob"  ><span class="input-group-addon" ><span class="glyphicon glyphicon-calendar"></span></span></span></td>
-                                  <td> <input readonly placeholder="University" id="university" class="form-control input-md" type="text"></td>
-                                  <td> <input readonly placeholder="Percentage" id="percentage" class="form-control input-md" type="text"></td>
-                                  <!--<td><center><button type="button" onclick="removeButton($(this));" class="btn btn-remove btn-danger btn-xs removeButton"><i class="fa fa-trash"></i></button></center></td>-->
-                                </tr>
-                                 </tbody>
                             </table>
                         </div>
                         </div>
@@ -825,8 +827,12 @@ $status = $this->session->flashdata('status');
             validators: {
 		notEmpty:
 			{
-			    message: 'Team Size is required'
+			    message: 'Team Member name is required'
 			},
+                         regexp: {
+			    regexp: /^[a-z\s]+$/i,
+			    message: 'The Team Member name can consist of alphabetical characters and spaces only'
+			}
             }
         },
 	team_contact_no: {

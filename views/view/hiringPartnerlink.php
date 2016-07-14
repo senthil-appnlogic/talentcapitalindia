@@ -38,9 +38,9 @@ $CandMail = $this->uri->segment(4);
 <div  class="container" style="padding-top: 80px;">
     <center>
         <a class="button mobilesize" href="#candidate">Candidate Details</a>&nbsp;&nbsp;
-        <a class="button mobilesize" href="#employement">Employment Details</a>&nbsp;&nbsp;
-        <a class="button mobilesize" href="#team">Team size</a>&nbsp;&nbsp;
+	<a class="button mobilesize" href="#team">Team size</a>&nbsp;&nbsp;
         <a class="button mobilesize" href="#education">Educational Details</a>&nbsp;&nbsp;
+        <a class="button mobilesize" href="#employement">Employment Details</a>&nbsp;&nbsp;
     </center>
         </div>
             <div  class="container" style="padding-top: 15px;">
@@ -700,80 +700,6 @@ $CandMail = $this->uri->segment(4);
                                 <input class="form-control input-md" name="team_contact_no" type="text" placeholder="Contact Number">
                             </div>
                         </div>
-                            <div class="col-md-6">
-                            <div class="form-group">
-                                <h2 class="headingLine" id="employement">Employment Details</h2>
-                            </div>                                                             
-                            </div>
-                            
-                            
-                            
-                        <div class="col-md-12">                            
-                            <div class=""> 
-                          <table class="table table-hover">
-                              <thead>
-                                <tr>
-                                  <th><label>Client Company</label></th>
-                                  <th><label>Payroll Company</label></th>
-                                  <th><label>Designation</label></th>
-                                  <th><label>Duration From</label></th>
-                                  <th><label>Duration To</label></th>
-                                  <th><label>Location</label></th>
-				  <th><label>Reason Description</label></th>
-				  <th><label>File Upload</label></th>
-                                  <th><button type="button" onclick="addMore1();" class="btn-add btn btn-default"><i class="fa fa-plus"></i></button></th>
-                                </tr>
-                              </thead>
-                              <tbody>
-                                <tr class="odd1 countClass1">
-                                  <td> <input placeholder="Client Company" name="client_comp[]" id="client_comp" class="form-control input-md" type="text" ></td>
-                                  <td> <input placeholder="Payroll Company" name="payroll_comp[]" id="payroll_comp" class="form-control input-md" type="text" ></td>
-                                  <td> <input placeholder="Designation Company" name="designation[]" class="form-control input-md" id="designation" type="text" ></td>
-                                  <td><span class='input-group date'><input type="text" placeholder="" name="emp_duration_from[]" id="emp_duration_from" class="form-control input-md table_input input-group datepicker-dob" ><span class="input-group-addon" ><span class="glyphicon glyphicon-calendar"></span></span></span></td>
-				  <td><span class='input-group date'><input type="text" placeholder="" name="emp_duration_to[]" id="emp_duration_to" class="form-control input-md table_input input-group datepicker-dob"  ><span class="input-group-addon" ><span class="glyphicon glyphicon-calendar"></span></span></span></td>
-                                  <td> <input placeholder="Location" name="location[]" class="form-control input-md" type="text"></td>
-				  <td> <textarea name="empReasonDesc[]" id="empReasonDesc" class="form-control input-md" rows="1" readonly></textarea></td>
-                                  <td>
-				  <div class="form-group">
-				    <div class="input-group">
-				      <span class="input-group-btn">
-					  <span class="btn btn-primary btn-file">
-					      Browse<input type="file" name="file_employee_upload[0][]" multiple="multiple" id="file_employee_upload" >
-					  </span>
-				      </span>
-				      <input type="text" id="" value="" class="form-control" readonly >
-				    </div>
-				  </div></td>
-				  <td><center><button type="button" class="btn btn-remove btn-default btn-sm removeButton"><i class="fa fa-minus"></i></button></center></td>
-                                </tr>
-				
-                                 <tr class="odd1 hide countClass1" id="optionTemplate1">
-                                  <td> <input placeholder="Client Company" id="client_comp" class="form-control input-md" type="text" ></td>
-                                  <td> <input placeholder="Payroll Company" id="payroll_comp" class="form-control input-md" type="text" ></td>
-                                  <td> <input placeholder="Designation Company" class="form-control input-md" id="designation" type="text" ></td>
-                                  <td><span class='input-group date'><input type="text" placeholder="" onblur="checkEmpDurationMonth($(this));" id="emp_duration_from" class="form-control input-md table_input input-group datepicker-dob" ><span class="input-group-addon" ><span class="glyphicon glyphicon-calendar"></span></span></span></td>
-				  <td><span class='input-group date'><input type="text" placeholder=""id="emp_duration_to" class="form-control input-md table_input input-group datepicker-dob"  ><span class="input-group-addon" ><span class="glyphicon glyphicon-calendar"></span></span></span></td>
-                                  <td> <input placeholder="Location" id="location" class="form-control input-md" type="text"></td>
-				  <td> <textarea id="empReasonDesc" class="form-control input-md" rows="1" readonly></textarea></td>
-                                  <td>
-				  <div class="form-group">
-				    <div class="input-group">
-				      <span class="input-group-btn">
-					  <span class="btn btn-primary btn-file">
-					      Browse<input type="file" multiple="multiple" id="file_employee_upload" >
-					  </span>
-				      </span>
-				      <input type="text" id="" value="" class="form-control" readonly >
-				    </div>
-				  </div></td>
-				  <td><center><button type="button" onclick="removeButton1($(this));" class="btn btn-remove btn-default btn-sm removeButton"><i class="fa fa-minus"></i></button></center></td>
-                                </tr>
-                               
-                             
-                              </tbody>
-                            </table>
-                        </div>
-                        </div>                            
                             
                         <div class="col-md-6">
                             <div class="form-group">
@@ -886,6 +812,79 @@ $CandMail = $this->uri->segment(4);
                             </table>
                         </div>
                         </div>
+			
+			<div class="col-md-6">
+                            <div class="form-group">
+                                <h2 class="headingLine" id="employement">Employment Details</h2>
+                            </div>                                                             
+                            </div>
+                        <div class="col-md-12">                            
+                            <div class=""> 
+                          <table class="table table-hover">
+                              <thead>
+                                <tr>
+                                  <th><label>Client Company</label></th>
+                                  <th><label>Payroll Company</label></th>
+                                  <th><label>Designation</label></th>
+                                  <th><label>Duration From</label></th>
+                                  <th><label>Duration To</label></th>
+                                  <th><label>Location</label></th>
+				  <th><label>Reason Description</label></th>
+				  <th><label>File Upload</label></th>
+                                  <th><button type="button" onclick="addMore1();" class="btn-add btn btn-default"><i class="fa fa-plus"></i></button></th>
+                                </tr>
+                              </thead>
+                              <tbody>
+                                <tr class="odd1 countClass1">
+                                  <td> <input placeholder="Client Company" name="client_comp[]" id="client_comp" class="form-control input-md" type="text" ></td>
+                                  <td> <input placeholder="Payroll Company" name="payroll_comp[]" id="payroll_comp" class="form-control input-md" type="text" ></td>
+                                  <td> <input placeholder="Designation Company" name="designation[]" class="form-control input-md" id="designation" type="text" ></td>
+                                  <td><span class='input-group date'><input type="text" placeholder="" name="emp_duration_from[]" id="emp_duration_from" class="form-control input-md table_input input-group datepicker-dob" ><span class="input-group-addon" ><span class="glyphicon glyphicon-calendar"></span></span></span></td>
+				  <td><span class='input-group date'><input type="text" placeholder="" name="emp_duration_to[]" id="emp_duration_to" class="form-control input-md table_input input-group datepicker-dob"  ><span class="input-group-addon" ><span class="glyphicon glyphicon-calendar"></span></span></span></td>
+                                  <td> <input placeholder="Location" name="location[]" class="form-control input-md" type="text"></td>
+				  <td> <textarea name="empReasonDesc[]" id="empReasonDesc" class="form-control input-md" rows="1" readonly></textarea></td>
+                                  <td>
+				  <div class="form-group">
+				    <div class="input-group">
+				      <span class="input-group-btn">
+					  <span class="btn btn-primary btn-file">
+					      Browse<input type="file" name="file_employee_upload[0][]" multiple="multiple" id="file_employee_upload" >
+					  </span>
+				      </span>
+				      <input type="text" id="" value="" class="form-control" readonly >
+				    </div>
+				  </div></td>
+				  <td><center><button type="button" class="btn btn-remove btn-default btn-sm removeButton"><i class="fa fa-minus"></i></button></center></td>
+                                </tr>
+				
+                                 <tr class="odd1 hide countClass1" id="optionTemplate1">
+                                  <td> <input placeholder="Client Company" id="client_comp" class="form-control input-md" type="text" ></td>
+                                  <td> <input placeholder="Payroll Company" id="payroll_comp" class="form-control input-md" type="text" ></td>
+                                  <td> <input placeholder="Designation Company" class="form-control input-md" id="designation" type="text" ></td>
+                                  <td><span class='input-group date'><input type="text" placeholder="" onblur="checkEmpDurationMonth($(this));" id="emp_duration_from" class="form-control input-md table_input input-group datepicker-dob" ><span class="input-group-addon" ><span class="glyphicon glyphicon-calendar"></span></span></span></td>
+				  <td><span class='input-group date'><input type="text" placeholder=""id="emp_duration_to" class="form-control input-md table_input input-group datepicker-dob"  ><span class="input-group-addon" ><span class="glyphicon glyphicon-calendar"></span></span></span></td>
+                                  <td> <input placeholder="Location" id="location" class="form-control input-md" type="text"></td>
+				  <td> <textarea id="empReasonDesc" class="form-control input-md" rows="1" readonly></textarea></td>
+                                  <td>
+				  <div class="form-group">
+				    <div class="input-group">
+				      <span class="input-group-btn">
+					  <span class="btn btn-primary btn-file">
+					      Browse<input type="file" multiple="multiple" id="file_employee_upload" >
+					  </span>
+				      </span>
+				      <input type="text" id="" value="" class="form-control" readonly >
+				    </div>
+				  </div></td>
+				  <td><center><button type="button" onclick="removeButton1($(this));" class="btn btn-remove btn-default btn-sm removeButton"><i class="fa fa-minus"></i></button></center></td>
+                                </tr>
+                               
+                             
+                              </tbody>
+                            </table>
+                        </div>
+                        </div>
+			
                     <div class="col-md-6 col-md-offset-4" style="padding-bottom: 15px;">
 		      <div class="row">
 			<div class="col-md-4">
@@ -1219,8 +1218,12 @@ $CandMail = $this->uri->segment(4);
                 team_size_name: {
                     validators: {
                         notEmpty: {
-                            message: 'The Team Size is required and can\'t be empty'
+                            message: 'The Team Member name is required and can\'t be empty'
                         },
+                         regexp: {
+			    regexp: /^[a-z\s]+$/i,
+			    message: 'Team Member name can consist of alphabetical characters and spaces only'
+			}
                     }
                 },
                 team_contact_no: {

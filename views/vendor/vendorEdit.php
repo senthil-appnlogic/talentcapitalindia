@@ -691,89 +691,6 @@ $status = $this->session->flashdata('status');
                                 <input class="form-control input-md" name="team_contact_no" value="<?php echo $inter_Edit[0]['team_contact_no'];?>" type="text" placeholder="Contact number">
                             </div>
                         </div>
-                            <div class="col-md-6">
-                            <div class="form-group">
-                                <h2 class="headingLine" id="employement">Employement Details</h2>
-                            </div>                                                             
-                            </div>
-                            
-                            
-                            
-                        <div class="col-md-12">                            
-                            <div class=""> 
-                          <table class="table table-hover">
-                              <thead>
-                                <tr>
-                                  <th><label>Client Company</label></th>
-                                  <th><label>Payroll Company</label></th>
-                                  <th><label>Designation</label></th>
-                                  <th><label>Duration From</label></th>
-                                  <th><label>Duration To</label></th>
-                                  <th><label>Location</label></th>
-				  <th><label>Reason Description</label></th>
-				  <th><label>File Upload</label></th>
-                                  <!--<th><button type="button" onclick="addMore1();" class="btn-add btn btn-default"><i class="fa fa-plus"></i></button></th>-->
-                                </tr>
-                              </thead>
-                              <tbody>
-				<?php  $count=-1; foreach($GetEmpl as $row) { $count++; ?>
-                                <tr class="odd1 countClass1">
-				  <input name="Add_more_line[]" value="add" class="form-control input-md" type="hidden">
-				    <input type="hidden" value="<?php echo $row['head_id'];?>" name="headId[]">
-				  <input name="update_emp[]" id="tests" class="form-control input-md" type="hidden" value="UPDATE">
-				  <td class="hidden"> <input name="emp_lineid[]" value="<?php echo $row['id'];?>" class="form-control input-md" type="hidden"></td>
-                                  <td> <input placeholder="Client Company" name="client_comp[]" value="<?php echo $row['client_comp'];?>" id="client_comp" class="form-control input-md" type="text" ></td>
-                                  <td> <input placeholder="Payroll Company" name="payroll_comp[]" value="<?php echo $row['payroll_comp'];?>" id="payroll_comp" class="form-control input-md" type="text" ></td>
-                                  <td> <input placeholder="Designation Company" name="designation[]" value="<?php echo $row['designation'];?>" class="form-control input-md" id="designation" type="text" ></td>
-                                  <td><span class='input-group date'><input type="text" placeholder="" value="<?php echo $row['emp_duration_from'];?>" name="emp_duration_from[]" id="emp_duration_from" class="form-control input-md table_input input-group datepicker-dob" ><span class="input-group-addon" ><span class="glyphicon glyphicon-calendar"></span></span></span></td>
-				  <td><span class='input-group date'><input type="text" placeholder="" value="<?php echo $row['emp_duration_to'];?>" name="emp_duration_to[]" id="emp_duration_to" class="form-control input-md table_input input-group datepicker-dob"  ><span class="input-group-addon" ><span class="glyphicon glyphicon-calendar"></span></span></span></td>
-                                  <td> <input placeholder="Location" name="location[]" value="<?php echo $row['location'];?>" class="form-control input-md" type="text"></td>
-				  <td> <textarea name="empReasonDesc[]" id="empReasonDesc" value="<?php echo $row['empReasonDesc'];?>" class="form-control input-md" rows="1" readonly></textarea></td>
-				  
-				  <td><button id="employee_files" data-id="<?php echo $this->uri->segment(3); ?>" class="btn btn-md btn-primary employee_files">click to view</button></td>
-<!--                                  <td>-->
-<!--				  <div class="form-group">-->
-<!--				    <div class="input-group">-->
-<!--				      <span class="input-group-btn">-->
-<!--					  <span class="btn btn-primary btn-file">-->
-<!--					      Browse<input type="file" name="file_employee_upload[<?php echo $count; ?>][]" id="file_employee_upload" value="<?php echo $row['file_employee_upload']?>" onchange="fileAttachment();" multiple disabled>-->
-<!--					      <input type="hidden" name="file_employee_upload_old[]" value="<?php echo $row['file_employee_upload']; ?>">-->
-<!--					  </span>-->
-<!--				      </span>-->
-<!--				      <input type="text" id="" class="form-control" value="<?php echo $row['file_employee_upload']?>" readonly >-->
-<!--				    </div>-->
-<!--				  </div></td>-->
-				  <!--<td><center><button type="button" class="btn btn-remove btn-default btn-sm removeButton"><i class="fa fa-minus"></i></button></center></td>-->
-                                </tr>
-				<?php } ?>
-				
-				
-                                 <tr class="odd1 hide countClass1" id="optionTemplate1">
-				  <input name="update_emp[]" id="tests" class="form-control input-md" type="hidden" value="">
-                                  <td> <input placeholder="Client Company" id="client_comp" class="form-control input-md" type="text" ></td>
-                                  <td> <input placeholder="Payroll Company" id="payroll_comp" class="form-control input-md" type="text" ></td>
-                                  <td> <input placeholder="Designation Company" class="form-control input-md" id="designation" type="text" ></td>
-                                  <td><span class='input-group date'><input type="text" placeholder="" onblur="checkEmpDurationMonth($(this));" id="emp_duration_from" class="form-control input-md table_input input-group datepicker-dob" ><span class="input-group-addon" ><span class="glyphicon glyphicon-calendar"></span></span></span></td>
-				  <td><span class='input-group date'><input type="text" placeholder=""id="emp_duration_to" class="form-control input-md table_input input-group datepicker-dob"  ><span class="input-group-addon" ><span class="glyphicon glyphicon-calendar"></span></span></span></td>
-                                  <td> <input placeholder="Location" id="location" class="form-control input-md" type="text"></td>
-				  <td> <textarea id="empReasonDesc" class="form-control input-md" rows="1" readonly></textarea></td>
-                                  <td>
-				  <div class="form-group">
-				    <div class="input-group">
-				      <span class="input-group-btn">
-					  <span class="btn btn-primary btn-file">
-					      Browse<input type="file" id="file_employee_upload" multiple >
-					  </span>
-				      </span>
-				      <input type="text" class="form-control" readonly>
-				    </div>
-				  </div></td>
-				  <td><center><button type="button" onclick="removeButton1($(this));" class="btn btn-remove btn-default btn-sm removeButton"><i class="fa fa-minus"></i></button></center></td>
-                                </tr>
-                              </tbody>
-                            </table>
-                        </div>
-                        </div>                            
                             
                         <div class="col-md-6">
                             <div class="form-group">
@@ -855,6 +772,89 @@ $status = $this->session->flashdata('status');
                             </table>
                         </div>
                         </div>
+			
+			<div class="col-md-6">
+                            <div class="form-group">
+                                <h2 class="headingLine" id="employement">Employement Details</h2>
+                            </div>                                                             
+                            </div>
+                            
+                        <div class="col-md-12">                            
+                            <div class=""> 
+                          <table class="table table-hover">
+                              <thead>
+                                <tr>
+                                  <th><label>Client Company</label></th>
+                                  <th><label>Payroll Company</label></th>
+                                  <th><label>Designation</label></th>
+                                  <th><label>Duration From</label></th>
+                                  <th><label>Duration To</label></th>
+                                  <th><label>Location</label></th>
+				  <th><label>Reason Description</label></th>
+				  <th><label>File Upload</label></th>
+                                  <!--<th><button type="button" onclick="addMore1();" class="btn-add btn btn-default"><i class="fa fa-plus"></i></button></th>-->
+                                </tr>
+                              </thead>
+                              <tbody>
+				<?php  $count=-1; foreach($GetEmpl as $row) { $count++; ?>
+                                <tr class="odd1 countClass1">
+				  <input name="Add_more_line[]" value="add" class="form-control input-md" type="hidden">
+				    <input type="hidden" value="<?php echo $row['head_id'];?>" name="headId[]">
+				  <input name="update_emp[]" id="tests" class="form-control input-md" type="hidden" value="UPDATE">
+				  <td class="hidden"> <input name="emp_lineid[]" value="<?php echo $row['id'];?>" class="form-control input-md" type="hidden"></td>
+                                  <td> <input placeholder="Client Company" name="client_comp[]" value="<?php echo $row['client_comp'];?>" id="client_comp" class="form-control input-md" type="text" ></td>
+                                  <td> <input placeholder="Payroll Company" name="payroll_comp[]" value="<?php echo $row['payroll_comp'];?>" id="payroll_comp" class="form-control input-md" type="text" ></td>
+                                  <td> <input placeholder="Designation Company" name="designation[]" value="<?php echo $row['designation'];?>" class="form-control input-md" id="designation" type="text" ></td>
+                                  <td><span class='input-group date'><input type="text" placeholder="" value="<?php echo $row['emp_duration_from'];?>" name="emp_duration_from[]" id="emp_duration_from" class="form-control input-md table_input input-group datepicker-dob" ><span class="input-group-addon" ><span class="glyphicon glyphicon-calendar"></span></span></span></td>
+				  <td><span class='input-group date'><input type="text" placeholder="" value="<?php echo $row['emp_duration_to'];?>" name="emp_duration_to[]" id="emp_duration_to" class="form-control input-md table_input input-group datepicker-dob"  ><span class="input-group-addon" ><span class="glyphicon glyphicon-calendar"></span></span></span></td>
+                                  <td> <input placeholder="Location" name="location[]" value="<?php echo $row['location'];?>" class="form-control input-md" type="text"></td>
+				  <td> <textarea name="empReasonDesc[]" id="empReasonDesc" value="<?php echo $row['empReasonDesc'];?>" class="form-control input-md" rows="1" readonly></textarea></td>
+				  
+				  <td><button id="employee_files" data-id="<?php echo $this->uri->segment(3); ?>" class="btn btn-md btn-primary employee_files">click to view</button></td>
+<!--                                  <td>-->
+<!--				  <div class="form-group">-->
+<!--				    <div class="input-group">-->
+<!--				      <span class="input-group-btn">-->
+<!--					  <span class="btn btn-primary btn-file">-->
+<!--					      Browse<input type="file" name="file_employee_upload[<?php echo $count; ?>][]" id="file_employee_upload" value="<?php echo $row['file_employee_upload']?>" onchange="fileAttachment();" multiple disabled>-->
+<!--					      <input type="hidden" name="file_employee_upload_old[]" value="<?php echo $row['file_employee_upload']; ?>">-->
+<!--					  </span>-->
+<!--				      </span>-->
+<!--				      <input type="text" id="" class="form-control" value="<?php echo $row['file_employee_upload']?>" readonly >-->
+<!--				    </div>-->
+<!--				  </div></td>-->
+				  <!--<td><center><button type="button" class="btn btn-remove btn-default btn-sm removeButton"><i class="fa fa-minus"></i></button></center></td>-->
+                                </tr>
+				<?php } ?>
+				
+				
+                                 <tr class="odd1 hide countClass1" id="optionTemplate1">
+				  <input name="update_emp[]" id="tests" class="form-control input-md" type="hidden" value="">
+                                  <td> <input placeholder="Client Company" id="client_comp" class="form-control input-md" type="text" ></td>
+                                  <td> <input placeholder="Payroll Company" id="payroll_comp" class="form-control input-md" type="text" ></td>
+                                  <td> <input placeholder="Designation Company" class="form-control input-md" id="designation" type="text" ></td>
+                                  <td><span class='input-group date'><input type="text" placeholder="" onblur="checkEmpDurationMonth($(this));" id="emp_duration_from" class="form-control input-md table_input input-group datepicker-dob" ><span class="input-group-addon" ><span class="glyphicon glyphicon-calendar"></span></span></span></td>
+				  <td><span class='input-group date'><input type="text" placeholder=""id="emp_duration_to" class="form-control input-md table_input input-group datepicker-dob"  ><span class="input-group-addon" ><span class="glyphicon glyphicon-calendar"></span></span></span></td>
+                                  <td> <input placeholder="Location" id="location" class="form-control input-md" type="text"></td>
+				  <td> <textarea id="empReasonDesc" class="form-control input-md" rows="1" readonly></textarea></td>
+                                  <td>
+				  <div class="form-group">
+				    <div class="input-group">
+				      <span class="input-group-btn">
+					  <span class="btn btn-primary btn-file">
+					      Browse<input type="file" id="file_employee_upload" multiple >
+					  </span>
+				      </span>
+				      <input type="text" class="form-control" readonly>
+				    </div>
+				  </div></td>
+				  <td><center><button type="button" onclick="removeButton1($(this));" class="btn btn-remove btn-default btn-sm removeButton"><i class="fa fa-minus"></i></button></center></td>
+                                </tr>
+                              </tbody>
+                            </table>
+                        </div>
+                        </div>
+			
                    <div class="col-md-6 col-md-offset-4" style="padding-bottom: 15px;">
 		    <button class="btn btn-md btn-primary resume_file input-sm" data-id="<?php echo $inter_Edit[0]['id']; ?>" value="<?php echo $inter_Edit[0]['resume'];?>">View Resume</button>
                            <!-- <input type="submit" name="save" value="Update" class="btn btn-sm btn-success">-->
@@ -1123,8 +1123,12 @@ $status = $this->session->flashdata('status');
                 team_size_name: {
                     validators: {
                         notEmpty: {
-                            message: 'The Team Size is required and can\'t be empty'
+                            message: 'The Team Member name is required and can\'t be empty'
                         },
+                         regexp: {
+			    regexp: /^[a-z\s]+$/i,
+			    message: 'The Team Member name can consist of alphabetical characters and spaces only'
+			}
                     }
                 },
                 team_contact_no: {
