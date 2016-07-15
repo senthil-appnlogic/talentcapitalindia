@@ -137,7 +137,6 @@ $CandMail = $this->uri->segment(4);
 				  {?>
 				  <option value="<?php echo $row['skill']; ?>"><?php echo $row['skill']; ?></option>
 				  <?php } ?>
-				  <option value="Others">Others</option>
 				 
                                 </select>
                             </div>
@@ -154,7 +153,6 @@ $CandMail = $this->uri->segment(4);
 				  {?>
 				  <option value="<?php echo $row['skill']; ?>"><?php echo $row['skill']; ?></option>
 				  <?php } ?>
-				  <option value="Others">Others</option>
                                 </select>
                             </div>
 			      <div class="form-group secondary hide" >
@@ -179,7 +177,7 @@ $CandMail = $this->uri->segment(4);
                                     <option value="10years">10 </option>
                                     <option value="11years">11 </option>
                                     <option value="12years">12 </option>
-                                    <option value="12years">13 </option>
+                                    <option value="13years">13 </option>
                                     <option value="14years">14 </option>
                                     <option value="15years">15 </option>
                                     <option value="16years">16 </option>
@@ -276,7 +274,7 @@ $CandMail = $this->uri->segment(4);
 					<option value="30">30 Days</option>
 					<option value="45">45 Days</option>
 					<option value="60">60 Days</option>
-					<option value="90++">90 Days & Above</option>
+					<option value="90 Days & Above">90 Days & Above</option>
 				     </select>
 				  </div>
 				
@@ -319,6 +317,7 @@ $CandMail = $this->uri->segment(4);
                                  <div class="form-group col-md-4">
                                   <select name="current_ctc_thousands" class="form-control">
                                     <option disabled selected hidden>In Thousands</option>
+				    <option value="0">0 </option>
 				    <option value="5">5 </option>
                                     <option value="10">10 </option>
                                     <option value="15">15 </option>
@@ -396,6 +395,7 @@ $CandMail = $this->uri->segment(4);
                                  <div class="form-group col-md-4">
                                   <select name="expected_ctc_thousands" class="form-control">
                                     <option disabled selected hidden>In Thousands</option>
+				    <option value="0">0 </option>
 				    <option value="5">5 </option>
                                     <option value="10">10 </option>
                                     <option value="15">15 </option>

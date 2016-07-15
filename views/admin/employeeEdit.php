@@ -199,7 +199,7 @@ $status = $this->session->flashdata('status');
                                 <label>Notice Period</label>
                                 <div class="row">
 				  <div class="form-group col-md-4">
-				    <?php $noticePeriod=array('Immediate','7','15','30','60','90','90 & Above') ?> 
+				    <?php $noticePeriod=array('Immediate','7','15','30','60','90','90 Days & Above') ?> 
 				    <select disabled name="notice_period" class="form-control">
 				    <?php foreach($noticePeriod as $noticePeriod){?>
 				       <option value="<?php echo $noticePeriod;?>" <?php if($employeeEdit[0]['notice_period']==$noticePeriod) echo "selected"?>><?php echo $noticePeriod;?></option>
@@ -226,7 +226,7 @@ $status = $this->session->flashdata('status');
 				     </select>
 				  </div>
 				  <div class="form-group col-md-4">
-				    <?php $currentCTCMonth=array('5','10','15','20','25','30','35','40','45','50','55','60','65','70','75','80','85','90','95') ?> 
+				    <?php $currentCTCMonth=array('0','5','10','15','20','25','30','35','40','45','50','55','60','65','70','75','80','85','90','95') ?> 
 				    <select disabled name="current_ctc_thousands" class="form-control">
 				    <?php foreach($currentCTCMonth as $currentCTC){?>
 				       <option value="<?php echo $currentCTC;?>" <?php if($employeeEdit[0]['current_ctc_thousands']==$currentCTC) echo "selected"?>><?php echo $currentCTC;?></option>
@@ -248,7 +248,7 @@ $status = $this->session->flashdata('status');
 				     </select>
 				  </div>
 				  <div class="form-group col-md-4">
-				    <?php $expCTCMonth=array('5','10','15','20','25','30','35','40','45','50','55','60','65','70','75','80','85','90','95') ?> 
+				    <?php $expCTCMonth=array('0','5','10','15','20','25','30','35','40','45','50','55','60','65','70','75','80','85','90','95') ?> 
 				    <select disabled name="expected_ctc_thousands" class="form-control">
 				    <?php foreach($expCTCMonth as $expCTC){?>
 				       <option value="<?php echo $expCTC;?>" <?php if($employeeEdit[0]['expected_ctc_thousands']==$expCTC) echo "selected"?>><?php echo $expCTC;?></option>
@@ -554,7 +554,7 @@ $status = $this->session->flashdata('status');
 			    <button class="btn btn-md btn-primary resume_file input-sm" data-id="<?php echo $employeeEdit[0]['id']; ?>" value="<?php echo $employeeEdit[0]['resume'];?>">View Resume</button>
 			</div>
 			<div class="col-md-4">
-			  <input type="submit" name="save" value="Submit" class="btn btn-sm btn-success">
+			  <input type="submit" name="save" value="Submit" class="btn btn-sm btn-success" disabled="disabled">
 			</div>
 		      </div>
                     </div>
@@ -1264,5 +1264,4 @@ $status = $this->session->flashdata('status');
 	}
         });
     });
-   
 </script>

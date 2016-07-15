@@ -758,11 +758,19 @@ class admin extends CI_Controller {
 	  $imgslit=explode(",",$imag);
 	  //print_r($imgslit);exit;
 	  for($i=0;$i<count($imgslit);$i++){
-	    $imgslit1=explode(".",$imgslit[$i]);
+	    //$imgslit1=explode(".",$imgslit[$i]);
+	    //$name=explode("/",$imgslit1[$i]);
+	    
+	    
+	    $name=explode("/",$imgslit[$i]);
+	     $imgslit1=explode(".",$name[1]);
 	    //if($imgslit1[1]=='pdf'){
 	    ?>
-		<div class="col-md-3 " style="border:1px solid grey; border-radius:4px;">
+		<!--<div class="col-md-3 " style="border:1px solid grey; border-radius:4px;">
 		 <a target="_blank" href="<?php echo base_url();?><?php echo $imgslit[$i];?>"><img src="<?php echo base_url();?>assets/images/index.jpg" height="200" width="200"></a>
+		</div>-->
+		<div class="col-md-3 " style="border:1px solid grey; border-radius:25px;overflow: hidden;box-shadow: 1px 4px 15px 3px;">
+		 <a target="_blank" href="<?php echo base_url();?><?php echo $imgslit[$i];?>"><h3><center><?php echo $imgslit1[0];?></center></h3></a>
 		</div>
 	    <?php
 	    //} else{
@@ -777,15 +785,18 @@ class admin extends CI_Controller {
     
     function studentUploads(){
     	 $result=$this->talentModel->studentUploads();
+	  //print_r($result);exit;
 	  
 	  $imag=$result[0]['file_student_upload'];
 	  $imgslit=explode(",",$imag);
 	  for($i=0;$i<count($imgslit);$i++){
-	     $imgslit1=explode(".",$imgslit[$i]);
+	     $name=explode("/",$imgslit[$i]);
+	     $imgslit1=explode(".",$name[1]);
+	     //echo "<pre>";print_r($imgslit1[0]);
 	     //if($imgslit1[1]=='pdf'){
 	    ?>
-		<div class="col-md-3 " style="border:1px solid grey; border-radius:4px;">
-		 <a target="_blank" href="<?php echo base_url();?><?php echo $imgslit[$i];?>"><img src="<?php echo base_url();?>assets/images/index.jpg" height="200" width="200"></a>
+		<div class="col-md-3 " style="border:1px solid grey; border-radius:25px;overflow: hidden;box-shadow: 1px 4px 15px 3px;">
+		 <a target="_blank" href="<?php echo base_url();?><?php echo $imgslit[$i];?>"><h3><center><?php echo $imgslit1[0];?></center></h3></a>
 		</div>
 	<?php
 	  //}else{
@@ -796,6 +807,7 @@ class admin extends CI_Controller {
 		<?php
 	    //}
     }
+    //exit;
     }
     function pdfViewer($imgslit){
 	//$this->load->view('admin/header');
@@ -812,10 +824,11 @@ class admin extends CI_Controller {
 	  $imag=$result[0]['resume'];
 	  $imgslit=explode(",",$imag);
 	  for($i=0;$i<count($imgslit);$i++){
-	     $imgslit1=explode(".",$imgslit[$i]);
+	     $name=explode("/",$imgslit[$i]);
+	     $imgslit1=explode(".",$name[1]);
 	    ?>
-		<div class="col-md-3 " style="border:1px solid grey; border-radius:4px;">
-		 <a target="_blank" href="<?php echo base_url();?><?php echo $imgslit[$i];?>"><img src="<?php echo base_url();?>assets/images/index.jpg" height="200" width="200"></a>
+		<div class="col-md-3 " style="border:1px solid grey; border-radius:25px;overflow: hidden;box-shadow: 1px 4px 15px 3px;">
+		 <a target="_blank" href="<?php echo base_url();?><?php echo $imgslit[$i];?>"><h3><center><?php echo $imgslit1[0];?></center></h3></a>
 		</div>
 	<?php }
     }

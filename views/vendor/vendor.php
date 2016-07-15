@@ -50,10 +50,17 @@ $status = $this->session->flashdata('status');
 						    <th data-hide="phone,tablet">Secondary other Skills</th>
 						    <th data-hide="phone,tablet">Total experience</th>
 						    <th data-hide="phone,tablet">Total experience Month</th>
-						    <th data-hide="phone,tablet">relevent experience</th>
+						    <th data-hide="phone,tablet">Relevent experience</th>
+						    
+						    <th data-hide="phone,tablet">Relevent Experience Month</th>
+						    <th data-hide="phone,tablet">Current CTC in Lacks</th>
+						    <th data-hide="phone,tablet">Current CTC in Thousands</th>
+						    <th data-hide="phone,tablet">Expected CTC in Lacks</th>
+						    <th data-hide="phone,tablet">Expected CTC in Thousands</th>
+						    
 						    <th data-hide="phone,tablet">Notice Period</th>
-						    <th data-hide="phone,tablet">Current ctc</th>
-						    <th data-hide="phone,tablet">Expected ctc</th>
+						    <!--<th data-hide="phone,tablet">Current ctc</th>-->
+						    <!--<th data-hide="phone,tablet">Expected ctc</th>-->
 						    <th data-hide="phone,tablet">Day</th>
 						    <th data-hide="phone,tablet">Month </th>
 						    <th data-hide="phone,tablet">Year</th>
@@ -115,7 +122,14 @@ $status = $this->session->flashdata('status');
 						    <td><?php echo $row['secondary_other_skils']; ?></td>
 						    <td><?php echo $row['total_exp_year']; ?></td>
 						    <td><?php echo $row['total_exp_month']; ?></td>
-						    <td><?php echo $row['relevant_exp']; ?></td>
+						    <td><?php echo $row['relevant_exp_year']; ?></td>
+						    
+						    <td><?php echo $row['relevant_exp_month']; ?></td>
+						    <td><?php echo $row['current_ctc_lakhs']; ?></td>
+						    <td><?php echo $row['current_ctc_thousands']; ?></td>
+						    <td><?php echo $row['expected_ctc_lakhs']; ?></td>
+						    <td><?php echo $row['expected_ctc_thousands']; ?></td>
+						    
 						    <td><?php echo $row['notice_period']; ?></td>
 						    <td><?php echo $row['current_ctc']; ?></td>
 						    <td><?php echo $row['expected_ctc']; ?></td>

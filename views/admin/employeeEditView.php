@@ -49,11 +49,11 @@ $status = $this->session->flashdata('status');
 			    
 			    <div class="form-group">
                               <label>Middle Name</label>
-                                <input class="form-control input-md" value="<?php echo $employeeEdit[0]['middle_name'];?>" name="middle_name" type="text" placeholder="Middle Name">
+                                <input class="form-control input-md" readonly value="<?php echo $employeeEdit[0]['middle_name'];?>" name="middle_name" type="text" placeholder="Middle Name">
                             </div>
 			    <div class="form-group">
                               <label>Last Name</label>
-                                <input class="form-control input-md" value="<?php echo $employeeEdit[0]['last_name'];?>" name="last_name" type="text" placeholder="Last Name">
+                                <input class="form-control input-md" readonly value="<?php echo $employeeEdit[0]['last_name'];?>" name="last_name" type="text" placeholder="Last Name">
                             </div>
                             <div class="form-group">
                                 <label>Mobile Number <span style="color:#EB8B11">*</span></label>
@@ -102,7 +102,6 @@ $status = $this->session->flashdata('status');
 					?>
 					<option <?=$selected?> value="<?php echo $row['skill']?>"><?php echo $row['skill']?></option>
 				    <?php } ?>
-				    <option value="Others">Others</option>
                                 </select>
                             </div>
 			    <div class="form-group primary hide">
@@ -133,7 +132,6 @@ $status = $this->session->flashdata('status');
 					?>
 					<option <?=$selected?> value="<?php echo $row['skill']?>"><?php echo $row['skill']?></option>
 				    <?php } ?>
-				    <option value="Others">Others</option>
                                 </select>
                             </div>
 			    <div class="form-group secondary hide" >

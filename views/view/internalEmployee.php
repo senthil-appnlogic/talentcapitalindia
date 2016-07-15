@@ -99,7 +99,6 @@
 				  {?>
 				  <option value="<?php echo $row['skill']; ?>"><?php echo $row['skill']; ?></option>
 				  <?php } ?>
-				  <option value="Others">Others</option>
 				</select>
                                <!-- <select multiple class="form-control chzn-select input-sm" onchange="primaryChange($(this))" name="skills[]">
                                   <option>C</option>
@@ -131,7 +130,6 @@
 				  {?>
 				  <option value="<?php echo $row['skill']; ?>"><?php echo $row['skill']; ?></option>
 				  <?php } ?>
-				  <option value="Others">Others</option>
 				</select>
                                 
                             </div>
@@ -253,7 +251,7 @@
 					<option value="15">15 Days</option>
 					<option value="30">30 Days</option>
 					<option value="60">60 Days</option>
-					<option value="90++">90 Days & Above</option>
+					<option value="90 Days & Above">90 Days & Above</option>
 				     </select>
 				  </div>
 				</div>
@@ -293,6 +291,7 @@
                                  <div class="form-group col-md-4">
                                   <select name="current_ctc_thousands" class="form-control">
                                     <option disabled selected hidden>In Thousands</option>
+				    <option value="0">0 </option>
                                     <option value="5">5 </option>
                                     <option value="10">10 </option>
                                     <option value="15">15</option>
@@ -353,6 +352,7 @@
                                  <div class="form-group col-md-4">
                                   <select name="expected_ctc_thousands" class="form-control">
                                     <option disabled selected hidden>In Thousands</option>
+				      <option value="0">0 </option>
 				      <option value="5">5 </option>
                                     <option value="10">10 </option>
                                     <option value="15">15</option>
@@ -893,10 +893,29 @@
                         </div>
                         </div>
 			
-                   <div class="col-md-6 col-md-offset-4" style="padding-bottom: 15px;">
+                   <!--<div class="col-md-6 col-md-offset-4" style="padding-bottom: 15px;">
                             <input type="submit" name="save" value="Submit" class="btn btn-sm btn-success">
-                      <!-- <button type="button" class="btn btn-sm btn-warning">cancel</button>-->
-                    </div>                           
+                    </div>-->
+		    
+		    <div class="col-md-6 col-md-offset-4" style="padding-bottom: 15px;">
+		      <div class="row">
+			<div class="col-md-4">
+			  <div class="form-group">
+				    <div class="input-group">
+				      <span class="input-group-btn">
+					  <span class="btn btn-primary btn-file">
+					      Resume<input type="file" name="resume_upload" id="resume_upload"  multiple="multiple">
+					  </span>
+				      </span>
+				      <input type="text" id="" value="" class="form-control" readonly >
+				    </div>
+				  </div>
+			</div>
+			<div class="col-md-4">
+			  <input type="submit" name="save" value="Submit" class="btn btn-sm btn-success">
+			</div>
+		      </div>
+                    </div>
                             
                         </form>
 
@@ -1425,6 +1444,11 @@
     function addMore() {
       $Counter = $('.countClass').length-2;
       $Counter +=1;
+      //alert($Counter);
+      if ($Counter==4) {
+	//alert("yes");
+      }
+      else {
         var $template = $('#optionTemplate')
         $clone = $template.clone().removeClass('hide').removeAttr('id').insertBefore($template);
         $clone.find('[id="degree"]').attr('name', 'degree[]');
@@ -1461,6 +1485,7 @@
 	$name   = $clone.find('[name="file_student_upload[]"]');
 	$('#form_validation').bootstrapValidator('addField', $name);
         datepicker2();
+      }
     }
     function removeButton($this) {
         var $row = $this.parents('.odd');

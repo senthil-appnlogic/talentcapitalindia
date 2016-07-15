@@ -269,7 +269,7 @@
 					<option value="30">30 Days</option>
 					<option value="60">60 Days</option>
 					
-					<option value="90++">90 Days & Above</option>
+					<option value="90 Days & Above">90 Days & Above</option>
 				     </select>
 				  </div>
 				</div>
@@ -304,6 +304,7 @@
                                 </div>
                                  <div class="form-group col-md-4">
                                   <select name="current_ctc_thousands" class="form-control">
+				    <option value="0">0 </option>
 				    <option value="5">5 </option>
                                     <option value="10">10 </option>
                                     <option value="15">15 </option>
@@ -344,7 +345,7 @@
                                     <option value="10">10 </option>
                                     <option value="11">11 </option>
                                     <option value="12">12 </option>
-                                    <option value="12">13 </option>
+                                    <option value="13">13 </option>
                                     <option value="14">14 </option>
                                     <option value="15">15 </option>
                                     <option value="16">16 </option>
@@ -357,6 +358,7 @@
                                 </div>
                                  <div class="form-group col-md-4">
                                   <select name="expected_ctc_thousands" class="form-control">
+				    <option value="0">0 </option>
 				    <option value="5">5 </option>
                                     <option value="10">10 </option>
                                     <option value="15">15 </option>
@@ -1370,6 +1372,10 @@
     function addMore() {
       $Counter = $('.countClass').length-2;
       $Counter +=1;
+      if ($Counter==4) {
+	//alert("yes");
+      }
+      else {
         var $template = $('#optionTemplate')
         $clone = $template.clone().removeClass('hide').removeAttr('id').insertBefore($template);
         $clone.find('[id="degree"]').attr('name', 'degree[]');
@@ -1406,6 +1412,7 @@
 	$name   = $clone.find('[name="file_student_upload[]"]');
 	$('#form_validation').bootstrapValidator('addField', $name);
         datepicker2();
+      }
     }
     function removeButton($this) {
         var $row = $this.parents('.odd');

@@ -138,7 +138,6 @@ $CandMail = $this->uri->segment(4);
 				  {?>
 				  <option value="<?php echo $row['skill']; ?>"><?php echo $row['skill']; ?></option>
 				  <?php } ?>
-				  <option value="Others">Others</option>
                                 </select>
                             </div>
 			      <div class="form-group primary hide">
@@ -154,7 +153,6 @@ $CandMail = $this->uri->segment(4);
 				  {?>
 				  <option value="<?php echo $row['skill']; ?>"><?php echo $row['skill']; ?></option>
 				  <?php } ?>
-				  <option value="Others">Others</option>
                                 </select>
                             </div>
 			      <div class="form-group secondary hide" >
@@ -277,7 +275,7 @@ $CandMail = $this->uri->segment(4);
 					<option value="30">30 Days</option>
 					<option value="45">45 Days</option>
 					<option value="60">60 Days</option>
-					<option value="90++">90 Days & Above</option>
+					<option value="90 Days & Above">90 Days & Above</option>
 				     </select>
 				  </div>
 				
@@ -321,6 +319,7 @@ $CandMail = $this->uri->segment(4);
                                  <div class="form-group col-md-4">
                                   <select name="current_ctc_thousands" class="form-control">
                                     <option disabled selected hidden>In Thousands</option>
+				    <option value="0">0 </option>
 				    <option value="5">5 </option>
                                     <option value="10">10 </option>
                                     <option value="15">15 </option>
@@ -397,6 +396,7 @@ $CandMail = $this->uri->segment(4);
                                  <div class="form-group col-md-4">
                                   <select name="expected_ctc_thousands" class="form-control">
                                     <option disabled selected hidden>In Thousands</option>
+				    <option value="0">0 </option>
 				    <option value="5">5 </option>
                                     <option value="10">10 </option>
                                     <option value="15">15 </option>
@@ -931,6 +931,9 @@ $CandMail = $this->uri->segment(4);
 </script>
 <script>
     $(document).ready(function() {
+      $("input").attr("disabled",true);
+	$("select").attr("disabled",true);
+	$(".chosen-choices").addClass('chosen-disabled');
         $(".chzn-select").chosen();
         
         
@@ -1471,6 +1474,10 @@ $CandMail = $this->uri->segment(4);
     function addMore() {
       $Counter = $('.countClass').length-2;
       $Counter +=1;
+      if ($Counter==4) {
+	//alert("yes");
+      }
+      else {
         var $template = $('#optionTemplate')
         $clone = $template.clone().removeClass('hide').removeAttr('id').insertBefore($template);
         $clone.find('[id="degree"]').attr('name', 'degree[]');
@@ -1509,6 +1516,7 @@ $CandMail = $this->uri->segment(4);
 //	$('#form_validation').bootstrapValidator('addField', $name);
         //fileNameMapping();
 	datepicker2();
+      }
     }
     function removeButton($this) {
         var $row = $this.parents('.odd');

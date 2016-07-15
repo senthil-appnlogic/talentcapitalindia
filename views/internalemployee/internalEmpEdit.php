@@ -174,7 +174,7 @@ $status = $this->session->flashdata('status');
                                     <option value="10years">10 </option>
                                     <option value="11years">11 </option>
                                     <option value="12years">12 </option>
-                                    <option value="12years">13 </option>
+                                    <option value="13years">13 </option>
                                     <option value="14years">14 </option>
                                     <option value="15years">15 </option>
                                     <option value="16years">16 </option>
@@ -261,7 +261,7 @@ $status = $this->session->flashdata('status');
 					<option value="30">30 Days</option>
 					<option value="60">60 Days</option>
 					
-					<option value="90++">90 Days & Above</option>
+					<option value="90 Days & Above">90 Days & Above</option>
 				     </select>
 				  </div>
 				</div>
@@ -296,6 +296,7 @@ $status = $this->session->flashdata('status');
                                 </div>
                                  <div class="form-group col-md-4">
                                   <select name="current_ctc_thousands" class="form-control">
+				    <option value="0">0 </option>
 				    <option value="5">5 </option>
                                     <option value="10">10 </option>
                                     <option value="15">15 </option>
@@ -349,6 +350,7 @@ $status = $this->session->flashdata('status');
                                 </div>
                                  <div class="form-group col-md-4">
                                   <select name="expected_ctc_thousands" class="form-control">
+				    <option value="0">0 </option>
 				    <option value="5">5 </option>
                                     <option value="10">10 </option>
                                     <option value="15">15 </option>
@@ -540,7 +542,7 @@ $status = $this->session->flashdata('status');
 			    
 			    <div class="form-group">
                                 <label>Language Known</label>
-                                <select multiple class="form-control chzn-select input-sm" name="language_known[]" id="language">
+                                <select multiple class="form-control chzn-select input-sm" name="language_known[]" id="language" disabled="disabled">
 					<!--<option value="<?php echo $inter_Edit[0]['language_known']; ?>" selected><?php echo $inter_Edit[0]['language_known']; ?></option>-->
 				    <?php
 				    $inter_Edit[0]['language_known'];
@@ -566,7 +568,7 @@ $status = $this->session->flashdata('status');
                             <div class="form-group">
                                 <label>Perfered Location</label>
                                <!-- <input class="form-control input-md" name="preferred_location" value="<?php echo $inter_Edit[0]['preferred_location'];?>" type="text" placeholder="Perfered Location">-->
-			       <select multiple class="form-control chzn-select input-sm" name="preferred_location[]" id="Preferedloc">
+			       <select multiple class="form-control chzn-select input-sm" name="preferred_location[]" id="Preferedloc" disabled="disabled">
 				    <?php
 				    $inter_Edit[0]['preferred_location'];
 				    foreach($Location as $row) {
@@ -908,7 +910,9 @@ $status = $this->session->flashdata('status');
 </script>
 <script>
     $(document).ready(function() {
-      
+	$("input").attr("disabled",true);
+	$("select").attr("disabled",true);
+	$(".chosen-choices").addClass('chosen-disabled');
         $(".chzn-select").chosen();
 	
         //datepicker();
@@ -1595,6 +1599,9 @@ $status = $this->session->flashdata('status');
 //  }
  
  $(document).ready(function(){
+    $("input").attr("disabled",true);
+    $("select").attr("disabled",true);
+    $(".chosen-choices").addClass('chosen-disabled');
   $('[name="relevant_exp_year"]').val('<?php echo $inter_Edit[0]['relevant_exp_year']?>');
   $('[name="total_exp_year"]').val('<?php echo $inter_Edit[0]['total_exp_year']?>');
   $('[name="total_exp_month"]').val('<?php echo $inter_Edit[0]['total_exp_month']?>');

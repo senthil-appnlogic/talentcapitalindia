@@ -56,9 +56,12 @@ $status = $this->session->flashdata('status');
 						    <th data-hide="phone,tablet">Total Experience</th>
 						    <th data-hide="phone,tablet">Total Experience Month</th>
 						    <th data-hide="phone,tablet">Relevant Experience</th>
+						    <th data-hide="phone,tablet">Relevant Experience Month</th>
 						    <th data-hide="phone,tablet">Notice Period</th>
 						    <th data-hide="phone,tablet">Current CTC in Lacks</th>
+						    <th data-hide="phone,tablet">Current CTC in Thousands</th>
 						    <th data-hide="phone,tablet">Expected CTC in Lacks</th>
+						    <th data-hide="phone,tablet">Expected CTC in Thousands</th>
 						    <th data-hide="phone,tablet">Day</th>
 						    <th data-hide="phone,tablet">Month </th>
 						    <th data-hide="phone,tablet">Year</th>
@@ -130,9 +133,12 @@ $status = $this->session->flashdata('status');
 						    <td><?php echo $row['total_exp_year']; ?></td>
 						    <td><?php echo $row['total_exp_month']; ?></td>
 						    <td><?php echo $row['relevant_exp_year']; ?></td>
+						    <td><?php echo $row['relevant_exp_month']; ?></td>
 						    <td><?php echo $row['notice_period']; ?></td>
 						    <td><?php echo $row['current_ctc_lakhs']; ?></td>
+						    <td><?php echo $row['current_ctc_thousands']; ?></td>
 						    <td><?php echo $row['expected_ctc_lakhs']; ?></td>
+						    <td><?php echo $row['expected_ctc_thousands']; ?></td>
 						    <td><?php echo $row['day']; ?></td>
 						    <td><?php echo $row['month']; ?></td>
 						    <td><?php echo $row['year']; ?></td>

@@ -757,7 +757,12 @@ function updateApplicantRegister($uniqueCode)
 	    $primary=$this->input->post('primary_other_skils');
 	    $secondary=$this->input->post('secondary_other_skils');
 	    //echo $test;exit;
-            
+            $folderPath = $config['upload_path'] = 'upload/';
+            $config['allowed_types'] = 'gif|jpg|png|doc|pdf|docx';     
+            $this->load->library('upload', $config);
+            $this->upload->do_upload('resume_upload');
+            $data = $this->upload->data();
+            $resume=$folderPath.$data['file_name'];
             $data= array(
 		'vendor_code'=>$this->input->post('vendor_code'),
                 'candidate_name'=>$this->input->post('candidate_name'),
@@ -801,8 +806,10 @@ function updateApplicantRegister($uniqueCode)
 		'career_gap_month'=>$this->input->post('career_gap_month'),
                 'team_size_name'=>$this->input->post('team_size_name'),
                 'team_contact_no'=>$this->input->post('team_contact_no'),
-		'profile_pic'=>$profilePic
+		'profile_pic'=>$profilePic,
+		'resume'=>$resume
             );
+	    
             $select = $this->db->update('emp_candidate_details',$data);
             $clientCnt = count($this->input->post('client_comp'));
 	    //print_r($_FILES);
