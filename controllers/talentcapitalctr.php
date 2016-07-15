@@ -110,9 +110,15 @@ class talentcapitalctr extends CI_Controller {
 	    }
 	    else{
 		$data['getVendorDetails'] = $this->tc_model->getVendorRegister($uniqueCode);
-		$this->load->view('view/header');
-		$this->load->view('view/vendor',$data);
-		$this->load->view('view/footer');		
+		//print_r($data['getVendorDetails'][0]['check']);exit;
+		if($data['getVendorDetails'][0]['check']=="yes"){
+		    redirect('talentcapitalctr/index');
+		}
+		else {
+		    $this->load->view('view/header');
+		    $this->load->view('view/vendor',$data);
+		    $this->load->view('view/footer');
+		}
 	    }
 	}
 	

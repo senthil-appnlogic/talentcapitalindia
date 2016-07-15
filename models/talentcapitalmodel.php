@@ -424,9 +424,10 @@
                 //'address_attach_proof'=>$filePath2,
                 //'address_text'=>$this->input->post('address_text'),
                 //'bank_attach_cheque'=>$filePath3,
+		'check'=>$this->input->post('checking'),
 		'profile_pic'=>$profilePic,
             );
-	    
+	    //print_r($data);exit;
 	    $this->db->update('vendor', $data);
             $result = $this->db->affected_rows();
 	    if($result==0)

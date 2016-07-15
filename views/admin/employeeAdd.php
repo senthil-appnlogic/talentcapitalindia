@@ -1346,6 +1346,10 @@
 		notEmpty:
 		{
 		    message: 'Percentage is required and can\'t be empty'
+		},
+		regexp: {
+		    regexp: /^([1-9]([0-9])?|0)(\.[0-9]{1,2})?$/,
+		    message: 'Please Enter Valid Format'
 		}
 	    }
 	},

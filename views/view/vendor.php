@@ -17,6 +17,7 @@
             <div class="form-group">
                 <h2 class="headingLine" id="candidate">Hiring Partner</h2>
             </div>
+	    <input type="hidden" name="checking" value="yes">
 	    <div class="form-group">
                 <label>Your Code</label>
                 <input class="form-control input-md" name="vendor_code" value="<?php echo $getVendorDetails[0]['vendor_code']?>" type="text" readonly>
