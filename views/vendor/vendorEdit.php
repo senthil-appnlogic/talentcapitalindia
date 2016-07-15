@@ -80,56 +80,37 @@ $status = $this->session->flashdata('status');
 					
 					
 					<div class="form-group">
-					    <?php $skill=array('C','C++','JAVA','Dot Net','C#','PHP','Python','Perl','Ruby','Javascript','SQL','Others')?>
+					    
 					    <label>Primary Skills </label>
 					    <?php $skillList= explode(",",$inter_Edit[0]['skills']);?>
 					    <select  multiple class="form-control chzn-select input-sm" name="skills[]" onchange="primaryChange($(this))" >
-					       <?php  foreach( $skill as $row) {
+					       <?php  foreach( $skills as $row) {
 						$selected="";
-						if(in_array($row, $skillList))
+						if(in_array($row['skill'], $skillList))
 						 $selected= "selected";					    
 						?>
-						<option <?=$selected?>  value="<?php  echo $row ?>" ><?php  echo $row ?></option>
+						<option <?=$selected?>  value="<?php  echo $row['skill'] ?>" ><?php  echo $row['skill'] ?></option>
 					    <?php }?>
 					    </select>
 					</div>
-					
-							
-                            <!--<div class="form-group">
-                                <label>Primary Skills <span style="color:#EB8B11">*</span></label>
-                                <select multiple class="form-control chzn-select input-sm" onchange="primaryChange($(this))" name="skills[]">
-				  <option selected><?php echo $inter_Edit[0]['skills']?></option>
-                                  <option>C</option>
-                                  <option>C++</option>
-                                  <option>Java</option>
-                                  <option>Dot Net</option>
-                                  <option>C#</option>
-                                  <option>PHP</option>
-                                  <option>Python</option>
-                                  <option>Perl</option>
-                                  <option>Ruby</option>
-                                  <option>Javascript</option>
-                                  <option>SQL</option>
-				  <option value="Others">Others</option>
-                                </select>
-                            </div>-->
-			    <div class="form-group primary hide">
-                                <label>Other Skills<span style="color:#EB8B11">*</span></label>
-                                <input class="form-control primaryName input-md" value="<?php echo $inter_Edit[0]['primary_other_skils'];?>" name="" type="text" placeholder="primary other skils">
-				<input class="form-control secondaryName input-md" value="<?php echo $inter_Edit[0]['secondary_other_skils'];?>" name="old_prim_other" type="hidden" placeholder="secondary other skils">
-                            </div>
+
+					<div class="form-group primary hide">
+					    <label>Other Skills<span style="color:#EB8B11">*</span></label>
+					    <input class="form-control primaryName input-md" value="<?php echo $inter_Edit[0]['primary_other_skils'];?>" name="" type="text" placeholder="primary other skils">
+					    <input class="form-control secondaryName input-md" value="<?php echo $inter_Edit[0]['secondary_other_skils'];?>" name="old_prim_other" type="hidden" placeholder="secondary other skils">
+					</div>
 			    
 					<div class="form-group">
-					    <?php $skill=array('C','C++','JAVA','Dot Net','C#','PHP','Python','Perl','Ruby','Javascript','SQL','Others')?>
+					    
 					    <label>Secondary Skills</label>
 					    <?php $skillList= explode(",",$inter_Edit[0]['SecondarySkills']);?>
 					    <select  multiple class="form-control chzn-select input-sm" name="SecondarySkills[]" onchange="secondaryChange($(this))">
-					       <?php  foreach( $skill as $row) {
+					       <?php  foreach( $skills as $row) {
 						$selected="";
-						if(in_array($row, $skillList))
+						if(in_array($row['skill'], $skillList))
 						 $selected= "selected";					    
 						?>
-						<option <?=$selected?>  value="<?php  echo $row ?>" ><?php  echo $row ?></option>
+						<option <?=$selected?>  value="<?php  echo $row['skill'] ?>" ><?php  echo $row['skill'] ?></option>
 					    <?php }?>
 					    </select>
 					</div>

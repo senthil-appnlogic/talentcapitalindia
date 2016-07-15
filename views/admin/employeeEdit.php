@@ -219,8 +219,16 @@ $status = $this->session->flashdata('status');
                                  <div class="row">
 				  <div class="form-group col-md-4">
 				    <?php $currentCTC=array('1','2','3','4','5','6','7','8','9','10','12','13','14','15','16','17','18','19','20') ?> 
-				    <select disabled name="current_ctc_thousands" class="form-control">
+				    <select disabled name="current_ctc_lakhs" class="form-control">
 				    <?php foreach($currentCTC as $currentCTC){?>
+				       <option value="<?php echo $currentCTC;?>" <?php if($employeeEdit[0]['current_ctc_lakhs']==$currentCTC) echo "selected"?>><?php echo $currentCTC;?></option>
+                                    <?php }?>
+				     </select>
+				  </div>
+				  <div class="form-group col-md-4">
+				    <?php $currentCTCMonth=array('5','10','15','20','25','30','35','40','45','50','55','60','65','70','75','80','85','90','95') ?> 
+				    <select disabled name="current_ctc_thousands" class="form-control">
+				    <?php foreach($currentCTCMonth as $currentCTC){?>
 				       <option value="<?php echo $currentCTC;?>" <?php if($employeeEdit[0]['current_ctc_thousands']==$currentCTC) echo "selected"?>><?php echo $currentCTC;?></option>
                                     <?php }?>
 				     </select>
@@ -232,9 +240,17 @@ $status = $this->session->flashdata('status');
                                 <label>Expected CTC</label>
                                   <div class="row">
 				  <div class="form-group col-md-4">
-				    <?php $expCTC=array('0','1','2','3','4','5','6','7','8','9','10','12','13','14','15','16','17','18','19','20') ?> 
-				    <select disabled name="expected_ctc_thousands" class="form-control">
+				    <?php $expCTC=array('1','2','3','4','5','6','7','8','9','10','12','13','14','15','16','17','18','19','20') ?> 
+				    <select disabled name="expected_ctc_lakhs" class="form-control">
 				    <?php foreach($expCTC as $expCTC){?>
+				       <option value="<?php echo $expCTC;?>" <?php if($employeeEdit[0]['expected_ctc_lakhs']==$expCTC) echo "selected"?>><?php echo $expCTC;?></option>
+                                    <?php }?>
+				     </select>
+				  </div>
+				  <div class="form-group col-md-4">
+				    <?php $expCTCMonth=array('5','10','15','20','25','30','35','40','45','50','55','60','65','70','75','80','85','90','95') ?> 
+				    <select disabled name="expected_ctc_thousands" class="form-control">
+				    <?php foreach($expCTCMonth as $expCTC){?>
 				       <option value="<?php echo $expCTC;?>" <?php if($employeeEdit[0]['expected_ctc_thousands']==$expCTC) echo "selected"?>><?php echo $expCTC;?></option>
                                     <?php }?>
 				     </select>
@@ -1216,6 +1232,21 @@ $status = $this->session->flashdata('status');
 		}
 		
    }
+   
+    var check_prim_other="<?php echo $employeeEdit[0]['skills'];?>";
+    var res = check_prim_other.toString().split(",");
+     if(jQuery.inArray("Others", res)!='-1')
+    {
+       $(".primary").removeClass("hide");
+       $(".primaryName").attr("name","primary_other_skils");
+    }
+     var check_sec_other="<?php echo $employeeEdit[0]['SecondarySkills'];?>";
+     var res = check_sec_other.toString().split(",");
+     if(jQuery.inArray("Others", res)!='-1')
+     {
+       $(".secondary").removeClass("hide");
+       $(".secondaryName").attr("name","secondary_other_skils");
+    }
    
    
    //Modified 14-07-16

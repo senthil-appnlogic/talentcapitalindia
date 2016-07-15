@@ -218,8 +218,16 @@ $status = $this->session->flashdata('status');
                                  <div class="row">
 				  <div class="form-group col-md-4">
 				    <?php $currentCTC=array('1','2','3','4','5','6','7','8','9','10','12','13','14','15','16','17','18','19','20') ?> 
-				    <select disabled name="current_ctc_thousands" class="form-control">
+				    <select disabled name="current_ctc_lakhs" class="form-control">
 				    <?php foreach($currentCTC as $currentCTC){?>
+				       <option value="<?php echo $currentCTC;?>" <?php if($employeeEdit[0]['current_ctc_lakhs']==$currentCTC) echo "selected"?>><?php echo $currentCTC;?></option>
+                                    <?php }?>
+				     </select>
+				  </div>
+				  <div class="form-group col-md-4">
+				    <?php $currentCTCMonth=array('5','10','15','20','25','30','35','40','45','50','55','60','65','70','75','80','85','90','95') ?> 
+				    <select disabled name="current_ctc_thousands" class="form-control">
+				    <?php foreach($currentCTCMonth as $currentCTC){?>
 				       <option value="<?php echo $currentCTC;?>" <?php if($employeeEdit[0]['current_ctc_thousands']==$currentCTC) echo "selected"?>><?php echo $currentCTC;?></option>
                                     <?php }?>
 				     </select>
@@ -231,9 +239,17 @@ $status = $this->session->flashdata('status');
                                 <label>Expected CTC</label>
                                   <div class="row">
 				  <div class="form-group col-md-4">
-				    <?php $expCTC=array('0','1','2','3','4','5','6','7','8','9','10','12','13','14','15','16','17','18','19','20') ?> 
-				    <select disabled name="expected_ctc_thousands" class="form-control">
+				    <?php $expCTC=array('1','2','3','4','5','6','7','8','9','10','12','13','14','15','16','17','18','19','20') ?> 
+				    <select disabled name="expected_ctc_lakhs" class="form-control">
 				    <?php foreach($expCTC as $expCTC){?>
+				       <option value="<?php echo $expCTC;?>" <?php if($employeeEdit[0]['expected_ctc_lakhs']==$expCTC) echo "selected"?>><?php echo $expCTC;?></option>
+                                    <?php }?>
+				     </select>
+				  </div>
+				  <div class="form-group col-md-4">
+				    <?php $expCTCMonth=array('5','10','15','20','25','30','35','40','45','50','55','60','65','70','75','80','85','90','95') ?> 
+				    <select disabled name="expected_ctc_thousands" class="form-control">
+				    <?php foreach($expCTCMonth as $expCTC){?>
 				       <option value="<?php echo $expCTC;?>" <?php if($employeeEdit[0]['expected_ctc_thousands']==$expCTC) echo "selected"?>><?php echo $expCTC;?></option>
                                     <?php }?>
 				     </select>
@@ -259,7 +275,7 @@ $status = $this->session->flashdata('status');
 				  </select>
                                 </div>
                                  <div class="form-group col-md-4">
-			    <?php $month=array('January','February','March','April','May','June','July','August','September','October','November','December') ?> 
+				<?php $month=array('January','February','March','April','May','June','July','August','September','October','November','December') ?> 
                                   <select disabled name="month" class="form-control">
                                     <?php foreach($month as $month){?>
                                     <option value="<?php echo $month;?>" <?php if($employeeEdit[0]['month']==$month) echo "selected"?>><?php echo $month;?></option>
@@ -406,7 +422,66 @@ $status = $this->session->flashdata('status');
                                 <input readonly class="form-control input-md" value="<?php echo $employeeEdit[0]['team_contact_no'];?>" name="team_contact_no" type="text" placeholder="Email">
                             </div>
                         </div>
-                               <div class="col-md-6 col-md-offset-3">
+                               
+                            <div class="col-md-6 col-md-offset-3">
+                            <div class="form-group">
+                                <h2 class="headingLine" id="education" >Educational Details <span style="color:#EB8B11">*</span></h2>
+                            </div>                                                         
+                        </div>
+                        <div class="col-md-10 col-md-offset-2">
+
+                        <div class="table-responsive"> 
+                          <table class="table table-hover">
+                              <thead>
+                                <tr>
+                                  <th><label>Degree</label></th>
+                                  <th><label>Specialisation</label></th>
+                                  <th><label>Duration From</label></th>
+                                  <th><label>Duration To</label></th>
+                                  <th><label>University</label></th>
+                                  <th><label>Percentage</label></th>
+                                  <th><label>File Upload</label></th>
+                                 <!-- <th><button type="button" onclick="addMore();" class="btn-add btn btn-primary"><i class="fa fa-plus"></i></button></th>-->
+                                </tr>   
+                              </thead>
+                              <tbody>
+				
+				<?php if(count($educationalDetails)>0) { foreach($educationalDetails as $row){?>
+                                <tr class="odd" >
+                                  <input type="hidden" value="" name="degree_Status[]">
+				  <input type="hidden" value="<?php echo $row['head_id'];?>" name="headId">
+                                  <td><input readonly type="hidden" name="degree_id[]" value="<?php echo $row['id']; ?>"> <input readonly placeholder="Degree" name="degree[]" id="degree" value="<?php echo $row['degree']; ?>" class="form-control input-md" type="text"></td>
+                                  <td> <input readonly  placeholder="Specialisation" value="<?php echo $row['specialisation']; ?>" name="specialisation[]" id="specialisation" class="form-control input-md" type="text"></td>
+                                  <td><span class='input-group date'><input readonly value="<?php echo $row['edu_duration_from']; ?>" type="text" placeholder="" name="edu_duration_from[]" id="edu_duration_from" class="form-control input-sm table_input input-group datepicker-dob" ><span class="input-group-addon" ><span class="glyphicon glyphicon-calendar"></span></span></span></td>
+				  <td><span class='input-group date'><input readonly value="<?php echo $row['edu_duration_to']; ?>" type="text" placeholder="" name="edu_duration_to[]" id="edu_duration_to" class="form-control input-sm table_input input-group datepicker-dob"  ><span class="input-group-addon" ><span class="glyphicon glyphicon-calendar"></span></span></span></td>
+                                  <td> <input readonly value="<?php echo $row['university']; ?>" placeholder="University" name="university[]" id="university" class="form-control input-md" type="text"></td>
+                                  <td> <input readonly value="<?php echo $row['percentage']; ?>" placeholder="Percentage" name="percentage[]" id="percentage" class="form-control input-md" type="text"></td>
+				  <td><button data-head_id="<?php echo $row['head_id']; ?>" data-id="<?php echo $row['id']; ?>" class="btn btn-md btn-primary student_files" disabled>click to view</button></td>
+				  
+				  
+                                 <!-- <td><center><a href="<?php echo site_url('admin/educationDelete/'.$row['head_id'].'/'.$row['id'])?>" onclick="return confirm('Are you sure you want to delete?');"class="btn btn-danger btn-xs"><i class="fa fa-trash"></i> </a></center></td>-->
+
+                                </tr>
+				
+				<?php } }?>
+				
+				
+                                 <tr class="odd hide" id="optionTemplate">
+                                  <input type="hidden" value="" name="degree_Status[]">
+                                  <td> <input readonly placeholder="Degree" id="degree" class="form-control input-md" type="text"></td>
+                                  <td> <input readonly placeholder="Specialisation" id="specialisation" class="form-control input-md" type="text"></td>
+                                  <td><span class='input-group date'><input readonly type="text" placeholder="" id="edu_duration_from" class="form-control input-sm table_input input-group datepicker-dob" ><span class="input-group-addon" ><span class="glyphicon glyphicon-calendar"></span></span></span></td>
+				  <td><span class='input-group date'><input readonly type="text" placeholder="" id="edu_duration_to" class="form-control input-sm table_input input-group datepicker-dob"  ><span class="input-group-addon" ><span class="glyphicon glyphicon-calendar"></span></span></span></td>
+                                  <td> <input readonly placeholder="University" id="university" class="form-control input-md" type="text"></td>
+                                  <td> <input readonly placeholder="Percentage" id="percentage" class="form-control input-md" type="text"></td>
+                                  <!--<td><center><button type="button" onclick="removeButton($(this));" class="btn btn-remove btn-danger btn-xs removeButton"><i class="fa fa-trash"></i></button></center></td>-->
+                                </tr>
+                                 </tbody>
+                            </table>
+                        </div>
+                        </div>
+			
+			<div class="col-md-6 col-md-offset-3">
                             <div class="form-group">
                                 <h2 class="headingLine" id="employement">Employment Details</h2>
                             </div>                                                             
@@ -462,63 +537,6 @@ $status = $this->session->flashdata('status');
 				   <!-- <td><center><button type="button" onclick="removeButton1($(this));" class="btn btn-remove btn-danger btn-xs removeButton"><i class="fa fa-trash"></i></button></center></td>-->
                                 </tr>
                               </tbody>
-                            </table>
-                        </div>
-                        </div>
-                            <div class="col-md-6 col-md-offset-3">
-                            <div class="form-group">
-                                <h2 class="headingLine" id="education" >Educational Details <span style="color:#EB8B11">*</span></h2>
-                            </div>                                                         
-                        </div>
-                        <div class="col-md-10 col-md-offset-2">
-
-                        <div class="table-responsive"> 
-                          <table class="table table-hover">
-                              <thead>
-                                <tr>
-                                  <th><label>Degree</label></th>
-                                  <th><label>Specialisation</label></th>
-                                  <th><label>Duration From</label></th>
-                                  <th><label>Duration To</label></th>
-                                  <th><label>University</label></th>
-                                  <th><label>Percentage</label></th>
-                                  <th><label>File Upload</label></th>
-                                 <!-- <th><button type="button" onclick="addMore();" class="btn-add btn btn-primary"><i class="fa fa-plus"></i></button></th>-->
-                                </tr>   
-                              </thead>
-                              <tbody>
-				
-				<?php if(count($educationalDetails)>0) { foreach($educationalDetails as $row){?>
-                                <tr class="odd" >
-                                  <input type="hidden" value="" name="degree_Status[]">
-				  <input type="hidden" value="<?php echo $row['head_id'];?>" name="headId">
-                                  <td><input readonly type="hidden" name="degree_id[]" value="<?php echo $row['id']; ?>"> <input readonly placeholder="Degree" name="degree[]" id="degree" value="<?php echo $row['degree']; ?>" class="form-control input-md" type="text"></td>
-                                  <td> <input readonly  placeholder="Specialisation" value="<?php echo $row['specialisation']; ?>" name="specialisation[]" id="specialisation" class="form-control input-md" type="text"></td>
-                                  <td><span class='input-group date'><input readonly value="<?php echo $row['edu_duration_from']; ?>" type="text" placeholder="" name="edu_duration_from[]" id="edu_duration_from" class="form-control input-sm table_input input-group datepicker-dob" ><span class="input-group-addon" ><span class="glyphicon glyphicon-calendar"></span></span></span></td>
-				  <td><span class='input-group date'><input readonly value="<?php echo $row['edu_duration_to']; ?>" type="text" placeholder="" name="edu_duration_to[]" id="edu_duration_to" class="form-control input-sm table_input input-group datepicker-dob"  ><span class="input-group-addon" ><span class="glyphicon glyphicon-calendar"></span></span></span></td>
-                                  <td> <input readonly value="<?php echo $row['university']; ?>" placeholder="University" name="university[]" id="university" class="form-control input-md" type="text"></td>
-                                  <td> <input readonly value="<?php echo $row['percentage']; ?>" placeholder="Percentage" name="percentage[]" id="percentage" class="form-control input-md" type="text"></td>
-				  <td><button data-head_id="<?php echo $row['head_id']; ?>" data-id="<?php echo $row['id']; ?>" class="btn btn-md btn-primary student_files" disabled>click to view</button></td>
-				  
-				  
-                                 <!-- <td><center><a href="<?php echo site_url('admin/educationDelete/'.$row['head_id'].'/'.$row['id'])?>" onclick="return confirm('Are you sure you want to delete?');"class="btn btn-danger btn-xs"><i class="fa fa-trash"></i> </a></center></td>-->
-
-                                </tr>
-				
-				<?php } }?>
-				
-				
-                                 <tr class="odd hide" id="optionTemplate">
-                                  <input type="hidden" value="" name="degree_Status[]">
-                                  <td> <input readonly placeholder="Degree" id="degree" class="form-control input-md" type="text"></td>
-                                  <td> <input readonly placeholder="Specialisation" id="specialisation" class="form-control input-md" type="text"></td>
-                                  <td><span class='input-group date'><input readonly type="text" placeholder="" id="edu_duration_from" class="form-control input-sm table_input input-group datepicker-dob" ><span class="input-group-addon" ><span class="glyphicon glyphicon-calendar"></span></span></span></td>
-				  <td><span class='input-group date'><input readonly type="text" placeholder="" id="edu_duration_to" class="form-control input-sm table_input input-group datepicker-dob"  ><span class="input-group-addon" ><span class="glyphicon glyphicon-calendar"></span></span></span></td>
-                                  <td> <input readonly placeholder="University" id="university" class="form-control input-md" type="text"></td>
-                                  <td> <input readonly placeholder="Percentage" id="percentage" class="form-control input-md" type="text"></td>
-                                  <!--<td><center><button type="button" onclick="removeButton($(this));" class="btn btn-remove btn-danger btn-xs removeButton"><i class="fa fa-trash"></i></button></center></td>-->
-                                </tr>
-                                 </tbody>
                             </table>
                         </div>
                         </div>
@@ -1194,4 +1212,19 @@ $status = $this->session->flashdata('status');
 		}
 		
    }
+   
+    var check_prim_other="<?php echo $employeeEdit[0]['skills'];?>";
+    var res = check_prim_other.toString().split(",");
+     if(jQuery.inArray("Others", res)!='-1')
+    {
+       $(".primary").removeClass("hide");
+       $(".primaryName").attr("name","primary_other_skils");
+    }
+     var check_sec_other="<?php echo $employeeEdit[0]['SecondarySkills'];?>";
+     var res = check_sec_other.toString().split(",");
+     if(jQuery.inArray("Others", res)!='-1')
+     {
+       $(".secondary").removeClass("hide");
+       $(".secondaryName").attr("name","secondary_other_skils");
+    }
 </script>
