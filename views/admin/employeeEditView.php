@@ -196,7 +196,7 @@ $status = $this->session->flashdata('status');
                                 <label>Notice Period</label>
                                 <div class="row">
 				  <div class="form-group col-md-4">
-				    <?php $noticePeriod=array('Immediate','7','15','30','60','90','90 & Above') ?> 
+				    <?php $noticePeriod=array('Immediate','7','15','30','60','90','90 Days & Above') ?> 
 				    <select disabled name="notice_period" class="form-control">
 				    <?php foreach($noticePeriod as $noticePeriod){?>
 				       <option value="<?php echo $noticePeriod;?>" <?php if($employeeEdit[0]['notice_period']==$noticePeriod) echo "selected"?>><?php echo $noticePeriod;?></option>

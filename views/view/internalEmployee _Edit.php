@@ -88,7 +88,7 @@
 					
 					
 					<div class="form-group">
-					    <?php $skill=array('C','C++','JAVA','Dot Net','C#','PHP','Python','Perl','Ruby','Javascript','SQL','Others')?>
+					    <?php $skill=array('PHP','JAVA','Others')?>
 					    <label>Primary Skills </label>
 					    <?php $skillList= explode(",",$inter_Edit[0]['skills']);?>
 					    <select  multiple class="form-control chzn-select input-sm" name="skills[]" onchange="primaryChange($(this))" >
@@ -128,7 +128,7 @@
                             </div>
 			    
 					<div class="form-group">
-					    <?php $skill=array('C','C++','JAVA','Dot Net','C#','PHP','Python','Perl','Ruby','Javascript','SQL','Others')?>
+					    <?php $skill=array('PHP','JAVA','Others')?>
 					    <label>Secondary Skills</label>
 					    <?php $skillList= explode(",",$inter_Edit[0]['SecondarySkills']);?>
 					    <select  multiple class="form-control chzn-select input-sm" name="SecondarySkills[]" onchange="secondaryChange($(this))">

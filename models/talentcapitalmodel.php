@@ -1710,7 +1710,7 @@ function hiringPartnerLinkAdd($code,$loginType)
 				     career_gap_month='$career_gap_month',
 				     team_size_name='$team_size_name',
 				     team_contact_no='$team_contact_no',
-				     resume=$resume
+				     resume='$resume'
 				     where id='$id'");
 		    //echo $sql;exit;
 		    $select = mysql_query($sql);

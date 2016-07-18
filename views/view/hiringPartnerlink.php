@@ -931,9 +931,9 @@ $CandMail = $this->uri->segment(4);
 </script>
 <script>
     $(document).ready(function() {
-      $("input").attr("disabled",true);
-	$("select").attr("disabled",true);
-	$(".chosen-choices").addClass('chosen-disabled');
+//      $("input").attr("disabled",true);
+//	$("select").attr("disabled",true);
+//	$(".chosen-choices").addClass('chosen-disabled');
         $(".chzn-select").chosen();
         
         
