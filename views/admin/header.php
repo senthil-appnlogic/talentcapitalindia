@@ -1,4 +1,4 @@
-	
+
 <!DOCTYPE html>
 <!--[if IE 8]> <html lang="en" class="ie8"> <![endif]-->
 <!--[if !IE]><!-->
@@ -103,11 +103,11 @@
 			<div data-scrollbar="true" data-height="100%">
 				<!-- begin sidebar user -->
 				<ul class="nav">
+					<?php $sessionImage = $this->session->userdata('userimage_admin'); ?>	
 					<li class="nav-profile">
 						<div class="image">
 							<a href="javascript:;">
-							
-							<img width="250" height="100" src="<?php echo base_url($this->session->userdata('userimage_admin')); ?>" alt="" /></a>
+							<img width="250" height="100" src="<?php echo site_url($sessionImage); ?>" alt="" /></a>
 						</div>
 						<div class="info">
 							Talent Capital

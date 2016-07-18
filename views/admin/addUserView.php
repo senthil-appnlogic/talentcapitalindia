@@ -43,6 +43,7 @@ $status = $this->session->flashdata('status');
 						<tr>
 						    <th data-class="expand">Name</th>
 						    <th data-hide="phone,tablet">Email</th>
+						    <th>Profile pic</th>
 						    <th>Approved Y/N</th>
 						    <th>Role</th>
 						    <th>Action</th>
@@ -56,6 +57,7 @@ $status = $this->session->flashdata('status');
 						<tr class="oddClass even gradeC" >
 						    <td id="USER_NAME" style="cursor:pointer;" class="clickable-row" data-href='<?php echo site_url('admin/addUserEditView/'.$row['id'])?>'><u><?php echo $row['user_name']; ?></u></td>					    
 						    <td id="EMAIL"><?php echo $row['email']; ?></td>
+						    <td><img src="<?php echo site_url($row['user_image']);?>" class="img-resposive" width="70" height="70" id="PanImgPreview"></td>
 						    <td ><input type="checkbox" <?php if($row['status']=='Y'){ echo 'checked';}?> class="lcs_check" id="approvedYN"></td>
 						    <td ><?php echo $row['role']; ?></td>
 						    <td>

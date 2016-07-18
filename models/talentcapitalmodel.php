@@ -1722,9 +1722,9 @@ function hiringPartnerLinkAdd($code,$loginType)
 		$dataStore="";
 		if($_POST['update_emp'][$i]=='UPDATE')
 		{
-		
-		$fileCount=count($files['file_employee_upload']['name'][$i]);
-		for($j=0; $j<$fileCount; $j++)
+		$counter = count($_POST['emp_lineid']);
+		//$fileCount=count($files['file_employee_upload']['name'][$i]);
+		for($j=0; $j<$counter; $j++)
 		{
 		    
 		    $line_id=$_POST['emp_lineid'][$i];
@@ -1818,10 +1818,12 @@ function hiringPartnerLinkAdd($code,$loginType)
 		$dataStore="";
 		if($_POST['update_educ'][$j]=='UPDATE')
 		{
+		    $counter = count($_POST['edu_lineid']);
+		    //print_r($_POST['edu_lineid'][$j]);
+		    //exit;
+		    //$fileCount=count($files['file_student_upload']['name'][$j]);
 		    
-		    $fileCount=count($files['file_student_upload']['name'][$j]);
-		    
-		    for($k=0; $k<$fileCount; $k++)
+		    for($k=0; $k<$counter; $k++)
 		    {
 			echo $line_id=$_POST['edu_lineid'][$j];
 			//print_r($line_id);

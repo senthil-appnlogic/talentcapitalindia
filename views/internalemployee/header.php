@@ -83,12 +83,15 @@
 	<span class="hidden-xs"><?php $session_data=$this->session->userdata('username_admin'); echo  $session_data?></span> <b class="caret"></b>
 						</a>
 						<ul class="dropdown-menu animated fadeInLeft">
+							<?php $session_id=$this->session->userdata('user_id');?>
 							<li class="arrow"></li>
 							<!--<li><a href="javascript:;">Edit Profile</a></li>-->
 							
 							
 							<!--<li class="divider"></li>-->
+							<li><a href="<?php echo base_url('internalemployee/intEmpEditUser/'.$session_id); ?>">Edit Profile</a></li>
 							<li><a href="<?php echo base_url('internalemployee/logout'); ?>">Log Out</a></li>
+							
 						</ul>
 					</li>
 				</ul>

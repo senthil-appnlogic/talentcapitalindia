@@ -206,4 +206,32 @@ class internalempmodel extends CI_Model {
 	return $this->db->query($sql, $return_object = TRUE)->result_array();
     }
     
+    function getuserDetailEdit($id){
+    
+     $sql="SELECT * FROM login_auth where id='$id'";
+    
+     return $this->db->query($sql, $return_object = TRUE)->result_array();
+    }
+    
+    function intEmpEditUser($id){
+	$folderPath = $config['upload_path'] = 'upload/';
+	$config['allowed_types'] = 'gif|jpg|png|pdf';
+	$this->load->library('upload', $config);
+	$this->upload->do_upload('user_image');
+	$data = $this->upload->data();
+	$filePath=$folderPath.$data['file_name'];
+	if($_FILES['user_image']['name']=="")
+	{
+		$filePath=$this->input->post('oldimage');
+	}
+	$data = array(
+	    'user_name'=>$this->input->post('username'),
+	    'password'=>$this->input->post('password'),
+	    'email'=>$this->input->post('email'),
+	    'user_image'=>$filePath,
+	);
+	$this->db->where("id",$id);
+	$this->db->update("login_auth",$data);
+    }
+    
 }

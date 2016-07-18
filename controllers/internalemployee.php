@@ -70,7 +70,8 @@ class internalemployee extends CI_Controller {
     }
     
     function dashboard(){
-        
+//        print_r('ddd');
+//	exit;
         $session_data=$this->session->userdata('username_admin');
 	if($session_data!=''){
 	$this->load->view('internalemployee/header');
@@ -193,6 +194,27 @@ class internalemployee extends CI_Controller {
 	}
 	else {
 	    echo "false";
+	}
+    }
+    
+    function intEmpEditUser($id){
+	//$this->emp_model->intEmpEditUser();
+	$session_data=$this->session->userdata('username_admin');
+	if(!empty($session_data)){
+	    if(isset($_POST['Update'])){
+		
+		$this->emp_model->intEmpEditUser($id);
+		$this->session->set_flashdata('status','A old record updated successfully');
+		redirect("internalemployee/dashboard");
+	    }
+	    $data['userEdit']=$this->emp_model->getuserDetailEdit($id);
+	    //print_r($data['userEdits']);exit;
+	 
+	    $this->load->view('internalemployee/header');
+	    $this->load->view('internalemployee/intEmpEditUser',$data);
+	}
+	else{
+	    redirect(site_url('admin'));
 	}
     }
 

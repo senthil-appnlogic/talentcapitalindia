@@ -51,6 +51,7 @@ class login extends CI_Controller {
 			redirect(base_url()."login",'refresh');
 		    }
 		    else{
+			$this->session->set_userdata('user_id',$result[0]['id']);
 			$this->session->set_userdata('username_admin',$result[0]['user_name']);
 			$this->session->set_userdata('userimage_admin',$result[0]['user_image']);
                         $this->session->set_userdata('user_email',$result[0]['email']);
@@ -90,6 +91,7 @@ class login extends CI_Controller {
 	
 	$session_data = $this->session->userdata('username_admin');
 	$session_role = $this->session->userdata('employee_role');
+	
 	if($session_data!='')
 	{
 	    //echo $session_data=$this->session->userdata('username_admin');
