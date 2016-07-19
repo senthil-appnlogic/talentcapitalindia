@@ -21,7 +21,7 @@ class internalempmodel extends CI_Model {
     function internalEmpDetails(){
 	$Emp_Role = $this->session->userdata('employee_role');
 	$Emp_code = $this->session->userdata('employee_code');
-	$sql="SELECT *  FROM emp_candidate_details where login_types='$Emp_Role' AND vendor_code = '$Emp_code'";
+	$sql="SELECT *  FROM emp_candidate_details where login_types='$Emp_Role' AND vendor_code = '$Emp_code' ORDER BY cr_date DESC";
 	return $this->db->query($sql, $return_object = TRUE)->result_array();
     }
     

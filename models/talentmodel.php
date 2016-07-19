@@ -22,7 +22,7 @@ class talentModel extends CI_Model {
     
     //1.USER VIEW STARTS
     function userDetails(){
-	 $sql="SELECT * FROM login_auth order by id DESC";
+	$sql="SELECT * FROM login_auth ORDER BY cr_date DESC";
      	return $this->db->query($sql, $return_object = TRUE)->result_array();
     }
     
@@ -43,6 +43,7 @@ class talentModel extends CI_Model {
             $data = $this->upload->data();
             $filePath=$folderPath.$data['file_name'];
 	    $role=$this->input->post('user_role');
+	    $date = date('d-M-y');
 	    if($role=="Admin"){
 		$data = array(
 		'role'=>$role,
@@ -51,6 +52,7 @@ class talentModel extends CI_Model {
 		'email'=>$this->input->post('email'),
 		'user_image'=>$filePath,
 		'status'=>'Y',
+		'cr_date'=>$date,
 		);
 	    }else{
 		$data = array(
@@ -61,9 +63,11 @@ class talentModel extends CI_Model {
 		'user_image'=>$filePath,
 		'intemp_code'=>$IntEmpCode,
 		'status'=>'Y',
+		'cr_date'=>$date,
 		);
 	    }
-	      
+	      //echo "<pre>";
+	      //print_r($data);exit;
 	    $this->db->insert("login_auth",$data);
 	    $IntEmpTcie = substr($IntEmpCode,4);
 	    $newCode = $IntEmpTcie + 1;
@@ -171,7 +175,7 @@ class talentModel extends CI_Model {
     
     function vendorDetails()
     {
-	$sql="select * from vendor where login_types= 'vendor'";
+	$sql="select * from vendor where login_types= 'vendor' order by cr_date desc";
      	return $this->db->query($sql, $return_object = TRUE)->result_array();
     }
     
@@ -275,10 +279,10 @@ class talentModel extends CI_Model {
 //	$sql="SELECT * FROM emp_candidate_details order by id desc";
 //     	return $this->db->query($sql, $return_object = TRUE)->result_array();
 
-	$sql="SELECT ed.id, ed.degree, ed.specialisation, ed.edu_duration_from, ed.edu_duration_to, ed.university, ed.percentage, ed.reason_desc, emp.client_comp, emp.payroll_comp, emp.designation, emp.emp_duration_from, emp.emp_duration_to, emp.location, emp.reason_desc, emc.vendor_code, emc.candidate_name, emc.mobile_number, emc.mail_id, emc.skills, emc.primary_other_skils, emc.SecondarySkills, emc.secondary_other_skils, emc.total_exp_year, emc.total_exp_month, emc.relevant_exp_year,emc.relevant_exp_month, emc.notice_period, emc.current_ctc_lakhs, emc.current_ctc_thousands, emc.expected_ctc_lakhs,emc.expected_ctc_thousands, emc.day, emc.month, emc.year, emc.pan_card_no, emc.pan_card_attach, emc.language_known, emc.current_location, emc.preferred_location, emc.interview_timing, emc.profile_pic, emc.educational_gap_year, emc.career_gap_year, emc.team_size_name, emc.team_contact_no, emc.email_random_code, emc.password, emc.password_token, emc.login_types
+	$sql="SELECT ed.id, ed.degree, ed.specialisation, ed.edu_duration_from, ed.edu_duration_to, ed.university, ed.percentage, ed.reason_desc, emp.client_comp, emp.payroll_comp, emp.designation, emp.emp_duration_from, emp.emp_duration_to, emp.location, emp.reason_desc, emc.vendor_code, emc.candidate_name, emc.mobile_number, emc.mail_id, emc.skills, emc.primary_other_skils, emc.SecondarySkills, emc.secondary_other_skils, emc.total_exp_year, emc.total_exp_month, emc.relevant_exp_year,emc.relevant_exp_month, emc.notice_period, emc.current_ctc_lakhs, emc.current_ctc_thousands, emc.expected_ctc_lakhs,emc.expected_ctc_thousands, emc.day, emc.month, emc.year, emc.pan_card_no, emc.pan_card_attach, emc.language_known, emc.current_location, emc.preferred_location, emc.interview_timing, emc.profile_pic, emc.educational_gap_year, emc.career_gap_year, emc.team_size_name, emc.team_contact_no, emc.email_random_code, emc.password, emc.password_token, emc.cr_date, emc.login_types
 		FROM educational_details ed
 		INNER JOIN employement_details emp ON emp.head_id = ed.head_id
-		INNER JOIN emp_candidate_details emc ON emc.id = emp.head_id";
+		INNER JOIN emp_candidate_details emc ON emc.id = emp.head_id order by emc.cr_date DESC";
 
 	return $this->db->query($sql, $return_object = TRUE)->result_array();
     }

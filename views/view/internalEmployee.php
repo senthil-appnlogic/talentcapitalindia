@@ -143,7 +143,8 @@
                                 <div class="form-group col-md-4">
                                   <select name="total_exp_year" class="form-control">
                                     <option disabled selected hidden>In Years</option>
-                                    <option value="1years">1 </option>
+                                    <option value="0years">0 </option>
+				    <option value="1years">1 </option>
                                     <option value="2years">2 </option>
                                     <option value="3years">3 </option>
                                     <option value="4years">4 </option>
@@ -197,6 +198,7 @@
                                 <div class="form-group col-md-4">
                                   <select name="relevant_exp_year" class="form-control">
                                      <option disabled selected hidden>In Year</option>
+				     <option value="0years">0 </option>
                                     <option value="1years">1 </option>
                                     <option value="2years">2 </option>
                                     <option value="3years">3 </option>
@@ -250,6 +252,7 @@
 					<option value="7">7 Days</option>
 					<option value="15">15 Days</option>
 					<option value="30">30 Days</option>
+					<option value="45">45 Days</option>
 					<option value="60">60 Days</option>
 					<option value="90 Days & Above">90 Days & Above</option>
 				     </select>
@@ -567,90 +570,97 @@
                                 <label>Educational Gap(in years)</label>
                                 <input class="form-control input-md" name="educational_gap_year" type="text" placeholder="Educational Gap(in years)">
                             </div>-->
-			    			      <div class="">
-                                <label>Educational Gap(in years)</label>
-                                <div class="row">
-                                <div class="form-group col-md-4">
-                                  <select name="educational_gap_year" class="form-control">
-                                     <option disabled selected hidden>In Year</option>
-				    <option value="0years">0 </option>
-                                    <option value="1years">1 </option>
-                                    <option value="2years">2 </option>
-                                    <option value="3years">3 </option>
-                                    <option value="4years">4 </option>
-                                    <option value="5years">5 </option>
-                                    <option value="6years">6 </option>
-                                    <option value="7years">7 </option>
-                                    <option value="8years">8 </option>
-                                    <option value="9years">9 </option>
-                                    <option value="10years">10 </option>
-                              
-                                  </select>
-                                </div>
-                                 <div class="form-group col-md-4">
-                                  <select name="educational_gap_month" class="form-control">
-                                    <option disabled selected hidden>In Months</option>
-				    <option value="0months">0 </option>
-                                    <option value="1months">1 </option>
-                                    <option value="2months">2 </option>
-                                    <option value="3months">3 </option>
-                                    <option value="4months">4 </option>
-                                    <option value="5months">5 </option>
-                                    <option value="6months">6 </option>
-                                    <option value="7months">7 </option>
-                                    <option value="8months">8 </option>
-                                    <option value="9months">9 </option>
-                                    <option value="10months">10 </option>
-                                    <option value="11months">11 </option>
-                                  </select>
-                                </div>
-                                 </div>
-                            </div>
+<!--			    			      <div class="">-->
+<!--                                <label>Educational Gap(in years)</label>-->
+<!--                                <div class="row">-->
+<!--                                <div class="form-group col-md-4">-->
+<!--                                  <select name="educational_gap_year" class="form-control">-->
+<!--                                     <option disabled selected hidden>In Year</option>-->
+<!--				    <option value="0years">0 </option>-->
+<!--                                    <option value="1years">1 </option>-->
+<!--                                    <option value="2years">2 </option>-->
+<!--                                    <option value="3years">3 </option>-->
+<!--                                    <option value="4years">4 </option>-->
+<!--                                    <option value="5years">5 </option>-->
+<!--                                    <option value="6years">6 </option>-->
+<!--                                    <option value="7years">7 </option>-->
+<!--                                    <option value="8years">8 </option>-->
+<!--                                    <option value="9years">9 </option>-->
+<!--                                    <option value="10years">10 </option>-->
+<!--                              -->
+<!--                                  </select>-->
+<!--                                </div>-->
+<!--                                 <div class="form-group col-md-4">-->
+<!--                                  <select name="educational_gap_month" class="form-control">-->
+<!--                                    <option disabled selected hidden>In Months</option>-->
+<!--				    <option value="0months">0 </option>-->
+<!--                                    <option value="1months">1 </option>-->
+<!--                                    <option value="2months">2 </option>-->
+<!--                                    <option value="3months">3 </option>-->
+<!--                                    <option value="4months">4 </option>-->
+<!--                                    <option value="5months">5 </option>-->
+<!--                                    <option value="6months">6 </option>-->
+<!--                                    <option value="7months">7 </option>-->
+<!--                                    <option value="8months">8 </option>-->
+<!--                                    <option value="9months">9 </option>-->
+<!--                                    <option value="10months">10 </option>-->
+<!--                                    <option value="11months">11 </option>-->
+<!--                                  </select>-->
+<!--                                </div>-->
+<!--                                 </div>-->
+<!--                            </div>-->
+<!--			      <div class="">-->
+<!--                                <label>Career Gap(in years)</label>-->
+<!--                                <div class="row">-->
+<!--                                <div class="form-group col-md-4">-->
+<!--                                  <select name="career_gap_year" class="form-control">-->
+<!--                                     <option disabled selected hidden>In Year</option>-->
+<!--				    <option value="0years">0 </option>-->
+<!--                                    <option value="1years">1 </option>-->
+<!--                                    <option value="2years">2 </option>-->
+<!--                                    <option value="3years">3 </option>-->
+<!--                                    <option value="4years">4 </option>-->
+<!--                                    <option value="5years">5 </option>-->
+<!--                                    <option value="6years">6 </option>-->
+<!--                                    <option value="7years">7 </option>-->
+<!--                                    <option value="8years">8 </option>-->
+<!--                                    <option value="9years">9 </option>-->
+<!--                                    <option value="10years">10 </option>-->
+<!--                                   -->
+<!--                                  </select>-->
+<!--                                </div>-->
+<!--                                 <div class="form-group col-md-4">-->
+<!--                                  <select name="career_gap_month" class="form-control">-->
+<!--                                    <option disabled selected hidden>In Months</option>-->
+<!--				    <option value="0months">0 </option>-->
+<!--                                    <option value="1months">1 </option>-->
+<!--                                    <option value="2months">2 </option>-->
+<!--                                    <option value="3months">3 </option>-->
+<!--                                    <option value="4months">4 </option>-->
+<!--                                    <option value="5months">5 </option>-->
+<!--                                    <option value="6months">6 </option>-->
+<!--                                    <option value="7months">7</option>-->
+<!--                                    <option value="8months">8 </option>-->
+<!--                                    <option value="9months">9 </option>-->
+<!--                                    <option value="10months">10 </option>-->
+<!--                                    <option value="11months">11 </option>-->
+<!--                                  </select>-->
+<!--                                </div>-->
+<!--                                 </div>-->
+<!--                            </div>-->
 
-                           <!-- <div class="form-group">
-                                <label>Career Gap(in years)</label>
-                                <input class="form-control input-md" name="career_gap_year" type="text" placeholder="Year">
-                            </div>-->
-			      <div class="">
-                                <label>Career Gap(in years)</label>
-                                <div class="row">
-                                <div class="form-group col-md-4">
-                                  <select name="career_gap_year" class="form-control">
-                                     <option disabled selected hidden>In Year</option>
-				    <option value="0years">0 </option>
-                                    <option value="1years">1 </option>
-                                    <option value="2years">2 </option>
-                                    <option value="3years">3 </option>
-                                    <option value="4years">4 </option>
-                                    <option value="5years">5 </option>
-                                    <option value="6years">6 </option>
-                                    <option value="7years">7 </option>
-                                    <option value="8years">8 </option>
-                                    <option value="9years">9 </option>
-                                    <option value="10years">10 </option>
-                                   
-                                  </select>
-                                </div>
-                                 <div class="form-group col-md-4">
-                                  <select name="career_gap_month" class="form-control">
-                                    <option disabled selected hidden>In Months</option>
-				    <option value="0months">0 </option>
-                                    <option value="1months">1 </option>
-                                    <option value="2months">2 </option>
-                                    <option value="3months">3 </option>
-                                    <option value="4months">4 </option>
-                                    <option value="5months">5 </option>
-                                    <option value="6months">6 </option>
-                                    <option value="7months">7</option>
-                                    <option value="8months">8 </option>
-                                    <option value="9months">9 </option>
-                                    <option value="10months">10 </option>
-                                    <option value="11months">11 </option>
-                                  </select>
-                                </div>
-                                 </div>
-                            </div>
 
+<div class="">
+                                <div class="row">
+				  <div class="form-group col-md-2">
+				      <input  class="lcs_check" id="switch_YN" type="checkbox">
+				      <input type="hidden" id="Switch_Val" name="yesno" value="N" />
+				  </div>
+				   <div class="form-group col-md-6">
+					<input type="text" name="" id="checkingYN" class="form-control">
+				  </div>
+                                 </div>
+			      </div>
                             <div id="team" class="form-group">
                                 <h2 class="headingLine" >Team Details</h2>
                             </div>
@@ -709,7 +719,7 @@
                                   <th><label>University</label></th>
                                   <th><label>Percentage</label></th>
 				  <th><label>Reason Description</label></th>
-                                  <th><button type="button" onclick="addMore();" class="btn-add btn btn-default"><i class="fa fa-plus"></i></button></th>
+                                  <!--<th><button type="button" onclick="addMore();" class="btn-add btn btn-default"><i class="fa fa-plus"></i></button></th>-->
                                 </tr>   
                               </thead>
                               <tbody>
@@ -781,28 +791,49 @@
 				
 				
 				
-                                 <tr class="odd hide countClass" id="optionTemplate">
-                                  <td> <input placeholder="PG Degree" id="degree" class="form-control input-md" type="text"></td>
-                                  <td> <input placeholder="Specialisation" id="specialisation" class="form-control input-md" type="text"></td>
-                                  <td><span class='input-group date'><input type="text" onblur="checkDurationMonth($(this));" id="edu_duration_from" class="form-control input-md  input-group datepicker-dob" ><span class="input-group-addon" ><span class="glyphicon glyphicon-calendar"></span></span></span></td>
-				  <td><span class='input-group date'><input type="text" id="edu_duration_to" class="form-control input-md  input-group datepicker-dob"  ><span class="input-group-addon" ><span class="glyphicon glyphicon-calendar"></span></span></span></td>
-                                  <td> <input placeholder="University" id="university" class="form-control input-md" type="text"></td>
-                                  <td> <input placeholder="Percentage" id="percentage" class="form-control input-md" type="text"></td>
-				  <!--<td> <textarea id="reasonDesc"  class="form-control input-md" rows="1" readonly></textarea></td>-->
+<!--                                 <tr class="odd hide countClass" id="optionTemplate">-->
+<!--                                  <td> <input placeholder="PG Degree" id="degree" class="form-control input-md" type="text"></td>-->
+<!--                                  <td> <input placeholder="Specialisation" id="specialisation" class="form-control input-md" type="text"></td>-->
+<!--                                  <td><span class='input-group date'><input type="text" onblur="checkDurationMonth($(this));" id="edu_duration_from" class="form-control input-md  input-group datepicker-dob" ><span class="input-group-addon" ><span class="glyphicon glyphicon-calendar"></span></span></span></td>-->
+<!--				  <td><span class='input-group date'><input type="text" id="edu_duration_to" class="form-control input-md  input-group datepicker-dob"  ><span class="input-group-addon" ><span class="glyphicon glyphicon-calendar"></span></span></span></td>-->
+<!--                                  <td> <input placeholder="University" id="university" class="form-control input-md" type="text"></td>-->
+<!--                                  <td> <input placeholder="Percentage" id="percentage" class="form-control input-md" type="text"></td>-->
+<!--				  <!--<td> <textarea id="reasonDesc"  class="form-control input-md" rows="1" readonly></textarea></td>-->
+<!--                                  <td>-->
+<!--			  <div class="form-group">-->
+<!--				    <div class="input-group">-->
+<!--				      <span class="input-group-btn">-->
+<!--					  <span class="btn btn-primary btn-file">-->
+<!--					      Browse<input type="file"  id="file_student_upload" class="file_upload" onchange="fileAttachment1();" multiple>-->
+<!--					  </span>-->
+<!--				      </span>-->
+<!--				      <input type="text" id="" value="" class="form-control file_name" readonly >-->
+<!--				    </div>-->
+<!--				    -->
+<!--				  </div></td>-->
+<!--				  <td><center><button type="button" onclick="removeButton($(this));" class="btn btn-remove btn-default btn-sm removeButton"><i class="fa fa-minus"></i></button></center></td>-->
+<!--                                </tr>-->
+
+<tr class="countClass">
+				<td> <input placeholder="UG Degree" name="degree[]" id="degree" class="form-control input-md" type="text"></td>
+                                  <td> <input placeholder="Specialisation" name="specialisation[]" id="specialisation" class="form-control input-md" type="text"></td>
+                                  <td><span class='input-group date'><input type="text" name="edu_duration_from[]" onblur="checkDurationMonth($(this));" id="edu_duration_from" class="form-control input-md datepicker-dob" ><span class="input-group-addon" ><span class="glyphicon glyphicon-calendar"></span></span></span></td>
+				  <td><span class='input-group date'><input type="text" name="edu_duration_to[]" id="edu_duration_to" class="form-control input-md  datepicker-dob"  ><span class="input-group-addon" ><span class="glyphicon glyphicon-calendar"></span></span></span></td>
+                                  <td> <input placeholder="University" name="university[]" class="form-control input-md" type="text"></td>
+                                  <td> <input placeholder="Percentage" name="percentage[]" class="form-control input-md" type="text"></td>
+				 <!-- <td> <textarea name="reasonDesc[]"  class="form-control input-md" id="reasonDesc" rows="1" readonly></textarea></td>-->
                                   <td>
-			  <div class="form-group">
+				  <div class="form-group">
 				    <div class="input-group">
 				      <span class="input-group-btn">
 					  <span class="btn btn-primary btn-file">
-					      Browse<input type="file"  id="file_student_upload" class="file_upload" onchange="fileAttachment1();" multiple>
+					      Browse<input  type="file" multiple="multiple" name="file_student_upload[2][]" id="file_student_upload">
 					  </span>
 				      </span>
-				      <input type="text" id="" value="" class="form-control file_name" readonly >
+				      <input type="text" id="" value="" class="form-control" readonly >
 				    </div>
-				    
 				  </div></td>
-				  <td><center><button type="button" onclick="removeButton($(this));" class="btn btn-remove btn-default btn-sm removeButton"><i class="fa fa-minus"></i></button></center></td>
-                                </tr>
+				</tr>
 			      </tbody>
                             </table>
 			  <input placeholder="Educational_Gap_Year" size="55px" class="form-control input-md countEduYr" id="educational_gap_year2" type="hidden" >
@@ -964,7 +995,7 @@
 </script>
 <script type="text/javascript">
     $(function () {
-        $('#datetimepicker1').datetimepicker();
+        $('#datetimepicker1').datetimepicker({format:'DD-MMM-YYYY hh:mm A'});
     });
 </script>
 <script>
@@ -1774,4 +1805,35 @@
 //      }
 //    });
 // }
+
+
+$(document).ready(function(){
+      $('.lcs_check').lc_switch('Y','N');
+      $('.lcs_check').lc_switch();
+      $('.lcs_wrap').delegate('#switch_YN', 'lcs-on', function() {
+	$('input[id="Switch_Val"]').val('Y');
+	$("#checkingYN").hide();
+      });
+      $('.lcs_wrap').delegate('#switch_YN', 'lcs-off', function() {
+	  $('input[id="Switch_Val"]').val('N');
+	  $("#checkingYN").show();
+      });
+  });
+ 
+ $(function(){
+	var check = $("#Switch_Val").val();
+	if (check == 'N') {
+	    $("#switch_YN").trigger('click');
+	}
+	$name1=$('[name="degree[]"]:last');
+	$edu_duration_from=$('[name="edu_duration_from[]"]:last');
+	$edu_duration_to=$('[name="edu_duration_to[]"]:last');
+	$university=$('[name="university[]"]:last');
+	$percentage=$('[name="percentage[]"]:last');
+    $('#form_validation').bootstrapValidator('removeField', $name1);
+    $('#form_validation').bootstrapValidator('removeField', $edu_duration_from);
+    $('#form_validation').bootstrapValidator('removeField', $edu_duration_to);
+    $('#form_validation').bootstrapValidator('removeField', $university);
+    $('#form_validation').bootstrapValidator('removeField', $percentage);
+    })
 </script>

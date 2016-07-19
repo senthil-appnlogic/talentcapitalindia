@@ -415,7 +415,7 @@
             $this->upload->do_upload('profile_pic');
             $data = $this->upload->data();
             $profilePic=$folderPath.$data['file_name'];
-            
+            $date = date('d-M-y');
             $data= array(
                 'name'=>$this->input->post('name'),
                 'mobile_number'=>$this->input->post('mobile_number'),
@@ -426,6 +426,7 @@
                 //'bank_attach_cheque'=>$filePath3,
 		'check'=>$this->input->post('checking'),
 		'profile_pic'=>$profilePic,
+		'cr_date'=>$date,
             );
 	    //print_r($data);exit;
 	    $this->db->update('vendor', $data);
@@ -763,6 +764,7 @@ function updateApplicantRegister($uniqueCode)
             $this->upload->do_upload('resume_upload');
             $data = $this->upload->data();
             $resume=$folderPath.$data['file_name'];
+	    $date = date('d-M-y');
             $data= array(
 		'vendor_code'=>$this->input->post('vendor_code'),
                 'candidate_name'=>$this->input->post('candidate_name'),
@@ -807,7 +809,11 @@ function updateApplicantRegister($uniqueCode)
                 'team_size_name'=>$this->input->post('team_size_name'),
                 'team_contact_no'=>$this->input->post('team_contact_no'),
 		'profile_pic'=>$profilePic,
-		'resume'=>$resume
+		'resume'=>$resume,
+		'check_yn'=>$this->input->post('check_yn'),
+		'yesno'=>$this->input->post('yesno'),
+		'cr_date'=>$date
+		//'up_date'=>$this->input->post('up_date')
             );
 	    
             $select = $this->db->update('emp_candidate_details',$data);
@@ -1125,7 +1131,7 @@ function hiringPartnerLinkAdd($code,$loginType)
             $this->upload->do_upload('resume_upload');
             $data = $this->upload->data();
             $resume=$folderPath.$data['file_name'];
-            
+            $date = date('d-M-y');
             $data= array(
 		'vendor_code'=>$code,
                 'candidate_name'=>$this->input->post('candidate_name'),
@@ -1167,6 +1173,10 @@ function hiringPartnerLinkAdd($code,$loginType)
 		'login_types'=>$loginType,
 		'candidate_status'=>'Shortlisted',
 		'resume'=>$resume,
+		'check_yn'=>$this->input->post('check_yn'),
+		'yesno'=>$this->input->post('yesno'),
+		'cr_date'=>$date
+		//'up_date'=>$this->input->post('up_date')
             );
 	    //echo "<pre>";
 	    //print_r($data);
@@ -1699,6 +1709,10 @@ function hiringPartnerLinkAdd($code,$loginType)
 		    $team_size_name=$this->input->post('team_size_name');
 		    $team_contact_no=$this->input->post('team_contact_no');
 		    $profile_pic=$profilePic;
+		    $Check_YN=$this->input->post('check_yn');
+		    $yesno=$this->input->post('yesno');
+		    $date = date('d-M-y');
+		    //$uptodate=$this->input->post('up_date');
 		    //echo $resume;exit;
 		    $sql=mysql_query("UPDATE emp_candidate_details SET 	vendor_code='$vendor_code',candidate_name='$candidate_name',mobile_number='$mobile_number',skills='$skills',primary_other_skils='$primary_other_skils',secondary_other_skils='$secondary_other_skils',
 				     SecondarySkills='$SecondarySkills',total_exp_year='$total_exp_year',total_exp_month='$total_exp_month',current_ctc_thousands='$current_ctc_thousands',expected_ctc_thousands='$expected_ctc_thousands',relevant_exp_year='$relevant_exp_year',
@@ -1710,7 +1724,10 @@ function hiringPartnerLinkAdd($code,$loginType)
 				     career_gap_month='$career_gap_month',
 				     team_size_name='$team_size_name',
 				     team_contact_no='$team_contact_no',
-				     resume='$resume'
+				     resume='$resume',
+				     check_yn='$Check_YN',
+				     yesno='$yesno',
+				     cr_date='$date'
 				     where id='$id'");
 		    //echo $sql;exit;
 		    $select = mysql_query($sql);

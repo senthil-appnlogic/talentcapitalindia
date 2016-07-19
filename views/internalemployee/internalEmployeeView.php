@@ -41,6 +41,7 @@ $status = $this->session->flashdata('status');
 					<table id="data-table" class="table table-striped table-bordered nowrap" width="100%">
 					  <thead>
 						<tr>
+						    <th data-class="phone,tablet">Created Date</th>
 						    <th data-class="expand">Name</th>
 						    <th data-hide="phone,tablet">Mobile Number</th>
 						    <th data-hide="phone,tablet">Email</th>
@@ -56,7 +57,7 @@ $status = $this->session->flashdata('status');
 						<?php if(count($internalDetails) > 0){ foreach($internalDetails as $row)   { ?>
 					       
 						<tr class="oddClass even gradeC">
-						    
+						    <td><?php echo $row['cr_date']; ?></td>
 						    <td id="USER_NAME" style="cursor:pointer;" class="clickable-row" data-href='<?php echo site_url('internalemployee/internalEmpEdit/'.$row['id'])?>'><u><?php echo $row['candidate_name']; ?></u></td>					    
 						    <td><?php echo $row['mobile_number']; ?></td>
 						    <td id="EMAIL"><?php echo $row['mail_id']; ?></td>

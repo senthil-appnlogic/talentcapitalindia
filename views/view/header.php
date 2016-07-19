@@ -83,7 +83,12 @@ $session_username = $this->session->userdata('username');
                             <script src="<?php echo base_url(); ?>assets/bootstrap-validation/js/bootstrapValidator.js"></script>
                             
 		    <script src="<?php echo base_url(); ?>assets/bootstrap-datetimepicker2/js/moment-with-locales.js"></script>
-		    <script src="<?php echo base_url(); ?>assets/bootstrap-datetimepicker2/js/bootstrap-datetimepicker.min.js"></script>                            
+		    <script src="<?php echo base_url(); ?>assets/bootstrap-datetimepicker2/js/bootstrap-datetimepicker.min.js"></script>
+		    
+		    	<!--=========================SWITCHERY JS ===========================-->
+			<link href="<?php echo base_url(); ?>assetsAdmin/plugins/LC-switch-master/lc_switch.css" rel="stylesheet" />
+			<script type="text/javascript" src="<?php echo base_url(); ?>assetsAdmin/plugins/LC-switch-master/lc_switch.js"></script>
+			<!--=========================SWITCHERY JS ===========================-->
     </head>
     <body>
 	<!-- FLOATING SIDEBAR-->

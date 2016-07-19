@@ -351,52 +351,65 @@ $status = $this->session->flashdata('status');
                                 <input readonly class="form-control input-md" value="<?php echo $employeeEdit[0]['interview_timing'];?>" name="interview_timing" id="datetimepicker1" type="text" placeholder="Interview Timing">
                             </div>
                            
-			    <div class="">
-                                <label>Educational Gap(in years)</label>
-                                <div class="row">
-                                <div class="form-group col-md-4">
-                                   <?php $eduGap=array('0years','1years','2years','3years','4years','5years','6years','7years','8years','9years','10years','11years','12years','13years','14years','15years','16years','17years','18years','19years','20years','21years') ?> 
-                                  <select disabled name="day" class="form-control">
-				    <?php foreach($eduGap as $eduGap){?>
-                                    <option value="<?php echo $eduGap;?>" <?php if($employeeEdit[0]['educational_gap_year']==$eduGap) echo "selected"?>><?php echo $eduGap;?></option>
-                                  <?php }?>
-				  </select>
-                                </div>
-                                 <div class="form-group col-md-4">
-			         <?php $month=array('0months','1months','2months','3months','4months','5months','6months','7months','8months','9months','10months','11months') ?> 
-                                  <select disabled name="educational_gap_month" class="form-control">
-                                    <?php foreach($month as $month){?>
-                                    <option value="<?php echo $month;?>" <?php if($employeeEdit[0]['educational_gap_month']==$month) echo "selected"?>><?php echo $month;?></option>
-                                  <?php }?>
-                                  </select>
-                                </div>
-                                
-                                 </div>
-                            </div>
+<!--			    <div class="">-->
+<!--                                <label>Educational Gap(in years)</label>-->
+<!--                                <div class="row">-->
+<!--                                <div class="form-group col-md-4">-->
+<!--                                   <?php $eduGap=array('0years','1years','2years','3years','4years','5years','6years','7years','8years','9years','10years','11years','12years','13years','14years','15years','16years','17years','18years','19years','20years','21years') ?> -->
+<!--                                  <select disabled name="day" class="form-control">-->
+<!--				    <?php foreach($eduGap as $eduGap){?>-->
+<!--                                    <option value="<?php echo $eduGap;?>" <?php if($employeeEdit[0]['educational_gap_year']==$eduGap) echo "selected"?>><?php echo $eduGap;?></option>-->
+<!--                                  <?php }?>-->
+<!--				  </select>-->
+<!--                                </div>-->
+<!--                                 <div class="form-group col-md-4">-->
+<!--			         <?php $month=array('0months','1months','2months','3months','4months','5months','6months','7months','8months','9months','10months','11months') ?> -->
+<!--                                  <select disabled name="educational_gap_month" class="form-control">-->
+<!--                                    <?php foreach($month as $month){?>-->
+<!--                                    <option value="<?php echo $month;?>" <?php if($employeeEdit[0]['educational_gap_month']==$month) echo "selected"?>><?php echo $month;?></option>-->
+<!--                                  <?php }?>-->
+<!--                                  </select>-->
+<!--                                </div>-->
+<!--                                -->
+<!--                                 </div>-->
+<!--                            </div>-->
 			    
-			    <div class="">
-                                <label>Carrier Gap(in years)</label>
-                                <div class="row">
-                                <div class="form-group col-md-4">
-                                   <?php $carrierGap=array('0years','1years','2years','3years','4years','5years','6years','7years','8years','9years','10years','11years','12years','13years','14years','15years','16years','17years','18years','19years','20years','21years') ?> 
-                                  <select disabled name="day" class="form-control">
-				    <?php foreach($carrierGap as $carrierGap){?>
-                                    <option value="<?php echo $carrierGap;?>" <?php if($employeeEdit[0]['educational_gap_year']==$carrierGap) echo "selected"?>><?php echo $carrierGap;?></option>
-                                  <?php }?>
-				  </select>
-                                </div>
-                                 <div class="form-group col-md-4">
-			    <?php $month=array('0months','1months','2months','3months','4months','5months','6months','7months','8months','9months','10months','11months') ?> 
-                                  <select disabled name="educational_gap_month" class="form-control">
-                                    <?php foreach($month as $month){?>
-                                    <option value="<?php echo $month;?>" <?php if($employeeEdit[0]['educational_gap_month']==$month) echo "selected"?>><?php echo $month;?></option>
-                                  <?php }?>
-                                  </select>
-                                </div>
-                                
-                                 </div>
-                            </div>
+<!--			    <div class="">-->
+<!--                                <label>Carrier Gap(in years)</label>-->
+<!--                                <div class="row">-->
+<!--                                <div class="form-group col-md-4">-->
+<!--                                   <?php $carrierGap=array('0years','1years','2years','3years','4years','5years','6years','7years','8years','9years','10years','11years','12years','13years','14years','15years','16years','17years','18years','19years','20years','21years') ?> -->
+<!--                                  <select disabled name="day" class="form-control">-->
+<!--				    <?php foreach($carrierGap as $carrierGap){?>-->
+<!--                                    <option value="<?php echo $carrierGap;?>" <?php if($employeeEdit[0]['educational_gap_year']==$carrierGap) echo "selected"?>><?php echo $carrierGap;?></option>-->
+<!--                                  <?php }?>-->
+<!--				  </select>-->
+<!--                                </div>-->
+<!--                                 <div class="form-group col-md-4">-->
+<!--			    <?php $month=array('0months','1months','2months','3months','4months','5months','6months','7months','8months','9months','10months','11months') ?> -->
+<!--                                  <select disabled name="educational_gap_month" class="form-control">-->
+<!--                                    <?php foreach($month as $month){?>-->
+<!--                                    <option value="<?php echo $month;?>" <?php if($employeeEdit[0]['educational_gap_month']==$month) echo "selected"?>><?php echo $month;?></option>-->
+<!--                                  <?php }?>-->
+<!--                                  </select>-->
+<!--                                </div>-->
+<!--                                -->
+<!--                                 </div>-->
+<!--                            </div>-->
 
+
+
+<div class="">
+  <div class="row">
+    <div class="form-group col-md-2">
+	<input  class="lcs_check" id="switch_YN" type="checkbox" <?php if($employeeEdit[0]['yesno']=="Y") echo "checked";?> disabled="disabled">
+	<input type="hidden" id="Switch_Val" name="yesno" value="<?php echo $employeeEdit[0]['yesno'];?>" />
+    </div>
+     <div class="form-group col-md-6">
+	  <input type="text" name="check_yn" id="checkingYN" class="form-control" value="<?php echo $employeeEdit[0]['check_yn'];?>" disabled="disabled">
+    </div>
+   </div>
+</div>
 			    
                             <div id="team" class="form-group">
                                 <h2 class="headingLine" >Team Details</h2>
@@ -1225,4 +1238,17 @@ $status = $this->session->flashdata('status');
        $(".secondary").removeClass("hide");
        $(".secondaryName").attr("name","secondary_other_skils");
     }
+    
+    $(document).ready(function(){
+      $('.lcs_check').lc_switch('Y','N');
+      $('.lcs_check').lc_switch();
+      $('.lcs_wrap').delegate('#switch_YN', 'lcs-on', function() {
+	$('input[id="Switch_Val"]').val('Y');
+	$("#checkingYN").hide();
+      });
+      $('.lcs_wrap').delegate('#switch_YN', 'lcs-off', function() {
+	  $('input[id="Switch_Val"]').val('N');
+	  $("#checkingYN").show();
+      });
+  });
 </script>

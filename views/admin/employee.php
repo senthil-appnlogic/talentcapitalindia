@@ -46,6 +46,7 @@ $status = $this->session->flashdata('status');
 						    <th data-hide="phone,tablet">Referred by</th>
 						    <th>Action</th>-->
 						    
+						    <th data-class="expand">Created Date</th>
 						    <th data-class="expand">Name</th>
 						    <th data-hide="phone,tablet">Mobile Number</th>
 						    <th data-hide="phone,tablet">Email</th>
@@ -122,7 +123,7 @@ $status = $this->session->flashdata('status');
 						       <a  id="delete_box" href="<?php echo site_url('admin/employeeDelete/'.$row['id'])?>" class="btn btn-danger btn-xs"><i class="glyphicon glyphicon-trash"></i> </a>
 						   <a  href="#" data-toggle="modal" data-target="#printPreview"  class="btn btn-primary btn-xs" onclick="printEmployeeDetails('<?php echo $row['id'];?>')"><i class="fa fa-file-pdf-o fa-2x"></i> </a>
 						    </td>-->
-						    
+						    <td><?php echo $row['cr_date']; ?></td>
 						    <td style="cursor:pointer;" class="clickable-row" data-href='<?php echo site_url('admin/employeeEditView/'.$row['id'])?>'><u><?php echo $row['candidate_name']; ?></u></td>					    
 						    <td><?php echo $row['mobile_number']; ?></td>
 						    <td ><?php echo $row['mail_id']; ?></td>

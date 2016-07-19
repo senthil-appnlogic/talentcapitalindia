@@ -51,6 +51,15 @@ $status = $this->session->flashdata('status');
                                 <input type="hidden" class="" value="<?php echo $inter_Edit[0]['id'];?>" name="hiddenId" >
 				<input type="hidden" class="" value="<?php echo $inter_Edit[0]['vendor_code'];?>" name="vendor_code" >
                             </div>
+			    
+			    <div class="form-group">
+				<label>Middle Name</label>
+				<input class="form-control input-md" value="<?php echo $inter_Edit[0]['middle_name'];?>" name="middle_name" type="text" readonly>
+                            </div>
+			    <div class="form-group">
+				<label>Last Name</label>
+				<input class="form-control input-md" value="<?php echo $inter_Edit[0]['last_name'];?>" name="last_name" type="text" readonly>
+                            </div>
                             
                             <div class="form-group">
                               <!--<label>Profile Picture</label>-->
@@ -162,6 +171,7 @@ $status = $this->session->flashdata('status');
                                 <div class="row">
                                 <div class="form-group col-md-4">
                                   <select name="total_exp_year" class="form-control">
+				    <option value="0years">0 </option>
                                     <option value="1years">1 </option>
                                     <option value="2years">2 </option>	
                                     <option value="3years">3 </option>
@@ -208,7 +218,8 @@ $status = $this->session->flashdata('status');
                                 <div class="row">
                                 <div class="form-group col-md-4">
                                   <select name="relevant_exp_year" class="form-control">
-                                    <option value="1years">1 </option>
+                                    <option value="0years">0 </option>
+				    <option value="1years">1 </option>
                                     <option value="2years">2 </option>
                                     <option value="3years">3 </option>
                                     <option value="4years">4 </option>
@@ -259,6 +270,7 @@ $status = $this->session->flashdata('status');
 					<option value="7">7 Days</option>
 					<option value="15">15 Days</option>
 					<option value="30">30 Days</option>
+					<option value="45">45 Days</option>
 					<option value="60">60 Days</option>
 					
 					<option value="90 Days & Above">90 Days & Above</option>
@@ -585,7 +597,7 @@ $status = $this->session->flashdata('status');
                                 <input class="form-control input-md" name="interview_timing" value="<?php echo $inter_Edit[0]['interview_timing'];?>" id="datetimepicker1" type="text" placeholder="Interview Timing">
                             </div>
                             
-			    			      <div class="">
+			    			      <!--<div class="">
                                 <label>Educational Gap(in years)</label>
                                 <div class="row">
                                 <div class="form-group col-md-4">
@@ -678,7 +690,19 @@ $status = $this->session->flashdata('status');
                                   </select>
                                 </div>
                                  </div>
-                            </div>
+                            </div>-->
+			    
+			    <div class="">
+				<div class="row">
+				  <div class="form-group col-md-2">
+				      <input  class="lcs_check" id="switch_YN" type="checkbox" <?php if($inter_Edit[0]['yesno']=="Y") echo "checked";?> disabled="disabled">
+				      <input type="hidden" id="Switch_Val" name="yesno" value="<?php echo $inter_Edit[0]['yesno'];?>" />
+				  </div>
+				   <div class="form-group col-md-6">
+					<input type="text" name="check_yn" id="checkingYN" class="form-control" value="<?php echo $inter_Edit[0]['check_yn'];?>" readonly>
+				  </div>
+				 </div>
+			      </div>
 
                             <div id="team" class="form-group">
                                 <h2 class="headingLine" >Team Details</h2>
@@ -906,6 +930,7 @@ $status = $this->session->flashdata('status');
   $("#language").chosen();
     $(function () {
         $('#datetimepicker1').datetimepicker();
+	$('#datetimepicker1').val('<?php echo $inter_Edit[0]['interview_timing'];?>');
     });
 </script>
 <script>
@@ -1681,4 +1706,17 @@ $status = $this->session->flashdata('status');
 	}
         });
     });
+    
+    $(document).ready(function(){
+      $('.lcs_check').lc_switch('Y','N');
+      $('.lcs_check').lc_switch();
+      $('.lcs_wrap').delegate('#switch_YN', 'lcs-on', function() {
+	$('input[id="Switch_Val"]').val('Y');
+	$("#checkingYN").hide();
+      });
+      $('.lcs_wrap').delegate('#switch_YN', 'lcs-off', function() {
+	  $('input[id="Switch_Val"]').val('N');
+	  $("#checkingYN").show();
+      });
+  });
 </script>

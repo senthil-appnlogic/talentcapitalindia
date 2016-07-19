@@ -41,6 +41,7 @@ $status = $this->session->flashdata('status');
 					<table id="data-table" class="table table-striped table-bordered nowrap" width="100%">
 					  <thead>
 						<tr>
+						    <th data-class="expand">Created Date</th>
 						    <th data-class="expand">Name</th>
 						    <th data-hide="phone,tablet">Email</th>
 						    <th>Profile pic</th>
@@ -55,6 +56,7 @@ $status = $this->session->flashdata('status');
 							     { foreach($userDetails as $row) {  ?>
 					       
 						<tr class="oddClass even gradeC" >
+						    <td id=""><?php echo $row['cr_date']; ?></td>
 						    <td id="USER_NAME" style="cursor:pointer;" class="clickable-row" data-href='<?php echo site_url('admin/addUserEditView/'.$row['id'])?>'><u><?php echo $row['user_name']; ?></u></td>					    
 						    <td id="EMAIL"><?php echo $row['email']; ?></td>
 						    <td><img src="<?php echo site_url($row['user_image']);?>" class="img-resposive" width="70" height="70" id="PanImgPreview"></td>
