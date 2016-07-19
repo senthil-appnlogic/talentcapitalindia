@@ -101,6 +101,7 @@ $status = $this->session->flashdata('status');
 	 setTimeout(function(){ $('#alert').remove();}, 5000);
 	    $('#data-table').DataTable( {
 		dom: 'Bfrtip',
+		"ordering":false,
 		buttons: [
 		    //'copyHtml5',
 		    'excelHtml5',

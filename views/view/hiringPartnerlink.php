@@ -826,7 +826,7 @@ $CandMail = $this->uri->segment(4);
 				    <div class="input-group">
 				      <span class="input-group-btn">
 					  <span class="btn btn-primary btn-file">
-					      Browse<input  type="file" class="file_upload" multiple="multiple" name="file_student_upload[2][]" id="file_student_upload">
+					      Browse<input  type="file" class="file_upload" multiple="multiple" name="file_student_upload[3][]" id="file_student_upload">
 					  </span>
 				      </span>
 				      <input type="text" id="" value="" class="form-control file_name" readonly >
