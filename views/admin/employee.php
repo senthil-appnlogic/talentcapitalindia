@@ -51,9 +51,9 @@ $status = $this->session->flashdata('status');
 						    <th data-hide="phone,tablet">Mobile Number</th>
 						    <th data-hide="phone,tablet">Email</th>
 						    <th data-hide="phone,tablet">Skills</th>
-						    <th data-hide="phone,tablet">Primary Other Skills</th>
+						    <!--<th data-hide="phone,tablet">Primary Other Skills</th>-->
 						    <th data-hide="phone,tablet">Secondary Skills</th>
-						    <th data-hide="phone,tablet">Secondary Other Skills</th>
+						    <!--<th data-hide="phone,tablet">Secondary Other Skills</th>-->
 						    <th data-hide="phone,tablet">Total Experience</th>
 						    <th data-hide="phone,tablet">Total Experience Month</th>
 						    <th data-hide="phone,tablet">Relevant Experience</th>
@@ -128,9 +128,9 @@ $status = $this->session->flashdata('status');
 						    <td><?php echo $row['mobile_number']; ?></td>
 						    <td ><?php echo $row['mail_id']; ?></td>
 						    <td><?php echo $row['skills']; ?></td>
-						    <td><?php echo $row['primary_other_skils']; ?></td>
+						    <!--<td><?php echo $row['primary_other_skils']; ?></td>-->
 						    <td><?php echo $row['SecondarySkills']; ?></td>
-						    <td><?php echo $row['secondary_other_skils']; ?></td>
+						    <!--<td><?php echo $row['secondary_other_skils']; ?></td>-->
 						    <td><?php echo $row['total_exp_year']; ?></td>
 						    <td><?php echo $row['total_exp_month']; ?></td>
 						    <td><?php echo $row['relevant_exp_year']; ?></td>

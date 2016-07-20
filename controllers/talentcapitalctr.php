@@ -39,57 +39,55 @@ class talentcapitalctr extends CI_Controller {
 	//This login page functionality 
 	public function index($user)
         {
-     
-           if($_POST['save'] == "Register Now")
-         {
-           //echo "hi";
-           //print_r($_POST);
-           //exit;
-           if($this->input->post('login_types')=='vendor')
-           {
-      
-             $result=$this->tc_model->vendorAdd();
-      
-             if($result!="")
-             {
-              $this->session->set_flashdata('error', 'Invalid User Id and Password Please check it');
-              redirect(site_url());
-             }else{
-              $this->session->set_flashdata('status','You are Successfully Registered with Talent Capital, Please check your Email to Proceed');
-              redirect('talentcapitalctr/successMsg');
-           }
-           }
-       else{
-          $result=$this->tc_model->internalEmployeeAdd();
-          if($result!="")
-      {
-          $this->session->set_flashdata('error', 'Invalid User Id and Password Please check it');
-          redirect(site_url());
-      }else{
-         $this->session->set_flashdata('status','You are Successfully Registered with Talent Capital, Please check your Email to Proceed');
-          redirect('talentcapitalctr/successMsg');
-      }
-  }
-     }
-     else if($_POST['save'] == "Sign me in")
-     {
-  //echo $_POST['login_types'];exit;
-  if($_POST['login_types']=='vendor'){
-      require_once('vendorlogin.php');
-      $newValu=new vendorlogin();
-      $newValu->index();
-  }
-  else if($_POST['login_types']=='directemploye'){
-      require_once('directemployee.php');
-      $newValu=new directemployee();
-      $newValu->index();
-  }
-     }else{
-  $this->load->view('view/index',$loginUser);
-  $this->load->view('view/footer');
-  
-     }
- }
+	    if($_POST['save'] == "Register Now")
+	    {
+	       //echo "hi";
+	       //print_r($_POST);
+	       //exit;
+	       if($this->input->post('login_types')=='vendor')
+	       {
+		    $result=$this->tc_model->vendorAdd();
+		    if($result!="")
+		    {
+		      $this->session->set_flashdata('error', 'Invalid User Id and Password Please check it');
+		      redirect(site_url());
+		    }
+		    else
+		    {
+		      $this->session->set_flashdata('status','You are Successfully Registered with Talent Capital, Please check your Email to Proceed');
+		      redirect('talentcapitalctr/successMsg');
+		    }
+		}
+		else{
+		    $result=$this->tc_model->internalEmployeeAdd();
+		    if($result!="")
+		    {
+			$this->session->set_flashdata('error', 'Invalid User Id and Password Please check it');
+			redirect(site_url());
+		    }else{
+		       $this->session->set_flashdata('status','You are Successfully Registered with Talent Capital, Please check your Email to Proceed');
+			redirect('talentcapitalctr/successMsg');
+		    }
+		}
+	    }
+	    else if($_POST['save'] == "Sign me in")
+	    {
+		//echo $_POST['login_types'];exit;
+		if($_POST['login_types']=='vendor'){
+		    require_once('vendorlogin.php');
+		    $newValu=new vendorlogin();
+		    $newValu->index();
+		}
+		else if($_POST['login_types']=='directemploye'){
+		    require_once('directemployee.php');
+		    $newValu=new directemployee();
+		    $newValu->index();
+		}
+	    }else{
+		$this->load->view('view/index',$loginUser);
+		$this->load->view('view/footer');
+	    }
+	}
 	
 
         function updatelogin()
