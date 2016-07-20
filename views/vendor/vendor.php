@@ -132,8 +132,8 @@ $status = $this->session->flashdata('status');
 						    <td><?php echo $row['expected_ctc_thousands']; ?></td>
 						    
 						    <td><?php echo $row['notice_period']; ?></td>
-						    <td><?php echo $row['current_ctc']; ?></td>
-						    <td><?php echo $row['expected_ctc']; ?></td>
+						    <!--<td><?php echo $row['current_ctc']; ?></td>-->
+						    <!--<td><?php echo $row['expected_ctc']; ?></td>-->
 						    <td><?php echo $row['day']; ?></td>
 						    <td><?php echo $row['month']; ?></td>
 						    <td><?php echo $row['year']; ?></td>

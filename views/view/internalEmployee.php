@@ -1837,5 +1837,11 @@ $(document).ready(function(){
     $('#form_validation').bootstrapValidator('removeField', $edu_duration_to);
     $('#form_validation').bootstrapValidator('removeField', $university);
     $('#form_validation').bootstrapValidator('removeField', $percentage);
+    
+    $('[name="degree[]"]:last').removeAttr("data-bv-field");
+    $('[name="edu_duration_to[]"]:last').removeAttr("data-bv-field");
+    $('[name="edu_duration_from[]"]:last').removeAttr("data-bv-field");
+    $('[name="university[]"]:last').removeAttr("data-bv-field");
+    $('[name="percentage[]"]:last').removeAttr("data-bv-field");
     })
 </script>
