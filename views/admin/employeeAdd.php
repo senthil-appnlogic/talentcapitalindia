@@ -73,18 +73,8 @@
 			    <div class="form-group">
                                 <label>Primary Skills <span style="color:#EB8B11">*</span></label>
                                 <select multiple class="form-control chzn-select input-sm" onchange="primaryChange($(this))" name="skills[]">
-                                  <option>C</option>
-                                  <option>C++</option>
-                                  <option>Java</option>
-                                  <option>Dot Net</option>
-                                  <option>C#</option>
                                   <option>PHP</option>
-                                  <option>Python</option>
-                                  <option>Perl</option>
-                                  <option>Ruby</option>
-                                  <option>Javascript</option>
-                                  <option>SQL</option>
-								  <option value="Others">Others</option>
+				  <option>JAVA</option>
                                 </select>
                             </div>
 							 <div class="form-group primary hide">
@@ -94,18 +84,8 @@
 							<div class="form-group">
                                 <label>Secondary Skills <span style="color:#EB8B11">*</span></label>
                                 <select multiple class="form-control chzn-select input-sm" onchange="secondaryChange($(this))" name="SecondarySkills[]">
-                                  <option>C</option>
-                                  <option>C++</option>
-                                  <option>Java</option>
-                                  <option>Dot Net</option>
-                                  <option>C#</option>
                                   <option>PHP</option>
-                                  <option>Python</option>
-                                  <option>Perl</option>
-                                  <option>Ruby</option>
-                                  <option>Javascript</option>
-                                  <option>SQL</option>
-								  <option  value="Others">Others</option>
+				  <option>JAVA</option>
                                 </select>
                             </div>
 							<div class="form-group secondary hide" >
@@ -118,6 +98,7 @@
                                 <div class="form-group col-md-4">
                                   <select name="total_exp_year" class="form-control">
                                      <option selected>In Year</option>
+				     <option value="0">0 Year</option>
                                     <option value="1years">1 Year</option>
                                     <option value="2years">2 Years</option>
                                     <option value="3years">3 Years</option>
@@ -168,6 +149,7 @@
                                 <div class="form-group col-md-4">
                                   <select name="relevant_exp_year" class="form-control">
                                      <option selected>In Year</option>
+				     <option value="0">0 Year</option>
                                     <option value="1years">1 Year</option>
                                     <option value="2years">2 Years</option>
                                     <option value="3years">3 Years</option>
@@ -237,6 +219,7 @@
                                 <div class="form-group col-md-4">
                                   <select name="current_ctc_lakhs" class="form-control">
                                      <option selected>In Lakhs</option>
+				     <option value="0">0 </option>
                                     <option value="1">1 Lakhs</option>
                                     <option value="2">2 Lakhs</option>
                                     <option value="3">3 Lakhs</option>
@@ -295,6 +278,7 @@
                                 <div class="form-group col-md-4">
                                   <select name="expected_ctc_lakhs" class="form-control">
                                      <option selected>In Lakhs</option>
+				     <option value="0">0 </option>
                                     <option value="1">1 Lakhs</option>
                                     <option value="2">2 Lakhs</option>
                                     <option value="3">3 Lakhs</option>

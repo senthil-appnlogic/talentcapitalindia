@@ -49,17 +49,8 @@
                             <div class="form-group">
                                 <label>Skills <span style="color:#EB8B11">*</span></label>
                                 <select multiple class="form-control chzn-select input-sm" name="skills[]">
-                                  <option>C</option>
-                                  <option>C++</option>
-                                  <option>Java</option>
-                                  <option>Dot Net</option>
-                                  <option>C#</option>
                                   <option>PHP</option>
-                                  <option>Python</option>
-                                  <option>Perl</option>
-                                  <option>Ruby</option>
-                                  <option>Javascript</option>
-                                  <option>SQL</option>
+				  <option>JAVA</option>
                                 </select>
                             </div>
                             <div class="form-group">

@@ -146,7 +146,7 @@ $status = $this->session->flashdata('status');
                                 <label>Total Experience</label>
                                 <div class="row">
                                 <div class="form-group col-md-4">
-                                   <?php $years=array('1years','2years','3years','4years','5years','6years','7years','8years','9years','10years','11years','12years','13years','14years','15years','16years','17years','18years','19years','20years','21years') ?> 
+                                   <?php $years=array('0years','1years','2years','3years','4years','5years','6years','7years','8years','9years','10years','11years','12years','13years','14years','15years','16years','17years','18years','19years','20years','21years') ?> 
                                   <select disabled name="total_exp_year" class="form-control">
 				    <?php foreach($years as $year){?>
                                     <option value="<?php echo $year;?>" <?php if($employeeEdit[0]['total_exp_year']==$year) echo "selected"?>><?php echo $year;?></option>
@@ -174,7 +174,7 @@ $status = $this->session->flashdata('status');
                                 <label>Relevant Exp</label>
                                 <div class="row">
                                 <div class="form-group col-md-4">
-				     <?php $years=array('1years','2years','3years','4years','5years','6years','7years','8years','9years','10years','11years','12years','13years','14years','15years','16years','17years','18years','19years','20years','21years') ?> 
+				     <?php $years=array('0years','1years','2years','3years','4years','5years','6years','7years','8years','9years','10years','11years','12years','13years','14years','15years','16years','17years','18years','19years','20years','21years') ?> 
                                   <select disabled name="relevant_exp_year" class="form-control">
 				    <?php foreach($years as $years){?>
                                     <option value="<?php echo $years;?>" <?php if($employeeEdit[0]['relevant_exp_year']==$years) echo "selected"?>><?php echo $years;?></option>
@@ -199,7 +199,7 @@ $status = $this->session->flashdata('status');
                                 <label>Notice Period</label>
                                 <div class="row">
 				  <div class="form-group col-md-4">
-				    <?php $noticePeriod=array('Immediate','7','15','30','60','90','90 Days & Above') ?> 
+				    <?php $noticePeriod=array('Immediate','7','15','30','45','60','90 Days & Above') ?> 
 				    <select disabled name="notice_period" class="form-control">
 				    <?php foreach($noticePeriod as $noticePeriod){?>
 				       <option value="<?php echo $noticePeriod;?>" <?php if($employeeEdit[0]['notice_period']==$noticePeriod) echo "selected"?>><?php echo $noticePeriod;?></option>
@@ -218,7 +218,7 @@ $status = $this->session->flashdata('status');
                                 <label>Current CTC</label>
                                  <div class="row">
 				  <div class="form-group col-md-4">
-				    <?php $currentCTC=array('1','2','3','4','5','6','7','8','9','10','12','13','14','15','16','17','18','19','20') ?> 
+				    <?php $currentCTC=array('0','1','2','3','4','5','6','7','8','9','10','12','13','14','15','16','17','18','19','20') ?> 
 				    <select disabled name="current_ctc_lakhs" class="form-control">
 				    <?php foreach($currentCTC as $currentCTC){?>
 				       <option value="<?php echo $currentCTC;?>" <?php if($employeeEdit[0]['current_ctc_lakhs']==$currentCTC) echo "selected"?>><?php echo $currentCTC;?></option>
@@ -240,7 +240,7 @@ $status = $this->session->flashdata('status');
                                 <label>Expected CTC</label>
                                   <div class="row">
 				  <div class="form-group col-md-4">
-				    <?php $expCTC=array('1','2','3','4','5','6','7','8','9','10','12','13','14','15','16','17','18','19','20') ?> 
+				    <?php $expCTC=array('0','1','2','3','4','5','6','7','8','9','10','12','13','14','15','16','17','18','19','20') ?> 
 				    <select disabled name="expected_ctc_lakhs" class="form-control">
 				    <?php foreach($expCTC as $expCTC){?>
 				       <option value="<?php echo $expCTC;?>" <?php if($employeeEdit[0]['expected_ctc_lakhs']==$expCTC) echo "selected"?>><?php echo $expCTC;?></option>

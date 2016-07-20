@@ -269,6 +269,7 @@
                                 <div class="form-group col-md-4">
                                   <select name="current_ctc_lakhs" class="form-control">
                                      <option disabled selected hidden>In Lakhs</option>
+				     <option value="0">0 </option>
                                     <option value="1">1 </option>
                                     <option value="2">2 </option>
                                     <option value="3">3 </option>
@@ -329,6 +330,7 @@
                                 <div class="form-group col-md-4">
                                   <select name="expected_ctc_lakhs" class="form-control">
                                      <option disabled selected hidden>In Lakhs</option>
+				     <option value="0">0 </option>
                                     <option value="1">1 </option>
                                     <option value="2">2 </option>
                                     <option value="3">3 </option>

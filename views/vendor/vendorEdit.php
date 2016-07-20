@@ -262,7 +262,8 @@ $status = $this->session->flashdata('status');
                                 <div class="row">
                                 <div class="form-group col-md-4">
                                   <select name="current_ctc_lakhs" class="form-control">
-                                    <option value="1">1 </option>
+                                    <option value="0">0 </option>
+				    <option value="1">1 </option>
                                     <option value="2">2 </option>
                                     <option value="3">3 </option>
                                     <option value="4">4 </option>
@@ -316,6 +317,7 @@ $status = $this->session->flashdata('status');
                                 <div class="row">
                                 <div class="form-group col-md-4">
                                   <select name="expected_ctc_lakhs" class="form-control">
+				    <option value="0">0 </option>
                                     <option value="1">1 </option>
                                     <option value="2">2 </option>
                                     <option value="3">3 </option>
