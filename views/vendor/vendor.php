@@ -176,8 +176,8 @@ $status = $this->session->flashdata('status');
 						    <td>
 						    
 						    <a href="<?php echo site_url('vendorlogin/vendorEdit/'.$row['id'])?>" class="btn btn-info btn-xs"><i class="fa fa-edit"></i> </a>
-						    <a id="delete_box" href="<?php echo site_url('vendorlogin/vendorDelete/'.$row['id'])?>"  class="btn btn-danger btn-xs"><i class="fa fa-trash"></i> </a>
-						    <a  href="#" data-toggle="modal" data-target="#printPreview"  class="btn btn-primary btn-xs" onclick="printVendorDetails('<?php echo $row['id'];?>')"><i class="fa fa-file-pdf-o fa-2x"></i> </a>
+						    <!--<a id="delete_box" href="<?php echo site_url('vendorlogin/vendorDelete/'.$row['id'])?>"  class="btn btn-danger btn-xs"><i class="fa fa-trash"></i> </a>-->
+						    <!--<a  href="#" data-toggle="modal" data-target="#printPreview"  class="btn btn-primary btn-xs" onclick="printVendorDetails('<?php echo $row['id'];?>')"><i class="fa fa-file-pdf-o fa-2x"></i> </a>-->
 						    </td>
 						</tr>
 					    <?php }}?>
