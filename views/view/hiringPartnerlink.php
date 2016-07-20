@@ -38,7 +38,7 @@ $CandMail = $this->uri->segment(4);
 <div  class="container" style="padding-top: 80px;">
     <center>
         <a class="button mobilesize" href="#candidate">Candidate Details</a>&nbsp;&nbsp;
-	<a class="button mobilesize" href="#team">Team size</a>&nbsp;&nbsp;
+	<a class="button mobilesize" href="#team">Team Details</a>&nbsp;&nbsp;
         <a class="button mobilesize" href="#education">Educational Details</a>&nbsp;&nbsp;
         <a class="button mobilesize" href="#employement">Employment Details</a>&nbsp;&nbsp;
     </center>

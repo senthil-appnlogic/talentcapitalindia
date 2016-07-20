@@ -38,7 +38,7 @@ $CandMail = $this->uri->segment(4);
 <div  class="container" style="padding-top: 80px;">
     <center>
         <a class="button mobilesize" href="#candidate">Candidate Details</a>&nbsp;&nbsp;
-	<a class="button mobilesize" href="#team">Team size</a>&nbsp;&nbsp;
+	<a class="button mobilesize" href="#team">Team Details</a>&nbsp;&nbsp;
         <a class="button mobilesize" href="#education">Educational Details</a>&nbsp;&nbsp;
         <a class="button mobilesize" href="#employement">Employment Details</a>&nbsp;&nbsp;
     </center>
@@ -743,7 +743,7 @@ $CandMail = $this->uri->segment(4);
 					<div class="input-group">
 					  <span class="input-group-btn">
 					      <span class="btn btn-primary btn-file">
-						  Browse<input  type="file" class="file_upload" multiple="multiple" name="file_student_upload[2][]" id="file_student_upload">
+						  Browse<input  type="file" class="file_upload" multiple="multiple" name="file_student_upload[3][]" id="file_student_upload">
 					      </span>
 					  </span>
 					  <input type="text" id="" value="" class="form-control file_name" readonly >
@@ -838,7 +838,7 @@ $CandMail = $this->uri->segment(4);
 				    <div class="input-group">
 				      <span class="input-group-btn">
 					  <span class="btn btn-primary btn-file">
-					      Resume<input type="file" name="resume_upload" id="resume_upload"  multiple="multiple">
+					      Resume<input type="file" name="resume_upload[]" id="resume_upload"  multiple="multiple">
 					  </span>
 				      </span>
 				      <input type="text" id="" value="" class="form-control" readonly >

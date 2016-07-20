@@ -35,7 +35,7 @@
 <div  class="container" style="padding-top: 80px;">
     <center>
         <a class="button mobilesize" href="#candidate">Candidate Details</a>&nbsp;&nbsp;
-	<a class="button mobilesize" href="#team">Team size</a>&nbsp;&nbsp;
+	<a class="button mobilesize" href="#team">Team Details</a>&nbsp;&nbsp;
         <a class="button mobilesize" href="#education">Educational Details</a>&nbsp;&nbsp;
         <a class="button mobilesize" href="#employement">Employment Details</a>&nbsp;&nbsp;
     </center>
@@ -659,7 +659,7 @@
 				      <input type="hidden" id="Switch_Val" name="yesno" value="N" />
 				  </div>
 				   <div class="form-group col-md-6">
-					<input type="text" name="" id="checkingYN" class="form-control">
+					<input type="text" name="check_yn" id="checkingYN" class="form-control">
 				  </div>
                                  </div>
 			      </div>
@@ -829,7 +829,7 @@
 				    <div class="input-group">
 				      <span class="input-group-btn">
 					  <span class="btn btn-primary btn-file">
-					      Browse<input  type="file" multiple="multiple" name="file_student_upload[2][]" id="file_student_upload">
+					      Browse<input  type="file" multiple="multiple" name="file_student_upload[3][]" id="file_student_upload">
 					  </span>
 				      </span>
 				      <input type="text" id="" value="" class="form-control" readonly >
@@ -880,8 +880,8 @@
                                   <td> <input placeholder="Client Company" name="client_comp[]" id="client_comp" class="form-control input-md" type="text" ></td>
                                   <td> <input placeholder="Payroll Company" name="payroll_comp[]" id="payroll_comp" class="form-control input-md" type="text" ></td>
                                   <td> <input placeholder="Designation Company" name="designation[]" class="form-control input-md" id="designation" type="text" ></td>
-                                  <td><span class='input-group date'><input type="text" placeholder="" name="emp_duration_from[]" id="emp_duration_from" onblur="checkBeforeEmpDuration($(this));" class="form-control input-md table_input input-group datepicker-dob" ><span class="input-group-addon" ><span class="glyphicon glyphicon-calendar"></span></span></span></td>
-				  <td><span class='input-group date'><input type="text" placeholder="" name="emp_duration_to[]" id="emp_duration_to" class="form-control input-md table_input input-group datepicker-dob"  ><span class="input-group-addon" ><span class="glyphicon glyphicon-calendar"></span></span></span></td>
+                                  <td><span class='input-group date'><input type="text" placeholder="" name="emp_duration_from[]" size="35" id="emp_duration_from" onblur="checkBeforeEmpDuration($(this));" class="form-control input-md table_input input-group datepicker-dob" ><span class="input-group-addon" ><span class="glyphicon glyphicon-calendar"></span></span></span></td>
+				  <td><span class='input-group date'><input type="text" placeholder="" name="emp_duration_to[]" size="35" id="emp_duration_to" class="form-control input-md table_input input-group datepicker-dob"  ><span class="input-group-addon" ><span class="glyphicon glyphicon-calendar"></span></span></span></td>
                                   <td> <input placeholder="Location" name="location[]" class="form-control input-md" type="text"></td>
 				  <td> <textarea name="empReasonDesc[]" id="empReasonDesc" class="form-control input-md" rows="1" readonly></textarea></td>
                                   <td>
@@ -902,8 +902,8 @@
                                   <td> <input placeholder="Client Company" id="client_comp" class="form-control input-md" type="text" ></td>
                                   <td> <input placeholder="Payroll Company" id="payroll_comp" class="form-control input-md" type="text" ></td>
                                   <td> <input placeholder="Designation Company" class="form-control input-md" id="designation" type="text" ></td>
-                                  <td><span class='input-group date'><input type="text" placeholder="" onblur="checkEmpDurationMonth($(this));" id="emp_duration_from" class="form-control input-md table_input input-group datepicker-dob" ><span class="input-group-addon" ><span class="glyphicon glyphicon-calendar"></span></span></span></td>
-				  <td><span class='input-group date'><input type="text" placeholder=""id="emp_duration_to" class="form-control input-md table_input input-group datepicker-dob"  ><span class="input-group-addon" ><span class="glyphicon glyphicon-calendar"></span></span></span></td>
+                                  <td><span class='input-group date'><input type="text" placeholder="" size="35" onblur="checkEmpDurationMonth($(this));" id="emp_duration_from" class="form-control input-md table_input input-group datepicker-dob" ><span class="input-group-addon" ><span class="glyphicon glyphicon-calendar"></span></span></span></td>
+				  <td><span class='input-group date'><input type="text" placeholder="" size="35" id="emp_duration_to" class="form-control input-md table_input input-group datepicker-dob"  ><span class="input-group-addon" ><span class="glyphicon glyphicon-calendar"></span></span></span></td>
                                   <td> <input placeholder="Location" id="location" class="form-control input-md" type="text"></td>
 				  <td> <textarea id="empReasonDesc" class="form-control input-md" rows="1" readonly></textarea></td>
                                   

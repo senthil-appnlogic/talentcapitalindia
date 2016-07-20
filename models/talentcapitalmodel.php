@@ -1186,6 +1186,7 @@ function hiringPartnerLinkAdd($code,$loginType)
             $getHeadId=$this->db->insert_id($select);
             
          $clientCnt = count($this->input->post('client_comp'));
+	 
 	  //echo "<pre>";
 	  //print_r($_FILES);
 	  //echo "</pre>";
@@ -1240,6 +1241,8 @@ function hiringPartnerLinkAdd($code,$loginType)
 		    'reason_desc'=>$_POST['empReasonDesc'][$i],
 		    'file_employee_upload'=>$dataStore,
 		);
+		//echo "<pre>";
+		//print_r($data);
 		$this->db->insert('employement_details',$data);                    
             }
             
@@ -1289,7 +1292,7 @@ function hiringPartnerLinkAdd($code,$loginType)
 		);
 		$this->db->insert('educational_details',$data1);                                            
             }
-	
+	//exit;
             
 	    $this->emailToApplicantAndVendor($code);
 	    
