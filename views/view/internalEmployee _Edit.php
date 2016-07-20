@@ -1,6 +1,9 @@
-<?php //print_r($inter_Edit);exit;?>
+<?php //$path=$this->config->item('base_urlcapital');?>
 
 <style>
+    .headingLine{
+        font-size:17px;
+    }
   @media only screen and (max-width: 746px) {
   .mobilesize{
    margin: 10px;
@@ -32,9 +35,41 @@
 .has-feedback .form-control {
     padding-right: 0px;
 }
-
 </style>
-<div  class="container" style="padding-top: 80px;">
+<?php
+$status = $this->session->flashdata('status');
+?>
+<div class="content" id="content">
+			<!-- begin breadcrumb -->
+			
+			<!-- end breadcrumb -->
+			<!-- begin page-header -->
+			
+			<!-- end page-header -->
+            <!-- end row -->
+            <!-- begin row -->
+            <div class="row">
+                <!-- begin col-12 -->
+                <div class="col-12 ui-sortable">
+                    <!-- begin panel -->
+                    <div data-sortable-id="form-stuff-5" class="panel panel-inverse">
+                        <div class="panel-heading">
+                            <div class="panel-heading-btn">
+                                <a data-click="panel-expand" class="btn btn-xs btn-icon btn-circle btn-default" href="javascript:;"><i class="fa fa-expand"></i></a>
+                                <a data-click="panel-reload" class="btn btn-xs btn-icon btn-circle btn-success" href="javascript:;"><i class="fa fa-repeat"></i></a>
+                                <a data-click="panel-collapse" class="btn btn-xs btn-icon btn-circle btn-warning" href="javascript:;"><i class="fa fa-minus"></i></a>
+                                <a data-click="panel-remove" class="btn btn-xs btn-icon btn-circle btn-danger" href="javascript:;"><i class="fa fa-times"></i></a>
+                            </div>
+                            <h4 class="panel-title">Direct Employee</h4>
+                        </div>
+                        <div class="panel-body">
+                        <?php if($status)
+			{?>
+			    <div id="alert" class="alert alert-success outer"><a href="#" class="close" data-dismiss="alert" aria-label="close" title="close">&times;</a><?php echo $status; ?></div>
+			    <?php
+			} ?>
+                            
+                            <div  class="container" style="padding-top: 0px;">
     <center>
         <a class="button mobilesize" href="#candidate">Candidate Details</a>&nbsp;&nbsp;
 	<a class="button mobilesize" href="#team">Team Details</a>&nbsp;&nbsp;
@@ -42,12 +77,8 @@
         <a class="button mobilesize" href="#employement">Employment Details</a>&nbsp;&nbsp;
     </center>
         </div>
-            <div  class="container" style="padding-top: 15px;">
-              <?php $status=$this->session->flashdata('status');?>
-		    <?php if($status) { ?>
-                    <div class="alert alert-success"><a href="#" class="close" data-dismiss="alert" aria-label="close" title="close">&times;</a><?php echo $status; ?></div>
-		    <?php } ?>
-                          <form id="form_validation" method="post" action="<?php echo base_url('talentcapitalctr/updatelogin');?>" enctype="multipart/form-data" role="form">
+                            
+<form id="form_validation" method="post" action="<?php echo base_url('talentcapitalctr/updatelogin');?>" enctype="multipart/form-data" role="form">
                             <div class="col-md-6 col-md-offset-3">
                            
                             <div class="form-group">
@@ -745,7 +776,7 @@
                                   <th><label>University</label></th>
                                   <th><label>Percentage</label></th>
 				  <th><label>File Upload</label></th>
-                                  <th><button type="button" onclick="addMore();" class="btn-add btn btn-default"><i class="fa fa-plus"></i></button></th>
+                                  <!--<th><button type="button" onclick="addMore();" class="btn-add btn btn-default"><i class="fa fa-plus"></i></button></th>-->
                                 </tr>   
                               </thead>
                               <tbody>
@@ -925,14 +956,35 @@
                     </div>
                             
                         </form>
-          
-               
+			    
+			    
+                        </div>
+                    </div>
+                    <!-- end panel -->
+                </div>
+                <!-- end col-6 -->
+            </div>
+            <!-- end row -->
+		</div>
 
-         
-
-        </div>
-        <!-- Zozo Tabs End-->
-   
+<div id="myModal" class="modal fade" role="dialog">
+    <div class="modal-dialog modal-lg">
+      <div class="modal-content">
+	<div class="modal-header">
+	  <button type="button" class="close" data-dismiss="modal">&times;</button>
+	  <h4 class="modal-title">View  Uploaded Files</h4>
+	</div>
+	<div class="modal-body">
+	 <div class="row">
+	 </div>
+	 </div>
+	</div>
+	<!--<div class="modal-footer">
+	  <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+	</div>-->
+      </div>
+  
+    </div>
 <script type="text/javascript">
   $("#language").chosen();
   $("#Preferedloc").chosen();

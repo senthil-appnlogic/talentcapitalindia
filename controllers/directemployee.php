@@ -41,6 +41,7 @@ class directemployee extends CI_Controller {
 	    $this->session->set_userdata('directempname',$result[0]['candidate_name']);
 	    $this->session->set_userdata('directempemail',$result[0]['mail_id']);
 	    $this->session->set_userdata('directempid',$result[0]['id']);
+	    $this->session->set_userdata('profile_pic',$result[0]['profile_pic']);
 	    redirect('directemployee/dashboard');
 	}
     }
@@ -52,6 +53,24 @@ class directemployee extends CI_Controller {
     }
     
     function dashboard(){
+        
+        $session_data=$this->session->userdata('directempname');
+	if($session_data!=''){
+	    $loginUser['inter_Edit']=$this->directempmodel->candidateCount();
+	    //echo "<pre>";
+	    //print_r($loginUser['inter_Edit'][0]['vendor_code']);
+	    //exit;
+            
+            $this->load->view('view/headernew');
+            //$this->load->view('view/footer');
+	    $this->load->view('view/dashboard',$loginUser);
+	}
+	else{
+	redirect('talentcapitalctr');
+	}
+    }
+    
+    function dashboardedit(){
         
         $session_data=$this->session->userdata('directempname');
 	if($session_data!=''){
@@ -70,7 +89,8 @@ class directemployee extends CI_Controller {
 	    //echo "<pre>";
 	    //print_r($data['language']);
 	    //exit;
-            $this->load->view('view/header');
+            //$this->load->view('view/header');
+	    $this->load->view('view/headernew');
             //$this->load->view('view/footer');
             $this->load->view('view/internalEmployee _Edit',$loginUser);
 	}

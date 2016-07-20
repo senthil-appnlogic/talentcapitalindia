@@ -47,5 +47,9 @@ class directempmodel extends CI_Model {
 	$sql="SELECT location FROM location";
 	return $this->db->query($sql, $return_object = TRUE)->result_array();
     }
-
+    function candidateCount(){
+	$vendor_code = $this->session->userdata('vendor_code'); 
+	$sql="SELECT COUNT(vendor_code) vendor_code FROM emp_candidate_details where vendor_code='$vendor_code'";
+	return $this->db->query($sql, $return_object = TRUE)->result_array();
+    }
 }
