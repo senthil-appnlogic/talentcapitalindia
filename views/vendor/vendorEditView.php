@@ -177,7 +177,7 @@ $status = $this->session->flashdata('status');
                                 <input readonly class="form-control input-md" value="<?php echo $candidateDetails[0]['career_gap_year'];?>" name="career_gap_year" type="text" placeholder="Email">
                             </div>
                             <div id="team" class="form-group">
-                                <h2 class="headingLine" >Team Size</h2>
+                                <h2 class="headingLine" >Team Details</h2>
                             </div>
                             <div class="form-group">
                                 <label>Number</label>
@@ -188,57 +188,7 @@ $status = $this->session->flashdata('status');
                                 <input readonly class="form-control input-md" value="<?php echo $candidateDetails[0]['team_contact_no'];?>" name="team_contact_no" type="text" placeholder="Email">
                             </div>
                         </div>
-                               <div class="col-md-6 col-md-offset-3">
-                            <div class="form-group">
-                                <h2 class="headingLine" id="employement">Employement Details</h2>
-                            </div>                                                             
-                            </div>
-                        <div class="col-md-10 col-md-offset-2">                            
-                            <div class="table-responsive"> 
-                          <table class="table table-hover">
-                              <thead>
-                                <tr>
-                                  <th><label>Client Company</label></th>
-                                  <th><label>Payroll Company</label></th>
-                                  <th><label>Desig Company</label></th>
-                                  <th><label>Duration From</label></th>
-                                  <th><label>Duration To</label></th>
-                                  <th><label>Location</label></th>
-                            <!--      <th><button type="button" onclick="addMore1();" class="btn-add btn btn-primary"><i class="fa fa-plus"></i></button></th>-->
-                                </tr>
-                              </thead>
-                              <tbody>
-				
-				<?php foreach($employeeDetails as $row){ ?>
-                                <tr class="odd1">
-				    
-                                  <input type="hidden" value="" name="Line_Status[]">
-				    <input type="hidden" value="<?php echo $row['head_id'];?>" name="headId">
-				    <td><input type="hidden" name="line_id[]" value="<?php echo $row['id']; ?>"><input readonly value="<?php echo $row['client_comp']; ?>" placeholder="Client Company" name="client_comp[]" id="client_comp" class="form-control input-md" type="text" ></td>
-				    <td> <input readonly value="<?php echo $row['payroll_comp']; ?>" placeholder="Payroll Company" name="payroll_comp[]" id="payroll_comp" class="form-control input-md" type="text" ></td>
-				    <td> <input readonly value="<?php echo $row['designation']; ?>" placeholder="Designation Company" name="designation[]" class="form-control input-md" id="designation" type="text" ></td>
-				    <td><span class='input-group date'><input readonly value="<?php echo $row['emp_duration_from']; ?>" type="text" placeholder="" name="emp_duration_from[]" id="emp_duration_from" class="form-control input-sm table_input input-group datepicker-dob" ><span class="input-group-addon" ><span class="glyphicon glyphicon-calendar"></span></span></span></td>
-				    <td><span class='input-group date'><input readonly value="<?php echo $row['emp_duration_to']; ?>" type="text" placeholder="" name="emp_duration_to[]" id="emp_duration_to" class="form-control input-sm table_input input-group datepicker-dob"  ><span class="input-group-addon" ><span class="glyphicon glyphicon-calendar"></span></span></span></td>
-				    <td> <input readonly value="<?php echo $row['location']; ?>" placeholder="Location" name="location[]" id="location" class="form-control input-md" type="text"></td>
-				    <!--<td><center><a href="<?php echo site_url('talentcontroller/employementDelete/'.$row['head_id'].'/'.$row['id'])?>" onclick="return confirm('Are you sure you want to delete?');"class="btn btn-danger btn-xs"><i class="fa fa-trash"></i> </a></center></td>-->
-                                </tr>
-				
-				<?php }?>
-				
-                                 <tr class="odd1 hide" id="optionTemplate1">
-                                  <input type="hidden" value="" name="Line_Status[]">
-				    <td> <input readonly placeholder="Client Company" id="client_comp" class="form-control input-md" type="text" ></td>
-				    <td> <input readonly placeholder="Payroll Company" id="payroll_comp" class="form-control input-md" type="text" ></td>
-				    <td> <input readonly placeholder="Designation Company" class="form-control input-md" id="designation" type="text" ></td>
-				    <td><span class='input-group date'><input readonly type="text" placeholder="" id="emp_duration_from" class="form-control input-sm table_input input-group datepicker-dob" ><span class="input-group-addon" ><span class="glyphicon glyphicon-calendar"></span></span></span></td>
-				    <td><span class='input-group date'><input readonly type="text" placeholder="" id="emp_duration_to" class="form-control input-sm table_input input-group datepicker-dob"  ><span class="input-group-addon" ><span class="glyphicon glyphicon-calendar"></span></span></span></td>
-				    <td> <input readonly placeholder="Location" id="location" class="form-control input-md" type="text"></td>
-				    <!--<td><center><button type="button" onclick="removeButton1($(this));" class="btn btn-remove btn-danger btn-xs removeButton"><i class="fa fa-trash"></i></button></center></td>-->
-                                </tr>
-                              </tbody>
-                            </table>
-                        </div>
-                        </div>
+                              
                             <div class="col-md-6 col-md-offset-3">
                             <div class="form-group">
                                 <h2 class="headingLine" id="education" >Educational Details <span style="color:#EB8B11">*</span></h2>
@@ -291,6 +241,59 @@ $status = $this->session->flashdata('status');
                             </table>
                         </div>
                         </div>
+			
+			 <div class="col-md-6 col-md-offset-3">
+                            <div class="form-group">
+                                <h2 class="headingLine" id="employement">Employement Details</h2>
+                            </div>                                                             
+                            </div>
+                        <div class="col-md-10 col-md-offset-2">                            
+                            <div class="table-responsive"> 
+                          <table class="table table-hover">
+                              <thead>
+                                <tr>
+                                  <th><label>Client Company</label></th>
+                                  <th><label>Payroll Company</label></th>
+                                  <th><label>Desig Company</label></th>
+                                  <th><label>Duration From</label></th>
+                                  <th><label>Duration To</label></th>
+                                  <th><label>Location</label></th>
+                            <!--      <th><button type="button" onclick="addMore1();" class="btn-add btn btn-primary"><i class="fa fa-plus"></i></button></th>-->
+                                </tr>
+                              </thead>
+                              <tbody>
+				
+				<?php foreach($employeeDetails as $row){ ?>
+                                <tr class="odd1">
+				    
+                                  <input type="hidden" value="" name="Line_Status[]">
+				    <input type="hidden" value="<?php echo $row['head_id'];?>" name="headId">
+				    <td><input type="hidden" name="line_id[]" value="<?php echo $row['id']; ?>"><input readonly value="<?php echo $row['client_comp']; ?>" placeholder="Client Company" name="client_comp[]" id="client_comp" class="form-control input-md" type="text" ></td>
+				    <td> <input readonly value="<?php echo $row['payroll_comp']; ?>" placeholder="Payroll Company" name="payroll_comp[]" id="payroll_comp" class="form-control input-md" type="text" ></td>
+				    <td> <input readonly value="<?php echo $row['designation']; ?>" placeholder="Designation Company" name="designation[]" class="form-control input-md" id="designation" type="text" ></td>
+				    <td><span class='input-group date'><input readonly value="<?php echo $row['emp_duration_from']; ?>" type="text" placeholder="" name="emp_duration_from[]" id="emp_duration_from" class="form-control input-sm table_input input-group datepicker-dob" ><span class="input-group-addon" ><span class="glyphicon glyphicon-calendar"></span></span></span></td>
+				    <td><span class='input-group date'><input readonly value="<?php echo $row['emp_duration_to']; ?>" type="text" placeholder="" name="emp_duration_to[]" id="emp_duration_to" class="form-control input-sm table_input input-group datepicker-dob"  ><span class="input-group-addon" ><span class="glyphicon glyphicon-calendar"></span></span></span></td>
+				    <td> <input readonly value="<?php echo $row['location']; ?>" placeholder="Location" name="location[]" id="location" class="form-control input-md" type="text"></td>
+				    <!--<td><center><a href="<?php echo site_url('talentcontroller/employementDelete/'.$row['head_id'].'/'.$row['id'])?>" onclick="return confirm('Are you sure you want to delete?');"class="btn btn-danger btn-xs"><i class="fa fa-trash"></i> </a></center></td>-->
+                                </tr>
+				
+				<?php }?>
+				
+                                 <tr class="odd1 hide" id="optionTemplate1">
+                                  <input type="hidden" value="" name="Line_Status[]">
+				    <td> <input readonly placeholder="Client Company" id="client_comp" class="form-control input-md" type="text" ></td>
+				    <td> <input readonly placeholder="Payroll Company" id="payroll_comp" class="form-control input-md" type="text" ></td>
+				    <td> <input readonly placeholder="Designation Company" class="form-control input-md" id="designation" type="text" ></td>
+				    <td><span class='input-group date'><input readonly type="text" placeholder="" id="emp_duration_from" class="form-control input-sm table_input input-group datepicker-dob" ><span class="input-group-addon" ><span class="glyphicon glyphicon-calendar"></span></span></span></td>
+				    <td><span class='input-group date'><input readonly type="text" placeholder="" id="emp_duration_to" class="form-control input-sm table_input input-group datepicker-dob"  ><span class="input-group-addon" ><span class="glyphicon glyphicon-calendar"></span></span></span></td>
+				    <td> <input readonly placeholder="Location" id="location" class="form-control input-md" type="text"></td>
+				    <!--<td><center><button type="button" onclick="removeButton1($(this));" class="btn btn-remove btn-danger btn-xs removeButton"><i class="fa fa-trash"></i></button></center></td>-->
+                                </tr>
+                              </tbody>
+                            </table>
+                        </div>
+                        </div>
+			
                     <div class="col-md-10 col-md-offset-3" style="padding-bottom: 15px;">
                        <!--     <input type="submit" name="Update" value="Update" class="btn btn-sm btn-success">-->
                         <button type="button" onclick="window.history.back();" class="btn btn-sm btn-warning">cancel</button>

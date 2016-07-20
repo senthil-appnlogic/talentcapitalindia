@@ -882,6 +882,23 @@ $status = $this->session->flashdata('status');
                         </div>
                         </div>
 			
+			<div class="col-md-6">
+			  <div class="row">
+			    <div class="col-md-6">
+			      <div class="form-group">
+			    <label>Educational Gap</label>
+			    <input class="form-control input-md countEduYr" name="educational_gap_year" value="<?php echo $inter_Edit[0]['educational_gap_year'];?>" type="text" placeholder="Educational Gap">
+			  </div>
+			  </div>
+			  <div class="form-group">
+			    <div class="col-md-6">
+			    <label>Career Gap</label>
+			    <input class="form-control input-md countYr" name="career_gap_year" value="<?php echo $inter_Edit[0]['career_gap_year'];?>" type="text" placeholder="Career Gap">
+			  </div>
+			    </div>
+			  </div>
+			</div>
+			
                    <div class="col-md-6 col-md-offset-4" style="padding-bottom: 15px;">
                            <!-- <input type="submit" name="save" value="Update" class="btn btn-sm btn-success">-->
                       <!-- <button type="button" class="btn btn-sm btn-warning">cancel</button>-->

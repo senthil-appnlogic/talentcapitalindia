@@ -552,11 +552,35 @@ $status = $this->session->flashdata('status');
                         </div>
                         </div>
 			 <!-- Modal content-->
+			 
+			 <div class="col-md-6 col-md-offset-2">
+			  <div class="row">
+			    <div class="col-md-6">
+			      <div class="form-group">
+			    <label>Educational Gap</label>
+			    <input class="form-control input-md countEduYr" name="educational_gap_year" value="<?php echo $employeeEdit[0]['educational_gap_year'];?>" type="text" placeholder="Educational Gap">
+			  </div>
+			  </div>
+			  <div class="form-group">
+			    <div class="col-md-6">
+			    <label>Career Gap</label>
+			    <input class="form-control input-md countYr" name="career_gap_year" value="<?php echo $employeeEdit[0]['career_gap_year'];?>" type="text" placeholder="Career Gap">
+			  </div>
+			    </div>
+			  </div>
+			</div>
 			
 		
-                    <div class="col-md-10 col-md-offset-3" style="padding-bottom: 15px;">
+                    <div class="col-md-6 col-md-offset-3" style="padding-bottom: 15px;">
                            <!-- <input type="submit" name="Update" value="Update" class="btn btn-sm btn-success">-->
+			   <div class="row">
+			<div class="col-md-4">
+			    <button class="btn btn-md btn-primary resume_file input-sm" disabled="disabled" data-id="<?php echo $employeeEdit[0]['id']; ?>" value="<?php echo $employeeEdit[0]['resume'];?>">View Resume</button>
+			</div>
+			<div class="col-md-4">
                         <button type="button" onclick="window.history.back();" class="btn btn-sm btn-warning">cancel</button>
+			</div>
+		      </div>
                     </div>
                     
                 </form>

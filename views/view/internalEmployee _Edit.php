@@ -755,7 +755,7 @@
                                   <td class="hidden"> <input placeholder="Degree" name="edu_lineid[]" value="<?php echo $row['id'];?>" id="degree" class="form-control input-md" type="hidden"></td>
 				  <td> <input placeholder="Degree" name="degree[]" value="<?php echo $row['degree'];?>" id="degree" class="form-control input-md" type="text"></td>
                                   <td> <input placeholder="Specialization" value="<?php echo $row['specialisation'];?>" name="specialisation[]" id="specialisation" class="form-control input-md" type="text"></td>
-                                  <td><span class='input-group date'><input value="<?php echo $row['edu_duration_from'];?>" type="text" name="edu_duration_from[]" id="edu_duration_from" class="form-control input-md    datepicker-dob" ><span class="input-group-addon" ><span class="glyphicon glyphicon-calendar"></span></span></span></td>
+                                  <td><span class='input-group date'><input value="<?php echo $row['edu_duration_from'];?>" type="text" name="edu_duration_from[]" onblur="checkDurationMonth($(this));" id="edu_duration_from" class="form-control input-md    datepicker-dob" ><span class="input-group-addon" ><span class="glyphicon glyphicon-calendar"></span></span></span></td>
 				  <td><span class='input-group date'><input value="<?php echo $row['edu_duration_to'];?>" type="text" name="edu_duration_to[]" id="edu_duration_to" class="form-control input-md  datepicker-dob"  ><span class="input-group-addon" ><span class="glyphicon glyphicon-calendar"></span></span></span></td>
                                   <td> <input placeholder="University" value="<?php echo $row['university'];?>" name="university[]" class="form-control input-md" type="text"></td>
                                   <td> <input placeholder="Percentage" value="<?php echo $row['percentage'];?>" name="percentage[]" class="form-control input-md" type="text"></td>
@@ -835,7 +835,7 @@
                                   <td> <input placeholder="Client Company" name="client_comp[]" value="<?php echo $row['client_comp'];?>" id="client_comp" class="form-control input-md" type="text" ></td>
                                   <td> <input placeholder="Payroll Company" name="payroll_comp[]" value="<?php echo $row['payroll_comp'];?>" id="payroll_comp" class="form-control input-md" type="text" ></td>
                                   <td> <input placeholder="Designation Company" name="designation[]" value="<?php echo $row['designation'];?>" class="form-control input-md" id="designation" type="text" ></td>
-                                  <td><span class='input-group date'><input type="text" placeholder="" value="<?php echo $row['emp_duration_from'];?>" name="emp_duration_from[]" id="emp_duration_from" class="form-control input-md table_input input-group datepicker-dob" ><span class="input-group-addon" ><span class="glyphicon glyphicon-calendar"></span></span></span></td>
+                                  <td><span class='input-group date'><input type="text" placeholder="" value="<?php echo $row['emp_duration_from'];?>" onblur="checkBeforeEmpDuration($(this));" name="emp_duration_from[]" id="emp_duration_from" class="form-control input-md table_input input-group datepicker-dob" ><span class="input-group-addon" ><span class="glyphicon glyphicon-calendar"></span></span></span></td>
 				  <td><span class='input-group date'><input type="text" placeholder="" value="<?php echo $row['emp_duration_to'];?>" name="emp_duration_to[]" id="emp_duration_to" class="form-control input-md table_input input-group datepicker-dob"  ><span class="input-group-addon" ><span class="glyphicon glyphicon-calendar"></span></span></span></td>
                                   <td> <input placeholder="Location" name="location[]" value="<?php echo $row['location'];?>" class="form-control input-md" type="text"></td>
 				  <td> <textarea name="empReasonDesc[]" id="empReasonDesc" value="<?php echo $row['empReasonDesc'];?>" class="form-control input-md" rows="1" readonly></textarea></td>
@@ -885,6 +885,23 @@
                    <!--<div class="col-md-6 col-md-offset-4" style="padding-bottom: 15px;">-->
                    <!--         <input type="submit" name="save" value="Update" class="btn btn-sm btn-success">-->
                    <!-- </div>                           -->
+		   	<div class="col-md-6">
+			  <div class="row">
+			    <div class="col-md-6">
+			      <div class="form-group">
+			    <label>Educational Gap</label>
+			    <input class="form-control input-md countEduYr" name="educational_gap_year" value="<?php echo $inter_Edit[0]['educational_gap_year'];?>" type="text" placeholder="Educational Gap">
+			  </div>
+			  </div>
+			  <div class="form-group">
+			    <div class="col-md-6">
+			    <label>Career Gap</label>
+			    <input class="form-control input-md countYr" value="<?php echo $inter_Edit[0]['career_gap_year'];?>" name="career_gap_year" type="text" placeholder="Career Gap">
+			  </div>
+			    </div>
+			  </div>
+			</div>
+
 		   
 		   <div class="col-md-6 col-md-offset-4" style="padding-bottom: 15px;">
 		      <div class="row">
@@ -1352,6 +1369,49 @@
 		}
 		
    }
+  //function checkDurationMonth($this) {
+  //  
+  //  var $row = $this.parents('.odd');
+  //  var prevRowVal = $this.closest('tr').prev('tr').find('[id="edu_duration_to"]').val();
+  //  var thisValue = $this.val();
+  //  //console.log(prevRowVal);
+  //  //console.log(thisValue);
+  //  var prevRowNewVal = moment.parseZone(prevRowVal, 'DD MMM YYYY').format();
+  //  var thisNewValue = moment.parseZone(thisValue, 'DD MMM YYYY').format();
+  //  
+  //  var a = moment(prevRowNewVal,'YYYY/MM/DD');
+  //  var b = moment(thisNewValue,'YYYY/MM/DD');
+  //  var diffDays = b.diff(a, 'days');
+  //  
+  //  if (diffDays >= 60) {
+  //    $row.find('[id="reasonDesc"]').prop("readonly", false);
+  //  }else{
+  //    $row.find('[id="reasonDesc"]').prop("readonly", true);
+  //  }
+  //}
+  //
+  //function checkEmpDurationMonth($this) {
+  //  
+  //  var $row = $this.parents('.odd1');
+  //  var prevEmpRowVal = $this.closest('tr').prev('tr').find('[id="emp_duration_from"]').val();
+  //  var thisEmpValue = $this.val();
+  //  //console.log(prevRowVal);
+  //  //console.log(thisValue);
+  //  var prevRowEmpNewVal = moment.parseZone(prevEmpRowVal, 'DD MMM YYYY').format();
+  //  var thisNewEmpValue = moment.parseZone(thisEmpValue, 'DD MMM YYYY').format();
+  //  
+  //  var a = moment(prevRowEmpNewVal,'YYYY/MM/DD');
+  //  var b = moment(thisNewEmpValue,'YYYY/MM/DD');
+  //  var diffDays = b.diff(a, 'days');
+  //  
+  //  if (diffDays >= 60) {
+  //    $row.find('[id="empReasonDesc"]').prop("readonly", false);
+  //  }else{
+  //    $row.find('[id="empReasonDesc"]').prop("readonly", true);
+  //  }
+  //}
+  
+  var totaledu = 0;
   function checkDurationMonth($this) {
     
     var $row = $this.parents('.odd');
@@ -1365,6 +1425,11 @@
     var a = moment(prevRowNewVal,'YYYY/MM/DD');
     var b = moment(thisNewValue,'YYYY/MM/DD');
     var diffDays = b.diff(a, 'days');
+    if (diffDays >= 60) {
+      totaledu+=diffDays;
+    //alert(diffDays);
+    var call = countingCareerdays(diffDays);
+    }
     
     if (diffDays >= 60) {
       $row.find('[id="reasonDesc"]').prop("readonly", false);
@@ -1373,10 +1438,24 @@
     }
   }
   
-  function checkEmpDurationMonth($this) {
+  function countingCareerdays(diffDays) {
+    var y = 365;
+    var y2 = 30;
+    var remainder = totaledu % y;
+    var casio = remainder % y2;
+    year = (totaledu - remainder) / y;
+    //alert(year);
+    month = (remainder - casio) / y2;
     
+    //var result = + year +" Year " + month + " Month " + casio + " Day" ;
+    var result = + year +"Year " + month + "Month ";
+     $('.countEduYr').val(result);
+    //alert(result);
+  }
+  var totalmonth = 0;
+  function checkEmpDurationMonth($this) {
     var $row = $this.parents('.odd1');
-    var prevEmpRowVal = $this.closest('tr').prev('tr').find('[id="emp_duration_from"]').val();
+    var prevEmpRowVal = $this.closest('tr').prev('tr').find('[id="emp_duration_to"]').val();
     var thisEmpValue = $this.val();
     //console.log(prevRowVal);
     //console.log(thisValue);
@@ -1386,12 +1465,57 @@
     var a = moment(prevRowEmpNewVal,'YYYY/MM/DD');
     var b = moment(thisNewEmpValue,'YYYY/MM/DD');
     var diffDays = b.diff(a, 'days');
-    
+    totalmonth+=diffDays;
+    //alert(diffDays);
+    var call = countingdays(diffDays);
     if (diffDays >= 60) {
       $row.find('[id="empReasonDesc"]').prop("readonly", false);
     }else{
       $row.find('[id="empReasonDesc"]').prop("readonly", true);
     }
+  }
+  
+  function checkBeforeEmpDuration($this) {
+    var $row = $this.parents('.odd1');
+    var prevEmpRowVal = $(".countClass:visible:last").find("[name='edu_duration_to[]']").val();
+    //alert(prevEmpRowVal);
+    if (prevEmpRowVal=="") {
+      var prevEmpRowVal = $(".countClass:visible:nth-last-child(2)").find("[name='edu_duration_to[]']").val();
+    //alert(prevEmpRowVal);
+    }
+    var thisEmpValue = $this.val();
+    //console.log(prevEmpRowVal);
+    //console.log(thisEmpValue);
+    var prevRowEmpNewVal = moment.parseZone(prevEmpRowVal, 'DD MMM YYYY').format();
+    var thisNewEmpValue = moment.parseZone(thisEmpValue, 'DD MMM YYYY').format();
+    
+    var a = moment(prevRowEmpNewVal,'YYYY/MM/DD');
+    var b = moment(thisNewEmpValue,'YYYY/MM/DD');
+    var diffDays = b.diff(a, 'days');
+    totalmonth+=diffDays;
+    //alert(diffDays);
+    var call = countingdays(diffDays);
+    if (diffDays >= 60) {
+      $row.find('[id="empReasonDesc"]').prop("readonly", false);
+    }else{
+      $row.find('[id="empReasonDesc"]').prop("readonly", true);
+    }
+  }
+  
+  function countingdays(diffDays) {
+    //alert(diffDays);
+    var y = 365;
+    var y2 = 30;
+    var remainder = totalmonth % y;
+    var casio = remainder % y2;
+    year = (totalmonth - remainder) / y;
+    //alert(year);
+    month = (remainder - casio) / y2;
+    
+    //var result = + year +" Year " + month + " Month " + casio + " Day" ;
+    var result = + year +"Year " + month + "Month ";
+     $('.countYr').val(result);
+    //alert(result);
   }
     
     function addMore() {
