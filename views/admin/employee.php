@@ -100,6 +100,7 @@ $status = $this->session->flashdata('status');
 						    <th data-hide="phone,tablet">University</th>
 						    <th data-hide="phone,tablet">Percentage</th>
 						    <th data-hide="phone,tablet">Reason_desc</th>
+						    <th data-hide="phone,tablet">Billing</th>
 						    <th data-hide="phone,tablet">Referred By</th>
 						    
 						   <!-- <th>Location</th>-->
@@ -138,8 +139,8 @@ $status = $this->session->flashdata('status');
 						    <td><?php echo $row['notice_period']; ?></td>
 						    <td><?php echo $row['current_ctc_lakhs']; ?></td>
 						    <td><?php echo $row['current_ctc_thousands']; ?></td>
-						    <td><?php echo $row['expected_ctc_lakhs']; ?></td>
-						    <td><?php echo $row['expected_ctc_thousands']; ?></td>
+						    <td class="exp_lakhs"><?php echo $row['expected_ctc_lakhs']; ?></td>
+						    <td class="exp_thsnd"><?php echo $row['expected_ctc_thousands']; ?></td>
 						    <td><?php echo $row['day']; ?></td>
 						    <td><?php echo $row['month']; ?></td>
 						    <td><?php echo $row['year']; ?></td>
@@ -176,6 +177,7 @@ $status = $this->session->flashdata('status');
 						    <td><?php echo $row['university']; ?></td>
 						    <td><?php echo $row['percentage']; ?></td>
 						    <td><?php echo $row['reason_desc']; ?></td>
+						    <td><input type="text" name="billing" id="billing" class="billing" onchange="billingcalculation($(this))"></td>
 						    <td><?php if($row['vendor_code']=="0"){ echo "Direct"; }else{ echo $row['vendor_code']; } ?></td>
 						    <td>
 							<a href="<?php echo site_url('admin/employeeEdit/'.$row['id'])?>" class="btn btn-info btn-xs"><i class="fa fa-edit"></i> </a>
@@ -276,4 +278,33 @@ $status = $this->session->flashdata('status');
 	     window.document.location = $(this).data("href");
 	    });
 	});
+	    
+	    function billingcalculation($this) {
+		//console.log($this)
+		var cur_val=$this.val();
+		var lakhs=0;
+		var thousd=0;
+		lakhs=parseInt($this.parents('.odd').find('.exp_lakhs').text()+"00000");
+		thousd=parseInt($this.parents('.odd').find(".exp_thsnd").text()+"000");
+		if (!lakhs && !thousd) {
+		    lakhs=parseInt($this.parents('.even').find('.exp_lakhs').text()+"00000");
+		    thousd=parseInt($this.parents('.even').find(".exp_thsnd").text()+"000");    
+		}
+		//console.log(lakhs+thousd);
+		var total=lakhs+thousd;
+		var checking=(total-cur_val)/12;
+		console.log(checking);
+		alert(checking);
+		if (checking>25000) {
+		    //alert("yes");
+		    $this.parents('.odd').find('.billing').val("20000");
+		}
+		else {
+		    //alert("No");
+		    var check=cur_val*0.8;
+		    console.log(check);
+		    $this.parents('.odd').find('.billing').val(check);
+		    //$this.parents('.odd').find('.billing').val('10000');
+		}
+	    }
 	</script>
