@@ -42,7 +42,7 @@ $status = $this->session->flashdata('status');?>
 				<span id="email-status"></span>
 			    </div>
 			    <div class="form-group" style="padding-top: 15px;">
-				<input type="submit" name="Save" value="Submit" class="btn btn-sm btn-success">
+				<input type="submit" name="Save" value="Submit" class="btn btn-sm btn-success" id="test">
 				<button type="button" onclick="window.history.back();" class="btn btn-sm btn-warning">cancel</button>
 			    </div>
 			</div>
@@ -63,8 +63,12 @@ $status = $this->session->flashdata('status');?>
                 success: function (response) {
 		    console.log(response);
 		    if (response=='true') {
-			setTimeout(function(){ $('#email-status').empty(); }, 3000);
+
 			$("#email-status").append("<p style='color:red'>Email Already Exist</p>");
+			$('#test').attr('disabled',true);
+		    }else{
+			$("#email-status").empty();
+			$('#test').attr('disabled',false);
 		    }
                 }
                

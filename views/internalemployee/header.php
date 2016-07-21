@@ -65,7 +65,7 @@
 			<div class="container-fluid">
 				<!-- begin mobile sidebar expand / collapse button -->
 				<div class="navbar-header">
-					<a href="<?php echo site_url('admin/dashboard');?>" class="navbar-brand">
+					<a href="<?php echo site_url('internalemployee/dashboard');?>" class="navbar-brand">
 	<img width="90" height="60px" style="margin-top: -15px;" src="<?php echo base_url('/assetsAdmin/images/logonew.png')?>" alt="Talent Capital Admin"></a>
 					<button type="button" class="navbar-toggle" data-click="sidebar-toggled">
 						<span class="icon-bar"></span>

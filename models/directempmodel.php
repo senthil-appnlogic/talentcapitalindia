@@ -19,6 +19,8 @@ class directempmodel extends CI_Model {
     function GetEmp_cand_details()
     {
 	$user_Id=$this->session->userdata('directempid');
+	//print_r($user_Id);
+	//exit;
 	$sql="SELECT * FROM emp_candidate_details where id='$user_Id'";
 	return $this->db->query($sql, $return_object = TRUE)->result_array();
     }

@@ -141,12 +141,21 @@ class internalemployee extends CI_Controller {
 	    }
 	    else{
                 //$data['IntEmpName']=$this->emp_model->getIntEmpName($code);
-                $data['Location']=$this->tc_model->getLocation();
-		$data['skills']=$this->tc_model->getskillDetails();
-		$data['language']=$this->tc_model->getlanguageDetails();
-		$this->load->view('view/header');
-		$this->load->view('internalemployee/internalEmployeeLink',$data);
-		$this->load->view('internalemployee/footer');		
+		
+		$data['loginCheck']=$this->tc_model->getEmailCheck($code);
+		//print_r($data['loginCheck'][0]['check']);
+		//exit;
+		if($data['loginCheck'][0]['check']=="yes"){
+		    redirect('talentcapitalctr/index');
+		}
+		else {
+		    $data['Location']=$this->tc_model->getLocation();
+		    $data['skills']=$this->tc_model->getskillDetails();
+		    $data['language']=$this->tc_model->getlanguageDetails();
+		    $this->load->view('view/header');
+		    $this->load->view('internalemployee/internalEmployeeLink',$data);
+		    $this->load->view('internalemployee/footer');		
+		}
 	    }
 	}
 	

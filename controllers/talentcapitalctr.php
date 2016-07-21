@@ -130,12 +130,19 @@ class talentcapitalctr extends CI_Controller {
 	    }
 	    else{
 		$data['getApplicantDetails'] = $this->tc_model->getApplicantRegister($uniqueCode);
-		$data['Location']=$this->tc_model->getLocation();
-		$data['skills']=$this->tc_model->getskillDetails();
-		$data['language']=$this->tc_model->getlanguageDetails();
-		$this->load->view('view/header');
-		$this->load->view('view/internalEmployee',$data);
-		$this->load->view('view/footer');		
+		
+		if($data['getApplicantDetails'][0]['check']=="yes"){
+		    redirect('talentcapitalctr/index');
+		}
+		else {
+		    $data['Location']=$this->tc_model->getLocation();
+		    $data['skills']=$this->tc_model->getskillDetails();
+		    $data['language']=$this->tc_model->getlanguageDetails();
+		    $this->load->view('view/header');
+		    $this->load->view('view/internalEmployee',$data);
+		    $this->load->view('view/footer');		
+		}
+		
 	    }	    
 	    
 	}
@@ -245,13 +252,22 @@ class talentcapitalctr extends CI_Controller {
 		redirect('talentcapitalctr/successMsg');		
 	    }
 	    else{
-		$data['vendorName']=$this->tc_model->getVendorName($code);
-                $data['Location']=$this->tc_model->getLocation();
-		$data['skills']=$this->tc_model->getskillDetails();
-		$data['language']=$this->tc_model->getlanguageDetails();
-		$this->load->view('view/header');
-		$this->load->view('view/hiringPartnerlink',$data);
-		$this->load->view('view/footer');		
+		
+		$data['loginCheck']=$this->tc_model->getEmailCheck($code);
+		//print_r($data['loginCheck'][0]['check']);
+		//exit;
+		if($data['loginCheck'][0]['check']=="yes"){
+		    redirect('talentcapitalctr/index');
+		}
+		else {
+		    $data['vendorName']=$this->tc_model->getVendorName($code);
+		    $data['Location']=$this->tc_model->getLocation();
+		    $data['skills']=$this->tc_model->getskillDetails();
+		    $data['language']=$this->tc_model->getlanguageDetails();
+		    $this->load->view('view/header');
+		    $this->load->view('view/hiringPartnerlink',$data);
+		    $this->load->view('view/footer');	
+		}
 	    }
 	}
 	

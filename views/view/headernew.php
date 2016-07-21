@@ -130,10 +130,10 @@
 					</li>
 					
 					<li class="has-sub <?php if($this->uri->segment(2)=="directemploye"){echo "active";}?>">
-						<a href="<?php echo site_url('directemployee/dashboardedit');?>">
+						<a href="<?php echo site_url('directemployee/dashboardedit/'.$session_id);?>">
 						 <!--   <b class="caret pull-right"></b>-->
 						    <i class="fa fa-graduation-cap  text-warning"></i>
-						    <span>Candidate</span> 
+						    <span>View Details</span> 
 						</a>
 						<!--<ul class="sub-menu">
 							<li><a href="">Vendor</a></li>

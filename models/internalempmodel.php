@@ -234,4 +234,9 @@ class internalempmodel extends CI_Model {
 	$this->db->update("login_auth",$data);
     }
     
+    function getEmailCheck($code){
+	$sql="SELECT * FROM emp_candidate_details where vendor_code='$code'";
+	return $this->db->query($sql, $return_object = TRUE)->result_array();
+    }
+    
 }

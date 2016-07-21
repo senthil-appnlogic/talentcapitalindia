@@ -293,18 +293,19 @@ $status = $this->session->flashdata('status');
 		//console.log(lakhs+thousd);
 		var total=lakhs+thousd;
 		var checking=(total-cur_val)/12;
-		console.log(checking);
-		alert(checking);
+		//console.log(checking);
+		//alert(checking);
 		if (checking>25000) {
 		    //alert("yes");
 		    $this.parents('.odd').find('.billing').val("20000");
 		}
 		else {
 		    //alert("No");
-		    var check=cur_val*0.8;
-		    console.log(check);
+		    var check=checking*0.8;
+		    //console.log(check);
 		    $this.parents('.odd').find('.billing').val(check);
 		    //$this.parents('.odd').find('.billing').val('10000');
 		}
 	    }
+	    
 	</script>

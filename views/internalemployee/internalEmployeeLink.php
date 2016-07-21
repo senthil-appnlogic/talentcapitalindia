@@ -50,7 +50,7 @@ $CandMail = $this->uri->segment(4);
 		    <?php } ?>
                           <form id="form_validation" method="post" action="" enctype="multipart/form-data" role="form">
                             <div class="col-md-6 col-md-offset-3">
-                           
+                           <input type="hidden" name="checking" value="yes">
                             <div class="form-group">
                               <h2 class="headingLine" id="candidate">Candidate Details</h2>
                             </div>
@@ -1162,20 +1162,20 @@ $CandMail = $this->uri->segment(4);
                         },
                     }
                 },
-                educational_gap_year: {
-                    validators: {
-                        notEmpty: {
-                            message: 'The educational GAP is required and can\'t be empty'
-                        },
-                    }
-                },
-                career_gap_year: {
-                    validators: {
-                        notEmpty: {
-                            message: 'The Carrer GAP is required and can\'t be empty'
-                        },
-                    }
-                },
+                //educational_gap_year: {
+                //    validators: {
+                //        notEmpty: {
+                //            message: 'The educational GAP is required and can\'t be empty'
+                //        },
+                //    }
+                //},
+                //career_gap_year: {
+                //    validators: {
+                //        notEmpty: {
+                //            message: 'The Carrer GAP is required and can\'t be empty'
+                //        },
+                //    }
+                //},
                 team_size_name: {
                     validators: {
                         notEmpty: {

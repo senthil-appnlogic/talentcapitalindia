@@ -100,7 +100,7 @@ $status = $this->session->flashdata('status');
                                 <input class="form-control input-md" value="<?php echo $inter_Edit[0]['last_name'];?>" name="last_name" type="text" >
                             </div>
                             <div class="form-group">
-                              <label>Profile Picture</label>
+                              <!--<label>Profile Picture</label>-->
                               <img width="200" height="200" id="ProImgPreview" class="img-resposive" src="<?php echo site_url($inter_Edit[0]['profile_pic']);?>">
 			      <input type="hidden" name="oldimage1" value="<?php echo $inter_Edit[0]['profile_pic']; ?>">
                             </div>
@@ -866,8 +866,8 @@ $status = $this->session->flashdata('status');
                                   <td> <input placeholder="Client Company" name="client_comp[]" value="<?php echo $row['client_comp'];?>" id="client_comp" class="form-control input-md" type="text" ></td>
                                   <td> <input placeholder="Payroll Company" name="payroll_comp[]" value="<?php echo $row['payroll_comp'];?>" id="payroll_comp" class="form-control input-md" type="text" ></td>
                                   <td> <input placeholder="Designation Company" name="designation[]" value="<?php echo $row['designation'];?>" class="form-control input-md" id="designation" type="text" ></td>
-                                  <td><span class='input-group date'><input type="text" placeholder="" value="<?php echo $row['emp_duration_from'];?>" onblur="checkBeforeEmpDuration($(this));" name="emp_duration_from[]" id="emp_duration_from" class="form-control input-md table_input input-group datepicker-dob" ><span class="input-group-addon" ><span class="glyphicon glyphicon-calendar"></span></span></span></td>
-				  <td><span class='input-group date'><input type="text" placeholder="" value="<?php echo $row['emp_duration_to'];?>" name="emp_duration_to[]" id="emp_duration_to" class="form-control input-md table_input input-group datepicker-dob"  ><span class="input-group-addon" ><span class="glyphicon glyphicon-calendar"></span></span></span></td>
+                                  <td><span class='input-group date'><input type="text" placeholder="" value="<?php echo $row['emp_duration_from'];?>" onblur="checkBeforeEmpDuration($(this));" name="emp_duration_from[]" size="35" id="emp_duration_from" class="form-control input-md table_input input-group datepicker-dob" ><span class="input-group-addon" ><span class="glyphicon glyphicon-calendar"></span></span></span></td>
+				  <td><span class='input-group date'><input type="text" placeholder="" value="<?php echo $row['emp_duration_to'];?>" name="emp_duration_to[]" id="emp_duration_to" size="35" class="form-control input-md table_input input-group datepicker-dob"  ><span class="input-group-addon" ><span class="glyphicon glyphicon-calendar"></span></span></span></td>
                                   <td> <input placeholder="Location" name="location[]" value="<?php echo $row['location'];?>" class="form-control input-md" type="text"></td>
 				  <td> <textarea name="empReasonDesc[]" id="empReasonDesc" value="<?php echo $row['empReasonDesc'];?>" class="form-control input-md" rows="1" readonly></textarea></td>
                                   <td>
@@ -1870,4 +1870,8 @@ $status = $this->session->flashdata('status');
     $('[name="university[]"]:last').removeAttr("data-bv-field");
     $('[name="percentage[]"]:last').removeAttr("data-bv-field");
     })
+ var chec=$('input[id="Switch_Val"]').val();	
+ if (chec=="Y") {
+  $("#checkingYN").hide();
+ }
 </script>

@@ -32,7 +32,9 @@ class directemployee extends CI_Controller {
     {
 	
         $result = $this->directempmodel->CheckLoginType();
-	
+	//echo "<pre>";
+	//print_r($result);
+	//exit;
 	if($result==0){
 	    $error=$this->session->set_flashdata('error, invalid username and password');
 	    redirect(base_url()."talentcapitalctr");

@@ -810,6 +810,7 @@ function updateApplicantRegister($uniqueCode)
                 'team_contact_no'=>$this->input->post('team_contact_no'),
 		'profile_pic'=>$profilePic,
 		'resume'=>$resume,
+		'check'=>$this->input->post('checking'),
 		'check_yn'=>$this->input->post('check_yn'),
 		'yesno'=>$this->input->post('yesno'),
 		'cr_date'=>$date
@@ -1173,6 +1174,7 @@ function hiringPartnerLinkAdd($code,$loginType)
 		'login_types'=>$loginType,
 		'candidate_status'=>'Shortlisted',
 		'resume'=>$resume,
+		'check'=>$this->input->post('checking'),
 		'check_yn'=>$this->input->post('check_yn'),
 		'yesno'=>$this->input->post('yesno'),
 		'cr_date'=>$date
@@ -1371,6 +1373,11 @@ function hiringPartnerLinkAdd($code,$loginType)
 	
 	function getVendorName($code){
 	    $sql="SELECT name FROM vendor where vendor_code='$code'";
+	    return $this->db->query($sql, $return_object = TRUE)->result_array();
+	}
+	
+	function getEmailCheck($code){
+	    $sql="SELECT * FROM emp_candidate_details where vendor_code='$code'";
 	    return $this->db->query($sql, $return_object = TRUE)->result_array();
 	}
         
