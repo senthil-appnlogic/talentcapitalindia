@@ -1,8 +1,7 @@
 <?php
+date_default_timezone_set("Asia/Calcutta");
 class talentModel extends CI_Model {
 
-
-    
     function checkAdminLogin()
     {
 	$email = $this->input->post('email');
@@ -43,7 +42,7 @@ class talentModel extends CI_Model {
             $data = $this->upload->data();
             $filePath=$folderPath.$data['file_name'];
 	    $role=$this->input->post('user_role');
-	    $date = date('d-M-y');
+	    $date = date('d/M/y h:ia');
 	    if($role=="Admin"){
 		$data = array(
 		'role'=>$role,
@@ -494,7 +493,7 @@ class talentModel extends CI_Model {
                                 'mail_id'=>$this->input->post('mail_id'),
                                 'skills'=>implode(",",$this->input->post('skills')),
                                 'primary_other_skils'=>$primary,
-                                'SecondarySkills'=>implode(",",$this->input->post('SecondarySkills')),
+                                'SecondarySkills'=>$this->input->post('SecondarySkills'),
                                 'secondary_other_skils'=>$secondary,
                                 'total_exp_year'=>$this->input->post('total_exp_year'),
                                 'total_exp_month'=>$this->input->post('total_exp_month'),

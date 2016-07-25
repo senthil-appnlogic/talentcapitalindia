@@ -4,6 +4,9 @@
     .headingLine{
         font-size:17px;
     }
+    .capitalized{
+	text-transform: capitalize;
+    }
 </style>
 <?php
 $status = $this->session->flashdata('status');
@@ -46,18 +49,18 @@ $status = $this->session->flashdata('status');
                             </div>
 
                             <div class="form-group">
-                              <label>Candidate Name</label>
-                                <input class="form-control input-md" value="<?php echo $inter_Edit[0]['candidate_name'];?>" name="candidate_name" type="text" placeholder="Name" readonly>
+                              <label>Candidate Name <span style="color:#EB8B11">*</span></label>
+                                <input class="form-control input-md capitalized" value="<?php echo $inter_Edit[0]['candidate_name'];?>" name="candidate_name" type="text" placeholder="Name" readonly>
                                 <input type="hidden" class="" value="<?php echo $inter_Edit[0]['id'];?>" name="hiddenId" >
 				<input type="hidden" class="" value="<?php echo $inter_Edit[0]['vendor_code'];?>" name="vendor_code" >
                             </div>
 			    <div class="form-group">
                               <label>Middle Name</label>
-                                <input class="form-control input-md" value="<?php echo $inter_Edit[0]['middle_name'];?>" name="middle_name" type="text" placeholder="Name" readonly>
+                                <input class="form-control input-md capitalized" value="<?php echo $inter_Edit[0]['middle_name'];?>" name="middle_name" type="text" placeholder="Name" readonly>
                             </div>
                             <div class="form-group">
-                              <label>Last Name</label>
-                                <input class="form-control input-md" value="<?php echo $inter_Edit[0]['last_name'];?>" name="last_name" type="text" placeholder="Name" readonly>
+                              <label>Last Name <span style="color:#EB8B11">*</span></label>
+                                <input class="form-control input-md capitalized" value="<?php echo $inter_Edit[0]['last_name'];?>" name="last_name" type="text" placeholder="Name" readonly>
                             </div>
                             <div class="form-group">
                               <!--<label>Profile Picture</label>-->
@@ -88,7 +91,7 @@ $status = $this->session->flashdata('status');
 					
 					<div class="form-group">
 					    
-					    <label>Primary Skills </label>
+					    <label>Primary Skills <span style="color:#EB8B11">*</span> </label>
 					    <?php $skillList= explode(",",$inter_Edit[0]['skills']);?>
 					    <select  multiple class="form-control chzn-select input-sm" name="skills[]" onchange="primaryChange($(this))" >
 					       <?php  foreach( $skills as $row) {
@@ -109,7 +112,7 @@ $status = $this->session->flashdata('status');
 			    
 					<div class="form-group">
 					    
-					    <label>Secondary Skills</label>
+					    <!--<label>Secondary Skills</label>
 					    <?php $skillList= explode(",",$inter_Edit[0]['SecondarySkills']);?>
 					    <select  multiple class="form-control chzn-select input-sm" name="SecondarySkills[]" onchange="secondaryChange($(this))">
 					       <?php  foreach( $skills as $row) {
@@ -119,7 +122,9 @@ $status = $this->session->flashdata('status');
 						?>
 						<option <?=$selected?>  value="<?php  echo $row['skill'] ?>" ><?php  echo $row['skill'] ?></option>
 					    <?php }?>
-					    </select>
+					    </select>-->
+					    <label>Secondary Skills</label>
+					    <input class="form-control input-md" readonly value="<?php echo $inter_Edit[0]['SecondarySkills'];?>" name="SecondarySkills" type="text" >
 					</div>
 			    
 			    <!--<div class="form-group">
@@ -146,7 +151,7 @@ $status = $this->session->flashdata('status');
 				<input class="form-control secondaryName input-md" value="<?php echo $inter_Edit[0]['secondary_other_skils'];?>" name="old_sec_other" type="hidden" placeholder="secondary other skils">
                             </div>
                               <div class="">
-                                <label>Total Experience</label>
+                                <label>Total Experience <span style="color:#EB8B11">*</span></label>
                                 <div class="row">
                                 <div class="form-group col-md-4">
                                   <select name="total_exp_year" class="form-control">
@@ -193,7 +198,7 @@ $status = $this->session->flashdata('status');
                                  </div>
                             </div>
 			    	<div class="">
-                                <label>Revelant Exp</label>
+                                <label>Revelant Exp <span style="color:#EB8B11">*</span></label>
                                 <div class="row">
                                 <div class="form-group col-md-4">
                                   <select name="relevant_exp_year" class="form-control">
@@ -241,7 +246,7 @@ $status = $this->session->flashdata('status');
                             </div>
 
                             <div class="">
-                                <label>Notice Period</label>
+                                <label>Notice Period <span style="color:#EB8B11">*</span></label>
                                 <div class="row">
 				  <div class="form-group col-md-4">
 				    <select name="notice_period" class="form-control">
@@ -258,7 +263,7 @@ $status = $this->session->flashdata('status');
 				</div>
 			    </div>
 			    			      <div class="">
-                                <label>Current CTC</label>
+                                <label>Current CTC <span style="color:#EB8B11">*</span></label>
                                 <div class="row">
                                 <div class="form-group col-md-4">
                                   <select name="current_ctc_lakhs" class="form-control">
@@ -313,7 +318,7 @@ $status = $this->session->flashdata('status');
                                  </div>
                             </div>
 			      <div class="">
-                                <label>Expected CTC</label>
+                                <label>Expected CTC <span style="color:#EB8B11">*</span></label>
                                 <div class="row">
                                 <div class="form-group col-md-4">
                                   <select name="expected_ctc_lakhs" class="form-control">
@@ -369,7 +374,7 @@ $status = $this->session->flashdata('status');
                             </div>
 
                             <div class="">
-                                <label>Date Of Birth</label>
+                                <label>Date Of Birth <span style="color:#EB8B11">*</span></label>
                                 <div class="row">
                                 <div class="form-group col-md-4">
                                   <select name="day" class="form-control">
@@ -534,7 +539,7 @@ $status = $this->session->flashdata('status');
 			    </div>-->
 			    
 			    <div class="form-group">
-                                <label>Language Known</label>
+                                <label>Language Known <span style="color:#EB8B11">*</span></label>
                                 <select multiple class="form-control chzn-select input-sm" name="language_known[]" id="language" disabled="disabled">
 					<!--<option value="<?php echo $inter_Edit[0]['language_known']; ?>" selected><?php echo $inter_Edit[0]['language_known']; ?></option>-->
 				    <?php
@@ -550,7 +555,7 @@ $status = $this->session->flashdata('status');
                             </div>
 			    
                             <div class="form-group">
-                                <label>Current Location</label>
+                                <label>Current Location <span style="color:#EB8B11">*</span></label>
                                 <!--<input class="form-control input-md" name="current_location" value="<?php echo $inter_Edit[0]['current_location'];?>" type="text" placeholder="Current Location">-->
 				<select name="current_location" class="form-control">
 				<?php foreach($Location as $rowC){ ?>
@@ -559,7 +564,7 @@ $status = $this->session->flashdata('status');
 				</select>
                             </div>
                             <div class="form-group">
-                                <label>Perfered Location</label>
+                                <label>Perfered Location <span style="color:#EB8B11">*</span></label>
                                <!-- <input class="form-control input-md" name="preferred_location" value="<?php echo $inter_Edit[0]['preferred_location'];?>" type="text" placeholder="Perfered Location">-->
 			       <select multiple class="form-control chzn-select input-sm" name="preferred_location[]" id="Preferedloc" disabled="disabled">
 				    <?php
@@ -574,7 +579,7 @@ $status = $this->session->flashdata('status');
                                 </select>
                             </div>
                             <div class="form-group">
-                              <label>Interview Timing</label>
+                              <label>Interview Timing <span style="color:#EB8B11">*</span></label>
                                 <input class="form-control input-md" name="interview_timing" value="<?php echo $inter_Edit[0]['interview_timing'];?>" id="datetimepicker1" type="text" placeholder="Interview Timing">
                             </div>
                             
@@ -692,8 +697,8 @@ $status = $this->session->flashdata('status');
                             </div>
 
 			    <div class="form-group">
-                                <label>Team Member Name</label>
-                                <input class="form-control input-md" name="team_size_name" value="<?php echo $inter_Edit[0]['team_size_name'];?>" type="text" placeholder="Team Member Name">
+                                <label>Team Member Name <span style="color:#EB8B11">*</span></label>
+                                <input class="form-control input-md capitalized" name="team_size_name" value="<?php echo $inter_Edit[0]['team_size_name'];?>" type="text" placeholder="Team Member Name">
                             </div>
 			    <div class="form-group">
                                 <label>Contact Number <span style="color:#EB8B11">*</span> </label>
@@ -784,7 +789,7 @@ $status = $this->session->flashdata('status');
 			
 			<div class="col-md-6">
                             <div class="form-group">
-                                <h2 class="headingLine" id="employement">Employement Details</h2>
+                                <h2 class="headingLine" id="employement">Employement Details <span style="color:#EB8B11">*</span></h2>
                             </div>                                                             
                             </div>
                             
@@ -869,13 +874,13 @@ $status = $this->session->flashdata('status');
 			    <div class="col-md-6">
 			      <div class="form-group">
 			    <label>Educational Gap</label>
-			    <input class="form-control input-md countEduYr" name="educational_gap_year" value="<?php echo $inter_Edit[0]['educational_gap_year'];?>" type="text" placeholder="Educational Gap">
+			    <input class="form-control input-md countEduYr" name="educational_gap_year" value="<?php echo $inter_Edit[0]['educational_gap_year'];?>" type="text" placeholder="Educational Gap" readonly>
 			  </div>
 			  </div>
 			  <div class="form-group">
 			    <div class="col-md-6">
 			    <label>Career Gap</label>
-			    <input class="form-control input-md countYr" name="career_gap_year" value="<?php echo $inter_Edit[0]['career_gap_year'];?>" type="text" placeholder="Career Gap">
+			    <input class="form-control input-md countYr" name="career_gap_year" value="<?php echo $inter_Edit[0]['career_gap_year'];?>" type="text" placeholder="Career Gap" readonly>
 			  </div>
 			    </div>
 			  </div>

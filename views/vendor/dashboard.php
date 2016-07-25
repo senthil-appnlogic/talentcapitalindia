@@ -27,7 +27,7 @@
 							<p><?php  echo $vendor_code[0]['vendor_code']; ?></p>	
 						</div>
 						<div class="stats-link">
-							<a href="javascript:;">View Detail <i class="fa fa-arrow-circle-o-right"></i></a>
+							<a href="<?php echo site_url('vendorlogin/vendor');?>">View Detail <i class="fa fa-arrow-circle-o-right"></i></a>
 						</div>
 					</div>
 				</div>

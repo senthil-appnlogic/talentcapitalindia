@@ -3,6 +3,9 @@
     .headingLine{
         font-size:17px;
     }
+    .capitalized{
+	text-transform: capitalize;
+    }
 </style>
 <?php
 $status = $this->session->flashdata('status');
@@ -44,17 +47,17 @@ $status = $this->session->flashdata('status');
                                 <h2 class="headingLine" id="candidate">Candidate Details</h2>
                             </div>
                             <div class="form-group">
-                              <label>Candidate Name</label>
-                                <input readonly class="form-control input-md" value="<?php echo $employeeEdit[0]['candidate_name'];?>" name="candidate_name" type="text" placeholder="Name">
+                              <label>Candidate Name <span style="color:#EB8B11">*</span></label>
+                                <input readonly class="form-control input-md capitalized" value="<?php echo $employeeEdit[0]['candidate_name'];?>" name="candidate_name" type="text" placeholder="Name">
                             </div>
 			    
 			    <div class="form-group">
                               <label>Middle Name</label>
-                                <input class="form-control input-md" readonly value="<?php echo $employeeEdit[0]['middle_name'];?>" name="middle_name" type="text" placeholder="Middle Name">
+                                <input class="form-control input-md capitalized" readonly value="<?php echo $employeeEdit[0]['middle_name'];?>" name="middle_name" type="text" placeholder="Middle Name">
                             </div>
 			    <div class="form-group">
-                              <label>Last Name</label>
-                                <input class="form-control input-md" readonly value="<?php echo $employeeEdit[0]['last_name'];?>" name="last_name" type="text" placeholder="Last Name">
+                              <label>Last Name <span style="color:#EB8B11">*</span></label>
+                                <input class="form-control input-md capitalized" readonly value="<?php echo $employeeEdit[0]['last_name'];?>" name="last_name" type="text" placeholder="Last Name">
                             </div>
                             <div class="form-group">
                                 <label>Mobile Number <span style="color:#EB8B11">*</span></label>
@@ -112,7 +115,7 @@ $status = $this->session->flashdata('status');
                             </div>
 			    <div class="form-group">
                                 <label>Secondary Skills <span style="color:#EB8B11">*</span></label>
-                                <select multiple class="form-control chzn-select input-sm" onchange="secondaryChange($(this))" name="SecondarySkills[]" disabled>
+                                <!--<select multiple class="form-control chzn-select input-sm" onchange="secondaryChange($(this))" name="SecondarySkills[]" disabled>-->
 				    <!--<option>C</option>
 				    <option>C++</option>
 				    <option>Java</option>
@@ -123,8 +126,8 @@ $status = $this->session->flashdata('status');
 				    <option>Perl</option>
 				    <option>Ruby</option>
 				    <option>Javascript</option>
-				    <option>SQL</option>
-				    <option  value="Others">Others</option>-->
+				    <option>SQL</option>-->
+				    <!--<option  value="Others">Others</option>
 				     <?php
 					$employeeEdit[0]['SecondarySkills'];
 					foreach($skills as $row) {
@@ -135,7 +138,8 @@ $status = $this->session->flashdata('status');
 					<option <?=$selected?> value="<?php echo $row['skill']?>"><?php echo $row['skill']?></option>
 				    <?php } ?>
 				    <option value="Others">Others</option>
-                                </select>
+                                </select>-->
+				<input class="form-control input-md" readonly value="<?php echo $employeeEdit[0]['SecondarySkills'];?>" name="SecondarySkills" type="text" >
                             </div>
 			    <div class="form-group secondary hide" >
                                 <label>Other Skills<span style="color:#EB8B11">*</span></label>
@@ -143,7 +147,7 @@ $status = $this->session->flashdata('status');
                             </div>
                                                        
                             <div class="">
-                                <label>Total Experience</label>
+                                <label>Total Experience <span style="color:#EB8B11">*</span></label>
                                 <div class="row">
                                 <div class="form-group col-md-4">
                                    <?php $years=array('0years','1years','2years','3years','4years','5years','6years','7years','8years','9years','10years','11years','12years','13years','14years','15years','16years','17years','18years','19years','20years','21years') ?> 
@@ -171,7 +175,7 @@ $status = $this->session->flashdata('status');
                             </div>-->
 			    
 			    <div class="">
-                                <label>Relevant Exp</label>
+                                <label>Relevant Exp <span style="color:#EB8B11">*</span></label>
                                 <div class="row">
                                 <div class="form-group col-md-4">
 				     <?php $years=array('0years','1years','2years','3years','4years','5years','6years','7years','8years','9years','10years','11years','12years','13years','14years','15years','16years','17years','18years','19years','20years','21years') ?> 
@@ -196,7 +200,7 @@ $status = $this->session->flashdata('status');
 
                         
 			     <div class="">
-                                <label>Notice Period</label>
+                                <label>Notice Period <span style="color:#EB8B11">*</span></label>
                                 <div class="row">
 				  <div class="form-group col-md-4">
 				    <?php $noticePeriod=array('Immediate','7','15','30','45','60','90 Days & Above') ?> 
@@ -215,7 +219,7 @@ $status = $this->session->flashdata('status');
                             </div>-->
 			    
 			    <div class="">
-                                <label>Current CTC</label>
+                                <label>Current CTC <span style="color:#EB8B11">*</span></label>
                                  <div class="row">
 				  <div class="form-group col-md-4">
 				    <?php $currentCTC=array('0','1','2','3','4','5','6','7','8','9','10','12','13','14','15','16','17','18','19','20') ?> 
@@ -237,7 +241,7 @@ $status = $this->session->flashdata('status');
 			    </div>
 			    
 			    <div class="">
-                                <label>Expected CTC</label>
+                                <label>Expected CTC <span style="color:#EB8B11">*</span></label>
                                   <div class="row">
 				  <div class="form-group col-md-4">
 				    <?php $expCTC=array('0','1','2','3','4','5','6','7','8','9','10','12','13','14','15','16','17','18','19','20') ?> 
@@ -265,7 +269,7 @@ $status = $this->session->flashdata('status');
 			    
 			    
                             <div class="">
-                                <label>Date Of Birth</label>
+                                <label>Date Of Birth <span style="color:#EB8B11">*</span></label>
                                 <div class="row">
                                 <div class="form-group col-md-4">
                                    <?php $day=array('1','2','3','4','5','6','7','8','9','10','11','12','13','14','15','16','17','18','19','20','21','22','23','24','25','26','27','28','29','30','31') ?> 
@@ -314,7 +318,7 @@ $status = $this->session->flashdata('status');
                           </div>
                             
                             <div class="form-group">
-                                <label>Language Known</label>
+                                <label>Language Known <span style="color:#EB8B11">*</span></label>
                                 <?php $langList= explode(",",$employeeEdit[0]['language_known']);?>
                                 <select disabled multiple class="form-control chzn-select input-sm" name="language_known[]">
 				    <?php
@@ -331,7 +335,7 @@ $status = $this->session->flashdata('status');
 			    
 			    
                             <div class="form-group">
-                                <label>Current Location</label>
+                                <label>Current Location <span style="color:#EB8B11">*</span></label>
                                 <input readonly class="form-control input-md" value="<?php echo $employeeEdit[0]['current_location'];?>" name="current_location" type="text" placeholder="Current Location">
                             </div>
                             <div class="form-group">
@@ -350,7 +354,7 @@ $status = $this->session->flashdata('status');
                                 </select>
                             </div>
                             <div class="form-group">
-                              <label>Interview Timing</label>
+                              <label>Interview Timing <span style="color:#EB8B11">*</span></label>
                                 <input readonly class="form-control input-md" value="<?php echo $employeeEdit[0]['interview_timing'];?>" name="interview_timing" id="datetimepicker1" type="text" placeholder="Interview Timing">
                             </div>
                            
@@ -421,14 +425,14 @@ $status = $this->session->flashdata('status');
                                 <input readonly class="form-control input-md" value="<?php echo $employeeEdit[0]['team_size_name'];?>" name="team_size_name" type="text" placeholder="Email">
                             </div>-->
 			    <div class="form-group">
-                                <label>Team Member Name</label>
+                                <label>Team Member Name <span style="color:#EB8B11">*</span></label>
 				 <?//php $teamSize=array('1','2','3','4','5','6','7','8','9','10','12','13','14','15','16','17','18','19','20') ?> 
 				<!--<select disabled name="team_size_name" class="form-control input-sm">
 				  <?php foreach($teamSize as $teamSize){?>
 				       <option value="<?php echo $teamSize;?>" <?php if($employeeEdit[0]['team_size_name']==$teamSize) echo "selected"?>><?php echo $teamSize;?></option>
                                     <?php }?>
 				</select>-->
-				<input readonly class="form-control input-md" name="team_size_name" value="<?php echo $employeeEdit[0]['team_size_name'];?>" type="text" placeholder="Team Member Name">
+				<input readonly class="form-control input-md capitalized" name="team_size_name" value="<?php echo $employeeEdit[0]['team_size_name'];?>" type="text" placeholder="Team Member Name">
 			    </div>
                             <div class="form-group">
                                 <label>Contact Number <span style="color:#EB8B11">*</span> </label>
@@ -436,12 +440,12 @@ $status = $this->session->flashdata('status');
                             </div>
                         </div>
 
-                            <div class="col-md-6 col-md-offset-3">
+                            <div class="col-md-6">
                             <div class="form-group">
                                 <h2 class="headingLine" id="education" >Educational Details <span style="color:#EB8B11">*</span></h2>
                             </div>                                                         
                         </div>
-                        <div class="col-md-10 col-md-offset-2">
+                        <div class="col-md-12">
 
                         <div class="table-responsive"> 
                           <table class="table table-hover">
@@ -494,12 +498,12 @@ $status = $this->session->flashdata('status');
                         </div>
                         </div>
 			
-			<div class="col-md-6 col-md-offset-3">
+			<div class="col-md-6">
                             <div class="form-group">
-                                <h2 class="headingLine" id="employement">Employment Details</h2>
+                                <h2 class="headingLine" id="employement">Employment Details <span style="color:#EB8B11">*</span></h2>
                             </div>                                                             
                             </div>
-                        <div class="col-md-10 col-md-offset-2">                            
+                        <div class="col-md-12">                            
                             <div class="table-responsive"> 
                           <table class="table table-hover">
                               <thead>
@@ -565,13 +569,13 @@ $status = $this->session->flashdata('status');
 			    <div class="col-md-6">
 			      <div class="form-group">
 			    <label>Educational Gap</label>
-			    <input class="form-control input-md countEduYr" name="educational_gap_year" value="<?php echo $employeeEdit[0]['educational_gap_year'];?>" type="text" placeholder="Educational Gap">
+			    <input class="form-control input-md countEduYr" name="educational_gap_year" value="<?php echo $employeeEdit[0]['educational_gap_year'];?>" type="text" placeholder="Educational Gap" readonly>
 			  </div>
 			  </div>
 			  <div class="form-group">
 			    <div class="col-md-6">
 			    <label>Career Gap</label>
-			    <input class="form-control input-md countYr" name="career_gap_year" value="<?php echo $employeeEdit[0]['career_gap_year'];?>" type="text" placeholder="Career Gap">
+			    <input class="form-control input-md countYr" name="career_gap_year" value="<?php echo $employeeEdit[0]['career_gap_year'];?>" type="text" placeholder="Career Gap" readonly>
 			  </div>
 			    </div>
 			  </div>

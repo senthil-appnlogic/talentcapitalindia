@@ -130,7 +130,7 @@ class internalemployee extends CI_Controller {
 	$this->load->view('internalemployee/internalEmpEdit',$loginUser);
     }
     
-    function internalEmployeeLink($code){
+    function internalEmployeeLink($code,$sample){
 	
 	    $data['Vcode'] =  $code;
 	    if(isset($_POST['save'])){
@@ -142,10 +142,10 @@ class internalemployee extends CI_Controller {
 	    else{
                 //$data['IntEmpName']=$this->emp_model->getIntEmpName($code);
 		
-		$data['loginCheck']=$this->tc_model->getEmailCheck($code);
+		$data['loginCheck']=$this->tc_model->getEmailCheckData($code,$sample);
 		//print_r($data['loginCheck'][0]['check']);
 		//exit;
-		if($data['loginCheck'][0]['check']=="yes"){
+		if($data['loginCheck'][0]['check_email']=="yes"){
 		    redirect('talentcapitalctr/index');
 		}
 		else {

@@ -40,6 +40,9 @@
      border-radius:15%;
      padding:13px;
     }
+    .capitalized{
+      text-transform: capitalize;
+    }
 
    </style> 
     
@@ -205,7 +208,7 @@
                                             </select>
                                         </div>                                    
                                         <div class="form-group">
-                                            <input type="text" name="name" id="username" tabindex="1" class="form-control" placeholder="Username" value="">
+                                            <input type="text" name="name" id="username" tabindex="1" class="form-control capitalized" placeholder="Username" value="">
                                         </div>
                                         <div class="form-group">
                                             <input type="text" name="email" id="email" tabindex="1" class="form-control" placeholder="Email Address" value="">

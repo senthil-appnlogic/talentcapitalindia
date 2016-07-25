@@ -109,7 +109,7 @@ class talentcapitalctr extends CI_Controller {
 	    else{
 		$data['getVendorDetails'] = $this->tc_model->getVendorRegister($uniqueCode);
 		//print_r($data['getVendorDetails'][0]['check']);exit;
-		if($data['getVendorDetails'][0]['check']=="yes"){
+		if($data['getVendorDetails'][0]['check_email']=="yes"){
 		    redirect('talentcapitalctr/index');
 		}
 		else {
@@ -131,7 +131,7 @@ class talentcapitalctr extends CI_Controller {
 	    else{
 		$data['getApplicantDetails'] = $this->tc_model->getApplicantRegister($uniqueCode);
 		
-		if($data['getApplicantDetails'][0]['check']=="yes"){
+		if($data['getApplicantDetails'][0]['check_email']=="yes"){
 		    redirect('talentcapitalctr/index');
 		}
 		else {
@@ -241,7 +241,9 @@ class talentcapitalctr extends CI_Controller {
 	    $this->load->view('view/success');
 	}
 	
-	function hiringPartnerLink($code){
+	function hiringPartnerLink($code,$sample){
+	//    print_r($sample);
+	//	exit;
 	    $data['Vcode'] =  $code;
 	    if(isset($_POST['save'])){
 		//print_r($_POST);
@@ -253,10 +255,13 @@ class talentcapitalctr extends CI_Controller {
 	    }
 	    else{
 		
-		$data['loginCheck']=$this->tc_model->getEmailCheck($code);
-		//print_r($data['loginCheck'][0]['check']);
+		//$data['loginCheck']=$this->tc_model->getEmailCheck($code);
+		//$checkmail = $data['loginCheck'][0]['mail_id'];
+		//print_r($checkmail);
 		//exit;
-		if($data['loginCheck'][0]['check']=="yes"){
+		$data['loginCheckData']=$this->tc_model->getEmailCheckData($code,$sample);
+		
+		if($data['loginCheckData'][0]['check_email']=="yes"){
 		    redirect('talentcapitalctr/index');
 		}
 		else {

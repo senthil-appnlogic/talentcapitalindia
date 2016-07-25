@@ -33,6 +33,9 @@ $CandMail = $this->uri->segment(4);
 .has-feedback .form-control {
     padding-right: 0px;
 }
+.capitalized{
+  text-transform: capitalize;
+}
 
 </style>
 <div  class="container" style="padding-top: 80px;">
@@ -65,25 +68,25 @@ $CandMail = $this->uri->segment(4);
                                 <input class="form-control input-md" value="<?php echo $vendorName[0]['name'];?>" readonly  name="" type="text" placeholder="Name">
                             </div>
 			     <div class="form-group">
-                              <label>First Name</label>
-                                <input class="form-control input-md" name="candidate_name" type="text" placeholder="First Name">
+                              <label>First Name <span style="color:#EB8B11">*</span></label>
+                                <input class="form-control input-md capitalized" name="candidate_name" type="text" placeholder="First Name">
                             </div>
 			    <div class="form-group">
                               <label>Middle Name</label>
-                                <input class="form-control input-md" name="middle_name" type="text" placeholder="Middle Name">
+                                <input class="form-control input-md capitalized" name="middle_name" type="text" placeholder="Middle Name">
                             </div>
 			    <div class="form-group">
-                              <label>Last Name</label>
-                                <input class="form-control input-md" name="last_name" type="text" placeholder="Last Name">
+                              <label>Last Name <span style="color:#EB8B11">*</span></label>
+                                <input class="form-control input-md capitalized" name="last_name" type="text" placeholder="Last Name">
                             </div>
 
 			    <div class="form-group">
-                              <label>Password</label>
+                              <label>Password <span style="color:#EB8B11">*</span></label>
 				<input type="password" name="password" id="password" class="form-control" placeholder="Password">
                             </div>
 			    
 			    <div class="form-group">
-                              <label>Confirm Password</label>
+                              <label>Confirm Password <span style="color:#EB8B11">*</span></label>
                                 <input type="password" name="confirm_password" id="confirm_password" class="form-control" placeholder="Confirm Password">
                             </div>			    
                             
@@ -145,22 +148,23 @@ $CandMail = $this->uri->segment(4);
                                 <input class="form-control primaryName input-md" value="<?php echo $getApplicantDetails[0]['primary_other_skils'];?>" name="" type="text" placeholder="primary other skils">
                               </div>
 			      <div class="form-group">
-                                <label>Secondary Skills <span style="color:#EB8B11">*</span></label>
-                                <select multiple class="form-control chzn-select input-sm" onchange="secondaryChange($(this))" name="SecondarySkills[]">
+                                <label>Secondary Skills </label>
+                                <!--<select multiple class="form-control chzn-select input-sm" onchange="secondaryChange($(this))" name="SecondarySkills[]">
                                   <option></option>
 				  <?php
 				  foreach ($skills as $row)
 				  {?>
 				  <option value="<?php echo $row['skill']; ?>"><?php echo $row['skill']; ?></option>
 				  <?php } ?>
-                                </select>
+                                </select>-->
+				<input class="form-control input-md" name="SecondarySkills" type="text" placeholder="Secondary Skills">
                             </div>
 			      <div class="form-group secondary hide" >
                                 <label>Other Skills<span style="color:#EB8B11">*</span></label>
                                 <input class="form-control secondaryName input-md" value="<?php echo $getApplicantDetails[0]['secondary_other_skils'];?>" name="" type="text" placeholder="secondary other skils">
                             </div>
 			      <div class="">
-                                <label>Total Experience</label>
+                                <label>Total Experience <span style="color:#EB8B11">*</span></label>
                                 <div class="row">
                                 <div class="form-group col-md-4">
                                   <select name="total_exp_year" class="form-control">
@@ -215,7 +219,7 @@ $CandMail = $this->uri->segment(4);
                             </div>-->
 			    
 			      <div class="">
-                                <label>Relevant Exp</label>
+                                <label>Relevant Exp <span style="color:#EB8B11">*</span></label>
                                 <div class="row">
                                 <div class="form-group col-md-4">
                                   <select name="relevant_exp_year" class="form-control">
@@ -266,7 +270,7 @@ $CandMail = $this->uri->segment(4);
 
                            
 			    <div class="">
-                                <label>Notice Period</label>
+                                <label>Notice Period <span style="color:#EB8B11">*</span></label>
                                 
 				  <div class="form-group">
 				    <select name="notice_period" class="form-control">
@@ -290,7 +294,7 @@ $CandMail = $this->uri->segment(4);
                                 <input class="form-control input-md" name="current_ctc" type="text" placeholder="Current CTC">
                             </div>-->
 			      <div class="">
-                                <label>Current CTC</label>
+                                <label>Current CTC <span style="color:#EB8B11">*</span></label>
                                 <div class="row">
                                 <div class="form-group col-md-4">
                                   <select name="current_ctc_lakhs" class="form-control">
@@ -368,7 +372,7 @@ $CandMail = $this->uri->segment(4);
 				     </select>
 			      </div>-->
 			      <div class="">
-                                <label>Expected CTC</label>
+                                <label>Expected CTC <span style="color:#EB8B11">*</span></label>
                                 <div class="row">
                                 <div class="form-group col-md-4">
                                   <select name="expected_ctc_lakhs" class="form-control">
@@ -427,7 +431,7 @@ $CandMail = $this->uri->segment(4);
                             </div>
 
                             <div class="">
-                                <label>Date Of Birth</label>
+                                <label>Date Of Birth <span style="color:#EB8B11">*</span></label>
                                 <div class="row">
                                 <div class="form-group col-md-4">
                                   <select name="day" class="form-control">
@@ -565,7 +569,7 @@ $CandMail = $this->uri->segment(4);
                           </div>
                             
                             <div class="form-group">
-                                <label>Language Known</label>
+                                <label>Language Known <span style="color:#EB8B11">*</span></label>
                                 <select multiple class="form-control chzn-select input-sm" name="language_known[]" id="language">
                                     <?php
 					foreach ($language as $row)
@@ -575,7 +579,7 @@ $CandMail = $this->uri->segment(4);
                                 </select>
                             </div>
                             <div class="form-group">
-                                <label>Current Location</label>
+                                <label>Current Location <span style="color:#EB8B11">*</span></label>
                                 <!--<input class="form-control input-md" name="current_location" type="text" placeholder="Current Location">-->
                                 <select name="current_location" class="form-control">
 				  <option disabled selected hidden>Please Select Current Location</option>
@@ -599,7 +603,7 @@ $CandMail = $this->uri->segment(4);
 				</select>
                             </div>
                             <div class="form-group">
-                              <label>Interview Timing</label>
+                              <label>Interview Timing <span style="color:#EB8B11">*</span></label>
                                 <input class="form-control input-md" name="interview_timing" id="datetimepicker1" type="text" placeholder="Interview Timing">
                             </div>
 <!--			      <div class="">-->
@@ -698,8 +702,8 @@ $CandMail = $this->uri->segment(4);
                                 <h2 class="headingLine" >Team Details</h2>
                             </div>
                             <div class="form-group">
-                                <label>Team Member Name</label>
-                                <input class="form-control input-md" name="team_size_name" type="text" placeholder="Team Member Name">
+                                <label>Team Member Name <span style="color:#EB8B11">*</span></label>
+                                <input class="form-control input-md capitalized" name="team_size_name" type="text" placeholder="Team Member Name">
                             </div>
 			      
 
@@ -841,7 +845,7 @@ $CandMail = $this->uri->segment(4);
 			
 			<div class="col-md-6">
                             <div class="form-group">
-                                <h2 class="headingLine" id="employement">Employment Details</h2>
+                                <h2 class="headingLine" id="employement">Employment Details <span style="color:#EB8B11">*</span></h2>
                             </div>                                                             
                             </div>
                         <div class="col-md-12">                            
@@ -916,13 +920,13 @@ $CandMail = $this->uri->segment(4);
 			    <div class="col-md-6">
 			      <div class="form-group">
 			    <label>Educational Gap</label>
-			    <input class="form-control input-md countEduYr" name="educational_gap_year" type="text" placeholder="Educational Gap">
+			    <input class="form-control input-md countEduYr" name="educational_gap_year" readonly type="text" placeholder="Educational Gap">
 			  </div>
 			  </div>
 			  <div class="form-group">
 			    <div class="col-md-6">
 			    <label>Career Gap</label>
-			    <input class="form-control input-md countYr" name="career_gap_year" type="text" placeholder="Career Gap">
+			    <input class="form-control input-md countYr" name="career_gap_year" readonly type="text" placeholder="Career Gap">
 			  </div>
 			    </div>
 			  </div>

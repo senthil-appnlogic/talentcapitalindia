@@ -30,6 +30,9 @@
 .has-feedback .form-control {
     padding-right: 0px;
 }
+.capitalized{
+  text-transform: capitalize;
+}
 
 </style>
 <div  class="container" style="padding-top: 80px;">
@@ -53,17 +56,17 @@
                             </div>
 
                             <div class="form-group">
-                              <label>Candidate Name</label>
-                                <input class="form-control input-md" value="<?php echo $getApplicantDetails[0]['candidate_name'];?>" name="candidate_name" type="text" placeholder="Name" readonly>
+                              <label>Candidate Name <span style="color:#EB8B11">*</span></label>
+                                <input class="form-control input-md capitalized" value="<?php echo $getApplicantDetails[0]['candidate_name'];?>" name="candidate_name" type="text" placeholder="Name" readonly>
                                 <input type="hidden" class="" value="<?php echo $getApplicantDetails[0]['id'];?>" name="hiddenId" >
                             </div>
                             <div class="form-group">
-                              <label>Middle Name</label>
-                                <input class="form-control input-md"  name="middle_name" type="text" placeholder="Middle Name">
+                              <label>Middle Name <span style="color:#EB8B11">*</span></label>
+                                <input class="form-control input-md capitalized"  name="middle_name" type="text" placeholder="Middle Name">
                             </div>
                             <div class="form-group">
-                              <label>Last Name</label>
-                                <input class="form-control input-md"  name="last_name" type="text" placeholder="Last Name">
+                              <label>Last Name <span style="color:#EB8B11">*</span></label>
+                                <input class="form-control input-md capitalized"  name="last_name" type="text" placeholder="Last Name">
                             </div>			    
                             
                             <div class="form-group">
@@ -123,14 +126,15 @@
                                 <label>Secondary Skills <span style="color:#EB8B11">*</span></label>
 				
 				
-                                <select multiple class="form-control chzn-select input-sm" onchange="secondaryChange($(this))" name="SecondarySkills[]">
+                                <!--<select multiple class="form-control chzn-select input-sm" onchange="secondaryChange($(this))" name="SecondarySkills[]">
 				  <option></option>
 				  <?php
 				  foreach ($skills as $row)
 				  {?>
 				  <option value="<?php echo $row['skill']; ?>"><?php echo $row['skill']; ?></option>
 				  <?php } ?>
-				</select>
+				</select>-->
+				<input class="form-control input-md"  name="SecondarySkills" type="text" placeholder="Secondary Skills">
                                 
                             </div>
 			    <div class="form-group secondary hide" >
@@ -138,7 +142,7 @@
                                 <input class="form-control secondaryName input-md" value="<?php echo $getApplicantDetails[0]['secondary_other_skils'];?>" name="" type="text" placeholder="secondary other skils">
                             </div>
                               <div class="">
-                                <label>Total Experience</label>
+                                <label>Total Experience <span style="color:#EB8B11">*</span></label>
                                 <div class="row">
                                 <div class="form-group col-md-4">
                                   <select name="total_exp_year" class="form-control">
@@ -193,7 +197,7 @@
                                 <input class="form-control input-md" name="relevant_exp" type="text" placeholder="Relevant Exp">
                             </div>-->
 			    	<div class="">
-                                <label>Relevant Exp</label>
+                                <label>Relevant Exp <span style="color:#EB8B11">*</span></label>
                                 <div class="row">
                                 <div class="form-group col-md-4">
                                   <select name="relevant_exp_year" class="form-control">
@@ -243,7 +247,7 @@
                             </div>
 
                             <div class="">
-                                <label>Notice Period</label>
+                                <label>Notice Period <span style="color:#EB8B11">*</span></label>
                                 <div class="row">
 				  <div class="form-group col-md-4">
 				    <select name="notice_period" class="form-control">
@@ -264,7 +268,7 @@
                                 <input class="form-control input-md" name="current_ctc" type="text" placeholder="Current CTC">
                             </div>-->
 			      <div class="">
-                                <label>Current CTC</label>
+                                <label>Current CTC <span style="color:#EB8B11">*</span></label>
                                 <div class="row">
                                 <div class="form-group col-md-4">
                                   <select name="current_ctc_lakhs" class="form-control">
@@ -325,7 +329,7 @@
                                 <input class="form-control input-md" name="expected_ctc" type="text" placeholder="Expected CTC">
                             </div>-->
 			      <div class="">
-                                <label>Expected CTC</label>
+                                <label>Expected CTC <span style="color:#EB8B11">*</span></label>
                                 <div class="row">
                                 <div class="form-group col-md-4">
                                   <select name="expected_ctc_lakhs" class="form-control">
@@ -383,7 +387,7 @@
                             </div>
 
                             <div class="">
-                                <label>Date Of Birth</label>
+                                <label>Date Of Birth <span style="color:#EB8B11">*</span></label>
                                 <div class="row">
                                 <div class="form-group col-md-4">
                                   <select name="day" class="form-control">
@@ -522,7 +526,7 @@
                           </div>
                             
                             <div class="form-group">
-                                <label>Languages Known</label>
+                                <label>Languages Known <span style="color:#EB8B11">*</span></label>
 				 <select name="language_known[]" class="form-control" multiple id="language">
 				  <option></option>
 				  <?php
@@ -541,7 +545,7 @@
                                 </select>-->
                             </div>
                             <div class="form-group">
-                                <label>Current Location</label>
+                                <label>Current Location <span style="color:#EB8B11">*</span></label>
                                 <!--<input class="form-control input-md" name="current_location" type="text" placeholder="Current Location">-->
 				 <select name="current_location" class="form-control">
 				  <option disabled selected hidden>Please Select Current Location</option>
@@ -553,7 +557,7 @@
 				</select>
                             </div>
                             <div class="form-group">
-                                <label>Perfered Location</label>
+                                <label>Perfered Location </label>
                                 <!--<input class="form-control input-md" name="preferred_location" type="text" placeholder="Perfered Location">-->
 				 <select name="preferred_location[]" class="form-control" multiple id="Preferedloc">
 				  <option disabled selected hidden></option>
@@ -565,7 +569,7 @@
 				</select>
                             </div>
                             <div class="form-group">
-                              <label>Interview Timing</label>
+                              <label>Interview Timing <span style="color:#EB8B11">*</span></label>
                                 <input class="form-control input-md" name="interview_timing" id="datetimepicker1" type="text" placeholder="Interview Timing">
                             </div>
                             <!--<div class="form-group">
@@ -693,8 +697,8 @@
                                 
                             </div>-->
 			    <div class="form-group">
-                                <label>Team Member Name</label>
-                                <input class="form-control input-md" name="team_size_name" type="text" placeholder="Team Member Name">
+                                <label>Team Member Name <span style="color:#EB8B11">*</span></label>
+                                <input class="form-control input-md capitalized" name="team_size_name" type="text" placeholder="Team Member Name">
                             </div>
 			    <div class="form-group">
                                 <label>Contact Number <span style="color:#EB8B11">*</span> </label>
@@ -844,7 +848,7 @@
 			
 			<div class="col-md-6">
                             <div class="form-group">
-                                <h2 class="headingLine" id="employement">Employment Details</h2>
+                                <h2 class="headingLine" id="employement">Employment Details <span style="color:#EB8B11">*</span></h2>
                             </div>                                                             
                             </div>
 
@@ -940,13 +944,13 @@
 			    <div class="col-md-6">
 			      <div class="form-group">
 			    <label>Educational Gap</label>
-			    <input class="form-control input-md countEduYr" name="educational_gap_year" type="text" placeholder="Educational Gap">
+			    <input class="form-control input-md countEduYr" name="educational_gap_year" type="text" placeholder="Educational Gap" readonly>
 			  </div>
 			  </div>
 			  <div class="form-group">
 			    <div class="col-md-6">
 			    <label>Career Gap</label>
-			    <input class="form-control input-md countYr" name="career_gap_year" type="text" placeholder="Career Gap">
+			    <input class="form-control input-md countYr" name="career_gap_year" type="text" placeholder="Career Gap" readonly>
 			  </div>
 			    </div>
 			  </div>
