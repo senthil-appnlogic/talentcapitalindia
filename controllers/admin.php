@@ -17,7 +17,7 @@ class admin extends CI_Controller {
 	       'smtp_host' => 'mbox.s214.sureserver.com',
 	       'smtp_port' => 465,
 	       'smtp_user' => 'donotreply@talentcapitalindia.com', // change it to yours
-	       'smtp_pass' => '09062016', // change it to yours
+	       'smtp_pass' => 'Tci@2014', // change it to yours
 	       'mailtype' => 'html',
 	       'smtp_crypto'=>'ssl',
 	       'charset' => 'iso-8859-1',
@@ -151,6 +151,9 @@ class admin extends CI_Controller {
 	if(!empty($session_data))
 	    {
 		$result['vendorDetails']=$this->talentModel->vendorDetails();
+		//echo "<pre>";
+		//print_r($result['vendorDetails']);
+		//exit;
 		$this->load->view('admin/header');		
 		$this->load->view('admin/hiringPartner',$result);		    
 	    }
@@ -158,6 +161,26 @@ class admin extends CI_Controller {
 		redirect('admin/dashboard');
 	    }
     }
+    
+    function emailtracklist(){
+	$vendor_code = $_POST['vendor_code'];
+	$check_mail = 'no';
+	$result['emailtrack']=$this->talentModel->emailtracklist($vendor_code,$check_mail);
+	echo json_encode($result);
+	//print_r($id);
+	//exit;
+    }
+    
+    function emailTrack(){
+	$check_mail = 'no';
+	$result['emailtrack']=$this->talentModel->emailTrack($check_mail);
+	//echo"<pre>";
+	//print_r($result['emailtrack'][0]['refer_code']);
+	//exit;
+	$this->load->view('admin/header');	
+	$this->load->view('admin/emailtracklist',$result);
+    }
+    
     //ADD
     function hiringPartnerAdd()
     {
@@ -337,6 +360,9 @@ class admin extends CI_Controller {
 	if(!empty($session_data))
 	    {
 		$data['employeeDetails']=$this->talentModel->employeeDetails();
+		//echo "<pre>";
+		//print_r($data['employeeDetails']);
+		//exit;
 		$this->load->view('admin/header');
 		$this->load->view('admin/employee',$data);
 	    }

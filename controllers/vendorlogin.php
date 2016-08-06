@@ -17,7 +17,7 @@ class vendorlogin extends CI_Controller {
 	   'smtp_host' => 'mbox.s214.sureserver.com',
 	   'smtp_port' => 465,
 	   'smtp_user' => 'donotreply@talentcapitalindia.com', // change it to yours
-	   'smtp_pass' => '09062016', // change it to yours
+	   'smtp_pass' => 'Tci@2014', // change it to yours
 	   'mailtype' => 'html',
 	   'smtp_crypto'=>'ssl',
 	   'charset' => 'iso-8859-1',
@@ -128,6 +128,15 @@ class vendorlogin extends CI_Controller {
 	    redirect(site_url('vendorlogin'));   
 	}
     }
+    
+    function tracklist(){
+	$session_code = $this->session->userdata('vendor_code');
+	$check_mail = 'no';
+	$result['emailtrack']=$this->vendormodel->emailtracklist($session_code,$check_mail);
+	$this->load->view('vendor/header');
+	$this->load->view('vendor/tracklist',$result);
+    }
+    
  function adminVendorEdit($id){
 	$session_data=$this->session->userdata('vendor_code');
 	if(!empty($session_data)){

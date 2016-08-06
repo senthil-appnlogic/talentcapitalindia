@@ -46,6 +46,7 @@ $status = $this->session->flashdata('status');
 						    <th data-class="expand">Hiring Partner code</th>
 						    <th data-hide="phone,tablet">Mobile Number</th>
 						    <th data-hide="phone,tablet">Email</th>
+						    <th data-hide="phone,tablet">EmailTrack List</th>
 						    <th>Approved Y/N</th>
 						    <th>Action</th>
 						</tr>
@@ -59,6 +60,7 @@ $status = $this->session->flashdata('status');
 						    <td><?php echo $row['vendor_code']; ?></td>
 						    <td><?php echo $row['mobile_number']; ?></td>
 						    <td id="EMAIL"><?php echo $row['email']; ?></td>
+						    <td><button onclick="showingModal('<?php echo $row['vendor_code']; ?>')" class="btn btn-primary btn-md">Email Track List</button></td>
 						    <td>
 							<input type="checkbox" <?php if($row['status']=='Y'){ echo 'checked';}?> class="lcs_check" id="approvedYN">
 						    </td>
@@ -92,10 +94,46 @@ $status = $this->session->flashdata('status');
 					</div>
 				    </div>
 				</div>
-				
-				
-				
 				<!--PDF ENDS-->
+				
+				<!-- EMAIL TRACKING STARTS -->
+				<div id="myModal" class="modal fade" role="dialog">
+				    <div class="modal-dialog modal-lg">
+				      <!-- Modal content-->
+					<div class="modal-content">
+					    <div class="modal-header">
+					      <button type="button" class="close" data-dismiss="modal">&times;</button>
+					      <h4 class="modal-title">Change Candidate Status</h4>
+					    </div>
+					    <div class="modal-body">
+						<div class="table-responsive" style="border: none">
+						    <table id="data-tableemail" class="table table-striped table-bordered nowrap" width="100%">
+						      <thead>
+							    <tr>
+								<th data-class="expand">Created date</th>
+								<!--<th data-class="expand">Name</th>-->
+								<th data-class="expand">Hiring Partner code</th>
+								<th data-hide="phone,tablet">Email</th>
+							    </tr>
+							</thead>
+							<tbody class="track">
+							   <!-- <tr class="oddClass even gradeC">
+								<td id="crDate"></td>								
+								<td id="hiringCode"></td>
+								<td id="hiringEmail"></td>
+							    </tr>-->
+							</tbody>
+						    </table>
+						</div>
+					    </div>
+					    <!--<div class="modal-footer">
+					  <button type="button" class="btn btn-default" >Close</button>
+					</div>-->
+				      </div>
+				  
+				    </div>
+				</div>
+				<!-- EMAIL TRACKING ENDS-->
 				
 
                         </div>
@@ -139,6 +177,18 @@ $status = $this->session->flashdata('status');
 		]
 	    } );
 	    
+	    $('#data-tableemail').DataTable( {
+		dom: 'Bfrtip',
+		"ordering":false,
+		buttons: [
+		    //'copyHtml5',
+		    'excelHtml5',
+		    //'csvHtml5',
+		    //'pdfHtml5'
+		    
+		]
+	    } );
+	    
 	} );
 	
 	
@@ -160,6 +210,31 @@ $status = $this->session->flashdata('status');
 	     window.document.location = $(this).data("href");
 	    });
 	});
+	    
+	function showingModal(vendor_code){
+	    $('#myModal').modal({show:true});
+	    //$("#candidate_id").val(id);
+	    $.ajax({
+		type: "POST",
+		url: "<?=site_url('admin/emailtracklist')?>",
+		dataType:"json",
+		data:{vendor_code:vendor_code} ,                    
+		success: function (json) {
+		    console.log(json.emailtrack.length);
+		    $('tbody.track').empty();
+		    for (var i=0; i<json.emailtrack.length; i++) {
+		    //alert(json.emailtrack[i].cr_date);
+		    //$('.track').remove();
+		    $('.track').append('<tr class="oddClass even gradeC"><td id="crDate">'+json.emailtrack[i].cr_date+'</td><td id="hiringCode">'+json.emailtrack[i].refer_code+'</td><td id="hiringEmail">'+json.emailtrack[i].email+'</td></tr>')
+		   // $('#crDate').text(json.emailtrack[i].cr_date);
+		   // //$('#hiringName').val(json.emailtrack[i].);
+		   // $('#hiringCode').text(json.emailtrack[i].refer_code);
+		   // $('#hiringEmail').text(json.emailtrack[i].email);
+		   
+		   }
+		},
+	    });
+	}
 	</script>
     <script type="text/javascript">
 	function switcherRefresh()

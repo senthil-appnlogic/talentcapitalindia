@@ -62,6 +62,11 @@ $CandMail = $this->uri->segment(4);
                               <label>Referrer Code</label>
                                 <input class="form-control input-md" value="<?php echo $Vcode;?>" name="vendor_code" type="text" placeholder="code" readonly="">
                             </div>
+			    
+			    <div class="form-group">
+                              <label>Referrer Name</label>
+                                <input class="form-control input-md" value="<?php echo $intEmpName[0]['user_name'];?>" name="ref_name" type="text" placeholder="code" readonly="">
+                            </div>
                             
 			     <div class="form-group">
                               <label>First Name <span style="color:#EB8B11">*</span></label>
@@ -674,7 +679,13 @@ $CandMail = $this->uri->segment(4);
 				  <!--<td><center><button type="button" class="btn btn-remove btn-default btn-sm removeButton"><i class="fa fa-minus"></i></button></center></td>-->
                                 </tr>
 				<tr class="countClass">
-				  <td> <input placeholder="HSC/Diploma" name="degree[]" id="degree" class="form-control input-md" type="text"></td>
+				  <td> <!--<input placeholder="HSC/Diploma" name="degree[]" id="degree" class="form-control input-md" type="text">-->
+				      <select name="degree[]" id="degree" class="form-control">
+					<option disabled selected hidden>HSC/Diploma</option>
+					<option value="HSC">HSC</option>
+					<option value="Diploma">Diploma</option>
+				      </select>
+				  </td>
                                   <td> <input placeholder="Specialisation" name="specialisation[]" id="specialisation" class="form-control input-md" type="text"></td>
                                   <td><span class='input-group date'><input type="text" name="edu_duration_from[]" onblur="checkDurationMonth($(this));" id="edu_duration_from" class="form-control input-md    datepicker-dob" ><span class="input-group-addon" ><span class="glyphicon glyphicon-calendar"></span></span></span></td>
 				  <td><span class='input-group date'><input type="text" name="edu_duration_to[]" id="edu_duration_to" class="form-control input-md  datepicker-dob"  ><span class="input-group-addon" ><span class="glyphicon glyphicon-calendar"></span></span></span></td>
@@ -1432,22 +1443,23 @@ $CandMail = $this->uri->segment(4);
   
   var totaledu = 0;
   function checkDurationMonth($this) {
-    
     var $row = $this.parents('.odd');
     var prevRowVal = $this.closest('tr').prev('tr').find('[id="edu_duration_to"]').val();
     var thisValue = $this.val();
-    //console.log(prevRowVal);
-    //console.log(thisValue);
+    if (prevRowVal=="") {
+      var prevRowVal = thisValue;
+    }
     var prevRowNewVal = moment.parseZone(prevRowVal, 'DD MMM YYYY').format();
     var thisNewValue = moment.parseZone(thisValue, 'DD MMM YYYY').format();
-    
+    if (prevRowNewVal=='Invalid date') {
+     prevRowNewVal=0;
+    }
     var a = moment(prevRowNewVal,'YYYY/MM/DD');
     var b = moment(thisNewValue,'YYYY/MM/DD');
     var diffDays = b.diff(a, 'days');
     if (diffDays >= 60) {
       totaledu+=diffDays;
-    //alert(diffDays);
-    var call = countingCareerdays(diffDays);
+      var call = countingCareerdays(diffDays);
     }
     
     if (diffDays >= 60) {
@@ -1469,6 +1481,7 @@ $CandMail = $this->uri->segment(4);
     //var result = + year +" Year " + month + " Month " + casio + " Day" ;
     var result = + year +"Year " + month + "Month ";
      $('.countEduYr').val(result);
+     //totaledu = 0;
     //alert(result);
   }
   var totalmonth = 0;
@@ -1476,6 +1489,9 @@ $CandMail = $this->uri->segment(4);
     var $row = $this.parents('.odd1');
     var prevEmpRowVal = $this.closest('tr').prev('tr').find('[id="emp_duration_to"]').val();
     var thisEmpValue = $this.val();
+    if (prevEmpRowVal=="") {
+      var prevEmpRowVal = thisEmpValue;
+    }
     //console.log(prevRowVal);
     //console.log(thisValue);
     var prevRowEmpNewVal = moment.parseZone(prevEmpRowVal, 'DD MMM YYYY').format();
@@ -1484,9 +1500,14 @@ $CandMail = $this->uri->segment(4);
     var a = moment(prevRowEmpNewVal,'YYYY/MM/DD');
     var b = moment(thisNewEmpValue,'YYYY/MM/DD');
     var diffDays = b.diff(a, 'days');
-    totalmonth+=diffDays;
-    //alert(diffDays);
-    var call = countingdays(diffDays);
+    
+    if (diffDays >= 1) {
+      totalmonth+=diffDays;
+      //alert(diffDays);
+      var call = countingdays(diffDays);
+    }
+    
+    
     if (diffDays >= 60) {
       $row.find('[id="empReasonDesc"]').prop("readonly", false);
     }else{
@@ -1502,7 +1523,13 @@ $CandMail = $this->uri->segment(4);
       var prevEmpRowVal = $(".countClass:visible:nth-last-child(2)").find("[name='edu_duration_to[]']").val();
     //alert(prevEmpRowVal);
     }
+    
     var thisEmpValue = $this.val();
+    if (prevEmpRowVal=="") {
+      var prevEmpRowVal = thisEmpValue;
+    }
+    //alert(prevEmpRowVal);
+    //alert(thisEmpValue);
     //console.log(prevEmpRowVal);
     //console.log(thisEmpValue);
     var prevRowEmpNewVal = moment.parseZone(prevEmpRowVal, 'DD MMM YYYY').format();
@@ -1511,9 +1538,13 @@ $CandMail = $this->uri->segment(4);
     var a = moment(prevRowEmpNewVal,'YYYY/MM/DD');
     var b = moment(thisNewEmpValue,'YYYY/MM/DD');
     var diffDays = b.diff(a, 'days');
-    totalmonth+=diffDays;
+    
+    if (diffDays >= 1) {
+      totalmonth+=diffDays;
     //alert(diffDays);
     var call = countingdays(diffDays);
+    }
+    
     if (diffDays >= 60) {
       $row.find('[id="empReasonDesc"]').prop("readonly", false);
     }else{

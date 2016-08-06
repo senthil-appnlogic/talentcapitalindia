@@ -34,17 +34,17 @@ class internalempmodel extends CI_Model {
     }
     
     function mailToCandiate(){
+	$date = date('d-M-y H:i');
 	$session_username = $this->session->userdata('username_admin');
 	$IntEmpCode = $this->input->post('emp_code');
+	$IntEmpName = $this->input->post('emp_name');
 	$email = $this->input->post('email');
 	
-	$this->mailToCandidate($email,$IntEmpCode,$session_username);
+	$this->mailToCandidate($email,$IntEmpCode,$IntEmpName,$session_username,$date);
     }
     
-    function mailToCandidate($email,$IntEmpCode,$session_username)
+    function mailToCandidate($email,$IntEmpCode,$IntEmpName,$session_username,$date)
     {
-	//print_r($session_username);
-	//exit;
 	$body ="<html>
 		    <head>
 			<title>Welcome to Talent Capital</title>
@@ -68,6 +68,14 @@ class internalempmodel extends CI_Model {
 	$this->email->subject('Talent capital India - Please register with us');
 	$this->email->message($body);
 	if($this->email->send()){
+	    $data= array(
+		    'email'=>$email,
+		    'refer_code'=>$IntEmpCode,
+		    'refer_name'=>$IntEmpName,
+		    'check_mailid'=>'no',
+		    'cr_date'=>$date,
+		);
+	    $this->db->insert('emailtrack',$data);
 	    $this->session->set_flashdata('status', 'Email has been sent to User Successfully');
 	    redirect('internalemployee/internalEmployeeView');
 	}else{
@@ -162,7 +170,7 @@ class internalempmodel extends CI_Model {
 	}
     }
     function getIntEmpName($code){
-	$sql="SELECT name FROM login_auth where intemp_code='$code'";
+	$sql="SELECT user_name FROM login_auth where intemp_code='$code'";
 	return $this->db->query($sql, $return_object = TRUE)->result_array();
     }
 	
@@ -238,5 +246,16 @@ class internalempmodel extends CI_Model {
 	$sql="SELECT * FROM emp_candidate_details where vendor_code='$code'";
 	return $this->db->query($sql, $return_object = TRUE)->result_array();
     }
+    
+    function emailtracklist($session_code,$check_mail)
+    {
+	$sql="select * from emailtrack where refer_code='$session_code' and check_mailid='$check_mail' order by cr_date desc";
+     	return $this->db->query($sql, $return_object = TRUE)->result_array();
+    }
+    
+//    function getIntEmpName($code){
+//	$sql="SELECT user_name FROM loginauth where intemp_code='$code'";
+//	return $this->db->query($sql, $return_object = TRUE)->result_array();
+//    }
     
 }

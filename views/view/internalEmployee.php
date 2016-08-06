@@ -733,7 +733,7 @@
 				 
                                   <td><input placeholder="SSLC" name="degree[]" id="degree" class="form-control input-md" type="text"></td>
                                   <td> <input placeholder="Specialisation" name="specialisation[]" id="specialisation" class="form-control input-md" type="text"></td>
-                                  <td><span class='input-group date'><input type="text" name="edu_duration_from[]" id="edu_duration_from" class="form-control input-md    datepicker-dob" ><span class="input-group-addon" ><span class="glyphicon glyphicon-calendar"></span></span></span></td>
+                                  <td><span class='input-group date'><input type="text" name="edu_duration_from[]" id="edu_duration_from" class="form-control input-md datepicker-dob" ><span class="input-group-addon" ><span class="glyphicon glyphicon-calendar"></span></span></span></td>
 				  <td><span class='input-group date'><input type="text" name="edu_duration_to[]" id="edu_duration_to" class="form-control input-md  datepicker-dob"  ><span class="input-group-addon" ><span class="glyphicon glyphicon-calendar"></span></span></span></td>
                                   <td> <input placeholder="University" name="university[]" class="form-control input-md" type="text"></td>
                                   <td> <input placeholder="Percentage" name="percentage[]" class="form-control input-md" type="text"></td>
@@ -754,9 +754,15 @@
 				  <!--<td><center><button type="button" class="btn btn-remove btn-default btn-sm removeButton"><i class="fa fa-minus"></i></button></center></td>-->
                                 </tr>
 				<tr class="countClass">
-				  <td> <input placeholder="HSC/Diploma" name="degree[]" id="degree" class="form-control input-md" type="text"></td>
+				  <td> <!--<input placeholder="HSC/Diploma" name="degree[]" id="degree" class="form-control input-md" type="text">-->
+				      <select name="degree[]" id="degree" class="form-control">
+					<option disabled selected hidden>HSC/Diploma</option>
+					<option value="HSC">HSC</option>
+					<option value="Diploma">Diploma</option>
+				      </select>
+				  </td>
                                   <td> <input placeholder="Specialisation" name="specialisation[]" id="specialisation" class="form-control input-md" type="text"></td>
-                                  <td><span class='input-group date'><input type="text" name="edu_duration_from[]" onblur="checkDurationMonth($(this));" id="edu_duration_from" class="form-control input-md    datepicker-dob" ><span class="input-group-addon" ><span class="glyphicon glyphicon-calendar"></span></span></span></td>
+                                  <td><span class='input-group date'><input type="text" name="edu_duration_from[]" onblur="checkDurationMonth();" id="edu_duration_from" class="form-control input-md datepicker-dob sec" ><span class="input-group-addon" ><span class="glyphicon glyphicon-calendar"></span></span></span></td>
 				  <td><span class='input-group date'><input type="text" name="edu_duration_to[]" id="edu_duration_to" class="form-control input-md  datepicker-dob"  ><span class="input-group-addon" ><span class="glyphicon glyphicon-calendar"></span></span></span></td>
                                   <td> <input placeholder="University" name="university[]" class="form-control input-md" type="text"></td>
                                   <td> <input placeholder="Percentage" name="percentage[]" class="form-control input-md" type="text"></td>
@@ -777,7 +783,7 @@
 				<tr class="countClass">
 				<td> <input placeholder="UG Degree" name="degree[]" id="degree" class="form-control input-md" type="text"></td>
                                   <td> <input placeholder="Specialisation" name="specialisation[]" id="specialisation" class="form-control input-md" type="text"></td>
-                                  <td><span class='input-group date'><input type="text" name="edu_duration_from[]" onblur="checkDurationMonth($(this));" id="edu_duration_from" class="form-control input-md datepicker-dob" ><span class="input-group-addon" ><span class="glyphicon glyphicon-calendar"></span></span></span></td>
+                                  <td><span class='input-group date'><input type="text" name="edu_duration_from[]" onblur="checkDurationMonth();" id="edu_duration_from" class="form-control input-md datepicker-dob third" ><span class="input-group-addon" ><span class="glyphicon glyphicon-calendar"></span></span></span></td>
 				  <td><span class='input-group date'><input type="text" name="edu_duration_to[]" id="edu_duration_to" class="form-control input-md  datepicker-dob"  ><span class="input-group-addon" ><span class="glyphicon glyphicon-calendar"></span></span></span></td>
                                   <td> <input placeholder="University" name="university[]" class="form-control input-md" type="text"></td>
                                   <td> <input placeholder="Percentage" name="percentage[]" class="form-control input-md" type="text"></td>
@@ -823,7 +829,7 @@
 			      <tr class="countClass">
 				<td> <input placeholder="UG Degree" name="degree[]" id="degree" class="form-control input-md" type="text"></td>
                                   <td> <input placeholder="Specialisation" name="specialisation[]" id="specialisation" class="form-control input-md" type="text"></td>
-                                  <td><span class='input-group date'><input type="text" name="edu_duration_from[]" onblur="checkDurationMonth($(this));" id="edu_duration_from" class="form-control input-md datepicker-dob" ><span class="input-group-addon" ><span class="glyphicon glyphicon-calendar"></span></span></span></td>
+                                  <td><span class='input-group date'><input type="text" name="edu_duration_from[]" onblur="checkDurationMonth();" id="edu_duration_from" class="form-control input-md datepicker-dob fourth" ><span class="input-group-addon" ><span class="glyphicon glyphicon-calendar"></span></span></span></td>
 				  <td><span class='input-group date'><input type="text" name="edu_duration_to[]" id="edu_duration_to" class="form-control input-md  datepicker-dob"  ><span class="input-group-addon" ><span class="glyphicon glyphicon-calendar"></span></span></span></td>
                                   <td> <input placeholder="University" name="university[]" class="form-control input-md" type="text"></td>
                                   <td> <input placeholder="Percentage" name="percentage[]" class="form-control input-md" type="text"></td>
@@ -843,6 +849,9 @@
 			      </tbody>
                             </table>
 			  <!--<input placeholder="Educational_Gap_Year" size="55px" class="form-control input-md countEduYr" id="educational_gap_year2" type="hidden" >-->
+			  <input id="secdate" value="" class="form-control input-md" type="hidden">
+			  <input id="thirddate" value="" class="form-control input-md" type="hidden">
+			  <input id="fourthdate" value="" class="form-control input-md" type="hidden">
                         </div>
                         </div>
 			
@@ -1462,63 +1471,59 @@
 		}
 		
    }
-  var totaledu = 0;
-  function checkDurationMonth($this) {
-    
-    var $row = $this.parents('.odd');
-    var prevRowVal = $this.closest('tr').prev('tr').find('[id="edu_duration_to"]').val();
-    var thisValue = $this.val();
-    //console.log(prevRowVal);
-    //console.log(thisValue);
-    var prevRowNewVal = moment.parseZone(prevRowVal, 'DD MMM YYYY').format();
-    var thisNewValue = moment.parseZone(thisValue, 'DD MMM YYYY').format();
-    
-    var a = moment(prevRowNewVal,'YYYY/MM/DD');
-    var b = moment(thisNewValue,'YYYY/MM/DD');
-    var diffDays = b.diff(a, 'days');
-    if (diffDays >= 60) {
-      totaledu+=diffDays;
-    //alert(diffDays);
-    var call = countingCareerdays(diffDays);
-    }
-    
-    if (diffDays >= 60) {
-      $row.find('[id="reasonDesc"]').prop("readonly", false);
-    }else{
-      $row.find('[id="reasonDesc"]').prop("readonly", true);
-    }
+   
+  function checkDurationMonth() {
+    var sum = 0;
+    $('.countClass').each(function(){
+      var first = $(this).find('[name="edu_duration_to[]"]').val();
+      var secon = $(this).next('tr.countClass').find("[name='edu_duration_from[]']").val();
+      var prevRowNewVal = moment.parseZone(first, 'DD MMM YYYY').format();
+      var thisNewValue = moment.parseZone(secon, 'DD MMM YYYY').format();
+      if (prevRowNewVal=='Invalid date') {
+	prevRowNewVal=0;
+      }
+      var a = moment(prevRowNewVal,'YYYY/MM/DD');
+      var b = moment(thisNewValue,'YYYY/MM/DD');
+      var diffDays = b.diff(a, 'days');
+      if (diffDays >= 60) {
+	sum+=diffDays;
+      }
+    });
+    var call = countingCareerdays(sum);
   }
   
-  function countingCareerdays(diffDays) {
+  function countingCareerdays(sum) {
     var y = 365;
     var y2 = 30;
-    var remainder = totaledu % y;
+    var remainder = sum % y;
     var casio = remainder % y2;
-    year = (totaledu - remainder) / y;
-    //alert(year);
+    year = (sum - remainder) / y;
     month = (remainder - casio) / y2;
-    
     //var result = + year +" Year " + month + " Month " + casio + " Day" ;
     var result = + year +"Year " + month + "Month ";
-     $('.countEduYr').val(result);
-    //alert(result);
+    $('.countEduYr').val(result);
   }
-  var totalmonth = 0;
   function checkEmpDurationMonth($this) {
     var $row = $this.parents('.odd1');
     var prevEmpRowVal = $this.closest('tr').prev('tr').find('[id="emp_duration_to"]').val();
     var thisEmpValue = $this.val();
-    //console.log(prevRowVal);
-    //console.log(thisValue);
+    if (prevEmpRowVal=="") {
+      var prevEmpRowVal = thisEmpValue;
+    }
     var prevRowEmpNewVal = moment.parseZone(prevEmpRowVal, 'DD MMM YYYY').format();
     var thisNewEmpValue = moment.parseZone(thisEmpValue, 'DD MMM YYYY').format();
     
     var a = moment(prevRowEmpNewVal,'YYYY/MM/DD');
     var b = moment(thisNewEmpValue,'YYYY/MM/DD');
     var diffDays = b.diff(a, 'days');
-    totalmonth+=diffDays;
-    //alert(diffDays);
-    var call = countingdays(diffDays);
+    
+    if (diffDays >= 1) {
+      totalmonth+=diffDays;
+      //alert(diffDays);
+      var call = countingdays(diffDays);
+    }
+    
+    
     if (diffDays >= 60) {
       $row.find('[id="empReasonDesc"]').prop("readonly", false);
     }else{
@@ -1534,7 +1539,13 @@
       var prevEmpRowVal = $(".countClass:visible:nth-last-child(2)").find("[name='edu_duration_to[]']").val();
     //alert(prevEmpRowVal);
     }
+    
     var thisEmpValue = $this.val();
+    if (prevEmpRowVal=="") {
+      var prevEmpRowVal = thisEmpValue;
+    }
+    //alert(prevEmpRowVal);
+    //alert(thisEmpValue);
     //console.log(prevEmpRowVal);
     //console.log(thisEmpValue);
     var prevRowEmpNewVal = moment.parseZone(prevEmpRowVal, 'DD MMM YYYY').format();
@@ -1543,9 +1554,13 @@
     var a = moment(prevRowEmpNewVal,'YYYY/MM/DD');
     var b = moment(thisNewEmpValue,'YYYY/MM/DD');
     var diffDays = b.diff(a, 'days');
-    totalmonth+=diffDays;
+    
+    if (diffDays >= 1) {
+      totalmonth+=diffDays;
     //alert(diffDays);
     var call = countingdays(diffDays);
+    }
+    
     if (diffDays >= 60) {
       $row.find('[id="empReasonDesc"]').prop("readonly", false);
     }else{

@@ -19,7 +19,7 @@ class login extends CI_Controller {
 	       'smtp_host' => 'mbox.s214.sureserver.com',
 	       'smtp_port' => 465,
 	       'smtp_user' => 'donotreply@talentcapitalindia.com', // change it to yours
-	       'smtp_pass' => '09062016', // change it to yours
+	       'smtp_pass' => 'Tci@2014', // change it to yours
 	       'mailtype' => 'html',
 	       'smtp_crypto'=>'ssl',
 	       'charset' => 'iso-8859-1',
@@ -39,7 +39,6 @@ class login extends CI_Controller {
 
 	if($sessionData=="")
 	{
-
 	    if($this->input->post('save')=='Sign me in')
 	    {
 		    $result=$this->loginmodel->checkLoginType();

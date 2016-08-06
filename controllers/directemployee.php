@@ -18,7 +18,7 @@ class directemployee extends CI_Controller {
 	   'smtp_host' => 'mbox.s214.sureserver.com',
 	   'smtp_port' => 465,
 	   'smtp_user' => 'donotreply@talentcapitalindia.com', // change it to yours
-	   'smtp_pass' => '09062016', // change it to yours
+	   'smtp_pass' => 'Tci@2014', // change it to yours
 	   'mailtype' => 'html',
 	   'smtp_crypto'=>'ssl',
 	   'charset' => 'iso-8859-1',
@@ -36,7 +36,7 @@ class directemployee extends CI_Controller {
 	//print_r($result);
 	//exit;
 	if($result==0){
-	    $error=$this->session->set_flashdata('error, invalid username and password');
+	    $error=$this->session->set_flashdata('status, invalid username and password');
 	    redirect(base_url()."talentcapitalctr");
 	}
 	else{

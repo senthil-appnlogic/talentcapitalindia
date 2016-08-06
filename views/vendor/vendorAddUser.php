@@ -1,4 +1,5 @@
 <?php $vendor_code=$this->session->userdata('vendor_code');
+$vendor_name=$this->session->userdata('vendorusername');
 $status = $this->session->flashdata('status');?>
 
 <style>
@@ -26,6 +27,7 @@ $status = $this->session->flashdata('status');?>
 		
 		    <form action="<?php echo site_url('vendorlogin/vendorAddUser'); ?>" class=""  id="form_validation" method="post" name="form_validation" enctype="multipart/form-data">
 			<div class="col-md-6 col-md-offset-3">
+			    <input class="form-control input-md" value="<?php echo $vendor_name;?>" name="vendor_name" type="hidden" placeholder="Name">
 			    <div class="form-group">
                                 <h2 class="headingLine" id="candidate">Candiate Details</h2>
                             </div>
@@ -42,6 +44,7 @@ $status = $this->session->flashdata('status');?>
 				<span id="email-status"></span>
 			    </div>
 			    <div class="form-group" style="padding-top: 15px;">
+				<input class="form-control input-md" name="emailVal" type="hidden" value="no">
 				<input type="submit" name="Save" value="Submit" id="check"class="btn btn-sm btn-success">
 				<button type="button" onclick="window.history.back();" class="btn btn-sm btn-warning">cancel</button>
 			    </div>

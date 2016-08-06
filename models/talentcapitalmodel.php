@@ -312,15 +312,17 @@
             $this->upload->do_upload('profile_pic');
             $data = $this->upload->data();
             $profilePic=$folderPath.$data['file_name'];
-            
+            $Uname = $this->input->post('name');
+	    $email = $this->input->post('email');
+	    $date = date('d-M-y H:i');
             $data= array(
-                'name'=>$this->input->post('name'),
+                'name'=>$Uname,
 		'email_random_code'=>$ramdomString,	
 		'password'=>$this->input->post('confirm_password'),
 		'password_token'=>'',
 		'vendor_code'=>$vendorCode,
                 'mobile_number'=>$this->input->post('mobile_number'),
-                'email'=>$this->input->post('email'),
+                'email'=>$email,
                 'pan_attach_no'=>$this->input->post('pan_attach_no'),
                 'pan_attach_copy'=>$filePath1,
                 //'address_attach_proof'=>$filePath2,
@@ -329,13 +331,16 @@
                 //'bank_attach_cheque'=>$filePath3,
 		'profile_pic'=>$profilePic,
 		'login_types'=>$this->input->post('login_types'),
+		'cr_date'=>$date,
             );
 
 	    $this->db->insert('vendor',$data);
-	    $this->emailToVendor($Uname,$ramdomString);
+	    //print_r($Uname);
+	    //exit;
 	    $vendorTci = substr($vendorCode,3);
 	    $newCode = $vendorTci + 1;
 	    $this->tciUpdate($vendorTci,$newCode);
+	    $this->emailToVendor($Uname,$ramdomString,$email);
         }
         
         function tciUpdate($vendorTci,$newCode)
@@ -358,9 +363,8 @@
 	    return $this->db->query($sql, $return_object = TRUE)->result_array();	    	    
 	}
 	
-        public function emailToVendor($Uname,$ramdomString)
+        public function emailToVendor($Uname,$ramdomString,$email)
         {
-            $email = $this->input->post('email');
             $body ="<html>
                         <head>
                             <title>Welcome to Talent Capital</title>
@@ -387,10 +391,10 @@
             $this->email->message($body);
 	    $this->email->send();
 //            if($this->email->send()){
-//		$this->session->set_flashdata('error', 'Please verify your email');
-//		redirect('talentcapitalctr/index');
+//		$this->session->set_flashdata('status', 'You are Successfully Registered with Talent Capital, Please check your Email to Proceed');
+//		redirect('talentcapitalctr/successMsg');
 //	    }else{
-//		$this->session->set_flashdata('error', 'Your email is not sent');
+//		$this->session->set_flashdata('status', 'Your email is not sent');
 //		redirect('talentcapitalctr/index');  
 //            }
         }
@@ -416,7 +420,7 @@
             $this->upload->do_upload('profile_pic');
             $data = $this->upload->data();
             $profilePic=$folderPath.$data['file_name'];
-            $date = date('d/M/y h:ia');
+            $date = date('d-M-y H:i');
             $data= array(
                 'name'=>$this->input->post('name'),
                 'mobile_number'=>$this->input->post('mobile_number'),
@@ -765,9 +769,10 @@ function updateApplicantRegister($uniqueCode)
             $this->upload->do_upload('resume_upload');
             $data = $this->upload->data();
             $resume=$folderPath.$data['file_name'];
-	    $date = date('d/M/y h:ia');
+	    $date = date('d-M-y H:i');
             $data= array(
 		'vendor_code'=>$this->input->post('vendor_code'),
+		'referrer_name'=>$this->input->post('ref_name'),
                 'candidate_name'=>$this->input->post('candidate_name'),
 		'middle_name'=>$this->input->post('middle_name'),
 		'last_name'=>$this->input->post('last_name'),
@@ -1104,6 +1109,19 @@ function updateApplicantRegister($uniqueCode)
 //	    
 //        }
 
+function emailtracking($sample,$code,$emailTrack)
+{
+    $data= array(
+	'email'=>$sample,
+	'refer_code'=>$code,
+	'check_mailid'=>$emailTrack,
+    );
+    //echo "<pre>";
+    //print_r($data);
+    $this->db->where('email', $sample);
+    $this->db->update('emailtrack',$data);
+}
+
 function hiringPartnerLinkAdd($code,$loginType)
         {
 	    
@@ -1133,9 +1151,10 @@ function hiringPartnerLinkAdd($code,$loginType)
             $this->upload->do_upload('resume_upload');
             $data = $this->upload->data();
             $resume=$folderPath.$data['file_name'];
-            $date = date('d/M/y h:ia');
+            $date = date('d-M-y H:i');
             $data= array(
 		'vendor_code'=>$code,
+		'referrer_name'=>$this->input->post('ref_name'),
                 'candidate_name'=>$this->input->post('candidate_name'),
 		'middle_name'=>$this->input->post('middle_name'),
 		'last_name'=>$this->input->post('last_name'),
@@ -1693,6 +1712,7 @@ function hiringPartnerLinkAdd($code,$loginType)
 		     $resume=$this->input->post('old_resume');
 		    }
 		    $vendor_code=$this->input->post('vendor_code');
+		    $ref_name=$this->input->post('ref_name');
 		    $candidate_name=$this->input->post('candidate_name');
 		    $mobile_number=$this->input->post('mobile_number');
 		    
@@ -1727,10 +1747,10 @@ function hiringPartnerLinkAdd($code,$loginType)
 		    $profile_pic=$profilePic;
 		    $Check_YN=$this->input->post('check_yn');
 		    $yesno=$this->input->post('yesno');
-		    $date = date('d/M/y h:ia');
+		    $date = date('d-M-y H:i');
 		    //$uptodate=$this->input->post('up_date');
 		    //echo $resume;exit;
-		    $sql=mysql_query("UPDATE emp_candidate_details SET 	vendor_code='$vendor_code',candidate_name='$candidate_name',mobile_number='$mobile_number',skills='$skills',primary_other_skils='$primary_other_skils',secondary_other_skils='$secondary_other_skils',
+		    $sql=mysql_query("UPDATE emp_candidate_details SET 	vendor_code='$vendor_code',referrer_name='$ref_name',candidate_name='$candidate_name',mobile_number='$mobile_number',skills='$skills',primary_other_skils='$primary_other_skils',secondary_other_skils='$secondary_other_skils',
 				     SecondarySkills='$SecondarySkills',total_exp_year='$total_exp_year',total_exp_month='$total_exp_month',current_ctc_thousands='$current_ctc_thousands',expected_ctc_thousands='$expected_ctc_thousands',relevant_exp_year='$relevant_exp_year',
 				     relevant_exp_month='$relevant_exp_month',notice_period='$notice_period',current_ctc_lakhs='$current_ctc_lakhs',expected_ctc_lakhs='$expected_ctc_lakhs',day='$day',month='$month',year='$year',
 				     pan_card_no='$pan_card_no',pan_card_attach='$pan_card_attach',language_known='$language_known',current_location='$current_location',preferred_location='$preferred_location',interview_timing='$interview_timing',profile_pic='$profile_pic',

@@ -41,11 +41,14 @@
 	<!-- ================== END PAGE LEVEL STYLE ================== -->
 	<!-- ================== BEGIN DATA-TABLE STYLE ================== -->
 	
-	<link href="<?php echo base_url(); ?>assetsAdmin/datatables/css/buttons.dataTables.min.css" rel="stylesheet" />
+	
 	  <link href="<?php echo base_url(); ?>assetsAdmin/plugins/bootstrap-validation/css/bootstrapValidator.css" rel="stylesheet" />
 	<!-- ================== END DATA-TABLE STYLE ================== -->
+	<link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.10.12/css/jquery.dataTables.min.css">
+	<link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/buttons/1.2.1/css/buttons.dataTables.min.css">
 	
-	
+	<!--<link href="<?php echo base_url();?>assetsAdmin/plugins/DataTables/css/jquery.dataTables.min.css" rel="stylesheet" />
+	<link href="<?php echo base_url(); ?>assetsAdmin/datatables/css/buttons.dataTables.min.css" rel="stylesheet" />-->
 	<link href="<?php echo base_url();?>assetsAdmin/plugins/DataTables/css/data-table.css" rel="stylesheet" />
 	
 	<link href="<?php echo base_url(); ?>assetsAdmin/plugins/LC-switch-master/lc_switch.css" rel="stylesheet" />
@@ -171,6 +174,18 @@
 						</ul>-->
 					</li>
 					
+					<li class="has-sub <?php if($this->uri->segment(2)=="emailTrack"){echo "active";}?>">
+						<a href="<?php echo site_url('admin/emailTrack');?>">
+						   <!-- <b class="caret pull-right"></b>-->
+						   <!-- <i class="fa fa-user-plus text-warning"></i>-->
+						    <span> Email Track List </span>
+						</a>
+						<!--<ul class="sub-menu">
+							<li><a href="">Direct Applicant</a></li>
+							
+						</ul>-->
+					</li>
+					
 					<li class="has-sub <?php if($this->uri->segment(2)=="settings"){echo "active";}?>">
 						<a href="<?php echo site_url('admin/settings');?>">
 						   <!-- <b class="caret pull-right"></b>-->
@@ -279,13 +294,23 @@
 	<script src="<?php echo base_url();?>assetsAdmin/plugins/DataTables/js/jquery.dataTables.js"></script>
 	<!--<script src="<?php echo base_url();?>assetsAdmin/js/table-manage-default.demo.min.js"></script>-->
 	<script src="<?php echo base_url();?>assetsAdmin/plugins/DataTables/js/dataTables.tableTools.js"></script>
+	
 	<script src="<?php echo base_url();?>assetsAdmin/js/table-manage-tabletools.demo.min.js"></script>
 	<!-- ================== END DATA-TABLE JS ================== -->
 	
+	<script type="text/javascript" language="javascript" src="https://cdn.datatables.net/1.10.12/js/jquery.dataTables.min.js">
+	</script>
+	<script type="text/javascript" language="javascript" src="https://cdn.datatables.net/buttons/1.2.1/js/dataTables.buttons.min.js">
+	</script>
+	<script type="text/javascript" language="javascript" src="//cdn.datatables.net/buttons/1.2.1/js/buttons.print.min.js">
+	</script>
+	<script type="text/javascript" language="javascript" src="https://cdn.datatables.net/select/1.2.0/js/dataTables.select.min.js">
+	</script>
 	
-	
-	<script src="<?php echo base_url();?>assetsAdmin/datatables/js/jquery.dataTables.min.js"></script>
+	<!--<script src="<?php echo base_url();?>assetsAdmin/datatables/js/jquery.dataTables.min.js"></script>
 	<script src="<?php echo base_url();?>assetsAdmin/datatables/js/dataTables.buttons.min.js"></script>
+	<script src="<?php echo base_url();?>assetsAdmin/datatables/js/buttons.print.min.js"></script>
+	<script src="<?php echo base_url();?>assetsAdmin/plugins/DataTables/js/dataTables.select.min.js"></script>-->
 	<script src="<?php echo base_url();?>assetsAdmin/datatables/js/jszip.min.js"></script>
 	<script src="<?php echo base_url();?>assetsAdmin/datatables/js/pdfmake.min.js"></script>
 	<script src="<?php echo base_url();?>assetsAdmin/datatables/js/vfs_fonts.js"></script>

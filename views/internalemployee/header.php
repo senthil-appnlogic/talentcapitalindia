@@ -144,6 +144,17 @@
 							
 						</ul>-->
 					</li>
+					<li class="has-sub <?php if($this->uri->segment(2)=="tracklist"){echo "active";}?>">
+						<a href="<?php echo site_url('internalemployee/tracklist');?>">
+						 <!--   <b class="caret pull-right"></b>-->
+						    <i class="fa fa-exclamation-circle text-warning"></i>
+						    <span>Not Yet Approved Candidate</span> 
+						</a>
+						<!--<ul class="sub-menu">
+							<li><a href="">Vendor</a></li>
+							
+						</ul>-->
+					</li>
 			        <!-- begin sidebar minify button -->
 					<li><a href="javascript:;" class="sidebar-minify-btn" data-click="sidebar-minify"><i class="fa fa-angle-double-left"></i></a></li>
 			        <!-- end sidebar minify button -->

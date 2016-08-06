@@ -142,6 +142,18 @@
 						</ul>-->
 					</li>
 					
+					<li class="has-sub <?php if($this->uri->segment(2)=="tracklist"){echo "active";}?>">
+						<a href="<?php echo site_url('vendorlogin/tracklist');?>">
+						 <!--   <b class="caret pull-right"></b>-->
+						    <i class="fa fa-exclamation-circle  text-warning"></i>
+						    <span>Not Yet Approved Candidate</span> 
+						</a>
+						<!--<ul class="sub-menu">
+							<li><a href="">Vendor</a></li>
+							
+						</ul>-->
+					</li>
+					
 					
 					
 					

@@ -1,4 +1,5 @@
 <?php $emp_code=$this->session->userdata('employee_code');
+$emp_name=$this->session->userdata('username_admin');
 $status = $this->session->flashdata('status');?>
 
 <style>
@@ -26,6 +27,7 @@ $status = $this->session->flashdata('status');?>
 		
 		    <form action="<?php echo site_url('internalemployee/intEmpAddUser'); ?>" class=""  id="form_validation" method="post" name="form_validation" enctype="multipart/form-data">
 			<div class="col-md-6 col-md-offset-3">
+			    <input class="form-control input-md" value="<?php echo $emp_name;?>" name="emp_name" type="hidden" placeholder="Name">
 			    <div class="form-group">
                                 <h2 class="headingLine" id="candidate">Candiate Details</h2>
                             </div>

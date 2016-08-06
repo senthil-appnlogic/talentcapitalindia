@@ -18,7 +18,7 @@ class internalemployee extends CI_Controller {
 	   'smtp_host' => 'mbox.s214.sureserver.com',
 	   'smtp_port' => 465,
 	   'smtp_user' => 'donotreply@talentcapitalindia.com', // change it to yours
-	   'smtp_pass' => '09062016', // change it to yours
+	   'smtp_pass' => 'Tci@2014', // change it to yours
 	   'mailtype' => 'html',
 	   'smtp_crypto'=>'ssl',
 	   'charset' => 'iso-8859-1',
@@ -135,6 +135,8 @@ class internalemployee extends CI_Controller {
 	    $data['Vcode'] =  $code;
 	    if(isset($_POST['save'])){
 		$loginType = "InternalEmployee";
+		$emailTrack = "yes";
+		$this->tc_model->emailtracking($sample,$code,$emailTrack);
 		$result=$this->tc_model->hiringPartnerLinkAdd($code,$loginType);
 		$this->session->set_flashdata('status', 'Your Information has been Succesfully regeistered to talent capital');
 		redirect('talentcapitalctr/successMsg');		
@@ -149,6 +151,7 @@ class internalemployee extends CI_Controller {
 		    redirect('talentcapitalctr/index');
 		}
 		else {
+		    $data['intEmpName']=$this->emp_model->getIntEmpName($code);
 		    $data['Location']=$this->tc_model->getLocation();
 		    $data['skills']=$this->tc_model->getskillDetails();
 		    $data['language']=$this->tc_model->getlanguageDetails();
@@ -225,6 +228,18 @@ class internalemployee extends CI_Controller {
 	else{
 	    redirect(site_url('admin'));
 	}
+    }
+    
+    function tracklist(){
+	$session_code = $this->session->userdata('employee_code');
+	//print_r($session_data);
+	//exit;
+	$check_mail = 'no';
+	$result['emailtrack']=$this->emp_model->emailtracklist($session_code,$check_mail);
+	//print_r($result['emailtrack']);
+	//exit;
+	$this->load->view('internalemployee/header');
+	$this->load->view('internalemployee/tracklist',$result);
     }
 
 

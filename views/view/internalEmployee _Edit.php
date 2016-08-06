@@ -589,15 +589,15 @@ $status = $this->session->flashdata('status');
 				<label>Languages Known</label>
 				<?php $langList= explode(",",$inter_Edit[0]['language_known']);?>
 				<select  multiple class="form-control chzn-select input-sm" name="language_known[]">
-				   <?php  foreach( $lang as $row) {
+				   <?php  /*foreach( $lang as $row) {
 				    $selected="";
 				    if(in_array($row, $langList))
-				     $selected= "selected";					    
+				     $selected= "selected";*/					    
 				    ?>
-				    <option <?=$selected?>  value="<?php  echo $row ?>" ><?php  echo $row ?></option>
-				<?php }?>
-				</select>
-			    </div>-->
+				    <option <?=$selected?>  value="<?php  //echo $row ?>" ><?php // echo $row ?></option>
+				<?php// }?>
+				<!--</select>-->
+			    <!--</div>-->
 			    
 			    <div class="form-group">
                                 <label>Languages Known <span style="color:#EB8B11">*</span></label>
@@ -792,7 +792,18 @@ $status = $this->session->flashdata('status');
                                 <tr class="odd countClass" >
 				  <input id="AddValues" name="update_educ[]" class="form-control input-md" type="hidden" value="UPDATE">
                                   <td class="hidden"> <input placeholder="Degree" name="edu_lineid[]" value="<?php echo $row['id'];?>" id="degree" class="form-control input-md" type="hidden"></td>
-				  <td> <input placeholder="Degree" name="degree[]" value="<?php echo $row['degree'];?>" id="degree" class="form-control input-md" type="text"></td>
+				  <td> <!--<input placeholder="Degree" name="degree[]" value="<?php echo $row['degree'];?>" id="degree" class="form-control input-md" type="text">-->
+				  <?php if($count==1){ ?>
+				    <select class="form-control input-sm" name="degree[]">
+				     <option <?php if($row['degree']=='HSC'){ echo "selected";}?>  value="HSC" ><?php echo "HSC";?></option>
+				     <option <?php if($row['degree']=='Diploma'){ echo "selected";}?>  value="Diploma"><?php echo "Diploma";?></option>
+				 </select>
+				  <?php } else {?>
+				    <input placeholder="Degree" name="degree[]" value="<?php echo $row['degree'];?>" id="degree" class="form-control input-md" type="text">
+				  <?php }
+				  ?>
+				  
+				  </td>
                                   <td> <input placeholder="Specialization" value="<?php echo $row['specialisation'];?>" name="specialisation[]" id="specialisation" class="form-control input-md" type="text"></td>
                                   <td><span class='input-group date'><input value="<?php echo $row['edu_duration_from'];?>" type="text" name="edu_duration_from[]" onblur="checkDurationMonth($(this));" id="edu_duration_from" class="form-control input-md    datepicker-dob" ><span class="input-group-addon" ><span class="glyphicon glyphicon-calendar"></span></span></span></td>
 				  <td><span class='input-group date'><input value="<?php echo $row['edu_duration_to'];?>" type="text" name="edu_duration_to[]" id="edu_duration_to" class="form-control input-md  datepicker-dob"  ><span class="input-group-addon" ><span class="glyphicon glyphicon-calendar"></span></span></span></td>
@@ -1471,24 +1482,133 @@ $status = $this->session->flashdata('status');
   //  }
   //}
   
+  //var totaledu = 0;
+  //function checkDurationMonth($this) {
+  //  
+  //  var $row = $this.parents('.odd');
+  //  var prevRowVal = $this.closest('tr').prev('tr').find('[id="edu_duration_to"]').val();
+  //  var thisValue = $this.val();
+  //  //console.log(prevRowVal);
+  //  //console.log(thisValue);
+  //  var prevRowNewVal = moment.parseZone(prevRowVal, 'DD MMM YYYY').format();
+  //  var thisNewValue = moment.parseZone(thisValue, 'DD MMM YYYY').format();
+  //  
+  //  var a = moment(prevRowNewVal,'YYYY/MM/DD');
+  //  var b = moment(thisNewValue,'YYYY/MM/DD');
+  //  var diffDays = b.diff(a, 'days');
+  //  if (diffDays >= 60) {
+  //    totaledu+=diffDays;
+  //  //alert(diffDays);
+  //  var call = countingCareerdays(diffDays);
+  //  }
+  //  
+  //  if (diffDays >= 60) {
+  //    $row.find('[id="reasonDesc"]').prop("readonly", false);
+  //  }else{
+  //    $row.find('[id="reasonDesc"]').prop("readonly", true);
+  //  }
+  //}
+  //
+  //function countingCareerdays(diffDays) {
+  //  var y = 365;
+  //  var y2 = 30;
+  //  var remainder = totaledu % y;
+  //  var casio = remainder % y2;
+  //  year = (totaledu - remainder) / y;
+  //  //alert(year);
+  //  month = (remainder - casio) / y2;
+  //  
+  //  //var result = + year +" Year " + month + " Month " + casio + " Day" ;
+  //  var result = + year +"Year " + month + "Month ";
+  //   $('.countEduYr').val(result);
+  //  //alert(result);
+  //}
+  //var totalmonth = 0;
+  //function checkEmpDurationMonth($this) {
+  //  var $row = $this.parents('.odd1');
+  //  var prevEmpRowVal = $this.closest('tr').prev('tr').find('[id="emp_duration_to"]').val();
+  //  var thisEmpValue = $this.val();
+  //  //console.log(prevRowVal);
+  //  //console.log(thisValue);
+  //  var prevRowEmpNewVal = moment.parseZone(prevEmpRowVal, 'DD MMM YYYY').format();
+  //  var thisNewEmpValue = moment.parseZone(thisEmpValue, 'DD MMM YYYY').format();
+  //  
+  //  var a = moment(prevRowEmpNewVal,'YYYY/MM/DD');
+  //  var b = moment(thisNewEmpValue,'YYYY/MM/DD');
+  //  var diffDays = b.diff(a, 'days');
+  //  totalmonth+=diffDays;
+  //  //alert(diffDays);
+  //  var call = countingdays(diffDays);
+  //  if (diffDays >= 60) {
+  //    $row.find('[id="empReasonDesc"]').prop("readonly", false);
+  //  }else{
+  //    $row.find('[id="empReasonDesc"]').prop("readonly", true);
+  //  }
+  //}
+  //
+  //function checkBeforeEmpDuration($this) {
+  //  var $row = $this.parents('.odd1');
+  //  var prevEmpRowVal = $(".countClass:visible:last").find("[name='edu_duration_to[]']").val();
+  //  //alert(prevEmpRowVal);
+  //  if (prevEmpRowVal=="") {
+  //    var prevEmpRowVal = $(".countClass:visible:nth-last-child(2)").find("[name='edu_duration_to[]']").val();
+  //  //alert(prevEmpRowVal);
+  //  }
+  //  var thisEmpValue = $this.val();
+  //  //console.log(prevEmpRowVal);
+  //  //console.log(thisEmpValue);
+  //  var prevRowEmpNewVal = moment.parseZone(prevEmpRowVal, 'DD MMM YYYY').format();
+  //  var thisNewEmpValue = moment.parseZone(thisEmpValue, 'DD MMM YYYY').format();
+  //  
+  //  var a = moment(prevRowEmpNewVal,'YYYY/MM/DD');
+  //  var b = moment(thisNewEmpValue,'YYYY/MM/DD');
+  //  var diffDays = b.diff(a, 'days');
+  //  totalmonth+=diffDays;
+  //  //alert(diffDays);
+  //  var call = countingdays(diffDays);
+  //  if (diffDays >= 60) {
+  //    $row.find('[id="empReasonDesc"]').prop("readonly", false);
+  //  }else{
+  //    $row.find('[id="empReasonDesc"]').prop("readonly", true);
+  //  }
+  //}
+  //
+  //function countingdays(diffDays) {
+  //  //alert(diffDays);
+  //  var y = 365;
+  //  var y2 = 30;
+  //  var remainder = totalmonth % y;
+  //  var casio = remainder % y2;
+  //  year = (totalmonth - remainder) / y;
+  //  //alert(year);
+  //  month = (remainder - casio) / y2;
+  //  
+  //  //var result = + year +" Year " + month + " Month " + casio + " Day" ;
+  //  var result = + year +"Year " + month + "Month ";
+  //   $('.countYr').val(result);
+  //  //alert(result);
+  //}
+  //
+  
   var totaledu = 0;
   function checkDurationMonth($this) {
-    
     var $row = $this.parents('.odd');
     var prevRowVal = $this.closest('tr').prev('tr').find('[id="edu_duration_to"]').val();
     var thisValue = $this.val();
-    //console.log(prevRowVal);
-    //console.log(thisValue);
+    if (prevRowVal=="") {
+      var prevRowVal = thisValue;
+    }
     var prevRowNewVal = moment.parseZone(prevRowVal, 'DD MMM YYYY').format();
     var thisNewValue = moment.parseZone(thisValue, 'DD MMM YYYY').format();
-    
+    if (prevRowNewVal=='Invalid date') {
+     prevRowNewVal=0;
+    }
     var a = moment(prevRowNewVal,'YYYY/MM/DD');
     var b = moment(thisNewValue,'YYYY/MM/DD');
     var diffDays = b.diff(a, 'days');
     if (diffDays >= 60) {
       totaledu+=diffDays;
-    //alert(diffDays);
-    var call = countingCareerdays(diffDays);
+      var call = countingCareerdays(diffDays);
     }
     
     if (diffDays >= 60) {
@@ -1510,6 +1630,7 @@ $status = $this->session->flashdata('status');
     //var result = + year +" Year " + month + " Month " + casio + " Day" ;
     var result = + year +"Year " + month + "Month ";
      $('.countEduYr').val(result);
+     //totaledu = 0;
     //alert(result);
   }
   var totalmonth = 0;
@@ -1517,6 +1638,9 @@ $status = $this->session->flashdata('status');
     var $row = $this.parents('.odd1');
     var prevEmpRowVal = $this.closest('tr').prev('tr').find('[id="emp_duration_to"]').val();
     var thisEmpValue = $this.val();
+    if (prevEmpRowVal=="") {
+      var prevEmpRowVal = thisEmpValue;
+    }
     //console.log(prevRowVal);
     //console.log(thisValue);
     var prevRowEmpNewVal = moment.parseZone(prevEmpRowVal, 'DD MMM YYYY').format();
@@ -1525,9 +1649,14 @@ $status = $this->session->flashdata('status');
     var a = moment(prevRowEmpNewVal,'YYYY/MM/DD');
     var b = moment(thisNewEmpValue,'YYYY/MM/DD');
     var diffDays = b.diff(a, 'days');
-    totalmonth+=diffDays;
-    //alert(diffDays);
-    var call = countingdays(diffDays);
+    
+    if (diffDays >= 1) {
+      totalmonth+=diffDays;
+      //alert(diffDays);
+      var call = countingdays(diffDays);
+    }
+    
+    
     if (diffDays >= 60) {
       $row.find('[id="empReasonDesc"]').prop("readonly", false);
     }else{
@@ -1543,7 +1672,13 @@ $status = $this->session->flashdata('status');
       var prevEmpRowVal = $(".countClass:visible:nth-last-child(2)").find("[name='edu_duration_to[]']").val();
     //alert(prevEmpRowVal);
     }
+    
     var thisEmpValue = $this.val();
+    if (prevEmpRowVal=="") {
+      var prevEmpRowVal = thisEmpValue;
+    }
+    //alert(prevEmpRowVal);
+    //alert(thisEmpValue);
     //console.log(prevEmpRowVal);
     //console.log(thisEmpValue);
     var prevRowEmpNewVal = moment.parseZone(prevEmpRowVal, 'DD MMM YYYY').format();
@@ -1552,9 +1687,13 @@ $status = $this->session->flashdata('status');
     var a = moment(prevRowEmpNewVal,'YYYY/MM/DD');
     var b = moment(thisNewEmpValue,'YYYY/MM/DD');
     var diffDays = b.diff(a, 'days');
-    totalmonth+=diffDays;
+    
+    if (diffDays >= 1) {
+      totalmonth+=diffDays;
     //alert(diffDays);
     var call = countingdays(diffDays);
+    }
+    
     if (diffDays >= 60) {
       $row.find('[id="empReasonDesc"]').prop("readonly", false);
     }else{
@@ -1577,7 +1716,7 @@ $status = $this->session->flashdata('status');
      $('.countYr').val(result);
     //alert(result);
   }
-    
+  
     function addMore() {
       $Counter = $('.countClass').length-2;
       $Counter +=1;
