@@ -361,7 +361,7 @@ class admin extends CI_Controller {
 	    {
 		$data['employeeDetails']=$this->talentModel->employeeDetails();
 		//echo "<pre>";
-		//print_r($data['employeeDetails']);
+		//print_r($data['employeeDetails'][0]['total_exp_year']);
 		//exit;
 		$this->load->view('admin/header');
 		$this->load->view('admin/employee',$data);
@@ -857,6 +857,12 @@ class admin extends CI_Controller {
 		 <a target="_blank" href="<?php echo base_url();?><?php echo $imgslit[$i];?>"><h3><center><?php echo $imgslit1[0];?></center></h3></a>
 		</div>
 	<?php }
+    }
+    
+    function emailTrackDelete($id){
+	$this->talentModel->emailTrackDelete($id);
+	redirect("admin/emailTrack");
+        //$this->session->set_flashdata('status','A  record deleted successfully');
     }
 
 }	

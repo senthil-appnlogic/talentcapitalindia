@@ -65,7 +65,6 @@ class login extends CI_Controller {
                             redirect("internalemployee/dashboard");
                         }
 		    }
-
 	    }
 	    else{
 		$this->load->view('login/index');

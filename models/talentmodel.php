@@ -42,7 +42,7 @@ class talentModel extends CI_Model {
             $data = $this->upload->data();
             $filePath=$folderPath.$data['file_name'];
 	    $role=$this->input->post('user_role');
-	    $date = date('d-M-y H:i');
+	    $date = date('d-M-y');
 	    if($role=="Admin"){
 		$data = array(
 		'role'=>$role,
@@ -1066,6 +1066,11 @@ if($this->email->send()){
     function resume_file($id){
 	$sql="SELECT * FROM emp_candidate_details where id='$id'";
 	return $query=$this->db->query($sql)->result_array();
+    }
+    
+    function emailTrackDelete($id){
+	$this->db->where("id",$id);
+	$this->db->delete("emailtrack");
     }
     
 }

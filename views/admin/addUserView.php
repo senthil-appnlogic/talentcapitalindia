@@ -44,7 +44,7 @@ $status = $this->session->flashdata('status');
 						    <th data-class="expand">Created Date</th>
 						    <th data-class="expand">Name</th>
 						    <th data-hide="phone,tablet">Email</th>
-						    <th>Profile pic</th>
+						    <!--<th>Profile pic</th>-->
 						    <th>InternalEmp Code</th>
 						    <th>Approved Y/N</th>
 						    <th>Role</th>
@@ -60,7 +60,7 @@ $status = $this->session->flashdata('status');
 						    <td id=""><?php echo $row['cr_date']; ?></td>
 						    <td id="USER_NAME" style="cursor:pointer;" class="clickable-row" data-href='<?php echo site_url('admin/addUserEditView/'.$row['id'])?>'><u><?php echo $row['user_name']; ?></u></td>					    
 						    <td id="EMAIL"><?php echo $row['email']; ?></td>
-						    <td><img src="<?php echo site_url($row['user_image']);?>" class="img-resposive" width="70" height="70" id="PanImgPreview"></td>
+						    <!--<td><img src="<?php echo site_url($row['user_image']);?>" class="img-resposive" width="70" height="70" id="PanImgPreview"></td>-->
 						    <td><?php echo $row['intemp_code']; ?></td>
 						    <td><input type="checkbox" <?php if($row['status']=='Y'){ echo 'checked';}?> class="lcs_check" id="approvedYN"></td>
 						    <td><?php echo $row['role']; ?></td>

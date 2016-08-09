@@ -165,7 +165,7 @@ class vendormodel extends CI_Model {
     }
     //Vendor Login functionality Ends
     function mailToCandiate(){
-	$date = date('d-M-y H:i');
+	$date = date('d-M-y');
 	$session_username = $this->session->userdata('vendorusername');
 	$vendorCode = $this->input->post('vendor_code');
 	$vendorname = $this->input->post('vendor_name');
@@ -254,7 +254,18 @@ class vendormodel extends CI_Model {
     
     function CheckEmail($email)
     {
-	$sql="SELECT * FROM vendor INNER JOIN emp_candidate_details WHERE email = '$email' OR mail_id = '$email'";
+	//$sql="SELECT * FROM vendor INNER JOIN emp_candidate_details WHERE email = '$email' OR mail_id = '$email'";
+	$sql = "select * 
+			from (
+			    select email as email from emailtrack
+			    union all
+			    select email from login_auth
+			    union all
+			    select email from vendor
+			    union all
+			    select mail_id from emp_candidate_details
+			) a
+			where email = '$email'";
 	
 	return $result= $this->db->query($sql, $return_object = TRUE)->result_array();
     }

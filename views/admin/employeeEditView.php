@@ -147,7 +147,7 @@ $status = $this->session->flashdata('status');
                                 <label>Total Experience <span style="color:#EB8B11">*</span></label>
                                 <div class="row">
                                 <div class="form-group col-md-4">
-                                   <?php $years=array('1years','2years','3years','4years','5years','6years','7years','8years','9years','10years','11years','12years','13years','14years','15years','16years','17years','18years','19years','20years','21years') ?> 
+                                   <?php $years=array('1','2','3','4','5','6','7','8','9','10','11','12','13','14','15','16','17','18','19','20','21') ?> 
                                   <select disabled name="total_exp_year" class="form-control">
 				    <?php foreach($years as $year){?>
                                     <option value="<?php echo $year;?>" <?php if($employeeEdit[0]['total_exp_year']==$year) echo "selected"?>><?php echo $year;?></option>
@@ -155,7 +155,7 @@ $status = $this->session->flashdata('status');
 				  </select>
                                 </div>
                                  <div class="form-group col-md-4">
-			    <?php $months=array('0months','1months','2months','3months','4months','5months','6months','7months','8months','9months','10months','11months') ?> 
+			    <?php $months=array('0','1','2','3','4','5','6','7','8','9','10','11') ?> 
                                   <select disabled name="total_exp_month" class="form-control">
                                     <?php foreach($months as $month){?>
                                     <option value="<?php echo $month;?>" <?php if($employeeEdit[0]['total_exp_month']==$month) echo "selected"?>><?php echo $month;?></option>
@@ -175,7 +175,7 @@ $status = $this->session->flashdata('status');
                                 <label>Relevant Exp <span style="color:#EB8B11">*</span></label>
                                 <div class="row">
                                 <div class="form-group col-md-4">
-				     <?php $years=array('1years','2years','3years','4years','5years','6years','7years','8years','9years','10years','11years','12years','13years','14years','15years','16years','17years','18years','19years','20years','21years') ?> 
+				     <?php $years=array('1','2','3','4','5','6','7','8','9','10','11','12','13','14','15','16','17','18','19','20','21') ?> 
                                   <select disabled name="relevant_exp_year" class="form-control">
 				    <?php foreach($years as $years){?>
                                     <option value="<?php echo $years;?>" <?php if($employeeEdit[0]['relevant_exp_year']==$years) echo "selected"?>><?php echo $years;?></option>
@@ -183,7 +183,7 @@ $status = $this->session->flashdata('status');
 				  </select>
                                 </div>
                                  <div class="form-group col-md-4">
-				    <?php $Relevantmonths=array('0months','1months','2months','3months','4months','5months','6months','7months','8months','9months','10months','11months') ?> 
+				    <?php $Relevantmonths=array('0','1','2','3','4','5','6','7','8','9','10','11') ?> 
                                   
                                    <select disabled name="relevant_exp_month" class="form-control">
                                     <?php foreach($Relevantmonths as $month){?>
@@ -227,7 +227,7 @@ $status = $this->session->flashdata('status');
 				     </select>
 				  </div>
 				  <div class="form-group col-md-4">
-				    <?php $currentCTCMonth=array('5','10','15','20','25','30','35','40','45','50','55','60','65','70','75','80','85','90','95') ?> 
+				    <?php $currentCTCMonth=array('00','05','10','15','20','25','30','35','40','45','50','55','60','65','70','75','80','85','90','95') ?> 
 				    <select disabled name="current_ctc_thousands" class="form-control">
 				    <?php foreach($currentCTCMonth as $currentCTC){?>
 				       <option value="<?php echo $currentCTC;?>" <?php if($employeeEdit[0]['current_ctc_thousands']==$currentCTC) echo "selected"?>><?php echo $currentCTC;?></option>
@@ -249,7 +249,7 @@ $status = $this->session->flashdata('status');
 				     </select>
 				  </div>
 				  <div class="form-group col-md-4">
-				    <?php $expCTCMonth=array('5','10','15','20','25','30','35','40','45','50','55','60','65','70','75','80','85','90','95') ?> 
+				    <?php $expCTCMonth=array('00','05','10','15','20','25','30','35','40','45','50','55','60','65','70','75','80','85','90','95') ?> 
 				    <select disabled name="expected_ctc_thousands" class="form-control">
 				    <?php foreach($expCTCMonth as $expCTC){?>
 				       <option value="<?php echo $expCTC;?>" <?php if($employeeEdit[0]['expected_ctc_thousands']==$expCTC) echo "selected"?>><?php echo $expCTC;?></option>
@@ -277,7 +277,7 @@ $status = $this->session->flashdata('status');
 				  </select>
                                 </div>
                                  <div class="form-group col-md-4">
-				<?php $month=array('January','February','March','April','May','June','July','August','September','October','November','December') ?> 
+				<?php $month=array('Jan','Feb','Mar','Apr','May','Jun','Jul','Aug','Sep','Oct','Nov','Dec') ?> 
                                   <select disabled name="month" class="form-control">
                                     <?php foreach($month as $month){?>
                                     <option value="<?php echo $month;?>" <?php if($employeeEdit[0]['month']==$month) echo "selected"?>><?php echo $month;?></option>
@@ -285,7 +285,7 @@ $status = $this->session->flashdata('status');
                                   </select>
                                 </div>
                                  <div class="form-group col-md-4">
-				    <?php  $year=array('1960','1961','1962','1963','1964','1965','1966','1967','1968','1969','1970','1971','1972','1973','1974','1975','1976','1977','1978','1979','1980','1981','1982','1983','1984','1985','1986','1987','1988','1989','1990','1991','1992','1993','1994','1995','1996','1997','1997','1998','1999','2000','2001','2002','2003','2004','2005','2006','2007','2008','2009','2010','2011','2012','2013','2014','2015','2016') ?> 
+				    <?php  $year=array('60','61','62','63','64','65','66','67','68','69','70','71','72','73','74','75','76','77','78','79','80','81','82','83','84','85','86','87','88','89','90','91','92','93','94','95','96','97','97','98','99','00','01','02','03','04','05','06','07','08','09','10','11','12','13','14','15','16') ?> 
                                   <select disabled name="year" class="form-control">
                                     <option selected>Year</option>
                                     <?php foreach($year as $year){?>
@@ -403,7 +403,8 @@ $status = $this->session->flashdata('status');
 
 
 
-<div class="">
+<div class="form-group">
+    <label>Are you ok work under Talent capital India Payroll<span style="color:#EB8B11">*</span></label></br></br>
   <div class="row">
     <div class="form-group col-md-2">
 	<input  class="lcs_check" id="switch_YN" type="checkbox" <?php if($employeeEdit[0]['yesno']=="Y") echo "checked";?> disabled="disabled">

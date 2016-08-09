@@ -42,9 +42,9 @@ $status = $this->session->flashdata('status');
 					  <thead>
 						<tr>
 						    <th data-class="expand">Created date</th>
-                                                    <th data-class="expand">Reference Code</th>
-						    <th data-class="expand">Referred By</th>
+                                                    <th data-class="expand">Reference Code / Referred By</th>
 						    <th data-class="expand">Email</th>
+						    <th data-class="expand">Action</th>
 						</tr>
 					    </thead>
 					    <tbody>
@@ -52,9 +52,9 @@ $status = $this->session->flashdata('status');
 					       
 						<tr class="oddClass even gradeC">
 						    <td><?php echo $row['cr_date']; ?></td>
-                                                    <td><?php echo $row['refer_code']; ?></td>
-						    <td><?php echo $row['refer_name']; ?></td>
+                                                    <td><?php echo $row['refer_code']; ?> / <?php echo $row['refer_name']; ?></td>
 						    <td><?php echo $row['email']; ?></td>
+						    <td><a  id="delete_box" href="<?php echo site_url('admin/emailTrackDelete/'.$row['id'])?>" class="btn btn-danger btn-xs"><i class="glyphicon glyphicon-trash"></i> </a></td>
 						</tr>
 					    <?php }}?>
 					    </tbody>
