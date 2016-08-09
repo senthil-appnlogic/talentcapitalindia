@@ -332,14 +332,14 @@ class admin extends CI_Controller {
 		$this->session->set_flashdata('status','A old record updated successfully');
 		redirect("admin/employee");
 	    }
-	    $res=$this->talentModel->getCandidateId($id);
-	    $Id = $res[0]['head_id'];
-	    $data['employeeEdit']=$this->talentModel->getCandidateDetails($Id);
+	    //$res=$this->talentModel->getCandidateId($id);
+	    //$Id = $res[0]['head_id'];
+	    $data['employeeEdit']=$this->talentModel->getCandidateDetails($id);
 	    //echo "<pre>";
 	    //print_r($data['employeeEdit']);
 	    //exit;
-	    $data['employeeDetails']=$this->talentModel->getEmployeeDetails($Id);
-	    $data['educationalDetails']=$this->talentModel->getEducationalDetails($Id);
+	    $data['employeeDetails']=$this->talentModel->getEmployeeDetails($id);
+	    $data['educationalDetails']=$this->talentModel->getEducationalDetails($id);
 	    $data['language']=$this->talentModel->getlanguageDetails();
 	    $data['Location']=$this->talentModel->getLocation();
 	    $data['skills']=$this->talentModel->getskillDetails();
@@ -372,11 +372,11 @@ class admin extends CI_Controller {
     }
     //EDIT VIEW
     function employeeEditView($id){
-	$res=$this->talentModel->getCandidateId($id);
-	$Id = $res[0]['head_id'];
-	$data['employeeEdit']=$this->talentModel->getCandidateDetails($Id);
-	$data['employeeDetails']=$this->talentModel->getEmployeeDetails($Id);
-	$data['educationalDetails']=$this->talentModel->getEducationalDetails($Id);
+	//$res=$this->talentModel->getCandidateId($id);
+	//$Id = $res[0]['head_id'];
+	$data['employeeEdit']=$this->talentModel->getCandidateDetails($id);
+	$data['employeeDetails']=$this->talentModel->getEmployeeDetails($id);
+	$data['educationalDetails']=$this->talentModel->getEducationalDetails($id);
 	$data['language']=$this->talentModel->getlanguageDetails();
 	$data['Location']=$this->talentModel->getLocation();
 	$data['skills']=$this->talentModel->getskillDetails();

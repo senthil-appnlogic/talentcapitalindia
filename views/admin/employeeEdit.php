@@ -856,22 +856,22 @@ $status = $this->session->flashdata('status');
 			},
             }
         },
-	educational_gap_year: {
-            validators: {
-		notEmpty:
-			{
-			    message: 'Educational Gap is required'
-			},
-            }
-        },
-	career_gap_year: {
-            validators: {
-		notEmpty:
-			{
-			    message: 'Carreier Gap is required'
-			},
-            }
-        },
+//	educational_gap_year: {
+//            validators: {
+//		notEmpty:
+//			{
+//			    message: 'Educational Gap is required'
+//			},
+//            }
+//        },
+//	career_gap_year: {
+//            validators: {
+//		notEmpty:
+//			{
+//			    message: 'Carreier Gap is required'
+//			},
+//            }
+//        },
 	team_size_name: {
             validators: {
 		notEmpty:

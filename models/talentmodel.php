@@ -511,17 +511,17 @@ class talentModel extends CI_Model {
     }
     
 
-    function getCandidateDetails($Id){
-	$sql="SELECT * FROM emp_candidate_details where id='$Id'";
+    function getCandidateDetails($id){
+	$sql="SELECT * FROM emp_candidate_details where id='$id'";
         return $this->db->query($sql, $return_object = TRUE)->result_array();
     }
     
-    function getEmployeeDetails($Id){
-	$sql="SELECT * FROM employement_details where head_id='$Id'";
+    function getEmployeeDetails($id){
+	$sql="SELECT * FROM employement_details where head_id='$id'";
         return $this->db->query($sql, $return_object = TRUE)->result_array();
     }
-    function getEducationalDetails($Id){
-	$sql="SELECT * FROM educational_details where head_id='$Id'";
+    function getEducationalDetails($id){
+	$sql="SELECT * FROM educational_details where head_id='$id'";
         return $this->db->query($sql, $return_object = TRUE)->result_array();
     }
     

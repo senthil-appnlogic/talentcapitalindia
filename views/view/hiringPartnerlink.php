@@ -739,8 +739,8 @@ $CandMail = $this->uri->segment(4);
                               </thead>
                               <tbody>
                                 <tr class="odd countClass" >
-                                  <td> <input placeholder="SSLC" name="degree[]" id="degree" class="form-control input-md" type="text"></td>
-                                  <td> <input placeholder="Specialization" name="specialisation[]" id="specialisation" class="form-control input-md" type="text"></td>
+                                  <td> <input placeholder="SSLC" name="degree[]" id="degree" value="SSC"  class="form-control input-md" type="text"></td>
+                                  <td> <input placeholder="Specialization" name="specialisation[]" id="specialisation" value="Maths"  class="form-control input-md" type="text"></td>
                                   <td><span class='input-group date'><input type="text" name="edu_duration_from[]" id="edu_duration_from" class="form-control input-md    datepicker-dob" ><span class="input-group-addon" ><span class="glyphicon glyphicon-calendar"></span></span></span></td>
 				  <td><span class='input-group date'><input type="text" name="edu_duration_to[]" id="edu_duration_to" class="form-control input-md  datepicker-dob"  ><span class="input-group-addon" ><span class="glyphicon glyphicon-calendar"></span></span></span></td>
                                   <td> <input placeholder="University" name="university[]" class="form-control input-md" type="text"></td>
@@ -873,7 +873,7 @@ $CandMail = $this->uri->segment(4);
                               </thead>
                               <tbody>
                                 <tr class="odd1 countClass1">
-                                  <td> <input placeholder="Client Company" name="client_comp[]" id="client_comp" class="form-control input-md" type="text" ></td>
+                                  <td> <input placeholder="Client Company" name="client_comp[]" id="client_comp"  class="form-control input-md" type="text" ></td>
                                   <td> <input placeholder="Payroll Company" name="payroll_comp[]" id="payroll_comp" class="form-control input-md" type="text" ></td>
                                   <td> <input placeholder="Designation Company" name="designation[]" class="form-control input-md" id="designation" type="text" ></td>
                                   <td><span class='input-group date'><input type="text" placeholder="" name="emp_duration_from[]" onblur="checkBeforeEmpDuration($(this));" size="35" id="emp_duration_from" class="form-control input-md table_input input-group datepicker-dob" ><span class="input-group-addon" ><span class="glyphicon glyphicon-calendar"></span></span></span></td>
@@ -886,6 +886,50 @@ $CandMail = $this->uri->segment(4);
 				      <span class="input-group-btn">
 					  <span class="btn btn-primary btn-file">
 					      Browse<input type="file" name="file_employee_upload[0][]" multiple="multiple" id="file_employee_upload" >
+					  </span>
+				      </span>
+				      <input type="text" id="" value="" class="form-control" readonly >
+				    </div>
+				  </div></td>
+				  <td><center><button type="button" class="btn btn-remove btn-default btn-sm removeButton"><i class="fa fa-minus"></i></button></center></td>
+                                </tr>
+				
+				<tr class="odd1 countClass1">
+                                  <td> <input placeholder="Client Company" name="client_comp[]" id="client_comp"  class="form-control input-md" type="text" ></td>
+                                  <td> <input placeholder="Payroll Company" name="payroll_comp[]" id="payroll_comp" class="form-control input-md" type="text" ></td>
+                                  <td> <input placeholder="Designation Company" name="designation[]" class="form-control input-md" id="designation" type="text" ></td>
+                                  <td><span class='input-group date'><input type="text" placeholder="" name="emp_duration_from[]" onblur="checkBeforeEmpDuration($(this));" size="35" id="emp_duration_from" class="form-control input-md table_input input-group datepicker-dob" ><span class="input-group-addon" ><span class="glyphicon glyphicon-calendar"></span></span></span></td>
+				  <td><span class='input-group date'><input type="text" placeholder="" name="emp_duration_to[]" size="35" id="emp_duration_to" class="form-control input-md table_input input-group datepicker-dob"  ><span class="input-group-addon" ><span class="glyphicon glyphicon-calendar"></span></span></span></td>
+                                  <td> <input placeholder="Location" name="location[]" class="form-control input-md" type="text"></td>
+				  <td> <textarea name="empReasonDesc[]" id="empReasonDesc" class="form-control input-md" rows="1" readonly></textarea></td>
+                                  <td>
+				  <div class="form-group">
+				    <div class="input-group">
+				      <span class="input-group-btn">
+					  <span class="btn btn-primary btn-file">
+					      Browse<input type="file" name="file_employee_upload[1][]" multiple="multiple" id="file_employee_upload" >
+					  </span>
+				      </span>
+				      <input type="text" id="" value="" class="form-control" readonly >
+				    </div>
+				  </div></td>
+				  <td><center><button type="button" class="btn btn-remove btn-default btn-sm removeButton"><i class="fa fa-minus"></i></button></center></td>
+                                </tr>
+				
+				<tr class="odd1 countClass1">
+                                  <td> <input placeholder="Client Company" name="client_comp[]" id="client_comp"  class="form-control input-md" type="text" ></td>
+                                  <td> <input placeholder="Payroll Company" name="payroll_comp[]" id="payroll_comp" class="form-control input-md" type="text" ></td>
+                                  <td> <input placeholder="Designation Company" name="designation[]" class="form-control input-md" id="designation" type="text" ></td>
+                                  <td><span class='input-group date'><input type="text" placeholder="" name="emp_duration_from[]" onblur="checkBeforeEmpDuration($(this));" size="35" id="emp_duration_from" class="form-control input-md table_input input-group datepicker-dob" ><span class="input-group-addon" ><span class="glyphicon glyphicon-calendar"></span></span></span></td>
+				  <td><span class='input-group date'><input type="text" placeholder="" name="emp_duration_to[]" size="35" id="emp_duration_to" class="form-control input-md table_input input-group datepicker-dob"  ><span class="input-group-addon" ><span class="glyphicon glyphicon-calendar"></span></span></span></td>
+                                  <td> <input placeholder="Location" name="location[]" class="form-control input-md" type="text"></td>
+				  <td> <textarea name="empReasonDesc[]" id="empReasonDesc" class="form-control input-md" rows="1" readonly></textarea></td>
+                                  <td>
+				  <div class="form-group">
+				    <div class="input-group">
+				      <span class="input-group-btn">
+					  <span class="btn btn-primary btn-file">
+					      Browse<input type="file" name="file_employee_upload[2][]" multiple="multiple" id="file_employee_upload" >
 					  </span>
 				      </span>
 				      <input type="text" id="" value="" class="form-control" readonly >
