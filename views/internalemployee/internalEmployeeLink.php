@@ -1847,8 +1847,52 @@ $CandMail = $this->uri->segment(4);
     $('[name="university[]"]:last').removeAttr("data-bv-field");
     $('[name="percentage[]"]:last').removeAttr("data-bv-field");
     })
- //$(function(){
- //     var sampleTags = [];
- //     $('.myTags').tagit();
- // });
+
+$(function(){
+	var check = $("#Switch_Val").val();
+	if (check == 'N') {
+	    $("#switch_YN").trigger('click');
+	}
+	$Company_name=$('[name="client_comp[]"]:last');
+	$payroll_comp=$('[name="payroll_comp[]"]:last');
+	$Designation=$('[name="designation[]"]:last');
+	$edu_duration_from=$('[name="emp_duration_from[]"]:last');
+	$edu_duration_to=$('[name="emp_duration_to[]"]:last');
+	$Location=$('[name="location[]"]:last');
+	
+	$Company_name1=$(".countClass1:visible:nth-last-child(3)").find('[name="client_comp[]"]');
+	$payroll_comp1=$(".countClass1:visible:nth-last-child(3)").find('[name="payroll_comp[]"]');
+	$Designation1=$(".countClass1:visible:nth-last-child(3)").find('[name="designation[]"]');
+	$edu_duration_from1=$(".countClass1:visible:nth-last-child(3)").find('[name="emp_duration_from[]"]');
+	$edu_duration_to1=$(".countClass1:visible:nth-last-child(3)").find('[name="emp_duration_to[]"]');
+	$Location1=$(".countClass1:visible:nth-last-child(3)").find('[name="location[]"]');
+	
+    $('#form_validation').bootstrapValidator('removeField', $Company_name);
+    $('#form_validation').bootstrapValidator('removeField', $payroll_comp);
+    $('#form_validation').bootstrapValidator('removeField', $Designation);
+    $('#form_validation').bootstrapValidator('removeField', $edu_duration_from);
+    $('#form_validation').bootstrapValidator('removeField', $edu_duration_to);
+    $('#form_validation').bootstrapValidator('removeField', $Location);
+    
+    $('#form_validation').bootstrapValidator('removeField', $Company_name1);
+    $('#form_validation').bootstrapValidator('removeField', $payroll_comp1);
+    $('#form_validation').bootstrapValidator('removeField', $Designation1);
+    $('#form_validation').bootstrapValidator('removeField', $edu_duration_from1);
+    $('#form_validation').bootstrapValidator('removeField', $edu_duration_to1);
+    $('#form_validation').bootstrapValidator('removeField', $Location1);
+    
+    $('[name="client_comp[]"]:last').removeAttr("data-bv-field");
+    $('[name="payroll_comp[]"]:last').removeAttr("data-bv-field");
+    $('[name="designation[]"]:last').removeAttr("data-bv-field");
+    $('[name="emp_duration_from[]"]:last').removeAttr("data-bv-field");
+    $('[name="emp_duration_to[]"]:last').removeAttr("data-bv-field");
+     $('[name="location[]"]:last').removeAttr("data-bv-field");
+     
+      $(".countClass1:visible:nth-last-child(3)").find('[name="client_comp[]"]').removeAttr("data-bv-field");
+    $(".countClass1:visible:nth-last-child(3)").find('[name="payroll_comp[]"]').removeAttr("data-bv-field");
+    $(".countClass1:visible:nth-last-child(3)").find('[name="designation[]"]').removeAttr("data-bv-field");
+   $(".countClass1:visible:nth-last-child(3)").find('[name="emp_duration_from[]"]').removeAttr("data-bv-field");
+    $(".countClass1:visible:nth-last-child(3)").find('[name="emp_duration_to[]"]').removeAttr("data-bv-field");
+    $(".countClass1:visible:nth-last-child(3)").find('[name="location[]"]').removeAttr("data-bv-field");
+    })
 </script>
