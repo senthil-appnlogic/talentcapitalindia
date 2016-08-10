@@ -708,8 +708,8 @@ class talentModel extends CI_Model {
 	$result= $this->db->update('educational_details',$data);  
     }
 
-    function employeeDelete($Id){
-	$this->db->where("id",$Id);
+    function employeeDelete($id){
+	$this->db->where("id",$id);
 	$this->db->delete("emp_candidate_details");
     } 
    

@@ -899,7 +899,7 @@ $CandMail = $this->uri->segment(4);
                                   <td> <input placeholder="Client Company" name="client_comp[]" id="client_comp"  class="form-control input-md" type="text" ></td>
                                   <td> <input placeholder="Payroll Company" name="payroll_comp[]" id="payroll_comp" class="form-control input-md" type="text" ></td>
                                   <td> <input placeholder="Designation Company" name="designation[]" class="form-control input-md" id="designation" type="text" ></td>
-                                  <td><span class='input-group date'><input type="text" placeholder="" name="emp_duration_from[]" onblur="checkBeforeEmpDuration($(this));" size="35" id="emp_duration_from" class="form-control input-md table_input input-group datepicker-dob" ><span class="input-group-addon" ><span class="glyphicon glyphicon-calendar"></span></span></span></td>
+                                  <td><span class='input-group date'><input type="text" placeholder="" name="emp_duration_from[]" onblur="checkEmpDurationMonth();" size="35" id="emp_duration_from" class="form-control input-md table_input input-group datepicker-dob" ><span class="input-group-addon" ><span class="glyphicon glyphicon-calendar"></span></span></span></td>
 				  <td><span class='input-group date'><input type="text" placeholder="" name="emp_duration_to[]" size="35" id="emp_duration_to" class="form-control input-md table_input input-group datepicker-dob"  ><span class="input-group-addon" ><span class="glyphicon glyphicon-calendar"></span></span></span></td>
                                   <td> <input placeholder="Location" name="location[]" class="form-control input-md" type="text"></td>
 				  <td> <textarea name="empReasonDesc[]" id="empReasonDesc" class="form-control input-md" rows="1" readonly></textarea></td>
@@ -921,7 +921,7 @@ $CandMail = $this->uri->segment(4);
                                   <td> <input placeholder="Client Company" name="client_comp[]" id="client_comp"  class="form-control input-md" type="text" ></td>
                                   <td> <input placeholder="Payroll Company" name="payroll_comp[]" id="payroll_comp" class="form-control input-md" type="text" ></td>
                                   <td> <input placeholder="Designation Company" name="designation[]" class="form-control input-md" id="designation" type="text" ></td>
-                                  <td><span class='input-group date'><input type="text" placeholder="" name="emp_duration_from[]" onblur="checkBeforeEmpDuration($(this));" size="35" id="emp_duration_from" class="form-control input-md table_input input-group datepicker-dob" ><span class="input-group-addon" ><span class="glyphicon glyphicon-calendar"></span></span></span></td>
+                                  <td><span class='input-group date'><input type="text" placeholder="" name="emp_duration_from[]" onblur="checkEmpDurationMonth();" size="35" id="emp_duration_from" class="form-control input-md table_input input-group datepicker-dob" ><span class="input-group-addon" ><span class="glyphicon glyphicon-calendar"></span></span></span></td>
 				  <td><span class='input-group date'><input type="text" placeholder="" name="emp_duration_to[]" size="35" id="emp_duration_to" class="form-control input-md table_input input-group datepicker-dob"  ><span class="input-group-addon" ><span class="glyphicon glyphicon-calendar"></span></span></span></td>
                                   <td> <input placeholder="Location" name="location[]" class="form-control input-md" type="text"></td>
 				  <td> <textarea name="empReasonDesc[]" id="empReasonDesc" class="form-control input-md" rows="1" readonly></textarea></td>
@@ -943,7 +943,7 @@ $CandMail = $this->uri->segment(4);
                                   <td> <input placeholder="Client Company" id="client_comp" class="form-control input-md" type="text" ></td>
                                   <td> <input placeholder="Payroll Company" id="payroll_comp" class="form-control input-md" type="text" ></td>
                                   <td> <input placeholder="Designation Company" class="form-control input-md" id="designation" type="text" ></td>
-                                  <td><span class='input-group date'><input type="text" placeholder="" onblur="checkEmpDurationMonth($(this));" size="35"  id="emp_duration_from" class="form-control input-md table_input input-group datepicker-dob" ><span class="input-group-addon" ><span class="glyphicon glyphicon-calendar"></span></span></span></td>
+                                  <td><span class='input-group date'><input type="text" placeholder="" onblur="checkEmpDurationMonth();" size="35"  id="emp_duration_from" class="form-control input-md table_input input-group datepicker-dob" ><span class="input-group-addon" ><span class="glyphicon glyphicon-calendar"></span></span></span></td>
 				  <td><span class='input-group date'><input type="text" placeholder=""id="emp_duration_to" size="35" class="form-control input-md table_input input-group datepicker-dob"  ><span class="input-group-addon" ><span class="glyphicon glyphicon-calendar"></span></span></span></td>
                                   <td> <input placeholder="Location" id="location" class="form-control input-md" type="text"></td>
 				  <td> <textarea id="empReasonDesc" class="form-control input-md" rows="1" readonly></textarea></td>
@@ -964,6 +964,7 @@ $CandMail = $this->uri->segment(4);
                              
                               </tbody>
                             </table>
+			  <input id="beforeVal" type="hidden" >
                         </div>
                         </div>
 			
@@ -1297,6 +1298,7 @@ $CandMail = $this->uri->segment(4);
                     }
                 },
                 interview_timing: {
+		  trigger:'blur',
                     validators: {
                         notEmpty: {
                             message: 'The Interview Timing is required and can\'t be empty'
@@ -1391,6 +1393,7 @@ $CandMail = $this->uri->segment(4);
                 },
                 'degree[]': {
                     group: 'td',
+		    trigger:'blur',
                     validators: {
                         notEmpty: {
                             message: 'The Degree is required and can\'t be empty'
@@ -1570,131 +1573,120 @@ $CandMail = $this->uri->segment(4);
   //  }
   //}
   
-var totaledu = 0;
-  function checkDurationMonth($this) {
-    var $row = $this.parents('.odd');
-    var prevRowVal = $this.closest('tr').prev('tr').find('[id="edu_duration_to"]').val();
-    var thisValue = $this.val();
-    if (prevRowVal=="") {
-      var prevRowVal = thisValue;
-    }
-    var prevRowNewVal = moment.parseZone(prevRowVal, 'DD MMM YYYY').format();
-    var thisNewValue = moment.parseZone(thisValue, 'DD MMM YYYY').format();
-    if (prevRowNewVal=='Invalid date') {
-     prevRowNewVal=0;
-    }
-    var a = moment(prevRowNewVal,'YYYY/MM/DD');
-    var b = moment(thisNewValue,'YYYY/MM/DD');
-    var diffDays = b.diff(a, 'days');
-    if (diffDays >= 60) {
-      totaledu+=diffDays;
-      var call = countingCareerdays(diffDays);
-    }
-    
-    if (diffDays >= 60) {
-      $row.find('[id="reasonDesc"]').prop("readonly", false);
-    }else{
-      $row.find('[id="reasonDesc"]').prop("readonly", true);
-    }
+function checkDurationMonth() {
+    var sum = 0;
+    $('.countClass').each(function(){
+      var first = $(this).find('[name="edu_duration_to[]"]').val();
+      if (first=="") {
+	first = $(this).next('tr.countClass').find("[name='edu_duration_from[]']").val();
+      }
+      var secon = $(this).next('tr.countClass').find("[name='edu_duration_from[]']").val();
+      var prevRowNewVal = moment.parseZone(first, 'DD MMM YYYY').format();
+      var thisNewValue = moment.parseZone(secon, 'DD MMM YYYY').format();
+      if (prevRowNewVal=='Invalid date') {
+	prevRowNewVal=0;
+      }
+      var a = moment(prevRowNewVal,'YYYY/MM/DD');
+      var b = moment(thisNewValue,'YYYY/MM/DD');
+      var diffDays = b.diff(a, 'days');
+      if (diffDays >= 60) {
+	sum+=diffDays;
+      }
+    });
+    var call = countingCareerdays(sum);
   }
   
-  function countingCareerdays(diffDays) {
+  function countingCareerdays(sum) {
     var y = 365;
     var y2 = 30;
-    var remainder = totaledu % y;
+    var remainder = sum % y;
     var casio = remainder % y2;
-    year = (totaledu - remainder) / y;
-    //alert(year);
+    year = (sum - remainder) / y;
     month = (remainder - casio) / y2;
-    
     //var result = + year +" Year " + month + " Month " + casio + " Day" ;
     var result = + year +"Year " + month + "Month ";
-     $('.countEduYr').val(result);
-     //totaledu = 0;
-    //alert(result);
+    $('.countEduYr').val(result);
   }
-  var totalmonth = 0;
-  function checkEmpDurationMonth($this) {
-    var $row = $this.parents('.odd1');
-    var prevEmpRowVal = $this.closest('tr').prev('tr').find('[id="emp_duration_to"]').val();
-    var thisEmpValue = $this.val();
-    if (prevEmpRowVal=="") {
-      var prevEmpRowVal = thisEmpValue;
-    }
-    //console.log(prevRowVal);
-    //console.log(thisValue);
-    var prevRowEmpNewVal = moment.parseZone(prevEmpRowVal, 'DD MMM YYYY').format();
-    var thisNewEmpValue = moment.parseZone(thisEmpValue, 'DD MMM YYYY').format();
-    
-    var a = moment(prevRowEmpNewVal,'YYYY/MM/DD');
-    var b = moment(thisNewEmpValue,'YYYY/MM/DD');
-    var diffDays = b.diff(a, 'days');
-    
-    if (diffDays >= 1) {
-      totalmonth+=diffDays;
+  
+  function checkEmpDurationMonth() {
+    var sum = 0;
+    $('.countClass1').each(function(){
+      var first = $(this).find('[name="emp_duration_to[]"]').val();
+      if (first=="") {
+	first = $(this).next('tr.countClass1').find("[name='emp_duration_from[]']").val();
+      }
+     
+      var secon = $(this).next('tr.countClass1').find("[name='emp_duration_from[]']").val();
+      
+      var prevRowNewVal = moment.parseZone(first, 'DD MMM YYYY').format();
+      var thisNewValue = moment.parseZone(secon, 'DD MMM YYYY').format();
+      if (prevRowNewVal=='Invalid date') {
+	prevRowNewVal=0;
+      }
+      var a = moment(prevRowNewVal,'YYYY/MM/DD');
+      var b = moment(thisNewValue,'YYYY/MM/DD');
+      var diffDays = b.diff(a, 'days');
       //alert(diffDays);
-      var call = countingdays(diffDays);
-    }
-    
-    
-    if (diffDays >= 60) {
-      $row.find('[id="empReasonDesc"]').prop("readonly", false);
-    }else{
-      $row.find('[id="empReasonDesc"]').prop("readonly", true);
-    }
+      if (diffDays >= 1) {
+	sum+=diffDays;
+      }
+      
+      if (diffDays >= 60) {
+	$(this).find('[id="empReasonDesc"]').prop("readonly", false);
+      }else{
+	$(this).find('[id="empReasonDesc"]').prop("readonly", true);
+      }
+    });
+    var call = countingdays(sum,'employee');
   }
   
   function checkBeforeEmpDuration($this) {
     var $row = $this.parents('.odd1');
     var prevEmpRowVal = $(".countClass:visible:last").find("[name='edu_duration_to[]']").val();
-    //alert(prevEmpRowVal);
     if (prevEmpRowVal=="") {
       var prevEmpRowVal = $(".countClass:visible:nth-last-child(2)").find("[name='edu_duration_to[]']").val();
-    //alert(prevEmpRowVal);
     }
     
     var thisEmpValue = $this.val();
+    
     if (prevEmpRowVal=="") {
       var prevEmpRowVal = thisEmpValue;
     }
-    //alert(prevEmpRowVal);
-    //alert(thisEmpValue);
-    //console.log(prevEmpRowVal);
-    //console.log(thisEmpValue);
+    
     var prevRowEmpNewVal = moment.parseZone(prevEmpRowVal, 'DD MMM YYYY').format();
     var thisNewEmpValue = moment.parseZone(thisEmpValue, 'DD MMM YYYY').format();
     
     var a = moment(prevRowEmpNewVal,'YYYY/MM/DD');
     var b = moment(thisNewEmpValue,'YYYY/MM/DD');
     var diffDays = b.diff(a, 'days');
-    
     if (diffDays >= 1) {
-      totalmonth+=diffDays;
-    //alert(diffDays);
-    var call = countingdays(diffDays);
+    var sum = diffDays;
+    $('#beforeVal').val(sum);
+     var call = countingdays(sum,'before');
     }
-    
     if (diffDays >= 60) {
       $row.find('[id="empReasonDesc"]').prop("readonly", false);
     }else{
       $row.find('[id="empReasonDesc"]').prop("readonly", true);
     }
+     
   }
   
-  function countingdays(diffDays) {
-    //alert(diffDays);
+  function countingdays(sum,sum1) {
+    var beforeVal = $('#beforeVal').val();
+    if (sum1 == 'employee' && beforeVal != '') {
+     sum = parseInt(beforeVal) + (sum);
+    }
     var y = 365;
     var y2 = 30;
-    var remainder = totalmonth % y;
+    var remainder = sum % y;
     var casio = remainder % y2;
-    year = (totalmonth - remainder) / y;
-    //alert(year);
+    year = (sum - remainder) / y;
     month = (remainder - casio) / y2;
     
     //var result = + year +" Year " + month + " Month " + casio + " Day" ;
     var result = + year +"Year " + month + "Month ";
      $('.countYr').val(result);
-    //alert(result);
   }
     
     function addMore() {

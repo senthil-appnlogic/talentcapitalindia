@@ -391,9 +391,9 @@ class admin extends CI_Controller {
 	$session_data = $this->session->userdata('username_admin');
 	if(!empty($session_data))
 	{
-	$res=$this->talentModel->getCandidateId($id);
-	$Id = $res[0]['head_id'];
-        $this->talentModel->employeeDelete($Id);
+	//$res=$this->talentModel->getCandidateId($id);
+	//$Id = $res[0]['head_id'];
+        $this->talentModel->employeeDelete($id);
         $this->session->set_flashdata('status','A  record deleted successfully');
         redirect("admin/employee");
 	}
