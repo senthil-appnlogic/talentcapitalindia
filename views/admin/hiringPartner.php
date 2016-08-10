@@ -55,7 +55,7 @@ $status = $this->session->flashdata('status');
 						<?php if(count($vendorDetails) > 0){ foreach($vendorDetails as $row) {?>
 					       
 						<tr class="oddClass even gradeC">
-						    <td><?php echo $row['cr_date']; ?></td>
+						    <td><?php echo $row['cr_date1']; ?></td>
 						    <td id="USER_NAME" style="cursor:pointer;" class="clickable-row" data-href='<?php echo site_url('admin/hiringPartnerEditView/'.$row['id'])?>'><u><?php echo $row['name']; ?></u></td>
 						    <td><?php echo $row['vendor_code']; ?></td>
 						    <td><?php echo $row['mobile_number']; ?></td>

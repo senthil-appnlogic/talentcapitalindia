@@ -102,7 +102,7 @@ class vendormodel extends CI_Model {
 		
 		  FROM educational_details, (Select @rn:=0,@head_id:=0) as t
 		  ORDER BY head_id,id
-		 ) as P
+		 ) as p
 		   ON emp_candidate_details.id=p.head_id
 		
 		INNER JOIN
@@ -124,7 +124,7 @@ class vendormodel extends CI_Model {
 		
 		  FROM employement_details, (Select @rn:=0,@head_id:=0) as u
 		  ORDER BY head_id,id
-		 ) as S
+		 ) as s
 		   ON emp_candidate_details.id=s.head_id WHERE vendor_code = '$vendor_code'
 		
 		GROUP BY emp_candidate_details.id";
@@ -165,12 +165,12 @@ class vendormodel extends CI_Model {
     }
     //Vendor Login functionality Ends
     function mailToCandiate(){
-	$date = date('d-M-y');
+	//$date = date('d-M-y');
 	$session_username = $this->session->userdata('vendorusername');
 	$vendorCode = $this->input->post('vendor_code');
 	$vendorname = $this->input->post('vendor_name');
 	$email = $this->input->post('email');
-	$this->mailToCandidate($email,$vendorCode,$vendorname,$session_username,$date);
+	$this->mailToCandidate($email,$vendorCode,$vendorname,$session_username);
     }
     function vendorDelete($id){
 
@@ -210,7 +210,7 @@ class vendormodel extends CI_Model {
     }
     
     
-    function mailToCandidate($email,$vendorCode,$vendorname,$session_username,$date)
+    function mailToCandidate($email,$vendorCode,$vendorname,$session_username)
     {
 	$body ="<html>
 		    <head>
@@ -241,7 +241,7 @@ class vendormodel extends CI_Model {
 		    'refer_code'=>$vendorCode,
 		    'refer_name'=>$vendorname,
 		    'check_mailid'=>'no',
-		    'cr_date'=>$date,
+		    //'cr_date'=>$date,
 		);
 	    $this->db->insert('emailtrack',$data);
 	    $this->session->set_flashdata('status', 'Email has been sent to User Successfully');

@@ -37,6 +37,7 @@ $status = $this->session->flashdata('status');
 					<table id="data-table" class="table table-bordered display dataTable" cellspacing="0" width="100%">
 					  <thead>
 						<tr>
+						    <th>S.No</th>
 						    <th data-class="expand">Created Date</th>
 						    <th data-class="expand">Name</th>
 						    <th data-hide="phone,tablet">Mobile Number</th>
@@ -160,7 +161,8 @@ $status = $this->session->flashdata('status');
 						       <a  id="delete_box" href="<?php echo site_url('admin/employeeDelete/'.$row['id'])?>" class="btn btn-danger btn-xs"><i class="glyphicon glyphicon-trash"></i> </a>
 						   <a  href="#" data-toggle="modal" data-target="#printPreview"  class="btn btn-primary btn-xs" onclick="printEmployeeDetails('<?php echo $row['id'];?>')"><i class="fa fa-file-pdf-o fa-2x"></i> </a>
 						    </td>-->
-						    <td><?php echo $row['cr_date']; ?></td>
+						    <td></td>
+						    <td><?php echo $row['cr_date1']; ?></td>
 						    <td style="cursor:pointer;" class="clickable-row" data-href='<?php echo site_url('admin/employeeEditView/'.$row['id'])?>'><u><?php echo $row['candidate_name']; ?></u></td>					    
 						    <td><?php echo $row['mobile_number']; ?></td>
 						    <td ><?php echo $row['mail_id']; ?></td>
@@ -318,12 +320,18 @@ $status = $this->session->flashdata('status');
 	    
 	$(document).ready(function() {
 	 setTimeout(function(){ $('#alert').remove();}, 5000);
-	    $('#data-table').DataTable( {
+	    var t = $('#data-table').DataTable( {
 		dom: 'Bfrtip',
 		"pageLength": 100,
 		"scrollX": 100,
 		"scrollY": 350,
 		"ordering":false,
+		"columnDefs": [ {
+		    "searchable": false,
+		    "orderable": false,
+		    "targets": 0
+		} ],
+		"order": [[ 1, 'asc' ]],
 		buttons: [
 		    //'copyHtml5',
 		    //'excelHtml5',
@@ -347,6 +355,13 @@ $status = $this->session->flashdata('status');
 		select:true,
 		
 	    } );
+	    
+	    t.on( 'order.dt search.dt', function () {
+		t.column(0, {search:'applied', order:'applied'}).nodes().each( function (cell, i) {
+		    cell.innerHTML = i+1;
+		} );
+	    } ).draw();
+	    
 	} );
 	function printEmployeeDetails(systemId)
 		

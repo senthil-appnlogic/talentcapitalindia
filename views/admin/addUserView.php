@@ -57,7 +57,7 @@ $status = $this->session->flashdata('status');
 							     { foreach($userDetails as $row) {  ?>
 					       
 						<tr class="oddClass even gradeC" >
-						    <td id=""><?php echo $row['cr_date']; ?></td>
+						    <td id=""><?php echo $row['cr_date1']; ?></td>
 						    <td id="USER_NAME" style="cursor:pointer;" class="clickable-row" data-href='<?php echo site_url('admin/addUserEditView/'.$row['id'])?>'><u><?php echo $row['user_name']; ?></u></td>					    
 						    <td id="EMAIL"><?php echo $row['email']; ?></td>
 						    <!--<td><img src="<?php echo site_url($row['user_image']);?>" class="img-resposive" width="70" height="70" id="PanImgPreview"></td>-->

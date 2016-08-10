@@ -608,7 +608,8 @@ $CandMail = $this->uri->segment(4);
 <!--			      </div>-->
 
 
-			    <div class="">
+			    <div class="form-group">
+			      <label>Are you ok work under Talent capital India Payroll<span style="color:#EB8B11">*</span></label></br></br>
                                 <div class="row">
 				  <div class="form-group col-md-2">
 				      <input  class="lcs_check" id="switch_YN" type="checkbox">
@@ -1037,11 +1038,11 @@ $CandMail = $this->uri->segment(4);
 			notEmpty: {
 			    message: 'The  Email is required and can\'t be empty'
 			},
-			remote:{
-			    message: 'The Email is Already Exist',
-			    url: '<?php  echo site_url('talentcapitalctr/CheckEmailExist')?>',
-			    type: 'POST'
-			}
+			//remote:{
+			//    message: 'The Email is Already Exist',
+			//    url: '<?php  echo site_url('talentcapitalctr/CheckEmailExist')?>',
+			//    type: 'POST'
+			//}
 		    }
                 },                
 		//'skills[]': {

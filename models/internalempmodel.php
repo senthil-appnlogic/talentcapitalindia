@@ -34,16 +34,16 @@ class internalempmodel extends CI_Model {
     }
     
     function mailToCandiate(){
-	$date = date('d-M-y');
+	//$date = date('d-M-y');
 	$session_username = $this->session->userdata('username_admin');
 	$IntEmpCode = $this->input->post('emp_code');
 	$IntEmpName = $this->input->post('emp_name');
 	$email = $this->input->post('email');
 	
-	$this->mailToCandidate($email,$IntEmpCode,$IntEmpName,$session_username,$date);
+	$this->mailToCandidate($email,$IntEmpCode,$IntEmpName,$session_username);
     }
     
-    function mailToCandidate($email,$IntEmpCode,$IntEmpName,$session_username,$date)
+    function mailToCandidate($email,$IntEmpCode,$IntEmpName,$session_username)
     {
 	$body ="<html>
 		    <head>
@@ -73,7 +73,7 @@ class internalempmodel extends CI_Model {
 		    'refer_code'=>$IntEmpCode,
 		    'refer_name'=>$IntEmpName,
 		    'check_mailid'=>'no',
-		    'cr_date'=>$date,
+		    //'cr_date'=>$session_username,
 		);
 	    $this->db->insert('emailtrack',$data);
 	    $this->session->set_flashdata('status', 'Email has been sent to User Successfully');

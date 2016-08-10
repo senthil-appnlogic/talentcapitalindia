@@ -360,6 +360,7 @@ class admin extends CI_Controller {
 	if(!empty($session_data))
 	    {
 		$data['employeeDetails']=$this->talentModel->employeeDetails();
+		$data['crdate']=$this->talentModel->getEmployeeCrdate();
 		//echo "<pre>";
 		//print_r($data['employeeDetails'][0]['total_exp_year']);
 		//exit;

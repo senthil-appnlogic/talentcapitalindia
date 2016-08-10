@@ -21,7 +21,7 @@ class talentModel extends CI_Model {
     
     //1.USER VIEW STARTS
     function userDetails(){
-	$sql="SELECT * FROM login_auth ORDER BY cr_date DESC";
+	$sql="SELECT id,user_name,email,password,user_image,status,role,intemp_code,password_token,date_format(cr_date, '%e-%b-%y') as 'cr_date1' FROM login_auth ORDER BY cr_date DESC";
      	return $this->db->query($sql, $return_object = TRUE)->result_array();
     }
     
@@ -42,7 +42,7 @@ class talentModel extends CI_Model {
             $data = $this->upload->data();
             $filePath=$folderPath.$data['file_name'];
 	    $role=$this->input->post('user_role');
-	    $date = date('d-M-y');
+	    //$date = date('d-M-y');
 	    if($role=="Admin"){
 		$data = array(
 		'role'=>$role,
@@ -51,7 +51,7 @@ class talentModel extends CI_Model {
 		'email'=>$this->input->post('email'),
 		'user_image'=>$filePath,
 		'status'=>'Y',
-		'cr_date'=>$date,
+		//'cr_date'=>$date,
 		);
 	    }else{
 		$data = array(
@@ -62,7 +62,7 @@ class talentModel extends CI_Model {
 		'user_image'=>$filePath,
 		'intemp_code'=>$IntEmpCode,
 		'status'=>'Y',
-		'cr_date'=>$date,
+		//'cr_date'=>$date,
 		);
 	    }
 	      //echo "<pre>";
@@ -174,7 +174,8 @@ class talentModel extends CI_Model {
     
     function vendorDetails()
     {
-	$sql="select * from vendor where login_types= 'vendor' order by cr_date desc";
+	//date_format(cr_date, '%e-%b-%y') as 'cr_date'
+	$sql="select id,email_random_code,password,password_token,vendor_code,name,mobile_number,email,pan_attach_no,pan_attach_copy,address_attach_proof,address_text,bank_attach_cheque,status,profile_pic,login_types,check_email,date_format(cr_date, '%e-%b-%y') as 'cr_date1' from vendor where login_types= 'vendor' order by cr_date desc";
      	return $this->db->query($sql, $return_object = TRUE)->result_array();
     }
     
@@ -186,7 +187,7 @@ class talentModel extends CI_Model {
     
     function emailTrack($check_mail)
     {
-	$sql="select * from emailtrack where check_mailid='$check_mail' order by cr_date desc";
+	$sql="select id,email,refer_code,refer_name,check_mailid,date_format(cr_date, '%e-%b-%y') as 'cr_date1' from emailtrack where check_mailid='$check_mail' order by cr_date desc";
      	return $this->db->query($sql, $return_object = TRUE)->result_array();
     }
     
@@ -283,6 +284,10 @@ class talentModel extends CI_Model {
     $this->db->delete("vendor");
    }
    
+    function getEmployeeCrdate(){
+	$sql = "SELECT DATE_FORMAT((cr_date),'%e-%b-%y' ) from emp_candidate_details";
+	return $this->db->query($sql, $return_object = TRUE)->result_array();
+    }
   
     function employeeDetails()
     {
@@ -296,7 +301,7 @@ class talentModel extends CI_Model {
 	//	INNER JOIN emp_candidate_details emc ON emc.id = emp.head_id order by emc.cr_date DESC";
 	
 	
-	$sql="select emp_candidate_details.id,emp_candidate_details.vendor_code, emp_candidate_details.candidate_name, emp_candidate_details.mobile_number, emp_candidate_details.mail_id, emp_candidate_details.skills, emp_candidate_details.primary_other_skils, emp_candidate_details.SecondarySkills, emp_candidate_details.secondary_other_skils, emp_candidate_details.total_exp_year, emp_candidate_details.total_exp_month, emp_candidate_details.relevant_exp_year, emp_candidate_details.relevant_exp_month, emp_candidate_details.notice_period, emp_candidate_details.current_ctc_lakhs, emp_candidate_details.current_ctc_thousands, emp_candidate_details.expected_ctc_lakhs, emp_candidate_details.expected_ctc_thousands, emp_candidate_details.day, emp_candidate_details.month, emp_candidate_details.year, emp_candidate_details.pan_card_no, emp_candidate_details.pan_card_attach, emp_candidate_details.language_known, emp_candidate_details.current_location, emp_candidate_details.preferred_location, emp_candidate_details.interview_timing, emp_candidate_details.profile_pic, emp_candidate_details.educational_gap_year, emp_candidate_details.career_gap_year, emp_candidate_details.team_size_name, emp_candidate_details.team_contact_no, emp_candidate_details.email_random_code, emp_candidate_details.password, emp_candidate_details.password_token, emp_candidate_details.cr_date, emp_candidate_details.login_types, emp_candidate_details.referrer_name,
+	$sql="select emp_candidate_details.id,emp_candidate_details.vendor_code, emp_candidate_details.candidate_name, emp_candidate_details.mobile_number, emp_candidate_details.mail_id, emp_candidate_details.skills, emp_candidate_details.primary_other_skils, emp_candidate_details.SecondarySkills, emp_candidate_details.secondary_other_skils, emp_candidate_details.total_exp_year, emp_candidate_details.total_exp_month, emp_candidate_details.relevant_exp_year, emp_candidate_details.relevant_exp_month, emp_candidate_details.notice_period, emp_candidate_details.current_ctc_lakhs, emp_candidate_details.current_ctc_thousands, emp_candidate_details.expected_ctc_lakhs, emp_candidate_details.expected_ctc_thousands, emp_candidate_details.day, emp_candidate_details.month, emp_candidate_details.year, emp_candidate_details.pan_card_no, emp_candidate_details.pan_card_attach, emp_candidate_details.language_known, emp_candidate_details.current_location, emp_candidate_details.preferred_location, emp_candidate_details.interview_timing, emp_candidate_details.profile_pic, emp_candidate_details.educational_gap_year, emp_candidate_details.career_gap_year, emp_candidate_details.team_size_name, emp_candidate_details.team_contact_no, emp_candidate_details.email_random_code, emp_candidate_details.password, emp_candidate_details.password_token, date_format(cr_date, '%e-%b-%y') as 'cr_date1', emp_candidate_details.login_types, emp_candidate_details.referrer_name,
 		MAX(CASE WHEN p.RowNum=1 THEN p.degree END) as SSLCDegree,
 		MAX(CASE WHEN p.RowNum=1 THEN p.specialisation END) as SSLCSpecialization,
 		MAX(CASE WHEN p.RowNum=1 THEN p.edu_duration_from END) as SSLCFromDuration,
@@ -360,7 +365,7 @@ class talentModel extends CI_Model {
 		
 		  FROM educational_details, (Select @rn:=0,@head_id:=0) as t
 		  ORDER BY head_id,id
-		 ) as P
+		 ) as p
 		   ON emp_candidate_details.id=p.head_id
 		
 		INNER JOIN
@@ -382,10 +387,11 @@ class talentModel extends CI_Model {
 		
 		  FROM employement_details, (Select @rn:=0,@head_id:=0) as u
 		  ORDER BY head_id,id
-		 ) as S
+		 ) as s
 		   ON emp_candidate_details.id=s.head_id
 		
-		GROUP BY emp_candidate_details.id";
+		GROUP BY emp_candidate_details.id
+		ORDER BY emp_candidate_details.cr_date DESC";
 
 	return $this->db->query($sql, $return_object = TRUE)->result_array();
     }

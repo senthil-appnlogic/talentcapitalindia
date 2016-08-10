@@ -657,7 +657,8 @@
 <!--                            </div>-->
 
 
-<div class="">
+			    <div class="form-group">
+			      <label>Are you ok work under Talent capital India Payroll<span style="color:#EB8B11">*</span></label></br></br>
                                 <div class="row">
 				  <div class="form-group col-md-2">
 				      <input  class="lcs_check" id="switch_YN" type="checkbox">
