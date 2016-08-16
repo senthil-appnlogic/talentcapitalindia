@@ -39,11 +39,11 @@ class internalempmodel extends CI_Model {
 	$IntEmpCode = $this->input->post('emp_code');
 	$IntEmpName = $this->input->post('emp_name');
 	$email = $this->input->post('email');
-	
-	$this->mailToCandidate($email,$IntEmpCode,$IntEmpName,$session_username);
+	$client = $this->input->post('clientComp');
+	$this->mailToCandidate($email,$IntEmpCode,$IntEmpName,$session_username,$client);
     }
     
-    function mailToCandidate($email,$IntEmpCode,$IntEmpName,$session_username)
+    function mailToCandidate($email,$IntEmpCode,$IntEmpName,$session_username,$client)
     {
 	$body ="<html>
 		    <head>
@@ -53,7 +53,7 @@ class internalempmodel extends CI_Model {
 			<h3>Dear Candidate</h3>
 			<p>You are refered to register in Talent Capital India by <span >".$session_username."</span></p>
 			<p>Please click below link to register with talent capital</p>
-			<p>".base_url()."internalemployee/internalEmployeeLink/".$IntEmpCode."/".$email."</p>
+			<p>".base_url()."internalemployee/internalEmployeeLink/".$IntEmpCode."/".$email."/".$client."</p>
 			<br>
 			<p>Regards,</p>
 			<p>Talent capital Portal,</p>

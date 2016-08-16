@@ -816,8 +816,8 @@ $status = $this->session->flashdata('status');
 				    <div class="input-group">
 				      <span class="input-group-btn">
 					  <span class="btn btn-primary btn-file">
-					      Browse<input type="file" name="file_student_upload[<?php echo $count; ?>][]" value="<?php echo $row['file_student_upload']?>" id="PanPreview" multiple disabled>
-					      <input type="hidden" name="file_student_upload_old[]" value="<?php echo $row['file_student_upload']; ?>">
+					      Browse<input type="file" name="file_student_upload[<?php echo $count; ?>][]" value="<?php echo $row['file_student_upload']?>" id="PanPreview" multiple >
+					      <input type="hidden" name="file_student_upload_old[<?php echo $count; ?>][]" value="<?php echo $row['file_student_upload']; ?>">
 					  </span>
 				      </span>
 				      <input type="text" id="" class="form-control" value="<?php echo $row['file_student_upload']?>" readonly>
@@ -895,8 +895,8 @@ $status = $this->session->flashdata('status');
 				    <div class="input-group">
 				      <span class="input-group-btn">
 					  <span class="btn btn-primary btn-file">
-					      Browse<input type="file" name="file_employee_upload[<?php echo $count; ?>][]" id="file_employee_upload" value="<?php echo $row['file_employee_upload']?>" onchange="fileAttachment();" multiple disabled>
-					      <input type="hidden" name="file_employee_upload_old[]" value="<?php echo $row['file_employee_upload']; ?>">
+					      Browse<input type="file" name="file_employee_upload[<?php echo $count; ?>][]" id="file_employee_upload" value="<?php echo $row['file_employee_upload']?>" onchange="fileAttachment();" multiple >
+					      <input type="hidden" name="file_employee_upload_old[<?php echo $count; ?>][]" value="<?php echo $row['file_employee_upload']; ?>">
 					  </span>
 				      </span>
 				      <input type="text" id="" class="form-control" value="<?php echo $row['file_employee_upload']?>" readonly >
@@ -1994,21 +1994,21 @@ function checkDurationMonth() {
   });
  
  $(function(){
-	$name1=$('[name="degree[]"]:last');
-	$edu_duration_from=$('[name="edu_duration_from[]"]:last');
-	$edu_duration_to=$('[name="edu_duration_to[]"]:last');
-	$university=$('[name="university[]"]:last');
-	$percentage=$('[name="percentage[]"]:last');
-    $('#form_validation').bootstrapValidator('removeField', $name1);
-    $('#form_validation').bootstrapValidator('removeField', $edu_duration_from);
-    $('#form_validation').bootstrapValidator('removeField', $edu_duration_to);
-    $('#form_validation').bootstrapValidator('removeField', $university);
-    $('#form_validation').bootstrapValidator('removeField', $percentage);
-    $('[name="degree[]"]:last').removeAttr("data-bv-field");
-    $('[name="edu_duration_to[]"]:last').removeAttr("data-bv-field");
-    $('[name="edu_duration_from[]"]:last').removeAttr("data-bv-field");
-    $('[name="university[]"]:last').removeAttr("data-bv-field");
-    $('[name="percentage[]"]:last').removeAttr("data-bv-field");
+      $name1=$('[name="degree[]"]:last');
+      $edu_duration_from=$('[name="edu_duration_from[]"]:last');
+      $edu_duration_to=$('[name="edu_duration_to[]"]:last');
+      $university=$('[name="university[]"]:last');
+      $percentage=$('[name="percentage[]"]:last');
+      $('#form_validation').bootstrapValidator('removeField', $name1);
+      $('#form_validation').bootstrapValidator('removeField', $edu_duration_from);
+      $('#form_validation').bootstrapValidator('removeField', $edu_duration_to);
+      $('#form_validation').bootstrapValidator('removeField', $university);
+      $('#form_validation').bootstrapValidator('removeField', $percentage);
+      $('[name="degree[]"]:last').removeAttr("data-bv-field");
+      $('[name="edu_duration_to[]"]:last').removeAttr("data-bv-field");
+      $('[name="edu_duration_from[]"]:last').removeAttr("data-bv-field");
+      $('[name="university[]"]:last').removeAttr("data-bv-field");
+      $('[name="percentage[]"]:last').removeAttr("data-bv-field");
     })
  var chec=$('input[id="Switch_Val"]').val();	
  if (chec=="Y") {
@@ -2016,25 +2016,25 @@ function checkDurationMonth() {
  }
  
  
-$(function(){
-	var check = $("#Switch_Val").val();
-	if (check == 'N') {
-	    $("#switch_YN").trigger('click');
-	}
-	$Company_name=$('[name="client_comp[]"]:last');
-	$payroll_comp=$('[name="payroll_comp[]"]:last');
-	$Designation=$('[name="designation[]"]:last');
-	$edu_duration_from=$('[name="emp_duration_from[]"]:last');
-	$edu_duration_to=$('[name="emp_duration_to[]"]:last');
-	$Location=$('[name="location[]"]:last');
-	
-	$Company_name1=$(".countClass1:visible:nth-last-child(3)").find('[name="client_comp[]"]');
-	$payroll_comp1=$(".countClass1:visible:nth-last-child(3)").find('[name="payroll_comp[]"]');
-	$Designation1=$(".countClass1:visible:nth-last-child(3)").find('[name="designation[]"]');
-	$edu_duration_from1=$(".countClass1:visible:nth-last-child(3)").find('[name="emp_duration_from[]"]');
-	$edu_duration_to1=$(".countClass1:visible:nth-last-child(3)").find('[name="emp_duration_to[]"]');
-	$Location1=$(".countClass1:visible:nth-last-child(3)").find('[name="location[]"]');
-	
+  $(function(){
+    var check = $("#Switch_Val").val();
+    if (check == 'N') {
+	$("#switch_YN").trigger('click');
+    }
+    $Company_name=$('[name="client_comp[]"]:last');
+    $payroll_comp=$('[name="payroll_comp[]"]:last');
+    $Designation=$('[name="designation[]"]:last');
+    $edu_duration_from=$('[name="emp_duration_from[]"]:last');
+    $edu_duration_to=$('[name="emp_duration_to[]"]:last');
+    $Location=$('[name="location[]"]:last');
+    
+    $Company_name1=$(".countClass1:visible:nth-last-child(3)").find('[name="client_comp[]"]');
+    $payroll_comp1=$(".countClass1:visible:nth-last-child(3)").find('[name="payroll_comp[]"]');
+    $Designation1=$(".countClass1:visible:nth-last-child(3)").find('[name="designation[]"]');
+    $edu_duration_from1=$(".countClass1:visible:nth-last-child(3)").find('[name="emp_duration_from[]"]');
+    $edu_duration_to1=$(".countClass1:visible:nth-last-child(3)").find('[name="emp_duration_to[]"]');
+    $Location1=$(".countClass1:visible:nth-last-child(3)").find('[name="location[]"]');
+      
     $('#form_validation').bootstrapValidator('removeField', $Company_name);
     $('#form_validation').bootstrapValidator('removeField', $payroll_comp);
     $('#form_validation').bootstrapValidator('removeField', $Designation);
@@ -2054,13 +2054,13 @@ $(function(){
     $('[name="designation[]"]:last').removeAttr("data-bv-field");
     $('[name="emp_duration_from[]"]:last').removeAttr("data-bv-field");
     $('[name="emp_duration_to[]"]:last').removeAttr("data-bv-field");
-     $('[name="location[]"]:last').removeAttr("data-bv-field");
+    $('[name="location[]"]:last').removeAttr("data-bv-field");
      
-      $(".countClass1:visible:nth-last-child(3)").find('[name="client_comp[]"]').removeAttr("data-bv-field");
+    $(".countClass1:visible:nth-last-child(3)").find('[name="client_comp[]"]').removeAttr("data-bv-field");
     $(".countClass1:visible:nth-last-child(3)").find('[name="payroll_comp[]"]').removeAttr("data-bv-field");
     $(".countClass1:visible:nth-last-child(3)").find('[name="designation[]"]').removeAttr("data-bv-field");
-   $(".countClass1:visible:nth-last-child(3)").find('[name="emp_duration_from[]"]').removeAttr("data-bv-field");
+    $(".countClass1:visible:nth-last-child(3)").find('[name="emp_duration_from[]"]').removeAttr("data-bv-field");
     $(".countClass1:visible:nth-last-child(3)").find('[name="emp_duration_to[]"]').removeAttr("data-bv-field");
     $(".countClass1:visible:nth-last-child(3)").find('[name="location[]"]').removeAttr("data-bv-field");
-    })
+  })
 </script>

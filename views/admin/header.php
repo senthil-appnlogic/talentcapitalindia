@@ -306,6 +306,7 @@
 	</script>
 	<script type="text/javascript" language="javascript" src="https://cdn.datatables.net/select/1.2.0/js/dataTables.select.min.js">
 	</script>
+	<script src="<?php echo base_url();?>assets/js/jquery.dataTables.columnFilter.js"></script>
 	
 	<!--<script src="<?php echo base_url();?>assetsAdmin/datatables/js/jquery.dataTables.min.js"></script>
 	<script src="<?php echo base_url();?>assetsAdmin/datatables/js/dataTables.buttons.min.js"></script>

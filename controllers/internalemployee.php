@@ -130,14 +130,14 @@ class internalemployee extends CI_Controller {
 	$this->load->view('internalemployee/internalEmpEdit',$loginUser);
     }
     
-    function internalEmployeeLink($code,$sample){
+    function internalEmployeeLink($code,$sample,$client){
 	
 	    $data['Vcode'] =  $code;
 	    if(isset($_POST['save'])){
 		$loginType = "InternalEmployee";
 		$emailTrack = "yes";
 		$this->tc_model->emailtracking($sample,$code,$emailTrack);
-		$result=$this->tc_model->hiringPartnerLinkAdd($code,$loginType);
+		$result=$this->tc_model->hiringPartnerLinkAdd($code,$loginType,$client);
 		$this->session->set_flashdata('status', 'Your Information has been Succesfully regeistered to talent capital');
 		redirect('talentcapitalctr/successMsg');		
 	    }

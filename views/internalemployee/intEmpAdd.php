@@ -34,7 +34,18 @@ $status = $this->session->flashdata('status');?>
                             <div class="form-group">
                               <label>Internal Employee Referral Code</label>
                                 <input class="form-control input-md" value="<?php echo $emp_code;?>" name="emp_code" type="text" placeholder="Name" readonly="">
-
+                            </div>
+			    <div class="form-group">
+                                <label>Client Company</label>
+                                <!--<input class="form-control input-md" name="current_location" type="text" placeholder="Current Location">-->
+				 <select name="clientComp" class="form-control chzn-select">
+				  <option disabled selected hidden>Please Select Client</option>
+				  <option value="Wipro">Wipro</option>
+				  <option value="CTS">CTS</option>
+				  <option value="TCS">TCS</option>
+				  <option value="Infosys">Infosys</option>
+				  <option value="HCL">HCL</option>
+				</select>
                             </div>
                             <div class="form-group">
                                 <label>Candidate Email<span style="color:#EB8B11">*</span></label>
@@ -55,6 +66,10 @@ $status = $this->session->flashdata('status');?>
     </div>
 </div>
 <script>
+    $(document).ready(function() {
+        $(".chzn-select").chosen();
+    });
+    
      function checkEmail(){
 	
         var email=$("#email").val();

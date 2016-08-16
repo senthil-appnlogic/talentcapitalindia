@@ -32,7 +32,8 @@
 	<link href="<?php echo base_url();?>assetsAdmin/plugins/bootstrap-datepicker/css/datepicker.css" rel="stylesheet" />
 	<link href="<?php echo base_url();?>assetsAdmin/plugins/bootstrap-datepicker/css/datepicker3.css" rel="stylesheet" />
         <link href="<?php echo base_url();?>assetsAdmin/plugins/gritter/css/jquery.gritter.css" rel="stylesheet" />
-	<link rel="stylesheet" href="<?php echo base_url();?>assetsAdmin/css/chosen.css">
+	<!--<link rel="stylesheet" href="<?php echo base_url();?>assetsAdmin/css/chosen.css">-->
+	<link rel="stylesheet" href="<?php echo base_url();?>assets/css/chosen.css">
 	<link href="<?php echo base_url(); ?>assetsAdmin/bootstrap-datetimepicker2/css/bootstrap-datetimepicker.css" rel="stylesheet" />
 	<link href="<?php echo base_url(); ?>assetsAdmin/bootstrap-datepicker/css/datepicker.css" rel="stylesheet" />
 	<link href="<?php echo base_url(); ?>assetsAdmin/bootstrap-datepicker/css/datepicker3.css" rel="stylesheet" /> 
@@ -226,7 +227,9 @@
 	<script src="<?php echo base_url();?>assetsAdmin/js/apps.min.js"></script>
 	<script src="<?php echo base_url();?>assetsAdmin/plugins/browse-button/filejs.js"></script>
 	
-	<script src="<?php echo base_url();?>assetsAdmin/js/chosen.jquery.js" type="text/javascript"></script>
+	<!--<script src="<?php echo base_url();?>assetsAdmin/js/chosen.jquery.js" type="text/javascript"></script>-->
+	<script src="<?php echo base_url();?>assets/js/chosen.jquery.js" type="text/javascript"></script>
+	<script src="<?php echo base_url();?>assets/js/moment.js" type="text/javascript"></script>
 	<script src="<?php echo base_url();?>assetsAdmin/plugins/bootstrap-validation/js/bootstrapValidator.js"></script>
                             
 	<script src="<?php echo base_url(); ?>assetsAdmin/bootstrap-datetimepicker2/js/moment-with-locales.js"></script>

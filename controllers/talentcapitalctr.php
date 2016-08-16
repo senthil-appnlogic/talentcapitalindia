@@ -253,15 +253,15 @@ class talentcapitalctr extends CI_Controller {
 	    $this->load->view('view/success');
 	}
 	
-	function hiringPartnerLink($code,$sample){
+	function hiringPartnerLink($code,$sample,$client){
 	    $data['Vcode'] =  $code;
 	    if(isset($_POST['save'])){
-		//print_r($_POST);
+		//print_r($client);
 		//exit;
 		$loginType = "internalEmp";
 		$emailTrack = "yes";
 		$this->tc_model->emailtracking($sample,$code,$emailTrack);
-		$result=$this->tc_model->hiringPartnerLinkAdd($code,$loginType);
+		$result=$this->tc_model->hiringPartnerLinkAdd($code,$loginType,$client);
 		$this->session->set_flashdata('status', 'Your Information has been Succesfully registered to talent capital');
 		redirect('talentcapitalctr/successMsg');		
 	    }

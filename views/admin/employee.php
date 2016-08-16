@@ -1,6 +1,11 @@
 <?php
 $status = $this->session->flashdata('status');
 ?>
+<style>
+  tfoot {
+      display: table-header-group !important;
+  }
+</style>
 <div class="content" id="content">
 			<!-- begin breadcrumb -->
 			
@@ -39,6 +44,7 @@ $status = $this->session->flashdata('status');
 						<tr>
 						    <th>S.No</th>
 						    <th data-class="expand">Created Date</th>
+						    <th data-class="expand">Client</th>
 						    <th data-class="expand">Name</th>
 						    <th data-hide="phone,tablet">Mobile Number</th>
 						    <th data-hide="phone,tablet">Email</th>
@@ -144,6 +150,116 @@ $status = $this->session->flashdata('status');
 						    <th >Action</th>
 						</tr>
 					    </thead>
+					  <tfoot>
+						<tr>
+						    <th>S.No</th>
+						    <th data-class="expand">Created Date</th>
+						    <th data-class="expand">Client</th>
+						    <th data-class="expand">Name</th>
+						    <th data-hide="phone,tablet">Mobile Number</th>
+						    <th data-hide="phone,tablet">Email</th>
+						    <th data-hide="phone,tablet">Primary Skills</th>
+						    <!--<th data-hide="phone,tablet">Primary Other Skills</th>-->
+						    <th data-hide="phone,tablet">Secondary Skills</th>
+						    <!--<th data-hide="phone,tablet">Secondary Other Skills</th>-->
+						    <th data-hide="phone,tablet">Total Experience In years</th>
+						    <!--<th rowspan="2" data-hide="phone,tablet">Total Experience Month</th>-->
+						    <th data-hide="phone,tablet">Relevant Experience In years</th>
+						    <!--<th rowspan="2" data-hide="phone,tablet">Relevant Experience Month</th>-->
+						    <th data-hide="phone,tablet">Notice Period</th>
+						    <th data-hide="phone,tablet">C_CTC in lacs</th>
+						    <!--<th rowspan="2" data-hide="phone,tablet">Current CTC in Thousands</th>-->
+						    <th data-hide="phone,tablet">E_CTC in lacs</th>
+						    <!--<th rowspan="2" data-hide="phone,tablet">Expected CTC in Thousands</th>-->
+						    <th data-hide="phone,tablet">DOB</th>
+						    <!--<th rowspan="2" data-hide="phone,tablet">Month </th>
+						    <th rowspan="2" data-hide="phone,tablet">Year</th>-->
+						    <th data-hide="phone,tablet">Pancard Number</th>
+						    <!--<th rowspan="2" data-hide="phone,tablet">Attach Pancard </th>-->
+						    <th data-hide="phone,tablet">Languages Known</th>
+						    <th data-hide="phone,tablet">Current Location</th>
+						    <th data-hide="phone,tablet">Preferred Location</th>
+						    <th data-hide="phone,tablet">Interview Timing</th>
+						    <!--<th rowspan="2" data-hide="phone,tablet">Profile Pic</th>-->
+						    <th data-hide="phone,tablet">SSC</th>
+						    <th data-hide="phone,tablet">Specialisation</th>
+						    <th data-hide="phone,tablet">Duration From</th>
+						    <th data-hide="phone,tablet">Duration To</th>
+						    <th data-hide="phone,tablet">University</th>
+						    <th data-hide="phone,tablet">Percentage</th>
+						    
+						    <th data-hide="phone,tablet">HSC/Diploma</th>
+						    <th data-hide="phone,tablet">Specialisation</th>
+						    <th data-hide="phone,tablet">Duration From</th>
+						    <th data-hide="phone,tablet">Duration To</th>
+						    <th data-hide="phone,tablet">University</th>
+						    <th data-hide="phone,tablet">Percentage</th>
+						    
+						    <th data-hide="phone,tablet">Graduation</th>
+						    <th data-hide="phone,tablet">Specialisation</th>
+						    <th data-hide="phone,tablet">Duration From</th>
+						    <th data-hide="phone,tablet">Duration To</th>
+						    <th data-hide="phone,tablet">University</th>
+						    <th data-hide="phone,tablet">Percentage</th>
+						    
+						    <th data-hide="phone,tablet">Post Graduation</th>
+						    <th data-hide="phone,tablet">Specialisation</th>
+						    <th data-hide="phone,tablet">Duration From</th>
+						    <th data-hide="phone,tablet">Duration To</th>
+						    <th data-hide="phone,tablet">University</th>
+						    <th data-hide="phone,tablet">Percentage</th>
+						    
+						    <!--<th data-hide="phone,tablet">Reason_desc</th>-->
+						    
+						    <th data-hide="phone,tablet">E1_Client Company</th>
+						    <th data-hide="phone,tablet">E1_Payroll Company</th>
+						    <th data-hide="phone,tablet">E1_Designation</th>
+						    <th data-hide="phone,tablet">E1_Duration From</th>
+						    <th data-hide="phone,tablet">E1_Duration To</th>
+						    <th data-hide="phone,tablet">E1_Location</th>
+						    
+						    <th data-hide="phone,tablet">E2_Client Company</th>
+						    <th data-hide="phone,tablet">E2_Payroll Company</th>
+						    <th data-hide="phone,tablet">E2_Designation</th>
+						    <th data-hide="phone,tablet">E2_Duration From</th>
+						    <th data-hide="phone,tablet">E2_Duration To</th>
+						    <th data-hide="phone,tablet">E2_Location</th>
+						    
+						    <th data-hide="phone,tablet">E3_Client Company</th>
+						    <th data-hide="phone,tablet">E3_Payroll Company</th>
+						    <th data-hide="phone,tablet">E3_Designation</th>
+						    <th data-hide="phone,tablet">E3_Duration From</th>
+						    <th data-hide="phone,tablet">E3_Duration To</th>
+						    <th data-hide="phone,tablet">E3_Location</th>
+						    <th data-hide="phone,tablet">Educational Gap in Years</th>
+						    <th data-hide="phone,tablet">Career Gap in Years</th>
+						    
+						    <!--<th rowspan="2" data-hide="phone,tablet">Team Member Name</th>
+						    <th rowspan="2" data-hide="phone,tablet">Team Contact No</th>
+						    <th rowspan="2" data-hide="phone,tablet">Email Random Code</th>
+						    <th rowspan="2" data-hide="phone,tablet">Password</th>
+						    <th rowspan="2" data-hide="phone,tablet">Password Token</th>
+						    <th rowspan="2" data-hide="phone,tablet">Login Types</th>-->
+						    
+						    <!--<th data-hide="phone,tablet">Team_size_name</th>
+						    <th data-hide="phone,tablet">Team_contact_no</th>-->
+						   <!-- <th colspan="6">SSC</th>
+						    <th colspan="6">HSC/Diploma</th>
+						    <th colspan="6">UnderGraduate</th>
+						    <th colspan="6">PostGraduate</th>
+						    
+						    <th colspan="6">Employment Details1</th>
+						    <th colspan="6">Employment Details2</th>
+						    <th colspan="6">Employment Details3</th>-->
+						    
+						    <th data-hide="phone,tablet">Billing</th>
+						    <th data-hide="phone,tablet">Referred By</th>
+						    <!--<th data-hide="phone,tablet">Referrer Name</th>-->
+						    
+						   <!-- <th>Location</th>-->
+						    <th >Action</th>
+						</tr>
+					    </tfoot>
 					    <tbody>
 						<?php if(count($employeeDetails) > 0)
 							     { foreach($employeeDetails as $row) {  ?>
@@ -163,6 +279,7 @@ $status = $this->session->flashdata('status');
 						    </td>-->
 						    <td></td>
 						    <td><?php echo $row['cr_date1']; ?></td>
+						    <td><?php echo $row['client']; ?></td>
 						    <td style="cursor:pointer;" class="clickable-row" data-href='<?php echo site_url('admin/employeeEditView/'.$row['id'])?>'><u><?php echo $row['candidate_name']; ?></u></td>					    
 						    <td><?php echo $row['mobile_number']; ?></td>
 						    <td ><?php echo $row['mail_id']; ?></td>
@@ -319,6 +436,14 @@ $status = $this->session->flashdata('status');
 	//    });
 	    
 	$(document).ready(function() {
+	    
+	    //$('#data-table tfoot tr').insertAfter($('#data-table thead tr'));
+	    
+	    $('#data-table tfoot th').each( function () {
+		var title = $(this).text();
+		$(this).html( '<input type="text" placeholder="Search '+title+'" />' );
+	    } );
+	    
 	 setTimeout(function(){ $('#alert').remove();}, 5000);
 	    var t = $('#data-table').DataTable( {
 		dom: 'Bfrtip',
@@ -361,6 +486,57 @@ $status = $this->session->flashdata('status');
 		    cell.innerHTML = i+1;
 		} );
 	    } ).draw();
+	    
+	    t.columns().every( function () {
+		var that = this;
+		$( 'input', this.footer() ).on( 'keyup change', function () {
+		    if ( that.search() !== this.value ) {
+			that
+			    .search( this.value )
+			    .draw();
+		    }
+		} );
+	    } );
+	    
+	    t.column(2).every( function () {
+		var column = this;
+		var select = $('<select><option value=""></option></select>')
+		  .appendTo($(column.footer()).empty())
+		  .on('change', function() {
+		    var val = $.fn.dataTable.util.escapeRegex(
+		      $(this).val()
+		    );
+		    column
+		      .search(val ? '^' + val + '$' : '', true, false)
+		      .draw();
+		  });
+	    
+		column.data().unique().sort().each(function(d, j) {
+		  select.append('<option value="' + d + '">' + d + '</option>')
+		});
+	    });
+	    
+	    t.column(16).every( function () {
+		var column = this;
+		var select = $('<select><option value=""></option></select>')
+		  .appendTo($(column.footer()).empty())
+		  .on('change', function() {
+		    var val = $.fn.dataTable.util.escapeRegex(
+		      $(this).val()
+		    );
+		    column
+		      .search(val ? '^' + val + '$' : '', true, false)
+		      .draw();
+		  });
+	    
+		column.data().unique().sort().each(function(d, j) {
+		  select.append('<option value="' + d + '">' + d + '</option>')
+		});
+	    });
+	    
+	    t.columnFilter({
+		sPlaceHolder: "head:after",
+	    });
 	    
 	} );
 	function printEmployeeDetails(systemId)

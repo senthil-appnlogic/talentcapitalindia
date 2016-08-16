@@ -170,7 +170,10 @@ class vendormodel extends CI_Model {
 	$vendorCode = $this->input->post('vendor_code');
 	$vendorname = $this->input->post('vendor_name');
 	$email = $this->input->post('email');
-	$this->mailToCandidate($email,$vendorCode,$vendorname,$session_username);
+	$client = $this->input->post('clientComp');
+	//print_r($client);
+	//exit;
+	$this->mailToCandidate($email,$vendorCode,$vendorname,$session_username,$client);
     }
     function vendorDelete($id){
 
@@ -210,7 +213,7 @@ class vendormodel extends CI_Model {
     }
     
     
-    function mailToCandidate($email,$vendorCode,$vendorname,$session_username)
+    function mailToCandidate($email,$vendorCode,$vendorname,$session_username,$client)
     {
 	$body ="<html>
 		    <head>
@@ -220,7 +223,7 @@ class vendormodel extends CI_Model {
 			<h3>Dear Candidate</h3>
 			<p>You are refered to register in Talent Capital India by <span >".$session_username."</span></p>
 			<p>Please click below link to register with talent capital</p>
-			<p>".base_url()."talentcapitalctr/hiringPartnerLink/".$vendorCode."/".$email."</p>
+			<p>".base_url()."talentcapitalctr/hiringPartnerLink/".$vendorCode."/".$email."/".$client."</p>
 			<br>
 			<p>Regards,</p>
 			<p>Talent capital Portal,</p>
