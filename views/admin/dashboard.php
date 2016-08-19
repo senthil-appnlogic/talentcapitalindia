@@ -17,6 +17,49 @@
 			
 			<!-- begin row -->
 			<div class="row">
+				
+				<!-- begin col-3 -->
+				<div class="col-md-3 col-sm-6">
+					<div class="widget widget-stats bg-blue">
+						<div class="stats-icon"><i class="fa fa-users"></i></div>
+						<div class="stats-info">
+							<h4>TOTAL EMPLOYEES</h4>
+							<p><?php  echo $employeesCount[0]['employeesCount']; ?></p>	
+						</div>
+						<div class="stats-link">
+							<a href="<?php echo site_url('admin/employee');?>">View Detail <i class="fa fa-arrow-circle-o-right"></i></a>
+						</div>
+					</div>
+				</div>
+				<!-- end col-3 -->
+				<!-- begin col-3 -->
+				<div class="col-md-3 col-sm-6">
+					<div class="widget widget-stats bg-purple">
+						<div class="stats-icon"><i class="fa fa-user"></i></div>
+						<div class="stats-info">
+							<h4>TOTAL ADMIN</h4>
+							<p><?php  echo $adminCount[0]['adminCount']; ?></p>	
+						</div>
+						<div class="stats-link">
+							<a href="<?php echo site_url('admin/addUserView');?>">View Detail <i class="fa fa-arrow-circle-o-right"></i></a>
+						</div>
+					</div>
+				</div>
+				<!-- end col-3 -->
+				<!-- begin col-3 -->
+				<div class="col-md-3 col-sm-6">
+					<div class="widget widget-stats bg-orange">
+						<div class="stats-icon"><i class="fa fa-user-plus"></i></div>
+						<div class="stats-info">
+							<h4>TOTAL INTERNAL EMPLOYEES</h4>
+							<p><?php  echo $intempCount[0]['intempCount']; ?></p>	
+						</div>
+						<div class="stats-link">
+							<a href="<?php echo site_url('admin/addUserView');?>">View Detail <i class="fa fa-arrow-circle-o-right"></i></a>
+						</div>
+					</div>
+				</div>
+				<!-- end col-3 -->
 				<!-- begin col-3 -->
 				<div class="col-md-3 col-sm-6">
 					<div class="widget widget-stats bg-green">
@@ -33,15 +76,17 @@
 				</div>
 				<!-- end col-3 -->
 				<!-- begin col-3 -->
+				<!-- begin col-3 -->
 				<div class="col-md-3 col-sm-6">
-					<div class="widget widget-stats bg-blue">
-						<div class="stats-icon"><i class="fa fa-chain-broken"></i></div>
+					<div class="widget widget-stats bg-red">
+						<div class="stats-icon"><i class="fa fa-desktop"></i></div>
 						<div class="stats-info">
-							<h4>TOTAL EMPLOYEES</h4>
-							<p><?php  echo $employeesCount[0]['employeesCount']; ?></p>	
+							<h4>TOTAL EMAIL TRACKING</h4>
+							
+							<p><?php  echo $emailTrackingCount[0]['emailTrackingCount']; ?></p>	
 						</div>
 						<div class="stats-link">
-							<a href="<?php echo site_url('admin/employee');?>">View Detail <i class="fa fa-arrow-circle-o-right"></i></a>
+							<a href="<?php echo site_url('admin/emailTrack');?>">View Detail <i class="fa fa-arrow-circle-o-right"></i></a>
 						</div>
 					</div>
 				</div>

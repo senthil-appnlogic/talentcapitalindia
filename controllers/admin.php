@@ -83,6 +83,9 @@ class admin extends CI_Controller {
 	    //exit;
 	    $data['vendorCount']=$this->talentModel->vendorCount();
 	    $data['employeesCount']=$this->talentModel->employeesCount();
+	    $data['adminCount']=$this->talentModel->adminCount();
+	    $data['intempCount']=$this->talentModel->intempCount();
+	    $data['emailTrackingCount']=$this->talentModel->emailTrackingCount();
 	    $this->load->view('admin/header');	
 	    $this->load->view('admin/dashboard',$data);
 	}

@@ -790,9 +790,19 @@ class talentModel extends CI_Model {
     function employeesCount(){
 	$sql="SELECT COUNT(*) as employeesCount FROM emp_candidate_details";
 	 return $this->db->query($sql, $return_object = TRUE)->result_array();
-	
     }
-    
+    function adminCount(){
+	$sql="SELECT COUNT(*) as adminCount FROM login_auth WHERE role='Admin'";
+	return $this->db->query($sql, $return_object = TRUE)->result_array();
+    }
+    function intempCount(){
+	$sql="SELECT COUNT(*) as intempCount FROM login_auth WHERE role='InternalEmployee'";
+	return $this->db->query($sql, $return_object = TRUE)->result_array();
+    }
+    function emailTrackingCount(){
+	$sql="SELECT COUNT(*) as emailTrackingCount FROM emailtrack WHERE check_mailid='no'";
+	return $this->db->query($sql, $return_object = TRUE)->result_array();
+    }
     
     function sendCredentialToUser(){
 	$userEmail = $_POST['userEmail'];
