@@ -264,6 +264,11 @@ class internalempmodel extends CI_Model {
      	return $this->db->query($sql, $return_object = TRUE)->result_array();
     }
     
+    function getClientsDetails(){
+	$sql="SELECT * FROM clients";
+        return $this->db->query($sql, $return_object = TRUE)->result_array();
+    }
+    
 //    function getIntEmpName($code){
 //	$sql="SELECT user_name FROM loginauth where intemp_code='$code'";
 //	return $this->db->query($sql, $return_object = TRUE)->result_array();

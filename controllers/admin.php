@@ -721,7 +721,7 @@ class admin extends CI_Controller {
 	
     }
   
-     function skills(){
+    function skills(){
 	if (isset($_POST["Save"])) {
 	      
 	      $this->talentModel->addSkills();
@@ -747,7 +747,7 @@ class admin extends CI_Controller {
 	
     }
 
-     function languages(){
+    function languages(){
 	if (isset($_POST["Save"])) {
 	      
 	      $this->talentModel->addLanguage();
@@ -771,6 +771,32 @@ class admin extends CI_Controller {
         $this->talentModel->languageDelete($id);
         $this->session->set_flashdata('status','A  record deleted successfully');
         redirect("admin/addLanguageView");
+	
+    }
+    
+    function clients(){
+	if (isset($_POST["Save"])) {
+	      
+	      $this->talentModel->addClients();
+	      $this->session->set_flashdata('status','A New record added successfully');
+	      redirect("admin/addClientsView");
+	  }
+	  $this->load->view('admin/header');
+	  $this->load->view('admin/addClients');
+    }
+    function addClientsView(){
+	
+	$data['clientsDetails']=$this->talentModel->clientsDetails();
+	$this->load->view('admin/header');
+	$this->load->view('admin/addClientsView',$data);
+	
+    }
+    public function clientsDelete($id)
+    {
+	
+        $this->talentModel->clientsDelete($id);
+        $this->session->set_flashdata('status','A  record deleted successfully');
+        redirect("admin/addClientsView");
 	
     }
     

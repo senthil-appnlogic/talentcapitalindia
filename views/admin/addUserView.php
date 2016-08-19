@@ -47,6 +47,7 @@ $status = $this->session->flashdata('status');
 						    <!--<th>Profile pic</th>-->
 						    <th>InternalEmp Code</th>
 						    <th>Approved Y/N</th>
+						    <th data-hide="phone,tablet">EmailTrack List</th>
 						    <th>Role</th>
 						    <th>Action</th>
 						</tr>
@@ -63,6 +64,10 @@ $status = $this->session->flashdata('status');
 						    <!--<td><img src="<?php echo site_url($row['user_image']);?>" class="img-resposive" width="70" height="70" id="PanImgPreview"></td>-->
 						    <td><?php echo $row['intemp_code']; ?></td>
 						    <td><input type="checkbox" <?php if($row['status']=='Y'){ echo 'checked';}?> class="lcs_check" id="approvedYN"></td>
+						    <td><?php if($row['role']=="InternalEmployee") { ?>
+							<button onclick="showingModal('<?php echo $row['intemp_code']; ?>')" class="btn btn-primary btn-md">Email Track List</button>
+							<?php } ?>
+						    </td>
 						    <td><?php echo $row['role']; ?></td>
 						    <td>
 						    <a href="<?php echo site_url('admin/editUser/'.$row['id'])?>" class="btn btn-info btn-xs"><i class="fa fa-edit"></i> </a>
@@ -74,6 +79,44 @@ $status = $this->session->flashdata('status');
 		    
 				</div>
 
+				<!-- EMAIL TRACKING STARTS -->
+				<div id="myModal" class="modal fade" role="dialog">
+				    <div class="modal-dialog modal-lg">
+				      <!-- Modal content-->
+					<div class="modal-content">
+					    <div class="modal-header">
+					      <button type="button" class="close" data-dismiss="modal">&times;</button>
+					      <h4 class="modal-title">Change Candidate Status</h4>
+					    </div>
+					    <div class="modal-body">
+						<div class="table-responsive" style="border: none">
+						    <table id="data-tableemail" class="table table-striped table-bordered nowrap" width="100%">
+						      <thead>
+							    <tr>
+								<th data-class="expand">Created date</th>
+								<!--<th data-class="expand">Name</th>-->
+								<th data-class="expand">Internal Employee code</th>
+								<th data-hide="phone,tablet">Email</th>
+							    </tr>
+							</thead>
+							<tbody class="track">
+							   <!-- <tr class="oddClass even gradeC">
+								<td id="crDate"></td>								
+								<td id="hiringCode"></td>
+								<td id="hiringEmail"></td>
+							    </tr>-->
+							</tbody>
+						    </table>
+						</div>
+					    </div>
+					    <!--<div class="modal-footer">
+					  <button type="button" class="btn btn-default" >Close</button>
+					</div>-->
+				      </div>
+				  
+				    </div>
+				</div>
+				<!-- EMAIL TRACKING ENDS-->
                         </div>
                     </div>
                     <!-- end panel -->
@@ -167,6 +210,31 @@ $status = $this->session->flashdata('status');
 		    });		    
 		}
 	    });	
+	}
+	
+	function showingModal(vendor_code){
+	    $('#myModal').modal({show:true});
+	    //$("#candidate_id").val(id);
+	    $.ajax({
+		type: "POST",
+		url: "<?=site_url('admin/emailtracklist')?>",
+		dataType:"json",
+		data:{vendor_code:vendor_code} ,                    
+		success: function (json) {
+		    //console.log(json.emailtrack.length);
+		    $('tbody.track').empty();
+		    for (var i=0; i<json.emailtrack.length; i++) {
+		    //alert(json.emailtrack[i].cr_date);
+		    //$('.track').remove();
+		    $('.track').append('<tr class="oddClass even gradeC"><td id="crDate">'+json.emailtrack[i].cr_date+'</td><td id="hiringCode">'+json.emailtrack[i].refer_code+'</td><td id="hiringEmail">'+json.emailtrack[i].email+'</td></tr>')
+		   // $('#crDate').text(json.emailtrack[i].cr_date);
+		   // //$('#hiringName').val(json.emailtrack[i].);
+		   // $('#hiringCode').text(json.emailtrack[i].refer_code);
+		   // $('#hiringEmail').text(json.emailtrack[i].email);
+		   
+		   }
+		},
+	    });
 	}
     </script>
 	

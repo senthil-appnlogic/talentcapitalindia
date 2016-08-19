@@ -186,49 +186,52 @@
 						</ul>-->
 					</li>
 					
-					<li class="has-sub <?php if($this->uri->segment(2)=="settings"){echo "active";}?>">
-						<a href="<?php echo site_url('admin/settings');?>">
-						   <!-- <b class="caret pull-right"></b>-->
+					<li class="has-sub">
+						<a href="javascript:;">
+						    <b class="caret pull-right"></b>
 						    <!--<i class="fa fa-file-o  text-warning"></i>-->
 						    <span>Settings</span> 
 						</a>
-						<!--<ul class="sub-menu">
-							<li><a href="">Employee</a></li>
-							
-						</ul>-->
+						<ul class="sub-menu">
+							<li><a href="<?php echo site_url('admin/addClientsView');?>">Clients</a></li>
+							<li><a href="<?php echo site_url('admin/addlocationView');?>">Location</a></li>
+							<li><a href="<?php echo site_url('admin/addSkillView');?>">Skills</a></li>
+							<li><a href="<?php echo site_url('admin/addLanguageView');?>">Languages</a></li>
+							<li><a href="<?php echo site_url('admin/settings');?>">Settings</a></li>
+						</ul>
 					</li>
-					<li class="has-sub <?php if($this->uri->segment(2)=="addlocationView"){echo "active";}?>">
-						<a href="<?php echo site_url('admin/addlocationView');?>">
+					<!--<li class="has-sub <?php if($this->uri->segment(2)=="addlocationView"){echo "active";}?>">
+						<a href="<?php echo site_url('admin/addlocationView');?>">-->
 						   <!-- <b class="caret pull-right"></b>-->
 						    <!--<i class="fa fa-file-o  text-warning"></i>-->
-						    <span>Location</span> 
-						</a>
+						    <!--<span>Location</span> 
+						</a>-->
 						<!--<ul class="sub-menu">
 							<li><a href="">Employee</a></li>
 						</ul>-->
-					</li>
+					<!--</li>
 					<li class="has-sub <?php if($this->uri->segment(2)=="addSkillView"){echo "active";}?>">
-						<a href="<?php echo site_url('admin/addSkillView');?>">
+						<a href="<?php echo site_url('admin/addSkillView');?>">-->
 						   <!-- <b class="caret pull-right"></b>-->
 						    <!--<i class="fa fa-file-o  text-warning"></i>-->
-						    <span>Skills</span> 
-						</a>
+						   <!-- <span>Skills</span> 
+						</a>-->
 						<!--<ul class="sub-menu">
 							<li><a href="">Employee</a></li>
 							
 						</ul>-->
-					</li>
+					<!--</li>
 					<li class="has-sub <?php if($this->uri->segment(2)=="addLanguageView"){echo "active";}?>">
-						<a href="<?php echo site_url('admin/addLanguageView');?>">
+						<a href="<?php echo site_url('admin/addLanguageView');?>">-->
 						   <!-- <b class="caret pull-right"></b>-->
 						    <!--<i class="fa fa-file-o  text-warning"></i>-->
-						    <span>Languages</span> 
-						</a>
+						    <!--<span>Languages</span> 
+						</a>-->
 						<!--<ul class="sub-menu">
 							<li><a href="">Employee</a></li>
 							
 						</ul>-->
-					</li>
+					<!--</li>-->
 					
 					
 					

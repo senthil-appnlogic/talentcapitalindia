@@ -107,8 +107,9 @@ class internalemployee extends CI_Controller {
 	    }
 	    else
 	    {
+		$data['ClientsDetails']=$this->emp_model->getClientsDetails();
 		$this->load->view('internalemployee/header');
-		$this->load->view('internalemployee/intEmpAdd');
+		$this->load->view('internalemployee/intEmpAdd',$data);
 	    }
 	}
 	else

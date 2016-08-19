@@ -145,6 +145,11 @@ class vendormodel extends CI_Model {
         return $this->db->query($sql, $return_object = TRUE)->result_array();
     }
     
+    function getClientsDetails(){
+	$sql="SELECT * FROM clients";
+        return $this->db->query($sql, $return_object = TRUE)->result_array();
+    }
+    
     function getCandidateDetails($newId){
 	
 	$sql="SELECT *  FROM emp_candidate_details where id='$newId'";

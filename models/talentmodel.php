@@ -1034,6 +1034,23 @@ if($this->email->send()){
 	$this->db->where("id",$id);
 	$this->db->delete("language");
     }
+    
+    function clientsDetails(){
+	 $sql="SELECT * FROM clients";
+     	return $this->db->query($sql, $return_object = TRUE)->result_array();
+    }
+    
+    function addClients(){
+	$data = array(
+	    'clientname'=>$this->input->post('client'),
+	); 
+	$this->db->insert("clients",$data);
+    }
+    
+    function clientsDelete($id){
+	$this->db->where("id",$id);
+	$this->db->delete("clients");
+    }
 
     function studentUploads(){
 	$id=$_POST['id'];

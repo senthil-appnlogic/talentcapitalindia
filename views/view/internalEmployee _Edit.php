@@ -93,6 +93,7 @@ $status = $this->session->flashdata('status');
                                 <input class="form-control input-md capitalized" value="<?php echo $inter_Edit[0]['candidate_name'];?>" name="candidate_name" type="text" placeholder="Name">
                                 <input type="hidden" class="" value="<?php echo $inter_Edit[0]['id'];?>" name="hiddenId" >
 				<input type="hidden" class="" value="<?php echo $inter_Edit[0]['vendor_code'];?>" name="vendor_code" >
+				<input type="hidden" class="" value="<?php echo $inter_Edit[0]['referrer_name'];?>" name="ref_name" >
                             </div>
                             <div class="form-group">
                               <label>Middle Name</label>

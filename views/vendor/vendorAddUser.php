@@ -39,12 +39,18 @@ $status = $this->session->flashdata('status');?>
                                 <label>Client Company</label>
                                 <!--<input class="form-control input-md" name="current_location" type="text" placeholder="Current Location">-->
 				 <select name="clientComp" class="form-control chzn-select">
-				  <option disabled selected hidden>Please Select Client</option>
+				  <!--<option disabled selected hidden>Please Select Client</option>
 				  <option value="Wipro">Wipro</option>
 				  <option value="CTS">CTS</option>
 				  <option value="TCS">TCS</option>
 				  <option value="Infosys">Infosys</option>
-				  <option value="HCL">HCL</option>
+				  <option value="HCL">HCL</option>-->
+				  <option></option>
+				  <?php
+				  foreach ($ClientsDetails as $row)
+				  {?>
+				  <option value="<?php echo $row['clientname']; ?>"><?php echo $row['clientname']; ?></option>
+				  <?php } ?>
 				</select>
                             </div>
                             <div class="form-group">

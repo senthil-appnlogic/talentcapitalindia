@@ -76,8 +76,9 @@ class vendorlogin extends CI_Controller {
 	    }
 	    else
 	    {
+		$data['ClientsDetails']=$this->vendormodel->getClientsDetails();
 		$this->load->view('vendor/header');
-		$this->load->view('vendor/vendorAddUser');
+		$this->load->view('vendor/vendorAddUser',$data);
 	    }
 	}
 	else
