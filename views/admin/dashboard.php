@@ -48,7 +48,7 @@
 				<!-- end col-3 -->
 				<!-- begin col-3 -->
 				<div class="col-md-3 col-sm-6">
-					<div class="widget widget-stats bg-orange">
+					<div class="widget widget-stats bg-black">
 						<div class="stats-icon"><i class="fa fa-user-plus"></i></div>
 						<div class="stats-info">
 							<h4>TOTAL INTERNAL EMPLOYEES</h4>

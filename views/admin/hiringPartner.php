@@ -112,8 +112,9 @@ $status = $this->session->flashdata('status');
 							    <tr>
 								<th data-class="expand">Created date</th>
 								<!--<th data-class="expand">Name</th>-->
-								<th data-class="expand">Hiring Partner code</th>
+								<!--<th data-class="expand">Hiring Partner code</th>-->
 								<th data-hide="phone,tablet">Email</th>
+								<th>Action</th>
 							    </tr>
 							</thead>
 							<tbody class="track">
@@ -225,7 +226,9 @@ $status = $this->session->flashdata('status');
 		    for (var i=0; i<json.emailtrack.length; i++) {
 		    //alert(json.emailtrack[i].cr_date);
 		    //$('.track').remove();
-		    $('.track').append('<tr class="oddClass even gradeC"><td id="crDate">'+json.emailtrack[i].cr_date+'</td><td id="hiringCode">'+json.emailtrack[i].refer_code+'</td><td id="hiringEmail">'+json.emailtrack[i].email+'</td></tr>')
+		    var id = json.emailtrack[i].id;
+		    //alert(id);
+		    $('.track').append('<tr class="oddClass even gradeC"><td id="crDate">'+json.emailtrack[i].cr_date+'</td><td id="hiringEmail">'+json.emailtrack[i].email+'</td><td><a id="delete_box" href="<?php echo site_url()?>admin/emailTrackDelete/'+id+'"  class="btn btn-danger btn-xs"><i class="fa fa-trash"></i> </a></td></tr>')
 		   // $('#crDate').text(json.emailtrack[i].cr_date);
 		   // //$('#hiringName').val(json.emailtrack[i].);
 		   // $('#hiringCode').text(json.emailtrack[i].refer_code);

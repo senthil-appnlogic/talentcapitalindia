@@ -884,7 +884,7 @@
                                   <td> <input placeholder="Payroll Company" name="payroll_comp[]" id="payroll_comp" class="form-control input-md" type="text" ></td>
                                   <td> <input placeholder="Designation Company" name="designation[]" class="form-control input-md" id="designation" type="text" ></td>
                                   <td><span class='input-group date'><input type="text" placeholder="" name="emp_duration_from[]" size="35" id="emp_duration_from" onblur="checkBeforeEmpDuration($(this));" class="form-control input-md table_input input-group datepicker-dob" ><span class="input-group-addon" ><span class="glyphicon glyphicon-calendar"></span></span></span></td>
-				  <td><span class='input-group date'><input type="text" placeholder="" name="emp_duration_to[]" size="35" id="emp_duration_to" class="form-control input-md table_input input-group datepicker-dob"  ><span class="input-group-addon" ><span class="glyphicon glyphicon-calendar"></span></span></span></td>
+				  <td><span class='input-group date'><input type="text" placeholder="" name="emp_duration_to[]" size="35" id="emp_duration_to" onblur="checkEndEmpDuration($(this));" class="form-control input-md table_input input-group datepicker-dob"  ><span class="input-group-addon" ><span class="glyphicon glyphicon-calendar"></span></span></span></td>
                                   <td> <input placeholder="Location" name="location[]" class="form-control input-md" type="text"></td>
 				  <td> <textarea name="empReasonDesc[]" id="empReasonDesc" class="form-control input-md" rows="1" disabled></textarea></td>
                                   <td>
@@ -906,7 +906,7 @@
                                   <td> <input placeholder="Payroll Company" name="payroll_comp[]" id="payroll_comp" class="form-control input-md" type="text" ></td>
                                   <td> <input placeholder="Designation Company" name="designation[]" class="form-control input-md" id="designation" type="text" ></td>
                                   <td><span class='input-group date'><input type="text" placeholder="" name="emp_duration_from[]" size="35" id="emp_duration_from" onblur="checkEmpDurationMonth();" class="form-control input-md table_input input-group datepicker-dob" ><span class="input-group-addon" ><span class="glyphicon glyphicon-calendar"></span></span></span></td>
-				  <td><span class='input-group date'><input type="text" placeholder="" name="emp_duration_to[]" size="35" id="emp_duration_to" class="form-control input-md table_input input-group datepicker-dob"  ><span class="input-group-addon" ><span class="glyphicon glyphicon-calendar"></span></span></span></td>
+				  <td><span class='input-group date'><input type="text" placeholder="" name="emp_duration_to[]" size="35" id="emp_duration_to" onblur="checkEndEmpDuration($(this));" class="form-control input-md table_input input-group datepicker-dob"  ><span class="input-group-addon" ><span class="glyphicon glyphicon-calendar"></span></span></span></td>
                                   <td> <input placeholder="Location" name="location[]" class="form-control input-md" type="text"></td>
 				  <td> <textarea name="empReasonDesc[]" id="empReasonDesc" class="form-control input-md" rows="1" disabled></textarea></td>
                                   <td>
@@ -928,7 +928,7 @@
                                   <td> <input placeholder="Payroll Company" name="payroll_comp[]" id="payroll_comp" class="form-control input-md" type="text" ></td>
                                   <td> <input placeholder="Designation Company" name="designation[]" class="form-control input-md" id="designation" type="text" ></td>
                                   <td><span class='input-group date'><input type="text" placeholder="" name="emp_duration_from[]" size="35" id="emp_duration_from" onblur="checkEmpDurationMonth();" class="form-control input-md table_input input-group datepicker-dob" ><span class="input-group-addon" ><span class="glyphicon glyphicon-calendar"></span></span></span></td>
-				  <td><span class='input-group date'><input type="text" placeholder="" name="emp_duration_to[]" size="35" id="emp_duration_to" class="form-control input-md table_input input-group datepicker-dob"  ><span class="input-group-addon" ><span class="glyphicon glyphicon-calendar"></span></span></span></td>
+				  <td><span class='input-group date'><input type="text" placeholder="" name="emp_duration_to[]" size="35" id="emp_duration_to" onblur="checkEndEmpDuration($(this));" class="form-control input-md table_input input-group datepicker-dob"  ><span class="input-group-addon" ><span class="glyphicon glyphicon-calendar"></span></span></span></td>
                                   <td> <input placeholder="Location" name="location[]" class="form-control input-md" type="text"></td>
 				  <td> <textarea name="empReasonDesc[]" id="empReasonDesc" class="form-control input-md" rows="1" disabled></textarea></td>
                                   <td>
@@ -950,7 +950,7 @@
                                   <td> <input placeholder="Payroll Company" id="payroll_comp" class="form-control input-md" type="text" ></td>
                                   <td> <input placeholder="Designation Company" class="form-control input-md" id="designation" type="text" ></td>
                                   <td><span class='input-group date'><input type="text" placeholder="" size="35" onblur="checkEmpDurationMonth();" id="emp_duration_from" class="form-control input-md table_input input-group datepicker-dob" ><span class="input-group-addon" ><span class="glyphicon glyphicon-calendar"></span></span></span></td>
-				  <td><span class='input-group date'><input type="text" placeholder="" size="35" id="emp_duration_to" class="form-control input-md table_input input-group datepicker-dob"  ><span class="input-group-addon" ><span class="glyphicon glyphicon-calendar"></span></span></span></td>
+				  <td><span class='input-group date'><input type="text" placeholder="" size="35" onblur="checkEndEmpDuration($(this));" id="emp_duration_to" class="form-control input-md table_input input-group datepicker-dob"  ><span class="input-group-addon" ><span class="glyphicon glyphicon-calendar"></span></span></span></td>
                                   <td> <input placeholder="Location" id="location" class="form-control input-md" type="text"></td>
 				  <td> <textarea id="empReasonDesc" class="form-control input-md" rows="1" readonly></textarea></td>
                                   
@@ -982,7 +982,9 @@
                                
                               </tbody>
                             </table>
-			  <input id="beforeVal" type="hidden" >
+			  <input id="beforeVal" value="0" type="hidden" >
+			  <input id="todayVal" value="0" type="hidden" >
+			  <input id="employeeVal" value="0" type="hidden" >
                         </div>
                         </div>
 			
@@ -1583,7 +1585,42 @@
 	$(this).find('[id="empReasonDesc"]').prop("readonly", true);
       }
     });
+    $('#employeeVal').val(sum);
     var call = countingdays(sum,'employee');
+  }
+  
+  function checkEndEmpDuration($this){
+    var ssss;
+    $('.countClass1:visible').each(function(){
+      if(typeof $(this).find('[name="emp_duration_from[]"]').val() != "undefined" && $(this).find('[name="emp_duration_from[]"]').val()!=''){
+	 ssss=$(this).find('[name="emp_duration_from[]"]').val();
+      }else{
+	//console.log($(this).prev('tr:first').find('td [name="emp_duration_to[]"]').val());
+	//alert($(this).prev('tr:first').find('td [name="emp_duration_to[]"]').val());
+	var ss = $(this).prev('tr:first').find('td [name="emp_duration_to[]"]').val();
+	if(ss != ""){
+	console.log($(this).prev('tr:first').find('td [name="emp_duration_to[]"]').val());
+	 var dd = $(this).prev('tr:first').find('td [name="emp_duration_to[]"]').val();
+	 //alert(dd);
+	 var today = new Date();
+	 //var prevRowEmpNewVal = moment.parseZone(todayVal, 'DD MMM YYYY').format();
+	 var cc = today.toLocaleFormat('%d-%b-%Y');
+	 
+	 var prevRowEmpNewVal = moment.parseZone(dd, 'DD MMM YYYY').format();
+	 var thisNewEmpValue = moment.parseZone(cc, 'DD MMM YYYY').format();
+	
+	 var a = moment(prevRowEmpNewVal,'YYYY/MM/DD');
+	 var b = moment(thisNewEmpValue,'YYYY/MM/DD');
+	 var diffDays = b.diff(a, 'days');
+	 //alert(diffDays);
+	  if (diffDays >= 1) {
+	    var sum = diffDays;
+	    $('#todayVal').val(sum);
+	    var call = countingdays(sum,'overall');
+	  }
+	}
+      }
+    })
   }
   
   function checkBeforeEmpDuration($this) {
@@ -1620,9 +1657,11 @@
   
   function countingdays(sum,sum1) {
     var beforeVal = $('#beforeVal').val();
-    if (sum1 == 'employee' && beforeVal != '') {
-     sum = parseInt(beforeVal) + (sum);
-    }
+    var todayVal = $('#todayVal').val();
+    var employeeVal = $('#employeeVal').val();
+    //if (sum1 == 'employee' && beforeVal != '' || sum1 == 'overall') {
+    sum = parseInt(beforeVal) +  parseInt(todayVal) + parseInt(employeeVal);
+    //}
     var y = 365;
     var y2 = 30;
     var remainder = sum % y;
