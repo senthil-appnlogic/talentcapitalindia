@@ -301,7 +301,7 @@ class talentModel extends CI_Model {
 	//	INNER JOIN emp_candidate_details emc ON emc.id = emp.head_id order by emc.cr_date DESC";
 	
 	
-	$sql="select emp_candidate_details.id,emp_candidate_details.vendor_code, emp_candidate_details.candidate_name, emp_candidate_details.mobile_number, emp_candidate_details.mail_id, emp_candidate_details.skills, emp_candidate_details.primary_other_skils, emp_candidate_details.SecondarySkills, emp_candidate_details.secondary_other_skils, emp_candidate_details.total_exp_year, emp_candidate_details.total_exp_month, emp_candidate_details.relevant_exp_year, emp_candidate_details.relevant_exp_month, emp_candidate_details.notice_period, emp_candidate_details.current_ctc_lakhs, emp_candidate_details.current_ctc_thousands, emp_candidate_details.expected_ctc_lakhs, emp_candidate_details.expected_ctc_thousands, emp_candidate_details.day, emp_candidate_details.month, emp_candidate_details.year, emp_candidate_details.pan_card_no, emp_candidate_details.pan_card_attach, emp_candidate_details.language_known, emp_candidate_details.current_location, emp_candidate_details.preferred_location, emp_candidate_details.interview_timing, emp_candidate_details.profile_pic, emp_candidate_details.educational_gap_year, emp_candidate_details.career_gap_year, emp_candidate_details.team_size_name, emp_candidate_details.team_contact_no, emp_candidate_details.email_random_code, emp_candidate_details.password, emp_candidate_details.password_token, date_format(cr_date, '%e-%b-%y') as 'cr_date1', emp_candidate_details.login_types, emp_candidate_details.referrer_name,emp_candidate_details.client,
+	$sql="select emp_candidate_details.id,emp_candidate_details.vendor_code, emp_candidate_details.candidate_name, emp_candidate_details.mobile_number, emp_candidate_details.mail_id, emp_candidate_details.skills, emp_candidate_details.primary_other_skils, emp_candidate_details.SecondarySkills, emp_candidate_details.secondary_other_skils, emp_candidate_details.total_exp_year, emp_candidate_details.total_exp_month, emp_candidate_details.relevant_exp_year, emp_candidate_details.relevant_exp_month, emp_candidate_details.notice_period, emp_candidate_details.current_ctc_lakhs, emp_candidate_details.current_ctc_thousands, emp_candidate_details.expected_ctc_lakhs, emp_candidate_details.expected_ctc_thousands, emp_candidate_details.day, emp_candidate_details.month, emp_candidate_details.year, emp_candidate_details.pan_card_no, emp_candidate_details.pan_card_attach, emp_candidate_details.language_known, emp_candidate_details.current_location, emp_candidate_details.preferred_location, emp_candidate_details.interview_timing, emp_candidate_details.profile_pic, emp_candidate_details.educational_gap_year, emp_candidate_details.career_gap_year, emp_candidate_details.team_size_name, emp_candidate_details.team_contact_no, emp_candidate_details.email_random_code, emp_candidate_details.password, emp_candidate_details.password_token, date_format(cr_date, '%e-%b-%y') as 'cr_date1', emp_candidate_details.login_types, emp_candidate_details.referrer_name,emp_candidate_details.client,emp_candidate_details.employer_still,
 		MAX(CASE WHEN p.RowNum=1 THEN p.degree END) as SSLCDegree,
 		MAX(CASE WHEN p.RowNum=1 THEN p.specialisation END) as SSLCSpecialization,
 		MAX(CASE WHEN p.RowNum=1 THEN p.edu_duration_from END) as SSLCFromDuration,
@@ -465,6 +465,7 @@ class talentModel extends CI_Model {
                 'current_location'=>$this->input->post('current_location'),
                 'preferred_location'=>implode(",",$this->input->post('preferred_location')),
                 'interview_timing'=>$this->input->post('interview_timing'),
+		'employer_still'=>$this->input->post('employer_still'),
                 'educational_gap_year'=>$this->input->post('educational_gap_year'),
 		'educational_gap_month'=>$this->input->post('educational_gap_month'),
                 'career_gap_year'=>$this->input->post('career_gap_year'),
@@ -587,6 +588,7 @@ class talentModel extends CI_Model {
                            'current_location'=>$this->input->post('current_location'),
                            'preferred_location'=>implode(",",$this->input->post('preferred_location')),
                            'interview_timing'=>$this->input->post('interview_timing'),
+			   'employer_still'=>$this->input->post('employer_still'),
                            'educational_gap_year'=>$this->input->post('educational_gap_year'),
                            'career_gap_year'=>$this->input->post('career_gap_year'),
                            'team_size_name'=>$this->input->post('team_size_name'),
@@ -620,6 +622,7 @@ class talentModel extends CI_Model {
                                 'current_location'=>$this->input->post('current_location'),
                                 'preferred_location'=>implode(",",$this->input->post('preferred_location')),
                                 'interview_timing'=>$this->input->post('interview_timing'),
+				'employer_still'=>$this->input->post('employer_still'),
                                 'educational_gap_year'=>$this->input->post('educational_gap_year'),
                                 'career_gap_year'=>$this->input->post('career_gap_year'),
                                 'team_size_name'=>$this->input->post('team_size_name'),

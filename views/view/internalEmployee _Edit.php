@@ -876,9 +876,10 @@ $status = $this->session->flashdata('status');
 				  <th><label>Reason Description</label></th>
 				  <th><label>File Upload</label></th>
                                   <th><button type="button" onclick="addMore1();" class="btn-add btn btn-default"><i class="fa fa-plus"></i></button></th>
+				  <th><input type="hidden" name="employer_still" value="<?php echo $inter_Edit[0]['employer_still']; ?>" id="numCnt"</th>
                                 </tr>
                               </thead>
-                              <tbody>
+                              <tbody id="appenCnt">
 				<?php  $count=-1; foreach($GetEmpl as $row) { $count++; ?>
                                 <tr class="odd1 countClass1">
 				  <input name="Add_more_line[]" value="add" class="form-control input-md" type="hidden">
@@ -1822,30 +1823,33 @@ function checkDurationMonth() {
 	$clone.find('[id="tests"]').val('INSERT');
         getSelectImage();
 	$name   = $clone.find('[name="client_comp[]"]');
-	$('#form_validation').bootstrapValidator('addField', $name);
+	$('#form_validation').bootstrapValidator('removeField', $name);
         
 	$name   = $clone.find('[name="payroll_comp[]"]');
-	$('#form_validation').bootstrapValidator('addField', $name);
+	$('#form_validation').bootstrapValidator('removeField', $name);
         
 	$name   = $clone.find('[name="designation[]"]');
-	$('#form_validation').bootstrapValidator('addField', $name);        
+	$('#form_validation').bootstrapValidator('removeField', $name);        
         
         $name   = $clone.find('[name="emp_duration_from[]"]');
-	$('#form_validation').bootstrapValidator('addField', $name);
+	$('#form_validation').bootstrapValidator('removeField', $name);
         
         $name   = $clone.find('[name="emp_duration_to[]"]');
-	$('#form_validation').bootstrapValidator('addField', $name);
+	$('#form_validation').bootstrapValidator('removeField', $name);
         
         $name   = $clone.find('[name="location[]"]');
-	$('#form_validation').bootstrapValidator('addField', $name);
+	$('#form_validation').bootstrapValidator('removeField', $name);
 	
 	$name   = $clone.find('[name="empReasonDesc[]"]');
 	$('#form_validation').bootstrapValidator('addField', $name);
 	
 	$name   = $clone.find('[name="file_employee_upload[]"]');
 	$('#form_validation').bootstrapValidator('addField', $name);
-
-
+	
+	//getting appended row count
+	var result=$('#appenCnt tr').length-1;
+	$("#numCnt").val(result-3);
+	
         datepicker1();
     }
     function removeButton1($this) {
@@ -1856,7 +1860,11 @@ function checkDurationMonth() {
 	 $('#form_validation').bootstrapValidator('removeField', $row.find('input[name="emp_duration_from[]"]'));
 	 $('#form_validation').bootstrapValidator('removeField', $row.find('input[name="emp_duration_to[]"]'));
 	 $('#form_validation').bootstrapValidator('removeField', $row.find('input[name="location[]"]'));
-        $row.remove(); 
+        $row.remove();
+	
+	//getting appended row count
+	var rowCount=$('#appenCnt tr').length-1;
+	$("#numCnt").val(rowCount-3);
     }    
     function panAttachment(){
         var oFReader = new FileReader();
@@ -1982,7 +1990,7 @@ function checkDurationMonth() {
 //  }
  
  $(document).ready(function(){
-  $('[name="relevant_exp_year"]').val('<?php echo $inter_Edit[0]['relevant_exp_year']?>');
+  $('[name="relevant_exp_year"]').val('<?php echo $inter_Edit[0]["relevant_exp_year"]?>');
   $('[name="total_exp_year"]').val('<?php echo $inter_Edit[0]['total_exp_year']?>');
   $('[name="total_exp_month"]').val('<?php echo $inter_Edit[0]['total_exp_month']?>');
   $('[name="relevant_exp_month"]').val('<?php echo $inter_Edit[0]['relevant_exp_month']?>');

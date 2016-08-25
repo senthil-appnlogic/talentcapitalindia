@@ -679,420 +679,420 @@ $status = $this->session->flashdata('status');
                 validating: 'fa fa-refresh'
             },
     fields: {
-        candidate_name:
-		{
-		    trigger:'blur',
-		    validators:
-		    {
-			notEmpty:
-			{
-			    message: 'name is required'
-			},
-			regexp: {
-                        regexp: /^[a-z\s]+$/i,
-                        message: 'The full name can consist of alphabetical characters and spaces only'
-                    }
-			
-		    }
-		},
-		last_name:
-		{
-		    trigger:'blur',
-		    validators:
-		    {
-			notEmpty:
-			{
-			    message: 'Last Name is required'
-			},
-			
-			
-		    }
-		},
-        mobile_number: {
-            validators: {
-		notEmpty:
-			{
-			    message: 'Mobile Number is required'
-			},
-			regexp: {
-                        regexp: /^(\+\d{1,3}[- ]?)?\d{10}$/,
-                        message: 'Mobile Number contains only 10 Digit Numbers'
-                    }
-			
-                
-            }
-        },
-        mail_id: {
-            validators: {
-		notEmpty:
-			{
-			    message: 'Email is required'
-			},
-			regexp: {
-                            regexp: '^[^@\\s]+@([^@\\s]+\\.)+[^@\\s]+$',
-                            message: 'The value is not a valid email address'
-                        }
-            }
-        },
-	total_exp: {
-            validators: {
-		notEmpty:
-			{
-			    message: 'Total Experience is required'
-			},
-			regexp: {
-                        regexp: /^(\+\d{1,3}[- ]?)?\d{2}$/,
-                        message: 'Experience Should be contains Numbers only'
-                    }
-            }
-        },
-	relevant_exp: {
-            validators: {
-		notEmpty:
-			{
-			    message: 'Revelant Exp is required'
-			},
-            }
-        },
-	notice_period: {
-            validators: {
-		notEmpty:
-			{
-			    message: 'Notice Period is required'
-			},
-			regexp: {
-                        regexp: /^(\+\d{1,3}[- ]?)?\d{2}$/,
-                        message: 'Notice Period contains only  Numbers'
-                    }
-            }
-        },
-	current_ctc: {
-            validators: {
-		notEmpty:
-			{
-			    message: 'Current CTC proof is required'
-			},
-			regexp: {
-                        regexp: /^(\+\d{1,3}[- ]?)?\d{6}$/,
-                        message: 'Current CTC contains only  Numbers'
-                    }
-            }
-        },
-	expected_ctc: {
-            validators: {
-		notEmpty:
-			{
-			    message: 'Expected CTC is required'
-			},
-			regexp: {
-                        regexp: /^(\+\d{1,3}[- ]?)?\d{6}$/,
-                        message: 'Expected CTC contains only 10 Digit Numbers'
-                    }
-            }
-        },
-	day: {
-            validators: {
-		notEmpty:
-			{
-			    message: 'Day is required'
-			},
-            }
-        },
-	month: {
-            validators: {
-		notEmpty:
-			{
-			    message: 'Month is required'
-			},
-            }
-        },
-	year: {
-            validators: {
-		notEmpty:
-			{
-			    message: 'Year is required'
-			},
-            }
-        },
-	pan_card_no: {
-            validators: {
-		notEmpty:
-			{
-			    message: 'PAN Number is required'
-			},
-			regexp: {
-                        regexp: /^([a-zA-Z]){5}([0-9]){4}([a-zA-Z]){1}?$/,
-                        message: 'PAN Number contains only 10 Digit Numbers'
-                    }
-            }
-        },
-	
-	current_location: {
-            validators: {
-		notEmpty:
-			{
-			    message: 'Current Location is required'
-			},
-            }
-        },
-	preferred_location: {
-            validators: {
-		notEmpty:
-			{
-			    message: 'Prefered Location is required'
-			},
-            }
-        },
-	interview_timing: {
-            validators: {
-		notEmpty:
-			{
-			    message: 'Interview Timing is required'
-			},
-            }
-        },
-	educational_gap_year: {
-            validators: {
-		notEmpty:
-			{
-			    message: 'Educational Gap is required'
-			},
-            }
-        },
-	career_gap_year: {
-            validators: {
-		notEmpty:
-			{
-			    message: 'Carreier Gap is required'
-			},
-            }
-        },
-	team_size_name: {
-            validators: {
-		notEmpty:
-			{
-			    message: 'Team Size is required'
-			},
-            }
-        },
-	team_contact_no: {
-            validators: {
-		notEmpty:
-			{
-			    message: 'Team Contact Number is required'
-			},
-			regexp: {
-                        regexp: /^(\+\d{1,3}[- ]?)?\d{10}$/,
-                        message: 'Contact Number contains only 10 Digit Numbers'
-                    }
-            }
-        },
-//        'skills[]':
+//        candidate_name:
 //		{
-//		    message: 'Skills is not valid',
+//		    trigger:'blur',
+//		    validators:
+//		    {
+//			notEmpty:
+//			{
+//			    message: 'name is required'
+//			},
+//			regexp: {
+//                        regexp: /^[a-z\s]+$/i,
+//                        message: 'The full name can consist of alphabetical characters and spaces only'
+//                    }
+//			
+//		    }
+//		},
+//		last_name:
+//		{
+//		    trigger:'blur',
+//		    validators:
+//		    {
+//			notEmpty:
+//			{
+//			    message: 'Last Name is required'
+//			},
+//			
+//			
+//		    }
+//		},
+//        mobile_number: {
+//            validators: {
+//		notEmpty:
+//			{
+//			    message: 'Mobile Number is required'
+//			},
+//			regexp: {
+//                        regexp: /^(\+\d{1,3}[- ]?)?\d{10}$/,
+//                        message: 'Mobile Number contains only 10 Digit Numbers'
+//                    }
+//			
+//                
+//            }
+//        },
+//        mail_id: {
+//            validators: {
+//		notEmpty:
+//			{
+//			    message: 'Email is required'
+//			},
+//			regexp: {
+//                            regexp: '^[^@\\s]+@([^@\\s]+\\.)+[^@\\s]+$',
+//                            message: 'The value is not a valid email address'
+//                        }
+//            }
+//        },
+//	total_exp: {
+//            validators: {
+//		notEmpty:
+//			{
+//			    message: 'Total Experience is required'
+//			},
+//			regexp: {
+//                        regexp: /^(\+\d{1,3}[- ]?)?\d{2}$/,
+//                        message: 'Experience Should be contains Numbers only'
+//                    }
+//            }
+//        },
+//	relevant_exp: {
+//            validators: {
+//		notEmpty:
+//			{
+//			    message: 'Revelant Exp is required'
+//			},
+//            }
+//        },
+//	notice_period: {
+//            validators: {
+//		notEmpty:
+//			{
+//			    message: 'Notice Period is required'
+//			},
+//			regexp: {
+//                        regexp: /^(\+\d{1,3}[- ]?)?\d{2}$/,
+//                        message: 'Notice Period contains only  Numbers'
+//                    }
+//            }
+//        },
+//	current_ctc: {
+//            validators: {
+//		notEmpty:
+//			{
+//			    message: 'Current CTC proof is required'
+//			},
+//			regexp: {
+//                        regexp: /^(\+\d{1,3}[- ]?)?\d{6}$/,
+//                        message: 'Current CTC contains only  Numbers'
+//                    }
+//            }
+//        },
+//	expected_ctc: {
+//            validators: {
+//		notEmpty:
+//			{
+//			    message: 'Expected CTC is required'
+//			},
+//			regexp: {
+//                        regexp: /^(\+\d{1,3}[- ]?)?\d{6}$/,
+//                        message: 'Expected CTC contains only 10 Digit Numbers'
+//                    }
+//            }
+//        },
+//	day: {
+//            validators: {
+//		notEmpty:
+//			{
+//			    message: 'Day is required'
+//			},
+//            }
+//        },
+//	month: {
+//            validators: {
+//		notEmpty:
+//			{
+//			    message: 'Month is required'
+//			},
+//            }
+//        },
+//	year: {
+//            validators: {
+//		notEmpty:
+//			{
+//			    message: 'Year is required'
+//			},
+//            }
+//        },
+//	pan_card_no: {
+//            validators: {
+//		notEmpty:
+//			{
+//			    message: 'PAN Number is required'
+//			},
+//			regexp: {
+//                        regexp: /^([a-zA-Z]){5}([0-9]){4}([a-zA-Z]){1}?$/,
+//                        message: 'PAN Number contains only 10 Digit Numbers'
+//                    }
+//            }
+//        },
+//	
+//	current_location: {
+//            validators: {
+//		notEmpty:
+//			{
+//			    message: 'Current Location is required'
+//			},
+//            }
+//        },
+//	preferred_location: {
+//            validators: {
+//		notEmpty:
+//			{
+//			    message: 'Prefered Location is required'
+//			},
+//            }
+//        },
+//	interview_timing: {
+//            validators: {
+//		notEmpty:
+//			{
+//			    message: 'Interview Timing is required'
+//			},
+//            }
+//        },
+//	educational_gap_year: {
+//            validators: {
+//		notEmpty:
+//			{
+//			    message: 'Educational Gap is required'
+//			},
+//            }
+//        },
+//	career_gap_year: {
+//            validators: {
+//		notEmpty:
+//			{
+//			    message: 'Carreier Gap is required'
+//			},
+//            }
+//        },
+//	team_size_name: {
+//            validators: {
+//		notEmpty:
+//			{
+//			    message: 'Team Size is required'
+//			},
+//            }
+//        },
+//	team_contact_no: {
+//            validators: {
+//		notEmpty:
+//			{
+//			    message: 'Team Contact Number is required'
+//			},
+//			regexp: {
+//                        regexp: /^(\+\d{1,3}[- ]?)?\d{10}$/,
+//                        message: 'Contact Number contains only 10 Digit Numbers'
+//                    }
+//            }
+//        },
+////        'skills[]':
+////		{
+////		    message: 'Skills is not valid',
+////		    trigger:'blur',
+////		    
+////		    validators:
+////		    {
+////			notEmpty:
+////			{
+////			    message: 'Skills is required and can\'t be empty'
+////			}
+////		    }
+////		},
+//'skills[]': {
+//					validators: {
+//					
+//					notEmpty: {
+//						message: 'The Skill is required and can\'t be empty'
+//					},
+//					}
+//				},
+//				'primary_other_skils': {
+//                  
+//                   validators: {
+//                       notEmpty: {
+//                           message: 'The Primary other skills'
+//                       },
+//                   }
+//				},
+//				'secondary_other_skils': {
+//                  
+//                   validators: {
+//                       notEmpty: {
+//                           message: 'The secondary other skills'
+//                       },
+//                   }
+//               },
+//         'language_known[]':
+//		{
+//		    message: 'Language is not valid',
 //		    trigger:'blur',
 //		    
 //		    validators:
 //		    {
 //			notEmpty:
 //			{
-//			    message: 'Skills is required and can\'t be empty'
+//			    message: 'Language is required and can\'t be empty'
 //			}
 //		    }
 //		},
-'skills[]': {
-					validators: {
-					
-					notEmpty: {
-						message: 'The Skill is required and can\'t be empty'
-					},
-					}
-				},
-				'primary_other_skils': {
-                  
-                   validators: {
-                       notEmpty: {
-                           message: 'The Primary other skills'
-                       },
-                   }
-				},
-				'secondary_other_skils': {
-                  
-                   validators: {
-                       notEmpty: {
-                           message: 'The secondary other skills'
-                       },
-                   }
-               },
-         'language_known[]':
-		{
-		    message: 'Language is not valid',
-		    trigger:'blur',
-		    
-		    validators:
-		    {
-			notEmpty:
-			{
-			    message: 'Language is required and can\'t be empty'
-			}
-		    }
-		},
-        'client_comp[]':
-		{
-		    message: 'Client Company is not valid',
-		    trigger:'blur',
-		    group:'td',
-		    validators:
-		    {
-			notEmpty:
-			{
-			    message: 'Client Company is required and can\'t be empty'
-			}
-		    }
-		},
-	'payroll_comp[]':
-	{
-	    message: 'Payroll is not valid',
-	    trigger:'blur',
-	    group:'td',
-	    validators:
-	    {
-		notEmpty:
-		{
-		    message: 'Payroll Company is required and can\'t be empty'
-		}
-	    }
-	},
-	'designation[]':
-	{
-	    message: 'Designation is not valid',
-	    trigger:'blur',
-	    group:'td',
-	    validators:
-	    {
-		notEmpty:
-		{
-		    message: 'Designation is required and can\'t be empty'
-		}
-	    }
-	},
-	'emp_duration_from[]':
-	{
-	    message: 'From Date is not valid',
-	    trigger:'blur',
-	    group:'td',
-	    validators:
-	    {
-		notEmpty:
-		{
-		    message: 'From Date is required and can\'t be empty'
-		}
-	    }
-	},
-	'emp_duration_to[]':
-	{
-	    message: 'Upto Date is not valid',
-	    trigger:'blur',
-	    group:'td',
-	    validators:
-	    {
-		notEmpty:
-		{
-		    message: 'Upto Date is required and can\'t be empty'
-		}
-	    }
-	},
-	'location[]':
-	{
-	    message: 'Location is not valid',
-	    trigger:'blur',
-	    group:'td',
-	    validators:
-	    {
-		notEmpty:
-		{
-		    message: 'Location is required and can\'t be empty'
-		}
-	    }
-	},
-	'degree[]':
-	{
-	    message: 'Degree is not valid',
-	    trigger:'blur',
-	    group:'td',
-	    validators:
-	    {
-		notEmpty:
-		{
-		    message: 'Degree is required and can\'t be empty'
-		}
-	    }
-	},
-	//'specialisation[]':
-	//{
-	//    message: 'Specialization is not valid',
-	//    trigger:'blur',
-	//    group:'td',
-	//    validators:
-	//    {
-	//	notEmpty:
-	//	{
-	//	    message: 'Specialztion is required and can\'t be empty'
-	//	}
-	//    }
-	//},
-	'edu_duration_from[]':
-	{
-	    message: 'Education Duration From is not valid',
-	    trigger:'blur',
-	    group:'td',
-	    validators:
-	    {
-		notEmpty:
-		{
-		    message: 'Education Duration From is required and can\'t be empty'
-		}
-	    }
-	},
-	'edu_duration_to[]':
-	{
-	    message: 'Education Duration To is not valid',
-	    trigger:'blur',
-	    group:'td',
-	    validators:
-	    {
-		notEmpty:
-		{
-		    message: 'Education Duration To is required and can\'t be empty'
-		}
-	    }
-	},
-	'university[]':
-	{
-	    message: 'University is not valid',
-	    trigger:'blur',
-	    group:'td',
-	    validators:
-	    {
-		notEmpty:
-		{
-		    message: 'University is required and can\'t be empty'
-		}
-	    }
-	},
-	'percentage[]':
-	{
-	    message: 'Percentage is not valid',
-	    trigger:'blur',
-	    group:'td',
-	    validators:
-	    {
-		notEmpty:
-		{
-		    message: 'Percentage is required and can\'t be empty'
-		}
-	    }
-	},
+//        'client_comp[]':
+//		{
+//		    message: 'Client Company is not valid',
+//		    trigger:'blur',
+//		    group:'td',
+//		    validators:
+//		    {
+//			notEmpty:
+//			{
+//			    message: 'Client Company is required and can\'t be empty'
+//			}
+//		    }
+//		},
+//	'payroll_comp[]':
+//	{
+//	    message: 'Payroll is not valid',
+//	    trigger:'blur',
+//	    group:'td',
+//	    validators:
+//	    {
+//		notEmpty:
+//		{
+//		    message: 'Payroll Company is required and can\'t be empty'
+//		}
+//	    }
+//	},
+//	'designation[]':
+//	{
+//	    message: 'Designation is not valid',
+//	    trigger:'blur',
+//	    group:'td',
+//	    validators:
+//	    {
+//		notEmpty:
+//		{
+//		    message: 'Designation is required and can\'t be empty'
+//		}
+//	    }
+//	},
+//	'emp_duration_from[]':
+//	{
+//	    message: 'From Date is not valid',
+//	    trigger:'blur',
+//	    group:'td',
+//	    validators:
+//	    {
+//		notEmpty:
+//		{
+//		    message: 'From Date is required and can\'t be empty'
+//		}
+//	    }
+//	},
+//	'emp_duration_to[]':
+//	{
+//	    message: 'Upto Date is not valid',
+//	    trigger:'blur',
+//	    group:'td',
+//	    validators:
+//	    {
+//		notEmpty:
+//		{
+//		    message: 'Upto Date is required and can\'t be empty'
+//		}
+//	    }
+//	},
+//	'location[]':
+//	{
+//	    message: 'Location is not valid',
+//	    trigger:'blur',
+//	    group:'td',
+//	    validators:
+//	    {
+//		notEmpty:
+//		{
+//		    message: 'Location is required and can\'t be empty'
+//		}
+//	    }
+//	},
+//	'degree[]':
+//	{
+//	    message: 'Degree is not valid',
+//	    trigger:'blur',
+//	    group:'td',
+//	    validators:
+//	    {
+//		notEmpty:
+//		{
+//		    message: 'Degree is required and can\'t be empty'
+//		}
+//	    }
+//	},
+//	//'specialisation[]':
+//	//{
+//	//    message: 'Specialization is not valid',
+//	//    trigger:'blur',
+//	//    group:'td',
+//	//    validators:
+//	//    {
+//	//	notEmpty:
+//	//	{
+//	//	    message: 'Specialztion is required and can\'t be empty'
+//	//	}
+//	//    }
+//	//},
+//	'edu_duration_from[]':
+//	{
+//	    message: 'Education Duration From is not valid',
+//	    trigger:'blur',
+//	    group:'td',
+//	    validators:
+//	    {
+//		notEmpty:
+//		{
+//		    message: 'Education Duration From is required and can\'t be empty'
+//		}
+//	    }
+//	},
+//	'edu_duration_to[]':
+//	{
+//	    message: 'Education Duration To is not valid',
+//	    trigger:'blur',
+//	    group:'td',
+//	    validators:
+//	    {
+//		notEmpty:
+//		{
+//		    message: 'Education Duration To is required and can\'t be empty'
+//		}
+//	    }
+//	},
+//	'university[]':
+//	{
+//	    message: 'University is not valid',
+//	    trigger:'blur',
+//	    group:'td',
+//	    validators:
+//	    {
+//		notEmpty:
+//		{
+//		    message: 'University is required and can\'t be empty'
+//		}
+//	    }
+//	},
+//	'percentage[]':
+//	{
+//	    message: 'Percentage is not valid',
+//	    trigger:'blur',
+//	    group:'td',
+//	    validators:
+//	    {
+//		notEmpty:
+//		{
+//		    message: 'Percentage is required and can\'t be empty'
+//		}
+//	    }
+//	},
 	
     }
 });

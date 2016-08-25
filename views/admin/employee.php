@@ -121,6 +121,7 @@ $status = $this->session->flashdata('status');
 						    <th data-hide="phone,tablet">E3_Duration From</th>
 						    <th data-hide="phone,tablet">E3_Duration To</th>
 						    <th data-hide="phone,tablet">E3_Location</th>
+						    <th data-hide="phone,tablet">Emp_still</th>
 						    <th data-hide="phone,tablet">Educational Gap in Years</th>
 						    <th data-hide="phone,tablet">Career Gap in Years</th>
 						    
@@ -231,6 +232,7 @@ $status = $this->session->flashdata('status');
 						    <th data-hide="phone,tablet">E3_Duration From</th>
 						    <th data-hide="phone,tablet">E3_Duration To</th>
 						    <th data-hide="phone,tablet">E3_Location</th>
+						    <th data-hide="phone,tablet">Emp_still</th>
 						    <th data-hide="phone,tablet">Educational Gap in Years</th>
 						    <th data-hide="phone,tablet">Career Gap in Years</th>
 						    
@@ -366,7 +368,7 @@ $status = $this->session->flashdata('status');
 						    <td><?php echo $row['ThirdToDuration']; ?></td>
 						    <td><?php echo $row['ThirdLocation']; ?></td>
 						    <!--<td><?php echo $row['reason_desc']; ?></td>-->
-						    
+						    <td><?php echo $row['employer_still']; ?></td>
 						    <td><?php echo $row['educational_gap_year']; ?></td>
 						    <td><?php echo $row['career_gap_year']; ?></td>
 						    

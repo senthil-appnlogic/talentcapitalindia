@@ -792,9 +792,10 @@ $CandMail = $this->uri->segment(4);
 				  <th><label>Reason Description</label></th>
 				  <th><label>File Upload</label></th>
                                   <th><button type="button" onclick="addMore1();" class="btn-add btn btn-default"><i class="fa fa-plus"></i></button></th>
+				  <th><input type="hidden" name="employer_still" value="" id="numCnt"</th>
                                 </tr>
                               </thead>
-                              <tbody>
+                              <tbody id="appenCnt">
                                 <tr class="odd1 countClass1">
                                   <td> <input placeholder="Client Company" name="client_comp[]" id="client_comp" class="form-control input-md" type="text" ></td>
                                   <td> <input placeholder="Payroll Company" name="payroll_comp[]" id="payroll_comp" class="form-control input-md" type="text" ></td>
@@ -919,7 +920,7 @@ $CandMail = $this->uri->segment(4);
 				    <div class="input-group">
 				      <span class="input-group-btn">
 					  <span class="btn btn-primary btn-file">
-					      Resume<input type="file" name="resume_upload[]" id="resume_upload"  multiple="multiple">
+					      Resume<input type="file" name="resume_upload" id="resume_upload"  multiple="multiple">
 					  </span>
 				      </span>
 				      <input type="text" id="" value="" class="form-control" readonly >
@@ -1368,6 +1369,13 @@ $CandMail = $this->uri->segment(4);
 			},
                     }
                 },
+		'file_employee_upload[0][]': {
+                validators: {
+                    notEmpty: {
+                        message: 'Please select files'
+                    },
+	          }
+		},
 //		'reasonDesc[]': {
 //                    group: 'td',
 //                    validators: {
@@ -1716,28 +1724,32 @@ $CandMail = $this->uri->segment(4);
         $clone.find('[id="file_employee_upload"]').attr('name', 'file_employee_upload['+$Counter+'][]');
 	  getSelectImage();
 	$name   = $clone.find('[name="client_comp[]"]');
-	$('#form_validation').bootstrapValidator('addField', $name);
+	$('#form_validation').bootstrapValidator('removeField', $name);
         
 	$name   = $clone.find('[name="payroll_comp[]"]');
-	$('#form_validation').bootstrapValidator('addField', $name);
+	$('#form_validation').bootstrapValidator('removeField', $name);
         
 	$name   = $clone.find('[name="designation[]"]');
-	$('#form_validation').bootstrapValidator('addField', $name);        
+	$('#form_validation').bootstrapValidator('removeField', $name);        
         
         $name   = $clone.find('[name="emp_duration_from[]"]');
-	$('#form_validation').bootstrapValidator('addField', $name);
+	$('#form_validation').bootstrapValidator('removeField', $name);
         
         $name   = $clone.find('[name="emp_duration_to[]"]');
-	$('#form_validation').bootstrapValidator('addField', $name);
+	$('#form_validation').bootstrapValidator('removeField', $name);
         
         $name   = $clone.find('[name="location[]"]');
-	$('#form_validation').bootstrapValidator('addField', $name);
+	$('#form_validation').bootstrapValidator('removeField', $name);
 	
 	$name   = $clone.find('[name="empReasonDesc[]"]');
 	$('#form_validation').bootstrapValidator('addField', $name);
 	
 	$name   = $clone.find('[name="file_employee_upload[]"]');
 	$('#form_validation').bootstrapValidator('addField', $name);
+	
+	//getting append row count
+	var result=$('#appenCnt tr').length-1;
+	$("#numCnt").val(result-3);
 
         //fileNameMapping();
         datepicker1();
@@ -1784,6 +1796,10 @@ $CandMail = $this->uri->segment(4);
 	 $('#form_validation').bootstrapValidator('removeField', $row.find('input[name="emp_duration_to[]"]'));
 	 $('#form_validation').bootstrapValidator('removeField', $row.find('input[name="location[]"]'));
         $row.remove();
+	
+	//getting appended row count
+	var rowCount=$('#appenCnt tr').length-1;
+	$("#numCnt").val(rowCount-3);
     }    
     function panAttachment(){
         var oFReader = new FileReader();

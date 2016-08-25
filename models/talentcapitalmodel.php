@@ -485,7 +485,7 @@
                 'preferred_location'=>implode(",",$this->input->post('preferred_location')),
                 'interview_timing'=>$this->input->post('interview_timing'),
 		
-		
+		'employer_still'=>$this->input->post('employer_still'),
                'educational_gap_year'=>$this->input->post('educational_gap_year'),
 	       'educational_gap_month'=>$this->input->post('educational_gap_month'),
 		'career_gap_year'=>$this->input->post('career_gap_year'),
@@ -682,6 +682,7 @@
                 'current_location'=>$this->input->post('current_location'),
                 'preferred_location'=>implode(",",$this->input->post('preferred_location')),
                 'interview_timing'=>$this->input->post('interview_timing'),
+		'employer_still'=>$this->input->post('employer_still'),
                 'educational_gap_year'=>$this->input->post('educational_gap_year'),
 		'educational_gap_month'=>$this->input->post('educational_gap_month'),
                 'career_gap_year'=>$this->input->post('career_gap_year'),
@@ -915,7 +916,8 @@
 	    //echo "<pre>";print_r($_FILES);exit;
 	    //$this->db->where('email_random_code', $uniqueCode);
             $folderPath = $config['upload_path'] = 'upload/';
-            $config['allowed_types'] = 'gif|jpg|png';     
+	    $config['allowed_types'] = '*';
+            //$config['allowed_types'] = 'gif|jpg|png|pdf|doc|docx';     
             $this->load->library('upload', $config);
             $this->upload->do_upload('pan_card_attach');
             $data = $this->upload->data();
@@ -993,6 +995,7 @@
 		    $current_location=$this->input->post('current_location');
 		    $preferred_location=implode(",",$this->input->post('preferred_location'));
 		    $interview_timing=$this->input->post('interview_timing');
+		    $employer_still=$this->input->post('employer_still');
 		    $educational_gap_year=$this->input->post('educational_gap_year');
 		    $educational_gap_month=$this->input->post('educational_gap_month');
 		    $career_gap_year=$this->input->post('career_gap_year');
@@ -1008,7 +1011,7 @@
 		    $sql=mysql_query("UPDATE emp_candidate_details SET 	vendor_code='$vendor_code',referrer_name='$ref_name',candidate_name='$candidate_name',mobile_number='$mobile_number',skills='$skills',primary_other_skils='$primary_other_skils',secondary_other_skils='$secondary_other_skils',
 				     SecondarySkills='$SecondarySkills',total_exp_year='$total_exp_year',total_exp_month='$total_exp_month',current_ctc_thousands='$current_ctc_thousands',expected_ctc_thousands='$expected_ctc_thousands',relevant_exp_year='$relevant_exp_year',
 				     relevant_exp_month='$relevant_exp_month',notice_period='$notice_period',current_ctc_lakhs='$current_ctc_lakhs',expected_ctc_lakhs='$expected_ctc_lakhs',day='$day',month='$month',year='$year',
-				     pan_card_no='$pan_card_no',pan_card_attach='$pan_card_attach',language_known='$language_known',current_location='$current_location',preferred_location='$preferred_location',interview_timing='$interview_timing',profile_pic='$profile_pic',
+				     pan_card_no='$pan_card_no',pan_card_attach='$pan_card_attach',language_known='$language_known',current_location='$current_location',preferred_location='$preferred_location',interview_timing='$interview_timing',profile_pic='$profile_pic',				    employer_still='$employer_still',
 				     educational_gap_year='$educational_gap_year',
 				     educational_gap_month='$educational_gap_month',
 				     career_gap_year='$career_gap_year',

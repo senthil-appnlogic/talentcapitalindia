@@ -36,7 +36,7 @@ $status = $this->session->flashdata('status');?>
                                 <input class="form-control input-md" value="<?php echo $vendor_code;?>" name="vendor_code" type="text" placeholder="Name" readonly="">
                             </div>
 			    <div class="form-group">
-                                <label>Client Company</label>
+                                <label>Client Company<span style="color:#EB8B11">*</span></label>
                                 <!--<input class="form-control input-md" name="current_location" type="text" placeholder="Current Location">-->
 				 <select name="clientComp" class="form-control chzn-select">
 				  <!--<option disabled selected hidden>Please Select Client</option>
@@ -100,4 +100,33 @@ $status = $this->session->flashdata('status');?>
             });
     }
 
+</script>
+<script>
+$(document).ready(function() {
+    $('#form_validation').bootstrapValidator({
+	message: 'This value is not valid',
+	excluded: [':disabled'],
+	feedbackIcons: {
+	    valid: 'fa fa-check',
+	    invalid: 'fa fa-times',
+	    validating: 'fa fa-refresh'
+	},
+	fields: {
+	    clientComp: {
+		validators: {
+		    notEmpty: {
+			message: 'The Client Company is required and can\'t be empty'
+		    },
+		}
+	    },
+	    email: {
+		validators: {
+		    notEmpty: {
+			message: 'The Candidate Email is required and can\'t be empty'
+		    },
+		}
+	    }
+	}
+    });        
+});
 </script>

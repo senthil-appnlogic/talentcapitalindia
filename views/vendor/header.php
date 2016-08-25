@@ -12,7 +12,7 @@
 	<meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" name="viewport" />
 	<meta content="" name="description" />
 	<meta content="" name="author" />
-	
+	<script src="<?php echo base_url();?>assetsAdmin/plugins/jquery/jquery-1.9.1.min.js"></script>
 	<!-- ================== BEGIN BASE CSS STYLE ================== -->
 	<link href="<?php echo base_url();?>http://fonts.googleapis.com/css?family=Open+Sans:300,400,600,700" rel="stylesheet" />
 	<link href="<?php echo base_url();?>assetsAdmin/plugins/jquery-ui/themes/base/minified/jquery-ui.min.css" rel="stylesheet" />
@@ -206,7 +206,15 @@
 	<script src="<?php echo base_url();?>assetsAdmin/plugins/DataTables/js/dataTables.tableTools.js"></script>
 	<script src="<?php echo base_url();?>assetsAdmin/js/table-manage-tabletools.demo.min.js"></script>
 	<!-- ================== END DATA-TABLE JS ================== -->
+	<script type="text/javascript" language="javascript" src="https://cdn.datatables.net/1.10.12/js/jquery.dataTables.min.js">
+	</script>
+	<script type="text/javascript" language="javascript" src="https://cdn.datatables.net/buttons/1.2.1/js/dataTables.buttons.min.js">
+	</script>
+	<script type="text/javascript" language="javascript" src="//cdn.datatables.net/buttons/1.2.1/js/buttons.print.min.js">
+	</script>
+	<script type="text/javascript" language="javascript" src="https://cdn.datatables.net/select/1.2.0/js/dataTables.select.min.js"></script>
 	
+	<script src="<?php echo base_url();?>assets/js/jquery.dataTables.columnFilter.js"></script>
 	
 	
 	<script src="<?php echo base_url();?>assetsAdmin/datatables/js/jquery.dataTables.min.js"></script>
