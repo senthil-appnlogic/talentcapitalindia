@@ -89,11 +89,13 @@ class vendorlogin extends CI_Controller {
     
     function vendorEdit($id){
 	$session_data=$this->session->userdata('vendorusername');
-        $res=$this->vendormodel->getCandidateId($id);
-	$newId = $res[0]['head_id'];
-	$loginUser['inter_Edit']=$this->vendormodel->getCandidateDetails($newId);
-	$loginUser['GetEmpl']=$this->vendormodel->getEmployeeDetails($newId);
-	$loginUser['Geteducational']=$this->vendormodel->getEducationalDetails($newId);
+//        $res=$this->vendormodel->getCandidateId($id);
+//	$newId = $res[0]['head_id'];
+	//print_r($id);
+	//exit;
+	$loginUser['inter_Edit']=$this->vendormodel->getCandidateDetails($id);
+	$loginUser['GetEmpl']=$this->vendormodel->getEmployeeDetails($id);
+	$loginUser['Geteducational']=$this->vendormodel->getEducationalDetails($id);
 	$loginUser['language']=$this->vendormodel->getlanguageDetails();
 	$loginUser['Location']=$this->vendormodel->getLocation();
 	$loginUser['skills']=$this->vendormodel->getskillDetails();

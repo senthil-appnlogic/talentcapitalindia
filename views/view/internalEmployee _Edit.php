@@ -130,16 +130,16 @@ $status = $this->session->flashdata('status');
 					
 					
 					<div class="form-group">
-					    <?php $skill=array('PHP','JAVA')?>
 					    <label>Primary Skills </label>
-					    <?php $skillList= explode(",",$inter_Edit[0]['skills']);?>
 					    <select  multiple class="form-control chzn-select input-sm" name="skills[]" onchange="primaryChange($(this))" >
-					       <?php  foreach( $skill as $row) {
-						$selected="";
-						if(in_array($row, $skillList))
-						 $selected= "selected";					    
+						<?php
+						    $inter_Edit[0]['skills'];
+						    foreach($skills as $row) {
+							$selected="";
+							if(in_array($row['skill'], explode(",",$inter_Edit[0]['skills'])))
+							$selected= "selected"; 
 						?>
-						<option <?=$selected?>  value="<?php  echo $row ?>" ><?php  echo $row ?></option>
+						<option <?=$selected?> value="<?php echo $row['skill']?>"><?php echo $row['skill']?></option>
 					    <?php }?>
 					    </select>
 					</div>
@@ -888,8 +888,8 @@ $status = $this->session->flashdata('status');
                                   <td> <input placeholder="Client Company" name="client_comp[]" value="<?php echo $row['client_comp'];?>" id="client_comp" class="form-control input-md" type="text" ></td>
                                   <td> <input placeholder="Payroll Company" name="payroll_comp[]" value="<?php echo $row['payroll_comp'];?>" id="payroll_comp" class="form-control input-md" type="text" ></td>
                                   <td> <input placeholder="Designation Company" name="designation[]" value="<?php echo $row['designation'];?>" class="form-control input-md" id="designation" type="text" ></td>
-                                  <td><span class='input-group date'><input type="text" placeholder="" value="<?php echo $row['emp_duration_from'];?>" onblur="checkEmpDurationMonth();" name="emp_duration_from[]" size="35" id="emp_duration_from" class="form-control input-md table_input input-group datepicker-dob" ><span class="input-group-addon" ><span class="glyphicon glyphicon-calendar"></span></span></span></td>
-				  <td><span class='input-group date'><input type="text" placeholder="" value="<?php echo $row['emp_duration_to'];?>" onblur="checkEndEmpDuration($(this));" name="emp_duration_to[]" id="emp_duration_to" size="35" class="form-control input-md table_input input-group datepicker-dob"  ><span class="input-group-addon" ><span class="glyphicon glyphicon-calendar"></span></span></span></td>
+                                  <td><span class='input-group date'><input type="text" placeholder="" value="<?php echo $row['emp_duration_from'];?>" onblur="checkBeforeEmpDuration($(this));" name="emp_duration_from[]" size="35" id="emp_duration_from" class="form-control input-md table_input input-group datepicker-dob" ><span class="input-group-addon" ><span class="glyphicon glyphicon-calendar"></span></span></span></td>
+				  <td><span class='input-group date'><input type="text" placeholder="" value="<?php echo $row['emp_duration_to'];?>" onblur="checkEndEmpDuration($(this));" name="emp_duration_to[]" id="emp_duration_to" size="35" class="form-control input-md table_input input-group datepicker-dob endVal"  ><span class="input-group-addon" ><span class="glyphicon glyphicon-calendar"></span></span></span></td>
                                   <td> <input placeholder="Location" name="location[]" value="<?php echo $row['location'];?>" class="form-control input-md" type="text"></td>
 				  <td> <textarea name="empReasonDesc[]" id="empReasonDesc" value="<?php echo $row['empReasonDesc'];?>" class="form-control input-md" rows="1" readonly></textarea></td>
                                   <td>
@@ -915,7 +915,7 @@ $status = $this->session->flashdata('status');
                                   <td> <input placeholder="Payroll Company" id="payroll_comp" class="form-control input-md" type="text" ></td>
                                   <td> <input placeholder="Designation Company" class="form-control input-md" id="designation" type="text" ></td>
                                   <td><span class='input-group date'><input type="text" placeholder="" onblur="checkEmpDurationMonth();" id="emp_duration_from" class="form-control input-md table_input input-group datepicker-dob" ><span class="input-group-addon" ><span class="glyphicon glyphicon-calendar"></span></span></span></td>
-				  <td><span class='input-group date'><input type="text" placeholder="" onblur="checkEndEmpDuration($(this));" id="emp_duration_to" class="form-control input-md table_input input-group datepicker-dob"  ><span class="input-group-addon" ><span class="glyphicon glyphicon-calendar"></span></span></span></td>
+				  <td><span class='input-group date'><input type="text" placeholder="" onblur="checkEndEmpDuration($(this));" id="emp_duration_to" class="form-control input-md table_input input-group datepicker-dob endVal"  ><span class="input-group-addon" ><span class="glyphicon glyphicon-calendar"></span></span></span></td>
                                   <td> <input placeholder="Location" id="location" class="form-control input-md" type="text"></td>
 				  <td> <textarea id="empReasonDesc" class="form-control input-md" rows="1" readonly></textarea></td>
                                   <td>
@@ -933,7 +933,7 @@ $status = $this->session->flashdata('status');
                                 </tr>
                               </tbody>
                             </table>
-			  <input id="beforeVal" type="hidden" >
+			  <input id="beforeVal" value="0" type="hidden" >
 			  <input id="todayVal" value="0" type="hidden" >
 			  <input id="employeeVal" value="0" type="hidden" >
                         </div>
@@ -1598,6 +1598,122 @@ $status = $this->session->flashdata('status');
   //}
   //
   
+//function checkDurationMonth() {
+//    var sum = 0;
+//    $('.countClass').each(function(){
+//      var first = $(this).find('[name="edu_duration_to[]"]').val();
+//      if (first=="") {
+//	first = $(this).next('tr.countClass').find("[name='edu_duration_from[]']").val();
+//      }
+//      var secon = $(this).next('tr.countClass').find("[name='edu_duration_from[]']").val();
+//      var prevRowNewVal = moment.parseZone(first, 'DD MMM YYYY').format();
+//      var thisNewValue = moment.parseZone(secon, 'DD MMM YYYY').format();
+//      if (prevRowNewVal=='Invalid date') {
+//	prevRowNewVal=0;
+//      }
+//      var a = moment(prevRowNewVal,'YYYY/MM/DD');
+//      var b = moment(thisNewValue,'YYYY/MM/DD');
+//      var diffDays = b.diff(a, 'days');
+//      if (diffDays >= 60) {
+//	sum+=diffDays;
+//      }
+//    });
+//    var call = countingCareerdays(sum);
+//  }
+//  
+//  function countingCareerdays(sum) {
+//    var y = 365;
+//    var y2 = 30;
+//    var remainder = sum % y;
+//    var casio = remainder % y2;
+//    year = (sum - remainder) / y;
+//    month = (remainder - casio) / y2;
+//    //var result = + year +" Year " + month + " Month " + casio + " Day" ;
+//    var result = + year +"Year " + month + "Month ";
+//    $('.countEduYr').val(result);
+//  }
+//  
+//  function checkEmpDurationMonth() {
+//    var sum = 0;
+//    $('.countClass1').each(function(){
+//      var first = $(this).find('[name="emp_duration_to[]"]').val();
+//      if (first=="") {
+//	first = $(this).next('tr.countClass1').find("[name='emp_duration_from[]']").val();
+//      }
+//     
+//      var secon = $(this).next('tr.countClass1').find("[name='emp_duration_from[]']").val();
+//      
+//      var prevRowNewVal = moment.parseZone(first, 'DD MMM YYYY').format();
+//      var thisNewValue = moment.parseZone(secon, 'DD MMM YYYY').format();
+//      if (prevRowNewVal=='Invalid date') {
+//	prevRowNewVal=0;
+//      }
+//      var a = moment(prevRowNewVal,'YYYY/MM/DD');
+//      var b = moment(thisNewValue,'YYYY/MM/DD');
+//      var diffDays = b.diff(a, 'days');
+//      //alert(diffDays);
+//      if (diffDays >= 1) {
+//	sum+=diffDays;
+//      }
+//      
+//      if (diffDays >= 60) {
+//	$(this).find('[id="empReasonDesc"]').prop("readonly", false);
+//      }else{
+//	$(this).find('[id="empReasonDesc"]').prop("readonly", true);
+//      }
+//    });
+//    var call = countingdays(sum,'employee');
+//  }
+//  
+//  function checkBeforeEmpDuration($this) {
+//    var $row = $this.parents('.odd1');
+//    var prevEmpRowVal = $(".countClass:visible:last").find("[name='edu_duration_to[]']").val();
+//    if (prevEmpRowVal=="") {
+//      var prevEmpRowVal = $(".countClass:visible:nth-last-child(2)").find("[name='edu_duration_to[]']").val();
+//    }
+//    
+//    var thisEmpValue = $this.val();
+//    
+//    if (prevEmpRowVal=="") {
+//      var prevEmpRowVal = thisEmpValue;
+//    }
+//    
+//    var prevRowEmpNewVal = moment.parseZone(prevEmpRowVal, 'DD MMM YYYY').format();
+//    var thisNewEmpValue = moment.parseZone(thisEmpValue, 'DD MMM YYYY').format();
+//    
+//    var a = moment(prevRowEmpNewVal,'YYYY/MM/DD');
+//    var b = moment(thisNewEmpValue,'YYYY/MM/DD');
+//    var diffDays = b.diff(a, 'days');
+//    if (diffDays >= 1) {
+//    var sum = diffDays;
+//    $('#beforeVal').val(sum);
+//     var call = countingdays(sum,'before');
+//    }
+//    if (diffDays >= 60) {
+//      $row.find('[id="empReasonDesc"]').prop("readonly", false);
+//    }else{
+//      $row.find('[id="empReasonDesc"]').prop("readonly", true);
+//    }
+//     
+//  }
+//  
+//  function countingdays(sum,sum1) {
+//    var beforeVal = $('#beforeVal').val();
+//    if (sum1 == 'employee' && beforeVal != '') {
+//     sum = parseInt(beforeVal) + (sum);
+//    }
+//    var y = 365;
+//    var y2 = 30;
+//    var remainder = sum % y;
+//    var casio = remainder % y2;
+//    year = (sum - remainder) / y;
+//    month = (remainder - casio) / y2;
+//    
+//    //var result = + year +" Year " + month + " Month " + casio + " Day" ;
+//    var result = + year +"Year " + month + "Month ";
+//     $('.countYr').val(result);
+//  }
+
 function checkDurationMonth() {
     var sum = 0;
     $('.countClass').each(function(){
@@ -1667,17 +1783,9 @@ function checkDurationMonth() {
   }
   
   function checkEndEmpDuration($this){
-    var ssss;
     $('.countClass1:visible').each(function(){
-      if(typeof $(this).find('[name="emp_duration_from[]"]').val() != "undefined" && $(this).find('[name="emp_duration_from[]"]').val()!=''){
-	 ssss=$(this).find('[name="emp_duration_from[]"]').val();
-      }else{
-	//console.log($(this).prev('tr:first').find('td [name="emp_duration_to[]"]').val());
-	//alert($(this).prev('tr:first').find('td [name="emp_duration_to[]"]').val());
-	var ss = $(this).prev('tr:first').find('td [name="emp_duration_to[]"]').val();
-	if(ss != ""){
-	console.log($(this).prev('tr:first').find('td [name="emp_duration_to[]"]').val());
-	 var dd = $(this).prev('tr:first').find('td [name="emp_duration_to[]"]').val();
+     
+	var dd = $('.endVal').filter(function() { return this.value != ''; }).last().val();
 	 //alert(dd);
 	 var today = new Date();
 	 //var prevRowEmpNewVal = moment.parseZone(todayVal, 'DD MMM YYYY').format();
@@ -1690,13 +1798,9 @@ function checkDurationMonth() {
 	 var b = moment(thisNewEmpValue,'YYYY/MM/DD');
 	 var diffDays = b.diff(a, 'days');
 	 //alert(diffDays);
-	  if (diffDays >= 1) {
 	    var sum = diffDays;
 	    $('#todayVal').val(sum);
 	    var call = countingdays(sum,'overall');
-	  }
-	}
-      }
     })
   }
   
@@ -1704,7 +1808,7 @@ function checkDurationMonth() {
     var $row = $this.parents('.odd1');
     var prevEmpRowVal = $(".countClass:visible:last").find("[name='edu_duration_to[]']").val();
     if (prevEmpRowVal=="") {
-      var prevEmpRowVal = $(".countClass:visible:nth-last-child(2)").find("[name='edu_duration_to[]']").val();
+      var prevEmpRowVal = $(".countClass:visible").last().prev().find("[name='edu_duration_to[]']").val();
     }
     
     var thisEmpValue = $this.val();
@@ -1736,8 +1840,9 @@ function checkDurationMonth() {
     var beforeVal = $('#beforeVal').val();
     var todayVal = $('#todayVal').val();
     var employeeVal = $('#employeeVal').val();
-    //if (sum1 == 'employee' && beforeVal != '') {
-     sum = parseInt(beforeVal) +  parseInt(todayVal) + parseInt(employeeVal);
+    //if (sum1 == 'employee' && beforeVal != '' || sum1 == 'overall') {
+    sum = parseInt(beforeVal) +  parseInt(todayVal) + parseInt(employeeVal);
+    //alert(sum);
     //}
     var y = 365;
     var y2 = 30;

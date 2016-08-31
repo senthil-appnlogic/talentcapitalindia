@@ -151,21 +151,21 @@ class vendormodel extends CI_Model {
         return $this->db->query($sql, $return_object = TRUE)->result_array();
     }
     
-    function getCandidateDetails($newId){
+    function getCandidateDetails($id){
 	
-	$sql="SELECT *  FROM emp_candidate_details where id='$newId'";
+	$sql="SELECT *  FROM emp_candidate_details where id='$id'";
 	return $this->db->query($sql, $return_object = TRUE)->result_array();
 	
     }
-    function getEmployeeDetails($newId){
+    function getEmployeeDetails($id){
 	
-	$sql="SELECT *  FROM employement_details where head_id='$newId'";
+	$sql="SELECT *  FROM employement_details where head_id='$id'";
 	return $this->db->query($sql, $return_object = TRUE)->result_array();
 
     }
-    function getEducationalDetails($newId){
+    function getEducationalDetails($id){
 	
-	$sql="SELECT *  FROM educational_details where head_id='$newId'";
+	$sql="SELECT *  FROM educational_details where head_id='$id'";
 	return $this->db->query($sql, $return_object = TRUE)->result_array();
 	
     }

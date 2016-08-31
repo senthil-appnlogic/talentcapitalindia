@@ -426,6 +426,13 @@
 	//	exit;
 	    $this->db->where('email_random_code', $uniqueCode);
 	    
+	    $folderPath = $config['upload_path'] = 'upload/';
+            $config['allowed_types'] = '*';     
+            $this->load->library('upload', $config);
+            $this->upload->do_upload('resume_upload');
+            $data = $this->upload->data();
+            $resume=$folderPath.$data['file_name'];
+	    
             $folderPath = $config['upload_path'] = 'upload/';
             $config['allowed_types'] = 'gif|jpg|png';     
             $this->load->library('upload', $config);
@@ -441,12 +448,7 @@
 	    $primary=$this->input->post('primary_other_skils');
 	    $secondary=$this->input->post('secondary_other_skils');
 	    //echo $test;exit;
-            $folderPath = $config['upload_path'] = 'upload/';
-            $config['allowed_types'] = 'gif|jpg|png|doc|pdf|docx';     
-            $this->load->library('upload', $config);
-            $this->upload->do_upload('resume_upload');
-            $data = $this->upload->data();
-            $resume=$folderPath.$data['file_name'];
+            
 	    //$date = date('d-M-y');
             $data= array(
 		'vendor_code'=>$this->input->post('vendor_code'),
@@ -628,6 +630,13 @@
 	    //echo "</pre>";
 	    //exit;
 	    
+	    $folderPath = $config['upload_path'] = 'upload/';
+            $config['allowed_types'] = '*';     
+            $this->load->library('upload', $config);
+            $this->upload->do_upload('resume_upload');
+            $data = $this->upload->data();
+            $resume=$folderPath.$data['file_name'];
+	    
 	    $ramdomString = random_string('alnum', 13);
             $folderPath = $config['upload_path'] = 'upload/';
             $config['allowed_types'] = 'gif|jpg|png';     
@@ -643,12 +652,8 @@
             $data = $this->upload->data();
             $profilePic=$folderPath.$data['file_name'];
 	    
-	    $folderPath = $config['upload_path'] = 'upload/';
-            $config['allowed_types'] = 'gif|jpg|png|doc|pdf|docx';     
-            $this->load->library('upload', $config);
-            $this->upload->do_upload('resume_upload');
-            $data = $this->upload->data();
-            $resume=$folderPath.$data['file_name'];
+	    //print_r($resume);
+	    //exit;
             //$date = date('d-M-y');
             $data= array(
 		'vendor_code'=>$code,

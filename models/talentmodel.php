@@ -25,6 +25,16 @@ class talentModel extends CI_Model {
      	return $this->db->query($sql, $return_object = TRUE)->result_array();
     }
     
+    function adminUserDetails(){
+	$sql="SELECT id,user_name,email,password,user_image,status,role,intemp_code,password_token,date_format(cr_date, '%e-%b-%y') as 'cr_date1' FROM login_auth WHERE role='Admin' ORDER BY cr_date DESC";
+     	return $this->db->query($sql, $return_object = TRUE)->result_array();
+    }
+    
+    function intEmpUserDetails(){
+	$sql="SELECT id,user_name,email,password,user_image,status,role,intemp_code,password_token,date_format(cr_date, '%e-%b-%y') as 'cr_date1' FROM login_auth WHERE role='InternalEmployee' ORDER BY cr_date DESC";
+     	return $this->db->query($sql, $return_object = TRUE)->result_array();
+    }
+    
     //add
     function addUser(){
 	

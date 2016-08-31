@@ -526,6 +526,34 @@ class admin extends CI_Controller {
 	
     }
     
+    function adminUserView(){
+	$session_data=$this->session->userdata('username_admin');
+	if(!empty($session_data))
+	    {
+		$data['userDetails']=$this->talentModel->adminUserDetails();
+		$this->load->view('admin/header');
+		$this->load->view('admin/addUserView',$data);
+	    }
+	    else{
+		redirect('admin/dashboard');
+	    }
+	
+    }
+    
+    function intempUserView(){
+	$session_data=$this->session->userdata('username_admin');
+	if(!empty($session_data))
+	    {
+		$data['userDetails']=$this->talentModel->intEmpUserDetails();
+		$this->load->view('admin/header');
+		$this->load->view('admin/addUserView',$data);
+	    }
+	    else{
+		redirect('admin/dashboard');
+	    }
+	
+    }
+    
     //ADD
     function userAdd(){
 	
@@ -883,6 +911,9 @@ class admin extends CI_Controller {
 	     $name=explode("/",$imgslit[$i]);
 	     $imgslit1=explode(".",$name[1]);
 	    ?>
+	    
+	    
+	    
 		<div class="col-md-3 " style="border:1px solid grey; border-radius:25px;overflow: hidden;box-shadow: 1px 4px 15px 3px;">
 		 <a target="_blank" href="<?php echo base_url();?><?php echo $imgslit[$i];?>"><h3><center><?php echo $imgslit1[0];?></center></h3></a>
 		</div>

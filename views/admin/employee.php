@@ -446,7 +446,7 @@ $status = $this->session->flashdata('status');
 		$(this).html( '<input type="text" placeholder="Search '+title+'" />' );
 	    } );
 	    
-	 setTimeout(function(){ $('#alert').remove();}, 5000);
+	    setTimeout(function(){ $('#alert').remove();}, 5000);
 	    var t = $('#data-table').DataTable( {
 		dom: 'Bfrtip',
 		"pageLength": 100,

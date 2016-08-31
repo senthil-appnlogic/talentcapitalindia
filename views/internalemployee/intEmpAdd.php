@@ -55,7 +55,7 @@ $status = $this->session->flashdata('status');?>
                             </div>
                             <div class="form-group">
                                 <label>Candidate Email<span style="color:#EB8B11">*</span></label>
-                                <input class="form-control input-md" name="email" type="email" placeholder="Candidate Email" onchange="checkEmail();" id="email">
+                                <input class="form-control input-md" name="email" type="email" placeholder="Candidate Email" onkeyup="checkEmail();"  id="email">
                             </div>
 			    <div>
 				<span id="email-status"></span>
@@ -86,7 +86,6 @@ $status = $this->session->flashdata('status');?>
                 success: function (response) {
 		    console.log(response);
 		    if (response=='true') {
-
 			$("#email-status").append("<p style='color:red'>Email Already Exist</p>");
 			$('#test').attr('disabled',true);
 		    }else{

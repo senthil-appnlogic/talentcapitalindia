@@ -41,7 +41,7 @@
 							<p><?php  echo $adminCount[0]['adminCount']; ?></p>	
 						</div>
 						<div class="stats-link">
-							<a href="<?php echo site_url('admin/addUserView');?>">View Detail <i class="fa fa-arrow-circle-o-right"></i></a>
+							<a href="<?php echo site_url('admin/adminUserView');?>">View Detail <i class="fa fa-arrow-circle-o-right"></i></a>
 						</div>
 					</div>
 				</div>
@@ -55,7 +55,7 @@
 							<p><?php  echo $intempCount[0]['intempCount']; ?></p>	
 						</div>
 						<div class="stats-link">
-							<a href="<?php echo site_url('admin/addUserView');?>">View Detail <i class="fa fa-arrow-circle-o-right"></i></a>
+							<a href="<?php echo site_url('admin/intempUserView');?>">View Detail <i class="fa fa-arrow-circle-o-right"></i></a>
 						</div>
 					</div>
 				</div>

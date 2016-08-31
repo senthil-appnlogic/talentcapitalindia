@@ -41,16 +41,27 @@ $status = $this->session->flashdata('status');
 					<table id="data-table" class="table table-bordered display dataTable" width="100%">
 					  <thead>
 						<tr>
+						    <th>S.No</th>
 						    <th data-class="expand">Created date</th>
                                                     <th data-class="expand">Reference Code / Referred By</th>
 						    <th data-class="expand">Email</th>
 						    <th data-class="expand">Action</th>
 						</tr>
 					    </thead>
+					    <tfoot>
+						<tr>
+						    <th>S.No</th>
+						    <th data-class="expand">Created date</th>
+						    <th data-class="expand">Reference Code / Referred By</th>
+						    <th data-class="expand">Email</th>
+						    <th data-class="expand">Action</th>
+						</tr>
+					    </tfoot>
 					    <tbody>
 						<?php if(count($emailtrack) > 0){ foreach($emailtrack as $row) {?>
 					       
 						<tr class="oddClass even gradeC">
+						    <td></td>
 						    <td><?php echo $row['cr_date1']; ?></td>
                                                     <td><?php echo $row['refer_code']; ?> / <?php echo $row['refer_name']; ?></td>
 						    <td><?php echo $row['email']; ?></td>
@@ -144,38 +155,24 @@ $status = $this->session->flashdata('status');
             });
 	});
 	
+	$('#data-table tfoot th').each( function () {
+	    var title = $(this).text();
+	    $(this).html( '<input type="text" placeholder="Search '+title+'" />' );
+	} );
 	
 	$(document).ready(function() {
 	    
 	    switcherRefresh();
 	 setTimeout(function(){ $('#alert').remove();}, 5000);
 	
-	    $('#data-table').DataTable( {
+	    var t = $('#data-table').DataTable( {
 		dom: 'Bfrtip',
 		"pageLength": 100,
 		//"scrollX": 100,
 		"scrollY": 350,
 		"ordering":false,
 		buttons: [
-//		    //'copyHtml5',
-//		    'excelHtml5',
-//		    //'csvHtml5',
-//                    //'print',
-//		    'pdfHtml5'
 
-                //{
-                //    extend: 'print',
-                //    text: 'Print all'
-                //},
-                //{
-                //    extend: 'print',
-                //    text: 'Print selected',
-                //    exportOptions: {
-                //        modifier: {
-                //            selected: true
-                //        }
-                //    }
-                //}
                 ,{
                     extend: 'excel',
                     text: 'excel all'
@@ -194,17 +191,22 @@ $status = $this->session->flashdata('status');
                 select: true,
 	    } );
 	    
-	//    $('#data-tableemail').DataTable( {
-	//	dom: 'Bfrtip',
-	//	"ordering":false,
-	//	buttons: [
-	//	    //'copyHtml5',
-	//	    'excelHtml5',
-	//	    //'csvHtml5',
-	//	    //'pdfHtml5'
-	//	    
-	//	]
-	//    } );
+	    t.on( 'order.dt search.dt', function () {
+		t.column(0, {search:'applied', order:'applied'}).nodes().each( function (cell, i) {
+		    cell.innerHTML = i+1;
+		} );
+	    } ).draw();
+	    
+	    t.columns().every( function () {
+		var that = this;
+		$( 'input', this.footer() ).on( 'keyup change', function () {
+		    if ( that.search() !== this.value ) {
+			that
+			    .search( this.value )
+			    .draw();
+		    }
+		} );
+	    } );
 	    
 	} );
 	

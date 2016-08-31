@@ -55,7 +55,7 @@ $status = $this->session->flashdata('status');?>
                             </div>
                             <div class="form-group">
                                 <label>Candidate Email<span style="color:#EB8B11">*</span></label>
-                                <input class="form-control input-md" name="email" type="text" placeholder="Candidate Email" onchange="checkEmail();" id="email">
+                                <input class="form-control input-md" name="email" type="text" placeholder="Candidate Email" onkeyup="checkEmail();" id="email">
                             </div>
 			    <div>
 				<span id="email-status"></span>

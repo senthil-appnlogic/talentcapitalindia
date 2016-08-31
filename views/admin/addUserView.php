@@ -38,9 +38,10 @@ $status = $this->session->flashdata('status');
 				<a class="btn btn-primary btn-sm " href="<?php echo site_url('admin/userAdd')?>"><i class="fa fa-plus fa-1x"></i> <span class="f-s-14 f-w-500">Add</span></a>
 			    </p>
 				<div class="table-responsive" style="border: none">
-					<table id="data-table" class="table table-striped table-bordered nowrap" width="100%">
-					  <thead>
+					<table id="data-table" class="table table-bordered display dataTable" width="100%">
+					    <thead>
 						<tr>
+						    <th>S.No</th>
 						    <th data-class="expand">Created Date</th>
 						    <th data-class="expand">Name</th>
 						    <th data-hide="phone,tablet">Email</th>
@@ -53,11 +54,27 @@ $status = $this->session->flashdata('status');
 						</tr>
 						
 					    </thead>
+					    <tfoot>
+						<tr>
+						    <th>S.No</th>
+						    <th data-class="expand">Created Date</th>
+						    <th data-class="expand">Name</th>
+						    <th data-hide="phone,tablet">Email</th>
+						    <!--<th>Profile pic</th>-->
+						    <th>InternalEmp Code</th>
+						    <th>Approved Y/N</th>
+						    <th data-hide="phone,tablet">EmailTrack List</th>
+						    <th>Role</th>
+						    <th>Action</th>
+						</tr>
+						
+					    </tfoot>
 					    <tbody>
 						<?php if(count($userDetails) > 0)
 							     { foreach($userDetails as $row) {  ?>
 					       
 						<tr class="oddClass even gradeC" >
+						    <td></td>
 						    <td id=""><?php echo $row['cr_date1']; ?></td>
 						    <td id="USER_NAME" style="cursor:pointer;" class="clickable-row" data-href='<?php echo site_url('admin/addUserEditView/'.$row['id'])?>'><u><?php echo $row['user_name']; ?></u></td>					    
 						    <td id="EMAIL"><?php echo $row['email']; ?></td>
@@ -86,10 +103,11 @@ $status = $this->session->flashdata('status');
 					<div class="modal-content">
 					    <div class="modal-header">
 					      <button type="button" class="close" data-dismiss="modal">&times;</button>
-					      <h4 class="modal-title">Change Candidate Status</h4>
+					      <h4 class="modal-title">Email Tracking List</h4>
 					    </div>
 					    <div class="modal-body">
 						<div class="table-responsive" style="border: none">
+						    <div style="overflow:auto;">
 						    <table id="data-tableemail" class="table table-striped table-bordered nowrap" width="100%">
 						      <thead>
 							    <tr>
@@ -108,6 +126,7 @@ $status = $this->session->flashdata('status');
 							    </tr>-->
 							</tbody>
 						    </table>
+						    </div>
 						</div>
 					    </div>
 					    <!--<div class="modal-footer">
@@ -144,17 +163,84 @@ $status = $this->session->flashdata('status');
 	    
 	$(document).ready(function() {
 	    switcherRefresh();
-	 setTimeout(function(){ $('#alert').remove();}, 5000);
-	    $('#data-table').DataTable( {
+	    setTimeout(function(){ $('#alert').remove();}, 5000);
+	 
+	    $('#data-table tfoot th').each( function () {
+		var title = $(this).text();
+		$(this).html( '<input type="text" placeholder="Search '+title+'" />' );
+	    } );
+	    
+	    var t = $('#data-table').DataTable( {
+		dom: 'Bfrtip',
+		//"ordering":false,
+		"pageLength": 100,
+		"scrollX": 100,
+		"scrollY": 300,
+		"ordering":false,
+		"columnDefs": [ {
+		    "searchable": false,
+		    "orderable": false,
+		    "targets": 0
+		} ],
+		"order": [[ 1, 'asc' ]],
+		//buttons: [
+		//    //'copyHtml5',
+		//    'excelHtml5',
+		//    //'csvHtml5',
+		//    'pdfHtml5'
+		//],
+		buttons: [
+		    //'copyHtml5',
+		    //'excelHtml5',
+		    //'csvHtml5',
+		    //'pdfHtml5'
+		    ,
+		    {
+                    extend: 'excel',
+                    text: 'excel all'
+                },
+                {
+                    extend: 'excel',
+                    text: 'excel selected',
+                    exportOptions: {
+                        modifier: {
+                            selected: true
+                        }
+                    }
+                }
+		],
+		select:true,
+	    } );
+	    
+	    t.on( 'order.dt search.dt', function () {
+		t.column(0, {search:'applied', order:'applied'}).nodes().each( function (cell, i) {
+		    cell.innerHTML = i+1;
+		} );
+	    } ).draw();
+	    
+	    t.columns().every( function () {
+		var that = this;
+		$( 'input', this.footer() ).on( 'keyup change', function () {
+		    if ( that.search() !== this.value ) {
+			that
+			    .search( this.value )
+			    .draw();
+		    }
+		} );
+	    } );
+	    
+	    $('#data-tableemail').DataTable( {
 		dom: 'Bfrtip',
 		"ordering":false,
 		buttons: [
 		    //'copyHtml5',
 		    'excelHtml5',
 		    //'csvHtml5',
-		    'pdfHtml5'
+		    //'pdfHtml5'
+		    
 		]
 	    } );
+	    
 	} );
 		    
 	    $(document).ready(function($) {
