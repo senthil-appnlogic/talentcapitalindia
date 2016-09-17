@@ -77,10 +77,10 @@ class internalempmodel extends CI_Model {
 		);
 	    $this->db->insert('emailtrack',$data);
 	    $this->session->set_flashdata('status', 'Email has been sent to User Successfully');
-	    redirect('internalemployee/internalEmployeeView');
+	    redirect('internalemployee/intEmpAddUser');
 	}else{
 	    $this->session->set_flashdata('status', 'Email has not sent to User');
-	    redirect('internalemployee/internalEmployeeView');
+	    redirect('internalemployee/intEmpAddUser');
 	}
     }
     

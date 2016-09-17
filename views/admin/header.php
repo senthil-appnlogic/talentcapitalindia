@@ -17,6 +17,7 @@
 	<link href="<?php echo base_url();?>http://fonts.googleapis.com/css?family=Open+Sans:300,400,600,700" rel="stylesheet" />
 	<link href="<?php echo base_url();?>assetsAdmin/plugins/jquery-ui/themes/base/minified/jquery-ui.min.css" rel="stylesheet" />
 	<link href="<?php echo base_url();?>assetsAdmin/plugins/bootstrap/css/bootstrap.min.css" rel="stylesheet" />
+	<link href="<?php echo base_url(); ?>assetsAdmin/plugins/bootstrap-select/bootstrap-select.min.css" rel="stylesheet" />
 	<link href="<?php echo base_url();?>assetsAdmin/plugins/font-awesome/css/font-awesome.min.css" rel="stylesheet" />
 	<link href="<?php echo base_url();?>assetsAdmin/css/animate.min.css" rel="stylesheet" />
 	<link href="<?php echo base_url();?>assetsAdmin/css/style.min.css" rel="stylesheet" />
@@ -125,7 +126,7 @@
 					<li class="has-sub <?php if($this->uri->segment(2)=="dashboard"){echo "active";}?>">
 						<a href="<?php echo site_url('admin/dashboard');?>">
 						   <!-- <b class="caret pull-right"></b>-->
-						 <!--   <i class="fa fa-laptop  text-warning"></i>-->
+						    <i class="fa fa-dashboard text-warning"></i>
 						    <span>Dashboard</span>
 					    </a>
 						<!--<ul class="sub-menu">
@@ -137,7 +138,7 @@
 					<li class="has-sub <?php if($this->uri->segment(2)=="hiringPartner"){echo "active";}?>">
 						<a href="<?php echo site_url('admin/hiringPartner');?>">
 						 <!--   <b class="caret pull-right"></b>-->
-						    <!--<i class="fa fa-suitcase  text-warning"></i>-->
+						    <i class="fa fa-user-plus text-warning"></i>
 						    <span>Hiring Partner</span> 
 						</a>
 						<!--<ul class="sub-menu">
@@ -148,7 +149,7 @@
 					<li class="has-sub <?php if($this->uri->segment(2)=="employee"){echo "active";}?>">
 						<a href="<?php echo site_url('admin/employee');?>">
 						   <!-- <b class="caret pull-right"></b>-->
-						    <!--<i class="fa fa-file-o  text-warning"></i>-->
+						    <i class="fa fa-users text-warning"></i>
 						    <span>Candidates / Direct Applicant</span> 
 						</a>
 						<!--<ul class="sub-menu">
@@ -165,7 +166,7 @@
 					<li class="has-sub <?php if($this->uri->segment(2)=="addUserView"){echo "active";}?>">
 						<a href="<?php echo site_url('admin/addUserView');?>">
 						   <!-- <b class="caret pull-right"></b>-->
-						   <!-- <i class="fa fa-user-plus text-warning"></i>-->
+						    <i class="fa fa-user-secret text-warning"></i>
 						    <span> Talent Capital Users </span>
 						</a>
 						<!--<ul class="sub-menu">
@@ -177,7 +178,7 @@
 					<li class="has-sub <?php if($this->uri->segment(2)=="emailTrack"){echo "active";}?>">
 						<a href="<?php echo site_url('admin/emailTrack');?>">
 						   <!-- <b class="caret pull-right"></b>-->
-						   <!-- <i class="fa fa-user-plus text-warning"></i>-->
+						    <i class="fa fa-envelope-o text-warning"></i>
 						    <span> Email Track List </span>
 						</a>
 						<!--<ul class="sub-menu">
@@ -189,7 +190,7 @@
 					<li class="has-sub">
 						<a href="javascript:;">
 						    <b class="caret pull-right"></b>
-						    <!--<i class="fa fa-file-o  text-warning"></i>-->
+						    <i class="fa fa-arrow-circle-right text-warning"></i>
 						    <span>Settings</span> 
 						</a>
 						<ul class="sub-menu">

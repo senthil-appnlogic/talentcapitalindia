@@ -37,7 +37,9 @@ class talentModel extends CI_Model {
     
     //add
     function addUser(){
-	
+	//$ss = implode(",",$this->input->post('client'));
+	//print_r($ss);
+	//exit;
 	    $sql = "SELECT tcie_number FROM tci_code";
 	    $codeTcie = $this->db->query($sql, $return_object = TRUE)->result_array();
 	    $tcie = $codeTcie[0]['tcie_number'];
@@ -52,6 +54,19 @@ class talentModel extends CI_Model {
             $data = $this->upload->data();
             $filePath=$folderPath.$data['file_name'];
 	    $role=$this->input->post('user_role');
+	    $client=$this->input->post('yesno');
+	    
+	    if($client=="Y"){
+		$clientVal="All";
+	    }else if($client=="N"){
+		$clientVal1=implode("','",$this->input->post('client'));
+		$clientVal = "'".$clientVal1."'";
+		if($clientVal=="''"){
+		    $clientVal="All";
+		}
+		
+	    }
+	    
 	    //$date = date('d-M-y');
 	    if($role=="Admin"){
 		$data = array(
@@ -60,6 +75,7 @@ class talentModel extends CI_Model {
 		'password'=>$this->input->post('password'),
 		'email'=>$this->input->post('email'),
 		'user_image'=>$filePath,
+		'client'=>$clientVal,
 		'status'=>'Y',
 		//'cr_date'=>$date,
 		);
@@ -201,6 +217,12 @@ class talentModel extends CI_Model {
      	return $this->db->query($sql, $return_object = TRUE)->result_array();
     }
     
+    function directAppEmailTrack($check_mail)
+    {
+	$sql="select id,email,refer_code,refer_name,check_mailid,date_format(cr_date, '%e-%b-%y') as 'cr_date1' from emailtrack where check_mailid='$check_mail' and refer_name='DirectApp' order by cr_date desc";
+     	return $this->db->query($sql, $return_object = TRUE)->result_array();
+    }
+    
     function getVendorReferal()
     {
 	$vendorcode=$this->session->userdata('vendorcode');
@@ -309,9 +331,101 @@ class talentModel extends CI_Model {
 	//	FROM educational_details ed
 	//	INNER JOIN employement_details emp ON emp.head_id = ed.head_id
 	//	INNER JOIN emp_candidate_details emc ON emc.id = emp.head_id order by emc.cr_date DESC";
+	$client_data=$this->session->userdata('client_name');
+	if($client_data=="All"){
+	    $sql="select emp_candidate_details.id,emp_candidate_details.vendor_code, emp_candidate_details.candidate_name, emp_candidate_details.mobile_number, emp_candidate_details.mail_id, emp_candidate_details.skills, emp_candidate_details.primary_other_skils, emp_candidate_details.SecondarySkills, emp_candidate_details.secondary_other_skils, emp_candidate_details.total_exp_year, emp_candidate_details.total_exp_month, emp_candidate_details.relevant_exp_year, emp_candidate_details.relevant_exp_month, emp_candidate_details.notice_period, emp_candidate_details.current_ctc_lakhs, emp_candidate_details.current_ctc_thousands, emp_candidate_details.expected_ctc_lakhs, emp_candidate_details.expected_ctc_thousands, emp_candidate_details.day, emp_candidate_details.month, emp_candidate_details.year, emp_candidate_details.pan_card_no, emp_candidate_details.pan_card_attach, emp_candidate_details.language_known, emp_candidate_details.current_location, emp_candidate_details.preferred_location, emp_candidate_details.interview_timing, emp_candidate_details.profile_pic, emp_candidate_details.educational_gap_year, emp_candidate_details.career_gap_year, emp_candidate_details.team_size_name, emp_candidate_details.team_contact_no, emp_candidate_details.email_random_code, emp_candidate_details.password, emp_candidate_details.password_token, date_format(cr_date, '%e-%b-%y') as 'cr_date1', emp_candidate_details.login_types, emp_candidate_details.referrer_name,emp_candidate_details.client,emp_candidate_details.employer_still,
+		MAX(CASE WHEN p.RowNum=1 THEN p.degree END) as SSLCDegree,
+		MAX(CASE WHEN p.RowNum=1 THEN p.specialisation END) as SSLCSpecialization,
+		MAX(CASE WHEN p.RowNum=1 THEN p.edu_duration_from END) as SSLCFromDuration,
+		MAX(CASE WHEN p.RowNum=1 THEN p.edu_duration_to END) as SSLCToDuration,
+		MAX(CASE WHEN p.RowNum=1 THEN p.university END) as SSLCUniversity,
+		MAX(CASE WHEN p.RowNum=1 THEN p.percentage END) as SSLCPercentage,
+		MAX(CASE WHEN p.RowNum=2 THEN p.degree END) as HSCDegree,
+		MAX(CASE WHEN p.RowNum=2 THEN p.specialisation END) as HSCSpecialization,
+		MAX(CASE WHEN p.RowNum=2 THEN p.edu_duration_from END) as HSCFromDuration,
+		MAX(CASE WHEN p.RowNum=2 THEN p.edu_duration_to END) as HSCToDuration,
+		MAX(CASE WHEN p.RowNum=2 THEN p.university END) as HSCUniversity,
+		MAX(CASE WHEN p.RowNum=2 THEN p.percentage END) as HSCPercentage,
+		MAX(CASE WHEN p.RowNum=3 THEN p.degree END) as UGDegree,
+		MAX(CASE WHEN p.RowNum=3 THEN p.specialisation END) as UGSpecialization,
+		MAX(CASE WHEN p.RowNum=3 THEN p.edu_duration_from END) as UGFromDuration,
+		MAX(CASE WHEN p.RowNum=3 THEN p.edu_duration_to END) as UGToDuration,
+		MAX(CASE WHEN p.RowNum=3 THEN p.university END) as UGUniversity,
+		MAX(CASE WHEN p.RowNum=3 THEN p.percentage END) as UGPercentage,
+		MAX(CASE WHEN p.RowNum=4 THEN p.degree END) as PGDegree,
+		MAX(CASE WHEN p.RowNum=4 THEN p.specialisation END) as PGSpecialization,
+		MAX(CASE WHEN p.RowNum=4 THEN p.edu_duration_from END) as PGFromDuration,
+		MAX(CASE WHEN p.RowNum=4 THEN p.edu_duration_to END) as PGToDuration,
+		MAX(CASE WHEN p.RowNum=4 THEN p.university END) as PGUniversity,
+		MAX(CASE WHEN p.RowNum=4 THEN p.percentage END) as PGPercentage,
+		MAX(CASE WHEN s.RowNum6=1 THEN s.client_comp END) as FirstClientCompany,
+		MAX(CASE WHEN s.RowNum7=1 THEN s.payroll_comp END) as FirstPayrollCompany,
+		MAX(CASE WHEN s.RowNum8=1 THEN s.designation END) as FirstDesignation,
+		MAX(CASE WHEN s.RowNum9=1 THEN s.emp_duration_from END) as FirstFromDuration,
+		MAX(CASE WHEN s.RowNum10=1 THEN s.emp_duration_to END) as FirstToDuration,
+		MAX(CASE WHEN s.RowNum11=1 THEN s.location END) as FirstLocation,
+		MAX(CASE WHEN s.RowNum6=2 THEN s.client_comp END) as SecondClientCompany,
+		MAX(CASE WHEN s.RowNum7=2 THEN s.payroll_comp END) as SecondPayrollCompany,
+		MAX(CASE WHEN s.RowNum8=2 THEN s.designation END) as SecondDesignation,
+		MAX(CASE WHEN s.RowNum9=2 THEN s.emp_duration_from END) as SecondFromDuration,
+		MAX(CASE WHEN s.RowNum10=2 THEN s.emp_duration_to END) as SecondToDuration,
+		MAX(CASE WHEN s.RowNum11=2 THEN s.location END) as SecondLocation,
+		MAX(CASE WHEN s.RowNum6=3 THEN s.client_comp END) as ThirdClientCompany,
+		MAX(CASE WHEN s.RowNum7=3 THEN s.payroll_comp END) as ThirdPayrollCompany,
+		MAX(CASE WHEN s.RowNum8=3 THEN s.designation END) as ThirdDesignation,
+		MAX(CASE WHEN s.RowNum9=3 THEN s.emp_duration_from END) as ThirdFromDuration,
+		MAX(CASE WHEN s.RowNum10=3 THEN s.emp_duration_to END) as ThirdToDuration,
+		MAX(CASE WHEN s.RowNum11=3 THEN s.location END) as ThirdLocation
 	
-	
-	$sql="select emp_candidate_details.id,emp_candidate_details.vendor_code, emp_candidate_details.candidate_name, emp_candidate_details.mobile_number, emp_candidate_details.mail_id, emp_candidate_details.skills, emp_candidate_details.primary_other_skils, emp_candidate_details.SecondarySkills, emp_candidate_details.secondary_other_skils, emp_candidate_details.total_exp_year, emp_candidate_details.total_exp_month, emp_candidate_details.relevant_exp_year, emp_candidate_details.relevant_exp_month, emp_candidate_details.notice_period, emp_candidate_details.current_ctc_lakhs, emp_candidate_details.current_ctc_thousands, emp_candidate_details.expected_ctc_lakhs, emp_candidate_details.expected_ctc_thousands, emp_candidate_details.day, emp_candidate_details.month, emp_candidate_details.year, emp_candidate_details.pan_card_no, emp_candidate_details.pan_card_attach, emp_candidate_details.language_known, emp_candidate_details.current_location, emp_candidate_details.preferred_location, emp_candidate_details.interview_timing, emp_candidate_details.profile_pic, emp_candidate_details.educational_gap_year, emp_candidate_details.career_gap_year, emp_candidate_details.team_size_name, emp_candidate_details.team_contact_no, emp_candidate_details.email_random_code, emp_candidate_details.password, emp_candidate_details.password_token, date_format(cr_date, '%e-%b-%y') as 'cr_date1', emp_candidate_details.login_types, emp_candidate_details.referrer_name,emp_candidate_details.client,emp_candidate_details.employer_still,
+		FROM emp_candidate_details
+		INNER JOIN
+		(
+		  SELECT educational_details.*,
+		       if(@head_id<>head_id,@rn:=0,@rn),
+			if(@head_id<>head_id,@rn1:=0,@rn1),
+			if(@head_id<>head_id,@rn2:=0,@rn2),
+			if(@head_id<>head_id,@rn3:=0,@rn3),
+			if(@head_id<>head_id,@rn4:=0,@rn4),
+			if(@head_id<>head_id,@rn5:=0,@rn5),
+			@head_id:=head_id,
+			@rn:=@rn+1 as RowNum,
+			@rn1:=@rn1+1 as RowNum1,
+			@rn2:=@rn2+1 as RowNum2,
+			@rn3:=@rn3+1 as RowNum3,
+			@rn4:=@rn4+1 as RowNum4,
+			@rn5:=@rn5+1 as RowNum5
+		
+		  FROM educational_details, (Select @rn:=0,@head_id:=0) as t
+		  ORDER BY head_id,id
+		 ) as p
+		   ON emp_candidate_details.id=p.head_id
+		
+		INNER JOIN
+		(
+		  SELECT employement_details.*,
+		       if(@head_id<>head_id,@rn6:=0,@rn6),
+			if(@head_id<>head_id,@rn7:=0,@rn7),
+			if(@head_id<>head_id,@rn8:=0,@rn8),
+			if(@head_id<>head_id,@rn9:=0,@rn9),
+			if(@head_id<>head_id,@rn10:=0,@rn10),
+			if(@head_id<>head_id,@rn11:=0,@rn11),
+			@head_id:=head_id,
+			@rn6:=@rn6+1 as RowNum6,
+			@rn7:=@rn7+1 as RowNum7,
+			@rn8:=@rn8+1 as RowNum8,
+			@rn9:=@rn9+1 as RowNum9,
+			@rn10:=@rn10+1 as RowNum10,
+			@rn11:=@rn11+1 as RowNum11
+		
+		  FROM employement_details, (Select @rn:=0,@head_id:=0) as u
+		  ORDER BY head_id,id
+		 ) as s
+		    ON emp_candidate_details.id=s.head_id
+		    GROUP BY emp_candidate_details.id
+		    ORDER BY emp_candidate_details.cr_date DESC";
+		    return $this->db->query($sql, $return_object = TRUE)->result_array();
+	}else{
+	    $sql="select emp_candidate_details.id,emp_candidate_details.vendor_code, emp_candidate_details.candidate_name, emp_candidate_details.mobile_number, emp_candidate_details.mail_id, emp_candidate_details.skills, emp_candidate_details.primary_other_skils, emp_candidate_details.SecondarySkills, emp_candidate_details.secondary_other_skils, emp_candidate_details.total_exp_year, emp_candidate_details.total_exp_month, emp_candidate_details.relevant_exp_year, emp_candidate_details.relevant_exp_month, emp_candidate_details.notice_period, emp_candidate_details.current_ctc_lakhs, emp_candidate_details.current_ctc_thousands, emp_candidate_details.expected_ctc_lakhs, emp_candidate_details.expected_ctc_thousands, emp_candidate_details.day, emp_candidate_details.month, emp_candidate_details.year, emp_candidate_details.pan_card_no, emp_candidate_details.pan_card_attach, emp_candidate_details.language_known, emp_candidate_details.current_location, emp_candidate_details.preferred_location, emp_candidate_details.interview_timing, emp_candidate_details.profile_pic, emp_candidate_details.educational_gap_year, emp_candidate_details.career_gap_year, emp_candidate_details.team_size_name, emp_candidate_details.team_contact_no, emp_candidate_details.email_random_code, emp_candidate_details.password, emp_candidate_details.password_token, date_format(cr_date, '%e-%b-%y') as 'cr_date1', emp_candidate_details.login_types, emp_candidate_details.referrer_name,emp_candidate_details.client,emp_candidate_details.employer_still,
 		MAX(CASE WHEN p.RowNum=1 THEN p.degree END) as SSLCDegree,
 		MAX(CASE WHEN p.RowNum=1 THEN p.specialisation END) as SSLCSpecialization,
 		MAX(CASE WHEN p.RowNum=1 THEN p.edu_duration_from END) as SSLCFromDuration,
@@ -399,11 +513,12 @@ class talentModel extends CI_Model {
 		  ORDER BY head_id,id
 		 ) as s
 		   ON emp_candidate_details.id=s.head_id
-		
+		   WHERE client IN ($client_data)
 		GROUP BY emp_candidate_details.id
 		ORDER BY emp_candidate_details.cr_date DESC";
-
-	return $this->db->query($sql, $return_object = TRUE)->result_array();
+		return $this->db->query($sql, $return_object = TRUE)->result_array();
+	}
+	
     }
     
     
@@ -720,11 +835,21 @@ class talentModel extends CI_Model {
 	$this->db->where("id",$_POST['degree_id'][$j]);
 	$result= $this->db->update('educational_details',$data);  
     }
+    
+    function getDeleteEmail($id){
+	$sql="SELECT mail_id FROM emp_candidate_details WHERE id='$id'";
+	return $this->db->query($sql, $return_object = TRUE)->result_array();
+    }
+    
+    function employeeEmailDelete($res){
+	$this->db->where("email",$res);
+	$this->db->delete("emailtrack");
+    }
 
     function employeeDelete($id){
 	$this->db->where("id",$id);
 	$this->db->delete("emp_candidate_details");
-    } 
+    }
    
    function employementDelete($id)
     {
@@ -801,7 +926,7 @@ class talentModel extends CI_Model {
 	
     }
     function employeesCount(){
-	$sql="SELECT COUNT(*) as employeesCount FROM emp_candidate_details";
+	$sql="SELECT COUNT(*) as employeesCount FROM emp_candidate_details WHERE check_email = 'yes'";
 	 return $this->db->query($sql, $return_object = TRUE)->result_array();
     }
     function adminCount(){
@@ -814,6 +939,11 @@ class talentModel extends CI_Model {
     }
     function emailTrackingCount(){
 	$sql="SELECT COUNT(*) as emailTrackingCount FROM emailtrack WHERE check_mailid='no'";
+	return $this->db->query($sql, $return_object = TRUE)->result_array();
+    }
+    
+    function directAppEmailmailTrackingCount(){
+	$sql="SELECT COUNT(*) as directAppEmailmailTrackingCount FROM emailtrack WHERE refer_name='DirectApp'";
 	return $this->db->query($sql, $return_object = TRUE)->result_array();
     }
     
@@ -1063,6 +1193,11 @@ if($this->email->send()){
      	return $this->db->query($sql, $return_object = TRUE)->result_array();
     }
     
+    function clientsDetails1(){
+	 $sql="SELECT clientname FROM clients";
+     	return $this->db->query($sql, $return_object = TRUE)->result_array();
+    }
+    
     function addClients(){
 	$data = array(
 	    'clientname'=>$this->input->post('client'),
@@ -1115,6 +1250,13 @@ if($this->email->send()){
     }
     
     function emailTrackDelete($id){
+	
+	$sql = "SELECT email FROM emailtrack WHERE id = '$id'";
+	$query=$this->db->query($sql)->result_array();
+	$email = $query[0]['email'];
+	$this->db->where("mail_id",$email);
+	$this->db->delete("emp_candidate_details");
+	
 	$this->db->where("id",$id);
 	$this->db->delete("emailtrack");
     }

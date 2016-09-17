@@ -216,7 +216,7 @@ $status = $this->session->flashdata('status');
                                 <label>Total Experience <span style="color:#EB8B11">*</span></label>
                                 <div class="row">
                                 <div class="form-group col-md-4">
-                                  <select name="total_exp_year" class="form-control">
+                                  <select name="total_exp_year" class="form-control selectpicker" data-size="10">
                                     <option value="0">0 </option>
 				    <option value="1">1 </option>
                                     <option value="2">2 </option>	
@@ -242,7 +242,7 @@ $status = $this->session->flashdata('status');
                                   </select>
                                 </div>
                                  <div class="form-group col-md-4">
-                                  <select name="total_exp_month" class="form-control">
+                                  <select name="total_exp_month" class="form-control selectpicker" data-size="10">
 				    <option value="0">0 </option>
                                     <option value="1">1 </option>
                                     <option value="2">2 </option>
@@ -263,7 +263,7 @@ $status = $this->session->flashdata('status');
                                 <label>Relevant Exp <span style="color:#EB8B11">*</span></label>
                                 <div class="row">
                                 <div class="form-group col-md-4">
-                                  <select name="relevant_exp_year" class="form-control">
+                                  <select name="relevant_exp_year" class="form-control selectpicker" data-size="10">
 				    <option value="0">0 </option>
                                     <option value="1">1 </option>
                                     <option value="2">2 </option>
@@ -289,7 +289,7 @@ $status = $this->session->flashdata('status');
                                   </select>
                                 </div>
                                  <div class="form-group col-md-4">
-                                  <select name="relevant_exp_month" class="form-control">
+                                  <select name="relevant_exp_month" class="form-control selectpicker" data-size="10">
 				    <option value="0">0 </option>
                                     <option value="1">1 </option>
                                     <option value="2">2 </option>
@@ -311,7 +311,7 @@ $status = $this->session->flashdata('status');
                                 <label>Notice Period <span style="color:#EB8B11">*</span></label>
                                 <div class="row">
 				  <div class="form-group col-md-4">
-				    <select name="notice_period" class="form-control">
+				    <select name="notice_period" class="form-control selectpicker" data-size="10">
 				      <option value="Immediate">Immediate</option>
 					<option value="7">7 Days</option>
 					<option value="15">15 Days</option>
@@ -328,7 +328,7 @@ $status = $this->session->flashdata('status');
                                 <label>Current CTC <span style="color:#EB8B11">*</span></label>
                                 <div class="row">
                                 <div class="form-group col-md-4">
-                                  <select name="current_ctc_lakhs" class="form-control">
+                                  <select name="current_ctc_lakhs" class="form-control selectpicker" data-size="10">
 				    <option value="0">0 </option>
                                     <option value="1">1 </option>
                                     <option value="2">2 </option>
@@ -354,7 +354,7 @@ $status = $this->session->flashdata('status');
                                   </select>
                                 </div>
                                  <div class="form-group col-md-4">
-                                  <select name="current_ctc_thousands" class="form-control">
+                                  <select name="current_ctc_thousands" class="form-control selectpicker" data-size="10">
 				    <option value="00">0 </option>
 				    <option value="05">5 </option>
                                     <option value="10">10 </option>
@@ -383,7 +383,7 @@ $status = $this->session->flashdata('status');
                                 <label>Expected CTC <span style="color:#EB8B11">*</span></label>
                                 <div class="row">
                                 <div class="form-group col-md-4">
-                                  <select name="expected_ctc_lakhs" class="form-control">
+                                  <select name="expected_ctc_lakhs" class="form-control selectpicker" data-size="10">
 				    <option value="0">0 </option>
                                     <option value="1">1 </option>
                                     <option value="2">2 </option>
@@ -409,7 +409,7 @@ $status = $this->session->flashdata('status');
                                   </select>
                                 </div>
                                  <div class="form-group col-md-4">
-                                  <select name="expected_ctc_thousands" class="form-control">
+                                  <select name="expected_ctc_thousands" class="form-control selectpicker" data-size="10">
 				    <option value="00">0 </option>
 				    <option value="05">5 </option>
                                     <option value="10">10 </option>
@@ -439,7 +439,7 @@ $status = $this->session->flashdata('status');
                                 <label>Date Of Birth <span style="color:#EB8B11">*</span></label>
                                 <div class="row">
                                 <div class="form-group col-md-4">
-                                  <select name="day" class="form-control">
+                                  <select name="day" class="form-control selectpicker" data-size="10">
                                     <option  value="1">1</option>
                                     <option value="2">2</option>
                                     <option value="3">3</option>
@@ -474,7 +474,7 @@ $status = $this->session->flashdata('status');
                                   </select>
                                 </div>
                                  <div class="form-group col-md-4">
-                                  <select name="month" class="form-control">
+                                  <select name="month" class="form-control selectpicker" data-size="10">
                                     <option  value="Jan">January</option>
                                     <option value="Feb">February</option>
                                     <option value="Mar">March</option>
@@ -490,7 +490,7 @@ $status = $this->session->flashdata('status');
                                   </select>
                                 </div>
                                  <div class="form-group col-md-4">
-                                  <select name="year" class="form-control">
+                                  <select name="year" class="form-control selectpicker" data-size="10">
                                     <option value="60">1960</option>
                                     <option value="61">1961</option>
                                     <option value="62">1962</option>
@@ -619,9 +619,9 @@ $status = $this->session->flashdata('status');
                             <div class="form-group">
                                 <label>Current Location <span style="color:#EB8B11">*</span></label>
                                 <!--<input class="form-control input-md" name="current_location" value="<?php echo $inter_Edit[0]['current_location'];?>" type="text" placeholder="Current Location">-->
-				<select name="current_location" class="form-control">
+				<select name="current_location" class="form-control selectpicker" data-size="10" data-live-search="true">
 				<?php foreach($Location as $rowC){ ?>
-				    <option <?php if($rowC['location']==$inter_Edit[0]['current_location']){ echo "selected"; }else{ echo "disabled";}?> value="<?php echo $rowC['location'];?>" ><?php echo $rowC['location'];?></option>
+				    <option <?php if($rowC['location']==$inter_Edit[0]['current_location']){ echo "selected"; }?> value="<?php echo $rowC['location'];?>" ><?php echo $rowC['location'];?></option>
 				<?php } ?>
 				</select>
                             </div>
@@ -796,7 +796,7 @@ $status = $this->session->flashdata('status');
                                   <td class="hidden"> <input placeholder="Degree" name="edu_lineid[]" value="<?php echo $row['id'];?>" id="degree" class="form-control input-md" type="hidden"></td>
 				  <td> <!--<input placeholder="Degree" name="degree[]" value="<?php echo $row['degree'];?>" id="degree" class="form-control input-md" type="text">-->
 				  <?php if($count==1){ ?>
-				    <select class="form-control input-sm" name="degree[]">
+				    <select class="form-control input-sm selectpicker" name="degree[]">
 				     <option <?php if($row['degree']=='HSC'){ echo "selected";}?>  value="HSC" ><?php echo "HSC";?></option>
 				     <option <?php if($row['degree']=='Diploma'){ echo "selected";}?>  value="Diploma"><?php echo "Diploma";?></option>
 				 </select>
@@ -808,7 +808,7 @@ $status = $this->session->flashdata('status');
 				  </td>
                                   <td> <input placeholder="Specialization" value="<?php echo $row['specialisation'];?>" name="specialisation[]" id="specialisation" class="form-control input-md" type="text"></td>
                                   <td><span class='input-group date'><input value="<?php echo $row['edu_duration_from'];?>" type="text" name="edu_duration_from[]" onblur="checkDurationMonth($(this));" id="edu_duration_from" class="form-control input-md    datepicker-dob" ><span class="input-group-addon" ><span class="glyphicon glyphicon-calendar"></span></span></span></td>
-				  <td><span class='input-group date'><input value="<?php echo $row['edu_duration_to'];?>" type="text" name="edu_duration_to[]" id="edu_duration_to" class="form-control input-md  datepicker-dob"  ><span class="input-group-addon" ><span class="glyphicon glyphicon-calendar"></span></span></span></td>
+				  <td><span class='input-group date'><input value="<?php echo $row['edu_duration_to'];?>" type="text" name="edu_duration_to[]" id="edu_duration_to" class="form-control input-md  datepicker-dob trig"  ><span class="input-group-addon" ><span class="glyphicon glyphicon-calendar"></span></span></span></td>
                                   <td> <input placeholder="University" value="<?php echo $row['university'];?>" name="university[]" class="form-control input-md" type="text"></td>
                                   <td> <input placeholder="Percentage" value="<?php echo $row['percentage'];?>" name="percentage[]" class="form-control input-md" type="text"></td>
 				  <!--<td> <textarea name="reasonDesc[]"  class="form-control input-md" id="reasonDesc" rows="1" readonly></textarea></td>-->
@@ -835,7 +835,7 @@ $status = $this->session->flashdata('status');
 				    <input placeholder="Degree" id="degree" class="form-control input-md" type="text"></td>
                                   <td> <input placeholder="Specialisation" id="specialisation" class="form-control input-md" type="text"></td>
                                   <td><span class='input-group date'><input type="text" onblur="checkDurationMonth($(this));" id="edu_duration_from" class="form-control input-md  input-group datepicker-dob" ><span class="input-group-addon" ><span class="glyphicon glyphicon-calendar"></span></span></span></td>
-				  <td><span class='input-group date'><input type="text" id="edu_duration_to" class="form-control input-md  input-group datepicker-dob"  ><span class="input-group-addon" ><span class="glyphicon glyphicon-calendar"></span></span></span></td>
+				  <td><span class='input-group date'><input type="text" id="edu_duration_to" class="form-control input-md  input-group datepicker-dob trig1"  ><span class="input-group-addon" ><span class="glyphicon glyphicon-calendar"></span></span></span></td>
                                   <td> <input placeholder="University" id="university" class="form-control input-md" type="text"></td>
                                   <td> <input placeholder="Percentage" id="percentage" class="form-control input-md" type="text"></td>
                                   <td>
@@ -1315,7 +1315,7 @@ $status = $this->session->flashdata('status');
                 },
                 'degree[]': {
                     group: 'td',
-		    trigger:'blur',
+		    //trigger:'blur',
                     validators: {
                         notEmpty: {
                             message: 'The Degree is required and can\'t be empty'
@@ -1332,7 +1332,7 @@ $status = $this->session->flashdata('status');
                 //},
                 'edu_duration_from[]': {
                     group: 'td',
-                    trigger:'blur',
+                    //trigger:'blur',
                     validators: {
                         notEmpty: {
                             message: 'The Edu Durtation From is required and can\'t be empty'
@@ -1341,7 +1341,7 @@ $status = $this->session->flashdata('status');
                 },
                 'edu_duration_to[]': {
                     group: 'td',
-                    trigger:'blur',
+                    //trigger:'blur',
                     validators: {
                         notEmpty: {
                             message: 'The Edu Duration To is required and can\'t be empty'
@@ -1730,7 +1730,7 @@ function checkDurationMonth() {
       var a = moment(prevRowNewVal,'YYYY/MM/DD');
       var b = moment(thisNewValue,'YYYY/MM/DD');
       var diffDays = b.diff(a, 'days');
-      if (diffDays >= 60) {
+      if (diffDays >= 180) {
 	sum+=diffDays;
       }
     });
@@ -1841,9 +1841,15 @@ function checkDurationMonth() {
     var todayVal = $('#todayVal').val();
     var employeeVal = $('#employeeVal').val();
     //if (sum1 == 'employee' && beforeVal != '' || sum1 == 'overall') {
-    sum = parseInt(beforeVal) +  parseInt(todayVal) + parseInt(employeeVal);
+    //sum = parseInt(beforeVal) +  parseInt(todayVal) + parseInt(employeeVal);
     //alert(sum);
     //}
+    if (beforeVal=='') {
+      var beforeVal = 0;
+      sum = parseInt(beforeVal) +  parseInt(todayVal) + parseInt(employeeVal);
+    }else {
+      sum = parseInt(beforeVal) +  parseInt(todayVal) + parseInt(employeeVal);
+    }
     var y = 365;
     var y2 = 30;
     var remainder = sum % y;
@@ -1855,6 +1861,19 @@ function checkDurationMonth() {
     var result = + year +"Year " + month + "Month ";
      $('.countYr').val(result);
   }
+  
+  $(document).ready(function() {
+
+    $(".trig").blur( function () {
+       $("#emp_duration_from").trigger('blur');
+       $("#emp_duration_to").trigger('blur');
+    });
+    $(".trig1").blur( function () {
+       $("#emp_duration_from").trigger('blur');
+       $("#emp_duration_to").trigger('blur');
+    });
+
+  });
   
     function addMore() {
       $Counter = $('.countClass').length-2;

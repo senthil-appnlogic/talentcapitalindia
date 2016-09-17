@@ -55,7 +55,7 @@ $status = $this->session->flashdata('status');?>
                             </div>
                             <div class="form-group">
                                 <label>Candidate Email<span style="color:#EB8B11">*</span></label>
-                                <input class="form-control input-md" name="email" type="text" placeholder="Candidate Email" onkeyup="checkEmail();" id="email">
+                                <input class="form-control input-md" name="email" type="text" placeholder="Candidate Email" id="email">
                             </div>
 			    <div>
 				<span id="email-status"></span>
@@ -77,28 +77,28 @@ $status = $this->session->flashdata('status');?>
     $(document).ready(function() {
         $(".chzn-select").chosen();
     });
-     function checkEmail(){
-	
-        var email=$("#email").val();
-        $.ajax({
-                type: 'post',
-                url: '<?php echo site_url('vendorlogin/check_email');?>',
-                data: {email:email},
-                success: function (response) {
-		    console.log(response);
-		    if (response=='true') {
-			//setTimeout(function(){ $('#email-status').empty(); }, 3000);
-			$("#email-status").append("<p style='color:red'>Email Already Exist</p>");
-			$("#check").attr('disabled',true);
-		    }
-		    else {
-			$("#email-status").empty();
-			$("#check").attr('disabled',false);
-		    }
-                }
-               
-            });
-    }
+//     function checkEmail(){
+//	
+//        var email=$("#email").val();
+//        $.ajax({
+//                type: 'post',
+//                url: '<?php echo site_url('vendorlogin/check_email');?>',
+//                data: {email:email},
+//                success: function (response) {
+//		    console.log(response);
+//		    if (response=='true') {
+//			//setTimeout(function(){ $('#email-status').empty(); }, 3000);
+//			$("#email-status").append("<p style='color:red'>Email Already Exist</p>");
+//			$("#check").attr('disabled',true);
+//		    }
+//		    else {
+//			$("#email-status").empty();
+//			$("#check").attr('disabled',false);
+//		    }
+//                }
+//               
+//            });
+//    }
 
 </script>
 <script>
@@ -124,6 +124,11 @@ $(document).ready(function() {
 		    notEmpty: {
 			message: 'The Candidate Email is required and can\'t be empty'
 		    },
+		    remote: {
+			message: 'email address is already exits',
+			url: "<?php echo base_url('vendorlogin/check_email');?>",
+			type: "post",
+		    }
 		}
 	    }
 	}

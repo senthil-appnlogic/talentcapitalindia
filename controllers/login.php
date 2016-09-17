@@ -56,6 +56,7 @@ class login extends CI_Controller {
                         $this->session->set_userdata('user_email',$result[0]['email']);
                         $this->session->set_userdata('employee_code',$result[0]['intemp_code']);
                         $this->session->set_userdata('employee_role',$result[0]['role']);
+			$this->session->set_userdata('client_name',$result[0]['client']);
                         $loginType = $result[0]['role'];
                         //print_r($loginType);
                         //exit;

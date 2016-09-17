@@ -55,6 +55,7 @@ $session_username = $this->session->userdata('username');
             <meta name="viewport" content="width=device-width, initial-scale=1">
             <link rel="icon" href="images/favicon.ico" type="image/gif"> 
                 <link rel="stylesheet" href="<?php echo base_url();?>assets/css/bootstrap.min.css">
+		<link href="<?php echo base_url(); ?>assetsAdmin/plugins/bootstrap-select/bootstrap-select.min.css" rel="stylesheet" />
                     <link rel="stylesheet" href="<?php echo base_url();?>assets/css/custom.css">
                         <link rel="stylesheet" href="<?php echo base_url();?>assets/css/chosen.css">
                         <link rel="stylesheet" href="<?php echo base_url();?>assets/browse-button/filecss.css">
@@ -84,6 +85,7 @@ $session_username = $this->session->userdata('username');
                             
 		    <script src="<?php echo base_url(); ?>assets/bootstrap-datetimepicker2/js/moment-with-locales.js"></script>
 		    <script src="<?php echo base_url(); ?>assets/bootstrap-datetimepicker2/js/bootstrap-datetimepicker.min.js"></script>
+		    <script src="<?php echo base_url();?>assetsAdmin/plugins/bootstrap-select/bootstrap-select.min.js"></script>
 		    
 		    	<!--=========================SWITCHERY JS ===========================-->
 			<link href="<?php echo base_url(); ?>assetsAdmin/plugins/LC-switch-master/lc_switch.css" rel="stylesheet" />

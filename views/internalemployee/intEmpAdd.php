@@ -55,7 +55,7 @@ $status = $this->session->flashdata('status');?>
                             </div>
                             <div class="form-group">
                                 <label>Candidate Email<span style="color:#EB8B11">*</span></label>
-                                <input class="form-control input-md" name="email" type="email" placeholder="Candidate Email" onkeyup="checkEmail();"  id="email">
+                                <input class="form-control input-md" name="email" type="email" placeholder="Candidate Email"  id="email">
                             </div>
 			    <div>
 				<span id="email-status"></span>
@@ -76,26 +76,26 @@ $status = $this->session->flashdata('status');?>
         $(".chzn-select").chosen();
     });
     
-     function checkEmail(){
-	
-        var email=$("#email").val();
-        $.ajax({
-                type: 'post',
-                url: '<?php echo site_url('internalemployee/check_email');?>',
-                data: {email:email},
-                success: function (response) {
-		    console.log(response);
-		    if (response=='true') {
-			$("#email-status").append("<p style='color:red'>Email Already Exist</p>");
-			$('#test').attr('disabled',true);
-		    }else{
-			$("#email-status").empty();
-			$('#test').attr('disabled',false);
-		    }
-                }
-               
-            });
-    }
+//     function checkEmail(){
+//	
+//        var email=$("#email").val();
+//        $.ajax({
+//                type: 'post',
+//                url: '<?php echo site_url('internalemployee/check_email');?>',
+//                data: {email:email},
+//                success: function (response) {
+//		    console.log(response);
+//		    if (response=='true') {
+//			$("#email-status").append("<p style='color:red'>Email Already Exist</p>");
+//			$('#test').attr('disabled',true);
+//		    }else{
+//			$("#email-status").empty();
+//			$('#test').attr('disabled',false);
+//		    }
+//                }
+//               
+//            });
+//    }
 
 </script>
 <script>
@@ -121,6 +121,11 @@ $(document).ready(function() {
 		    notEmpty: {
 			message: 'The Candidate Email is required and can\'t be empty'
 		    },
+		    remote: {
+			message: 'email address is already exits',
+			url: "<?php echo base_url('internalemployee/check_email');?>",
+			type: "post",
+		    }
 		}
 	    }
 	}

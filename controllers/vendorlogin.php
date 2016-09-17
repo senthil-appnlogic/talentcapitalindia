@@ -198,10 +198,12 @@ class vendorlogin extends CI_Controller {
 	$check_id=$data['test'][0]['mail_id'];
 	if($email==$check || $email==$check_id)
 	{
-	    echo 'true';
+	    //echo 'true';
+	    echo json_encode(array('valid'=>'false'));
 	}
 	else {
-	    echo "false";
+	    //echo "false";
+	    echo json_encode(array('valid'=>'true'));
 	}
     } 
     

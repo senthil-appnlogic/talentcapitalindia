@@ -369,52 +369,62 @@
 	
 	function internalEmployeeAdd(){
 	    $ramdomString = random_string('alnum', 12);
-	    $data= array(
-                'candidate_name'=>$this->input->post('name'),
-                'mobile_number'=>$this->input->post('mobile_number'),
-                'mail_id'=>$this->input->post('email'),
-                'password'=>$this->input->post('confirm_password'),
-                'login_types'=>$this->input->post('login_types'),
-		'email_random_code'=>$ramdomString,
-            );
-            $this->db->insert('emp_candidate_details',$data);
-	    $this->emailToApplicant($ramdomString);
-	}
-	
-	public function emailToApplicant($ramdomString)
-        {
             $email = $this->input->post('email');
 	    $userName = $this->input->post('name');
-		 $body ="<html>
-                        <head>
-                            <title>Welcome to Talent Capital</title>
-                        </head>
-                        <body>
-                            <h4>Dear $userName</h4>
-			    <p>You are one step away from completing your registration to the Talent capital Portal.</p>
-			    <p>To complete the registration process, please click the link below:</p>
-                            <a href=".base_url()."talentcapitalctr/applicantRegister/".$ramdomString.">".base_url()."talentcapitalctr/applicantRegister/".$ramdomString."</a>
-			    <p>You may also copy and paste the link into your browser to complete the process.</p>
-			    <p>Thank you again, and welcome to the Talent capital Portal.</p>
-			    <br>
-			    <p>Regards,</p>
-			    <p>Talent capital Portal,</p>
-			    <p>To contact the Talent Capital India Team, click the link below:</p>
-			    <p>https://www.talentcapitalindia.com/support</p>
-			    <img src='http://appimagine.com/talentcapital/assets/images/logo.png' style='width:100px'>
-                        </body>
-                    </html>";
+	    $mobile = $this->input->post('mobile_number');
+	    $pass = $this->input->post('confirm_password');
+	    $loginType = $this->input->post('login_types');
+	    $this->emailToApplicant($ramdomString,$email,$userName,$mobile,$pass,$loginType);
+	}
+	
+	public function emailToApplicant($ramdomString,$email,$userName,$mobile,$pass,$loginType)
+        {
+	    $body ="<html>
+		   <head>
+		       <title>Welcome to Talent Capital</title>
+		   </head>
+		   <body>
+		       <h4>Dear $userName</h4>
+		       <p>You are one step away from completing your registration to the Talent capital Portal.</p>
+		       <p>To complete the registration process, please click the link below:</p>
+		       <a href=".base_url()."talentcapitalctr/applicantRegister/".$ramdomString.">".base_url()."talentcapitalctr/applicantRegister/".$ramdomString."</a>
+		       <p>You may also copy and paste the link into your browser to complete the process.</p>
+		       <p>Thank you again, and welcome to the Talent capital Portal.</p>
+		       <br>
+		       <p>Regards,</p>
+		       <p>Talent capital Portal,</p>
+		       <p>To contact the Talent Capital India Team, click the link below:</p>
+		       <p>https://www.talentcapitalindia.com/support</p>
+		       <img src='http://appimagine.com/talentcapital/assets/images/logo.png' style='width:100px'>
+		   </body>
+	       </html>";
             $this->email->set_newline("\r\n");
             $this->email->from('donotreply@talentcapitalindia.com'); // change it to yours
             $this->email->to($email);// change it to yours
             $this->email->subject('Talent Capital India - Registration Success');
             $this->email->message($body);
            if($this->email->send()){
-	//	$this->session->set_flashdata('status', 'Please verify your email');
-	//	redirect('talentcapitalctr/index');
-	//    }else{
-	//	$this->session->set_flashdata('error', 'Your email is not sent');
-	//	redirect('talentcapitalctr/index');  
+		$data= array(
+		    'candidate_name'=>$userName,
+		    'mobile_number'=>$mobile,
+		    'mail_id'=>$email,
+		    'password'=>$pass,
+		    'login_types'=>$loginType,
+		    'email_random_code'=>$ramdomString,
+		);
+		$data1 = array(
+		    'email'=>$email,
+		    'refer_name'=>'DirectApp',
+		    'check_mailid'=>'no',
+		);
+		$this->db->insert('emp_candidate_details',$data);
+		$this->db->insert('emailtrack',$data1);
+		
+		$this->session->set_flashdata('status', 'Please verify your email');
+		redirect('talentcapitalctr/index');
+	    }else{
+		$this->session->set_flashdata('status', 'Your email is not sent');
+		redirect('talentcapitalctr/index');  
            }
         }	
 

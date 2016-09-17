@@ -90,6 +90,21 @@
 						</div>
 					</div>
 				</div>
+				
+				<div class="col-md-3 col-sm-6">
+					<div class="widget widget-stats bg-blue">
+						<div class="stats-icon"><i class="fa fa-desktop"></i></div>
+						<div class="stats-info">
+							<h4>DIRECT APPLICANT EMAIL TRACKING</h4>
+							
+							<p><?php  echo $directAppEmailTrackingCount[0]['directAppEmailmailTrackingCount']; ?></p>	
+						</div>
+						<div class="stats-link">
+							<a href="<?php echo site_url('admin/directAppEmailTrack');?>">View Detail <i class="fa fa-arrow-circle-o-right"></i></a>
+						</div>
+					</div>
+				</div>
+				
 				<!-- end col-3 -->
 				<!-- begin col-3 -->
 				<!--<div class="col-md-3 col-sm-6">

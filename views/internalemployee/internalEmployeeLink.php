@@ -152,7 +152,7 @@ $CandMail = $this->uri->segment(4);
                                 <label>Total Experience <span style="color:#EB8B11">*</span></label>
                                 <div class="row">
                                 <div class="form-group col-md-4">
-                                  <select name="total_exp_year" class="form-control">
+                                  <select name="total_exp_year" class="form-control selectpicker" data-size="10">
                                      <option disabled selected hidden>In Years</option>
                                     <option value="0">0 </option>
 				    <option value="1">1 </option>
@@ -179,7 +179,7 @@ $CandMail = $this->uri->segment(4);
                                   </select>
                                 </div>
                                  <div class="form-group col-md-4">
-                                  <select name="total_exp_month" class="form-control">
+                                  <select name="total_exp_month" class="form-control selectpicker" data-size="10">
                                     <option disabled selected hidden>In Months</option>
 				    <option value="0">0 </option>
                                     <option value="1">1 </option>
@@ -203,7 +203,7 @@ $CandMail = $this->uri->segment(4);
                                 <label>Relevant Exp <span style="color:#EB8B11">*</span></label>
                                 <div class="row">
                                 <div class="form-group col-md-4">
-                                  <select name="relevant_exp_year" class="form-control">
+                                  <select name="relevant_exp_year" class="form-control selectpicker" data-size="10">
                                      <option disabled selected hidden>In Years</option>
                                     <option value="0">0 </option>
 				    <option value="1">1 </option>
@@ -230,7 +230,7 @@ $CandMail = $this->uri->segment(4);
                                   </select>
                                 </div>
                                  <div class="form-group col-md-4">
-                                  <select name="relevant_exp_month" class="form-control">
+                                  <select name="relevant_exp_month" class="form-control selectpicker" data-size="10">
                                     <option disabled selected hidden>In Months</option>
 				    <option value="0">0 </option>
                                     <option value="1">1 </option>
@@ -253,7 +253,7 @@ $CandMail = $this->uri->segment(4);
                                 <label>Notice Period <span style="color:#EB8B11">*</span></label>
                                 
 				  <div class="form-group">
-				    <select name="notice_period" class="form-control">
+				    <select name="notice_period" class="form-control selectpicker" data-size="10">
 				       <option disabled selected hidden>Select</option>
 				       <option value="Immediate">Immediate</option>
 					<option value="7">7 Days</option>
@@ -270,7 +270,7 @@ $CandMail = $this->uri->segment(4);
                                 <label>Current CTC <span style="color:#EB8B11">*</span></label>
                                 <div class="row">
                                 <div class="form-group col-md-4">
-                                  <select name="current_ctc_lakhs" class="form-control">
+                                  <select name="current_ctc_lakhs" class="form-control selectpicker" data-size="10">
                                      <option disabled selected hidden>In Lakhs</option>
 				     <option value="0">0 </option>
                                     <option value="1">1 </option>
@@ -298,7 +298,7 @@ $CandMail = $this->uri->segment(4);
                                   </select>
                                 </div>
                                  <div class="form-group col-md-4">
-                                  <select name="current_ctc_thousands" class="form-control">
+                                  <select name="current_ctc_thousands" class="form-control selectpicker" data-size="10">
                                     <option disabled selected hidden>In Thousands</option>
 				    <option value="00">0 </option>
 				    <option value="05">5 </option>
@@ -329,7 +329,7 @@ $CandMail = $this->uri->segment(4);
                                 <label>Expected CTC <span style="color:#EB8B11">*</span></label>
                                 <div class="row">
                                 <div class="form-group col-md-4">
-                                  <select name="expected_ctc_lakhs" class="form-control">
+                                  <select name="expected_ctc_lakhs" class="form-control selectpicker" data-size="10">
                                      <option disabled selected hidden>In Lakhs</option>
 				     <option value="0">0 </option>
                                     <option value="1">1 </option>
@@ -357,7 +357,7 @@ $CandMail = $this->uri->segment(4);
                                   </select>
                                 </div>
                                  <div class="form-group col-md-4">
-                                  <select name="expected_ctc_thousands" class="form-control">
+                                  <select name="expected_ctc_thousands" class="form-control selectpicker" data-size="10">
                                     <option disabled selected hidden>In Thousands</option>
 				    <option value="00">0 </option>
 				    <option value="05">5 </option>
@@ -389,7 +389,7 @@ $CandMail = $this->uri->segment(4);
                                 <label>Date Of Birth <span style="color:#EB8B11">*</span></label>
                                 <div class="row">
                                 <div class="form-group col-md-4">
-                                  <select name="day" class="form-control">
+                                  <select name="day" class="form-control selectpicker" data-size="10">
                                      <option disabled selected hidden>Day</option>
                                     <option  value="1">1</option>
                                     <option value="2">2</option>
@@ -425,7 +425,7 @@ $CandMail = $this->uri->segment(4);
                                   </select>
                                 </div>
                                  <div class="form-group col-md-4">
-                                  <select name="month" class="form-control">
+                                  <select name="month" class="form-control selectpicker" data-size="10">
                                     <option disabled selected hidden>Month</option>
                                     <option  value="Jan">January</option>
                                     <option value="Feb">February</option>
@@ -442,7 +442,7 @@ $CandMail = $this->uri->segment(4);
                                   </select>
                                 </div>
                                  <div class="form-group col-md-4">
-                                  <select name="year" class="form-control">
+                                  <select name="year" class="form-control selectpicker" data-size="10">
                                     <option disabled selected hidden>Year</option>
                                     <option value="60">1960</option>
                                     <option value="61">1961</option>
@@ -539,7 +539,7 @@ $CandMail = $this->uri->segment(4);
                             <div class="form-group">
                                 <label>Current Location <span style="color:#EB8B11">*</span></label>
                                 <!--<input class="form-control input-md" name="current_location" type="text" placeholder="Current Location">-->
-                                <select name="current_location" class="form-control">
+                                <select name="current_location" class="form-control selectpicker" data-size="10" data-live-search="true">
 				  <option disabled selected hidden>Please Select Current Location</option>
 				  <?php
 				  foreach ($Location as $row)
@@ -663,7 +663,7 @@ $CandMail = $this->uri->segment(4);
                                   <td> <input placeholder="SSLC" name="degree[]" id="degree" class="form-control input-md" value="SSC" type="text"></td>
                                   <td> <input placeholder="Specialisation" name="specialisation[]" id="specialisation" value="Maths" class="form-control input-md" type="text"></td>
                                   <td><span class='input-group date'><input type="text" name="edu_duration_from[]" id="edu_duration_from" class="form-control input-md    datepicker-dob" ><span class="input-group-addon" ><span class="glyphicon glyphicon-calendar"></span></span></span></td>
-				  <td><span class='input-group date'><input type="text" name="edu_duration_to[]" id="edu_duration_to" class="form-control input-md  datepicker-dob"  ><span class="input-group-addon" ><span class="glyphicon glyphicon-calendar"></span></span></span></td>
+				  <td><span class='input-group date'><input type="text" name="edu_duration_to[]" id="edu_duration_to" class="form-control input-md  datepicker-dob trig"  ><span class="input-group-addon" ><span class="glyphicon glyphicon-calendar"></span></span></span></td>
                                   <td> <input placeholder="University" name="university[]" class="form-control input-md" type="text"></td>
                                   <td> <input placeholder="Percentage" name="percentage[]" class="form-control input-md" type="text"></td>
 				  <!--<td> <textarea name="reasonDesc[]"  class="form-control input-md" id="reasonDesc" rows="1" readonly></textarea></td>-->
@@ -682,7 +682,7 @@ $CandMail = $this->uri->segment(4);
                                 </tr>
 				<tr class="countClass">
 				  <td> <!--<input placeholder="HSC/Diploma" name="degree[]" id="degree" class="form-control input-md" type="text">-->
-				      <select name="degree[]" id="degree" class="form-control">
+				      <select name="degree[]" id="degree" class="form-control selectpicker" data-size="10">
 					<option disabled selected hidden>HSC/Diploma</option>
 					<option value="HSC">HSC</option>
 					<option value="Diploma">Diploma</option>
@@ -690,7 +690,7 @@ $CandMail = $this->uri->segment(4);
 				  </td>
                                   <td> <input placeholder="Specialisation" name="specialisation[]" id="specialisation" class="form-control input-md" type="text"></td>
                                   <td><span class='input-group date'><input type="text" name="edu_duration_from[]" onblur="checkDurationMonth($(this));" id="edu_duration_from" class="form-control input-md    datepicker-dob" ><span class="input-group-addon" ><span class="glyphicon glyphicon-calendar"></span></span></span></td>
-				  <td><span class='input-group date'><input type="text" name="edu_duration_to[]" id="edu_duration_to" class="form-control input-md  datepicker-dob"  ><span class="input-group-addon" ><span class="glyphicon glyphicon-calendar"></span></span></span></td>
+				  <td><span class='input-group date'><input type="text" name="edu_duration_to[]" id="edu_duration_to" class="form-control input-md  datepicker-dob trig"  ><span class="input-group-addon" ><span class="glyphicon glyphicon-calendar"></span></span></span></td>
                                   <td> <input placeholder="University" name="university[]" class="form-control input-md" type="text"></td>
                                   <td> <input placeholder="Percentage" name="percentage[]" class="form-control input-md" type="text"></td>
 				 <!-- <td> <textarea name="reasonDesc[]"  class="form-control input-md" id="reasonDesc" rows="1" readonly></textarea></td>-->
@@ -711,7 +711,7 @@ $CandMail = $this->uri->segment(4);
 				<td> <input placeholder="UG Degree" name="degree[]" id="degree" class="form-control input-md" type="text"></td>
                                   <td> <input placeholder="Specialisation" name="specialisation[]" id="specialisation" class="form-control input-md" type="text"></td>
                                   <td><span class='input-group date'><input type="text" name="edu_duration_from[]" onblur="checkDurationMonth($(this));" id="edu_duration_from" class="form-control input-md    datepicker-dob" ><span class="input-group-addon" ><span class="glyphicon glyphicon-calendar"></span></span></span></td>
-				  <td><span class='input-group date'><input type="text" name="edu_duration_to[]" id="edu_duration_to" class="form-control input-md  datepicker-dob"  ><span class="input-group-addon" ><span class="glyphicon glyphicon-calendar"></span></span></span></td>
+				  <td><span class='input-group date'><input type="text" name="edu_duration_to[]" id="edu_duration_to" class="form-control input-md  datepicker-dob trig"  ><span class="input-group-addon" ><span class="glyphicon glyphicon-calendar"></span></span></span></td>
                                   <td> <input placeholder="University" name="university[]" class="form-control input-md" type="text"></td>
                                   <td> <input placeholder="Percentage" name="percentage[]" class="form-control input-md" type="text"></td>
 				 <!-- <td> <textarea name="reasonDesc[]"  class="form-control input-md" id="reasonDesc" rows="1" readonly></textarea></td>-->
@@ -752,7 +752,7 @@ $CandMail = $this->uri->segment(4);
 				    <td> <input placeholder="Add Degree" name="degree[]" id="degree" class="form-control input-md" type="text"></td>
 				      <td> <input placeholder="Specialisation" name="specialisation[]" id="specialisation" class="form-control input-md" type="text"></td>
 				      <td><span class='input-group date'><input type="text" name="edu_duration_from[]" onblur="checkDurationMonth($(this));" id="edu_duration_from" class="form-control input-md    datepicker-dob" ><span class="input-group-addon" ><span class="glyphicon glyphicon-calendar"></span></span></span></td>
-				      <td><span class='input-group date'><input type="text" name="edu_duration_to[]" id="edu_duration_to" class="form-control input-md  datepicker-dob"  ><span class="input-group-addon" ><span class="glyphicon glyphicon-calendar"></span></span></span></td>
+				      <td><span class='input-group date'><input type="text" name="edu_duration_to[]" id="edu_duration_to" class="form-control input-md  datepicker-dob trig1"  ><span class="input-group-addon" ><span class="glyphicon glyphicon-calendar"></span></span></span></td>
 				      <td> <input placeholder="University" name="university[]" class="form-control input-md" type="text"></td>
 				      <td> <input placeholder="Percentage" name="percentage[]" class="form-control input-md" type="text"></td>
 				      <td>
@@ -1316,7 +1316,7 @@ $CandMail = $this->uri->segment(4);
                 },
                 'degree[]': {
                     group: 'td',
-		    trigger:'blur',
+		    //trigger:'blur',
                     validators: {
                         notEmpty: {
                             message: 'The Degree is required and can\'t be empty'
@@ -1333,7 +1333,7 @@ $CandMail = $this->uri->segment(4);
                 //},
                 'edu_duration_from[]': {
                     group: 'td',
-                    trigger:'blur',
+                    //trigger:'blur',
                     validators: {
                         notEmpty: {
                             message: 'The Edu Durtation From is required and can\'t be empty'
@@ -1342,7 +1342,7 @@ $CandMail = $this->uri->segment(4);
                 },
                 'edu_duration_to[]': {
                     group: 'td',
-                    trigger:'blur',
+                    //trigger:'blur',
                     validators: {
                         notEmpty: {
                             message: 'The Edu Duration To is required and can\'t be empty'
@@ -1516,7 +1516,7 @@ $CandMail = $this->uri->segment(4);
       var a = moment(prevRowNewVal,'YYYY/MM/DD');
       var b = moment(thisNewValue,'YYYY/MM/DD');
       var diffDays = b.diff(a, 'days');
-      if (diffDays >= 60) {
+      if (diffDays >= 180) {
 	sum+=diffDays;
       }
     });
@@ -1628,8 +1628,14 @@ $CandMail = $this->uri->segment(4);
     //if (sum1 == 'employee' && beforeVal != '') {
     // sum = parseInt(beforeVal) + (sum);
     //}
+    //sum = parseInt(beforeVal) +  parseInt(todayVal) + parseInt(employeeVal);
     
-    sum = parseInt(beforeVal) +  parseInt(todayVal) + parseInt(employeeVal);
+    if (beforeVal=='') {
+      var beforeVal = 0;
+      sum = parseInt(beforeVal) +  parseInt(todayVal) + parseInt(employeeVal);
+    }else {
+      sum = parseInt(beforeVal) +  parseInt(todayVal) + parseInt(employeeVal);
+    }
     
     var y = 365;
     var y2 = 30;
@@ -1642,6 +1648,19 @@ $CandMail = $this->uri->segment(4);
     var result = + year +"Year " + month + "Month ";
      $('.countYr').val(result);
   }
+  
+  $(document).ready(function() {
+
+    $(".trig").blur( function () {
+       $("#emp_duration_from").trigger('blur');
+       $("#emp_duration_to").trigger('blur');
+    });
+    $(".trig1").blur( function () {
+       $("#emp_duration_from").trigger('blur');
+       $("#emp_duration_to").trigger('blur');
+    });
+
+  });
     
     function addMore() {
       $Counter = $('.countClass').length-2;

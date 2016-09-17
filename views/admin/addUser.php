@@ -31,7 +31,7 @@
                             <h4 class="panel-title">Add User Form</h4>
                         </div>
                         <div class="panel-body">
-                            <form id="form_validation" action="<?php base_url('admin/addUser');?>"   enctype="multipart/form-data" role="form" method="post">
+                            <form id="form_validation" action="<?php echo base_url('admin/userAdd');?>"   enctype="multipart/form-data" role="form" method="post">
                                 <div class="col-md-4 col-md-offset-3">
                                 
                                     <div class="form-group">
@@ -39,12 +39,43 @@
                                     </div>
 				    <div class="form-group">
                                         <label>Role</label>
-                                        <select name="user_role" class="form-control">
+                                        <select name="user_role" class="form-control selectpicker" onchange="clientView($(this));" data-style="btn-white">
 					    <option selected disabled>Select Role</option>
 					    <option value="Admin">Admin</option>
 					    <option value="InternalEmployee">Internal Employee</option>
 					</select>
 				    </div>
+				    <div class="form-group" id="client_all">
+					<label>All Clients<span style="color:#EB8B11">*</span></label></br>
+					<div class="row">
+					  <div class="form-group col-md-2">
+					      <input  class="lcs_check" id="switch_YN" type="checkbox">
+					      <input type="hidden" id="Switch_Val" name="yesno" value="N" />
+					  </div>
+					</div>
+				    </div>
+				    <div class="form-group" id="client_role" style="width:100%">
+                                        <label>Clients</label>
+					<select multiple class="form-control chzn-select input-sm" name="client[]">
+					    <option></option>
+					    <?php
+					    foreach ($clientsDetails as $row)
+					    {?>
+					    <option value="<?php echo $row['clientname']; ?>"><?php echo $row['clientname']; ?></option>
+					    <?php } ?>
+					    <!--<option value="<?php echo $str;?>">All</option>-->
+					    <!--<option value="Any">All</option>-->
+					</select>
+				    </div>
+				    <?php
+					$clientname = array();
+					foreach ($clientsDetails as $item) {
+					    $clientname[] = $item['clientname'];
+					}
+					$str = implode("','", $clientname);
+					$strng = "'".$str."'";
+				    ?>
+				    <input type="hidden" name="yesnoss" value="<?php echo $strng; ?>" />
                                     <div class="form-group">
                                         <label>Name</label>
                                         <input name="username"  class="form-control input-md" type="text" placeholder="Name">
@@ -61,7 +92,6 @@
                                         <label>conform Password <span style="color:#EB8B11">*</span> </label>
                                         <input name="confirmPassword" class="form-control input-md" type="password" placeholder="Confirm Password">
                                     </div>
-                                   
                                     <div class="form-group">
                                        <img src="<?php echo base_url();?>assets/images/user_icon.jpg" class="img-resposive" width="256" height="256" id="PanImgPreview">
                                     </div>
@@ -95,75 +125,77 @@
             <!-- end row -->
 		</div>
 <script>
-    
-    $('#form_validation').bootstrapValidator({
-        
-    framework: 'bootstrap',
-                feedbackIcons: {
-                valid: 'fa fa-check',
-                invalid: 'fa fa-times',
-                validating: 'fa fa-refresh'
-            },
-    fields: {
-	user_role:
-		{
-		    trigger:'blur',
-		    validators:
-		    {
-			notEmpty:
+    $(document).ready(function() {
+        $(".chzn-select").chosen({});
+	$('#form_validation').bootstrapValidator({
+	    message: 'This value is not valid',
+	    framework: 'bootstrap',
+	    excluded: [':disabled'],
+			feedbackIcons: {
+			valid: 'fa fa-check',
+			invalid: 'fa fa-times',
+			validating: 'fa fa-refresh'
+		    },
+	    fields: {
+		user_role:
 			{
-			    message: 'Role is required'
+			    validators:
+			    {
+				notEmpty:
+				{
+				    message: 'Role is required'
+				},
+				
+			    }
 			},
-			
-		    }
-		},
-        username:
-		{
-		    trigger:'blur',
-		    validators:
-		    {
-			notEmpty:
+		username:
 			{
-			    message: 'Username is required'
+			    trigger:'blur',
+			    validators:
+			    {
+				notEmpty:
+				{
+				    message: 'Username is required'
+				},
+				
+			    }
 			},
-			
-		    }
-		},
-		email:
-		{
-		    trigger:'blur',
-		    validators:
-		    {
-			notEmpty:
+			email:
 			{
-			    message: 'Email is required'
+			    trigger:'blur',
+			    validators:
+			    {
+				notEmpty:
+				{
+				    message: 'Email is required'
+				},
+				remote:
+				{
+				    message: 'Email Already Existed',
+				    url: '<?php echo base_url('admin/userCheck')?>',
+				    type: 'POST'
+				}
+			    }
 			},
-			remote:
-			{
-			    message: 'Email Already Existed',
-			    url: '<?php echo base_url('admin/userCheck')?>',
-			    type: 'POST'
+		password: {
+		    validators: {
+			identical: {
+			    field: 'confirmPassword',
+			    message: 'The password and its confirm are not the same'
 			}
 		    }
 		},
-        password: {
-            validators: {
-                identical: {
-                    field: 'confirmPassword',
-                    message: 'The password and its confirm are not the same'
-                }
-            }
-        },
-        confirmPassword: {
-            validators: {
-                identical: {
-                    field: 'password',
-                    message: 'The password and its confirm are not the same'
-                }
-            }
-        }
-    }
-});
+		confirmPassword: {
+		    validators: {
+			identical: {
+			    field: 'password',
+			    message: 'The password and its confirm are not the same'
+			}
+		    }
+		}
+	    }
+	});
+    });
     function userAdd(){
         var oFReader = new FileReader();
 	oFReader.readAsDataURL(document.getElementById("PanPreview").files[0]);
@@ -171,5 +203,46 @@
 	    var data=document.getElementById("PanImgPreview").src = oFREvent.target.result;
 	};
     }
+    
+    function clientView($this){
+	if ($this.val()=="Admin") {
+	    $("#client_role").removeClass("hidden");
+	    $("#client_all").removeClass("hidden");
+	}else{
+	    $("#client_role").addClass("hidden");
+	    $("#client_all").addClass("hidden");
+	}
+	
+    }
+    
+    $(document).ready(function(){
+	$('.lcs_check').lc_switch('Y','N');
+	$('.lcs_check').lc_switch();
+	$('.lcs_wrap').delegate('#switch_YN', 'lcs-on', function() {
+	  $('input[id="Switch_Val"]').val('Y');
+	  $("#client_role").addClass("hidden");
+	});
+	$('.lcs_wrap').delegate('#switch_YN', 'lcs-off', function() {
+	    $('input[id="Switch_Val"]').val('N');
+	    $("#client_role").removeClass("hidden");
+	});
+    });
+    
+//    $(function(){
+//	var check = $("#Switch_Val").val();
+//	alert(check);
+//	if (check == 'Y') {
+//	    alert('ss');
+//	}
+//    });
+    
+    
+//    function choosenSelect($this){
+//	var ss = $this.val();
+//	if (ss!="All") {
+//	    alert();
+//	    $('#dd').attr("disabled", true); 								
+//	}
+//    }
     
 </script>

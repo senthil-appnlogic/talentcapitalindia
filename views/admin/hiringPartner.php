@@ -228,7 +228,7 @@ $status = $this->session->flashdata('status');
 		    //$('.track').remove();
 		    var id = json.emailtrack[i].id;
 		    //alert(id);
-		    $('.track').append('<tr class="oddClass even gradeC"><td id="crDate">'+json.emailtrack[i].cr_date+'</td><td id="hiringEmail">'+json.emailtrack[i].email+'</td><td><a id="delete_box" href="<?php echo site_url()?>admin/emailTrackDelete/'+id+'"  class="btn btn-danger btn-xs"><i class="fa fa-trash"></i> </a></td></tr>')
+		    $('.track').append('<tr class="oddClass even gradeC"><td id="crDate">'+json.emailtrack[i].cr_date+'</td><td id="hiringEmail">'+json.emailtrack[i].email+'</td><td><a id="delete_box" href="<?php echo site_url()?>admin/vendorEmailTrackDelete/'+id+'"  class="btn btn-danger btn-xs"><i class="fa fa-trash"></i> </a></td></tr>')
 		   // $('#crDate').text(json.emailtrack[i].cr_date);
 		   // //$('#hiringName').val(json.emailtrack[i].);
 		   // $('#hiringCode').text(json.emailtrack[i].refer_code);

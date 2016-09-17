@@ -44,7 +44,8 @@
       text-transform: capitalize;
     }
 
-   </style> 
+   </style>
+   <?php $status = $this->session->flashdata('status'); ?>
     
 <html lang="en">
     <head>
@@ -89,8 +90,6 @@
      
     </div>
     <body>
-	
-	
         <div class="header">
             <nav class="navbar navbar-default navbar-fixed-top aws-nav-header">
                 <div class="container menuPad">
@@ -135,7 +134,9 @@
         <div style="margin-top: 75px;"></div>
         <div class="container">
   
-            
+          <?php if($status){?>
+	    <div id="alert" class="alert alert-success outer"><a href="#" class="close" data-dismiss="alert" aria-label="close" title="close">&times;</a><?php echo $status; ?></div>
+	  <?php } ?>
             <div class="row">
                 <div class="col-md-6 col-md-offset-3">
                     <div class="panel panel-login">
@@ -160,7 +161,7 @@
 					    if($user=='hiringPartner')
 					    {
 						?>
-						<select name="login_types" class="form-control input-lg">
+						<select name="login_types" class="form-control input-lg selectpicker">
 						    <option value="vendor">Hiring Partner</option>                                 
 						</select>
 						<?php
@@ -168,7 +169,7 @@
 					    else
 					    {
 					    ?>
-						<select name="login_types" class="form-control input-lg">
+						<select name="login_types" class="form-control input-lg selectpicker" data-style="btn-white">
 						    <option disabled="" selected value="0">User Type</option>
 						    <option value="vendor">Hiring Partner</option>
 						    <option value="directemploye">Direct Applicant</option>
@@ -200,7 +201,7 @@
                                     </form>
                                     <form id="register-form" action="<?php echo site_url('talentcapitalctr/index');?>" method="post" role="form" style="display: none;">
                                         <div class="form-group">
-                                            <select name="login_types" class="form-control input-lg">
+                                            <select name="login_types" class="form-control input-lg selectpicker" data-style="btn-white">
                                                 <option disabled="" selected value="0">User Type</option>
                                                 <option value="vendor">Hiring Partner</option>
                                                 <option value="directApp">Direct Applicant</option>
@@ -257,7 +258,7 @@
             e.preventDefault();
             });        
     });            
-        
+      
         
     
     $(document).ready(function() {
@@ -382,3 +383,10 @@ $("img").mousedown(function(){
     return false;
 });
     </script>
+    
+    <script>
+    $(document).ready(function(){
+        setTimeout(function(){ $('.alert').remove(); 
+        }, 5000);
+    });
+ </script>

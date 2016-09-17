@@ -86,6 +86,7 @@ class admin extends CI_Controller {
 	    $data['adminCount']=$this->talentModel->adminCount();
 	    $data['intempCount']=$this->talentModel->intempCount();
 	    $data['emailTrackingCount']=$this->talentModel->emailTrackingCount();
+	    $data['directAppEmailTrackingCount']=$this->talentModel->directAppEmailmailTrackingCount();
 	    $this->load->view('admin/header');	
 	    $this->load->view('admin/dashboard',$data);
 	}
@@ -177,6 +178,16 @@ class admin extends CI_Controller {
     function emailTrack(){
 	$check_mail = 'no';
 	$result['emailtrack']=$this->talentModel->emailTrack($check_mail);
+	//echo"<pre>";
+	//print_r($result['emailtrack'][0]['refer_code']);
+	//exit;
+	$this->load->view('admin/header');	
+	$this->load->view('admin/emailtracklist',$result);
+    }
+    
+    function directAppEmailTrack(){
+	$check_mail = 'no';
+	$result['emailtrack']=$this->talentModel->directAppEmailTrack($check_mail);
 	//echo"<pre>";
 	//print_r($result['emailtrack'][0]['refer_code']);
 	//exit;
@@ -396,6 +407,9 @@ class admin extends CI_Controller {
 	{
 	//$res=$this->talentModel->getCandidateId($id);
 	//$Id = $res[0]['head_id'];
+	$data = $this->talentModel->getDeleteEmail($id);
+	$res = $data[0]['mail_id'];
+	$this->talentModel->employeeEmailDelete($res);
         $this->talentModel->employeeDelete($id);
         $this->session->set_flashdata('status','A  record deleted successfully');
         redirect("admin/employee");
@@ -558,14 +572,13 @@ class admin extends CI_Controller {
     function userAdd(){
 	
 	    if (isset($_POST["Save"])) {
-		
 		$this->talentModel->addUser();
 		$this->session->set_flashdata('status','A New record added successfully');
-		redirect("admin/addUserView	");
+		redirect("admin/addUserView");
 	    }
+	    $data['clientsDetails']=$this->talentModel->clientsDetails();
 	    $this->load->view('admin/header');
-	    
-	    $this->load->view('admin/addUser');
+	    $this->load->view('admin/addUser',$data);
 	
     }
     //EDIT
@@ -923,6 +936,18 @@ class admin extends CI_Controller {
     function emailTrackDelete($id){
 	$this->talentModel->emailTrackDelete($id);
 	redirect("admin/emailTrack");
+        //$this->session->set_flashdata('status','A  record deleted successfully');
+    }
+    
+    function intEmpEmailTrackDelete($id){
+	$this->talentModel->emailTrackDelete($id);
+	redirect("admin/addUserView");
+        //$this->session->set_flashdata('status','A  record deleted successfully');
+    }
+    
+    function vendorEmailTrackDelete($id){
+	$this->talentModel->emailTrackDelete($id);
+	redirect("admin/hiringPartner");
         //$this->session->set_flashdata('status','A  record deleted successfully');
     }
 
