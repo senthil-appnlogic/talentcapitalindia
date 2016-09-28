@@ -266,7 +266,7 @@ $status = $this->session->flashdata('status');
 						<?php if(count($employeeDetails) > 0)
 							     { foreach($employeeDetails as $row) {  ?>
 					       
-						<tr>
+						<tr class="billingRow">
 						    <!--<td style="cursor:pointer;" class="clickable-row" data-href='<?php echo site_url('admin/employeeEditView/'.$row['id'])?>'><u><?php echo $row['candidate_name']; ?></u></td>				    
 						    <td ><?php echo $row['mobile_number']; ?></td>
 						    <td ><?php echo $row['mail_id']; ?></td>
@@ -564,41 +564,32 @@ $status = $this->session->flashdata('status');
 	});
 	    
 	    function billingcalculation($this) {
-		//console.log($this)
 		var cur_val=$this.val();
 		var lakhs=0;
 		var thousd=0;
-		lakhs=parseInt($this.parents('.odd').find('.exp_lakhs').text()+"00000");
-		thousd=parseInt($this.parents('.odd').find(".exp_thsnd").text()+"000");
+		var expCtc = $this.parents('.billingRow').find('.exp_lakhs').text();
+		var expCtcVal = expCtc.split('.');
+		var Lacks = expCtcVal[0];
+		var Thousand = expCtcVal[1];
+		lakhs=parseInt(Lacks+"00000");
+		thousd=parseInt(Thousand+"000");
 		if (!lakhs && !thousd) {
-		    lakhs=parseInt($this.parents('.even').find('.exp_lakhs').text()+"00000");
-		    thousd=parseInt($this.parents('.even').find(".exp_thsnd").text()+"000");    
+		    lakhs=parseInt(Lacks+"00000");
+		    thousd=parseInt(Thousand+"000");   
 		}
-		//console.log(lakhs+thousd);
 		var total=lakhs+thousd;
 		var totalexp = total/12;
-		//alert(totalexp);
 		var difference= cur_val-totalexp;
-		//alert(difference);
 		var checking = Math.abs(difference);
-		
-		//alert(checking);
-		//console.log(checking);
-		//alert(checking);
 		if (checking>25000) {
-		    //alert("yes");
-		    $this.parents('.odd').find('.billing').val("20000");
+		    $this.parents('.billingRow').find('.billing').val("20000");
 		}else if (checking<10000) {
-		    //alert("yes");
-		    $this.parents('.odd').find('.billing').val("0");
+		    $this.parents('.billingRow').find('.billing').val("0");
 		}
 		else {
-		    //alert("No");
 		    var checkVal=checking*0.8;
 		    var check = Math.round(checkVal);
-		    //console.log(check);
-		    $this.parents('.odd').find('.billing').val(check);
-		    //$this.parents('.odd').find('.billing').val('10000');
+		    $this.parents('.billingRow').find('.billing').val(check);
 		}
 	    }
 	    

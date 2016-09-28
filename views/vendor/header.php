@@ -40,7 +40,9 @@
 	<!-- ================== END PAGE LEVEL STYLE ================== -->
 	<!-- ================== BEGIN DATA-TABLE STYLE ================== -->
 	
-	<link href="<?php echo base_url(); ?>assetsAdmin/datatables/css/buttons.dataTables.min.css" rel="stylesheet" />
+	<!--<link href="<?php echo base_url(); ?>assetsAdmin/datatables/css/buttons.dataTables.min.css" rel="stylesheet" />-->
+	<link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.10.12/css/jquery.dataTables.min.css">
+	<link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/buttons/1.2.1/css/buttons.dataTables.min.css">
 	  <link href="<?php echo base_url(); ?>assetsAdmin/plugins/bootstrap-validation/css/bootstrapValidator.css" rel="stylesheet" />
 	<!-- ================== END DATA-TABLE STYLE ================== -->
 	
@@ -217,8 +219,8 @@
 	<script src="<?php echo base_url();?>assets/js/jquery.dataTables.columnFilter.js"></script>
 	
 	
-	<script src="<?php echo base_url();?>assetsAdmin/datatables/js/jquery.dataTables.min.js"></script>
-	<script src="<?php echo base_url();?>assetsAdmin/datatables/js/dataTables.buttons.min.js"></script>
+	<!--<script src="<?php echo base_url();?>assetsAdmin/datatables/js/jquery.dataTables.min.js"></script>-->
+	<!--<script src="<?php echo base_url();?>assetsAdmin/datatables/js/dataTables.buttons.min.js"></script>-->
 	<script src="<?php echo base_url();?>assetsAdmin/datatables/js/jszip.min.js"></script>
 	<script src="<?php echo base_url();?>assetsAdmin/datatables/js/pdfmake.min.js"></script>
 	<script src="<?php echo base_url();?>assetsAdmin/datatables/js/vfs_fonts.js"></script>

@@ -169,7 +169,7 @@
 					    else
 					    {
 					    ?>
-						<select name="login_types" class="form-control input-lg selectpicker" data-style="btn-white">
+						<select name="login_types" class="form-control input-lg selectpicker" onchange="getFormUrl($(this).val());"  data-style="btn-white">
 						    <option disabled="" selected value="0">User Type</option>
 						    <option value="vendor">Hiring Partner</option>
 						    <option value="directemploye">Direct Applicant</option>
@@ -389,4 +389,17 @@ $("img").mousedown(function(){
         setTimeout(function(){ $('.alert').remove(); 
         }, 5000);
     });
+    
+    function getFormUrl($val) {
+      //alert($val);
+      if ($val=='vendor') {
+        $url = '<?php echo base_url('vendorlogin');?>';
+        console.log($url);
+        $('#login-form').attr('action',$url);
+      }else if($val=='directemployee'){
+        $url = '<?php echo base_url('directemployee');?>';
+        console.log($url);
+        $('#login-form').attr('action',$url);
+      }
+    }
  </script>

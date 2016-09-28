@@ -1316,7 +1316,7 @@ $CandMail = $this->uri->segment(4);
                 },
                 'degree[]': {
                     group: 'td',
-		    //trigger:'blur',
+		    trigger:'change',
                     validators: {
                         notEmpty: {
                             message: 'The Degree is required and can\'t be empty'

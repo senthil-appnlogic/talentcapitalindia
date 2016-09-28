@@ -183,12 +183,7 @@ $status = $this->session->flashdata('status');
 		    "targets": 0
 		} ],
 		"order": [[ 1, 'asc' ]],
-		//buttons: [
-		//    //'copyHtml5',
-		//    'excelHtml5',
-		//    //'csvHtml5',
-		//    'pdfHtml5'
-		//],
+		
 		buttons: [
 		    //'copyHtml5',
 		    //'excelHtml5',
@@ -323,7 +318,7 @@ $status = $this->session->flashdata('status');
 		   }
 		},
 	    });
-	}
+	};
     </script>
 	
 	

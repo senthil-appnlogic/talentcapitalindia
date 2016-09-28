@@ -5,7 +5,7 @@
 
 $status = $this->session->flashdata('status');
 ?>
-
+<script type="text/javascript" language="javascript" src="https://cdn.datatables.net/select/1.2.0/js/dataTables.select.min.js"></script>
 <style>
   tfoot {
       display: table-header-group !important;
@@ -44,119 +44,80 @@ $status = $this->session->flashdata('status');
 				<a class="btn btn-primary btn-sm " href="<?php echo site_url('vendorlogin/vendorAddUser')?>"><i class="fa fa-plus fa-1x"></i> <span class="f-s-14 f-w-500">Add Candidate</span></a>
 			    </p>
 				<div class="table-responsive" style="border: none">
-					<table id="data-table" class="table table-striped table-bordered nowrap" width="100%">
+					<table id="data-table" class="table table-bordered display dataTable" width="100%">
 					  <thead>
 						<tr>
-						    <th rowspan="2" data-class="expand">S.No</th>
-						    <th rowspan="2" data-class="expand">Created Date</th>
-						    <th rowspan="2" data-hide="phone,tablet">Client</th>
-						    <th rowspan="2" data-hide="phone,tablet">Name</th>
-						    <th rowspan="2" data-hide="phone,tablet">Mobile Number</th>
+						    <th>S.No</th>
+						    <th data-class="expand">Created Date</th>
+						    <th data-hide="phone,tablet">Client</th>
+						    <th data-hide="phone,tablet">Name</th>
+						    <th data-hide="phone,tablet">Mobile Number</th>
 						    <!--<th data-hide="phone,tablet">Primary other Skills</th>-->
-						    <th rowspan="2" data-hide="phone,tablet">Email</th>
+						    <th data-hide="phone,tablet">Email</th>
 						    <!--<th data-hide="phone,tablet">Secondary other Skills</th>-->
-						    <th rowspan="2" data-hide="phone,tablet">Primary Skills</th>
-						    <th rowspan="2" data-hide="phone,tablet">Secondary Skills</th>
-						    <th rowspan="2" data-hide="phone,tablet">Total Experience In years</th>
+						    <th data-hide="phone,tablet">Primary Skills</th>
+						    <th data-hide="phone,tablet">Secondary Skills</th>
+						    <th data-hide="phone,tablet">Total Experience In years</th>
 						    
-						    <th rowspan="2" data-hide="phone,tablet">Relevant Experience In years</th>
-						    <th rowspan="2" data-hide="phone,tablet">Notice Period</th>
-						    <th rowspan="2" data-hide="phone,tablet">C_CTC in lacs</th>
-						    <th rowspan="2" data-hide="phone,tablet">E_CTC in lacs</th>
-						    <th rowspan="2" data-hide="phone,tablet">DOB</th>
+						    <th data-hide="phone,tablet">Relevant Experience In years</th>
+						    <th data-hide="phone,tablet">Notice Period</th>
+						    <th data-hide="phone,tablet">C_CTC in lacs</th>
+						    <th data-hide="phone,tablet">E_CTC in lacs</th>
+						    <th data-hide="phone,tablet">DOB</th>
 						    
-						    <th rowspan="2" data-hide="phone,tablet">Pancard Number</th>
+						    <th data-hide="phone,tablet">Pancard Number</th>
 						    <!--<th data-hide="phone,tablet">Current ctc</th>-->
 						    <!--<th data-hide="phone,tablet">Expected ctc</th>-->
-						    <th rowspan="2" data-hide="phone,tablet">Languages Known</th>
-						    <th rowspan="2" data-hide="phone,tablet">Current Location </th>
-						    <th rowspan="2" data-hide="phone,tablet">Preferred Location</th>
-						    <th rowspan="2" data-hide="phone,tablet">Interview Timing</th>
-						    <th rowspan="2" data-hide="phone,tablet">SSC</th>
-						    <th rowspan="2" data-hide="phone,tablet">Specialisation</th>
-						    <th rowspan="2" data-hide="phone,tablet">Duration From</th>
-						    <th rowspan="2" data-hide="phone,tablet">Duration To</th>
-						    <th rowspan="2" data-hide="phone,tablet">University</th>
-						    <th rowspan="2" data-hide="phone,tablet">Percentage</th>
-						    <th rowspan="2" data-hide="phone,tablet">HSC/Diploma</th>
-						    <th rowspan="2" data-hide="phone,tablet">Specialisation</th>
-						    <th rowspan="2" data-hide="phone,tablet">Duration From</th>
-						    <th rowspan="2" data-hide="phone,tablet">Duration To</th>
-						    <th rowspan="2" data-hide="phone,tablet">University</th>
-						    <th rowspan="2" data-hide="phone,tablet">Percentage</th>
-						    <th rowspan="2" data-hide="phone,tablet">Graduation</th>
-						    <th rowspan="2" data-hide="phone,tablet">Specialisation</th>
-						    
-						    <!--<th data-hide="phone,tablet">Team_size_name</th>
-						    <th data-hide="phone,tablet">Team_contact_no</th>-->
-						    
-						    <!--<th colspan="6">SSLC</th>
-						    <th colspan="6">HSC/Diploma</th>
-						    <th colspan="6">UnderGraduate</th>
-						    <th colspan="6">PostGraduate</th>
-						    
-						    <th colspan="6">Employment Details1</th>
-						    <th colspan="6">Employment Details2</th>
-						    <th colspan="6">Employment Details3</th>-->
-						    
-						    <!--<th data-hide="phone,tablet">Client Company</th>
-						    <th data-hide="phone,tablet">Payroll Company</th>
-						    <th data-hide="phone,tablet">Designation</th>
-						    <th data-hide="phone,tablet">Emp_duration_from</th>
-						    <th data-hide="phone,tablet">Emp_duration_to</th>
-						    <th data-hide="phone,tablet">location</th>-->
-						    <!--<th data-hide="phone,tablet">Reason_desc</th>-->
-						    
-						    
-						    <!--<th data-hide="phone,tablet">Degree</th>
+						    <th data-hide="phone,tablet">Languages Known</th>
+						    <th data-hide="phone,tablet">Current Location </th>
+						    <th data-hide="phone,tablet">Preferred Location</th>
+						    <th data-hide="phone,tablet">Interview Timing</th>
+						    <th data-hide="phone,tablet">SSC</th>
 						    <th data-hide="phone,tablet">Specialisation</th>
-						    <th data-hide="phone,tablet">Edu_duration_from</th>
-						    <th data-hide="phone,tablet">Edu_duration_to</th>
+						    <th data-hide="phone,tablet">Duration From</th>
+						    <th data-hide="phone,tablet">Duration To</th>
 						    <th data-hide="phone,tablet">University</th>
 						    <th data-hide="phone,tablet">Percentage</th>
-						    <th data-hide="phone,tablet">Reason_desc</th>-->
-						   <!-- <th>Location</th>-->
-						    <th rowspan="2" >Duration From</th>
-						    
-						</tr>
-						<tr>
+						    <th data-hide="phone,tablet">HSC/Diploma</th>
+						    <th data-hide="phone,tablet">Specialisation</th>
+						    <th data-hide="phone,tablet">Duration From</th>
+						    <th data-hide="phone,tablet">Duration To</th>
+						    <th data-hide="phone,tablet">University</th>
+						    <th data-hide="phone,tablet">Percentage</th>
+						    <th data-hide="phone,tablet">Graduation</th>
+						    <th data-hide="phone,tablet">Specialisation</th>
+						    <th data-hide="phone,tablet">Duration From</th>
 						    <th data-hide="phone,tablet">Duration To</th>
 						    <th data-hide="phone,tablet">University</th>
 						    <th data-hide="phone,tablet">Percentage</th>
 						    <th data-hide="phone,tablet">Post Graduation</th>
 						    <th data-hide="phone,tablet">Specialisation</th>
 						    <th data-hide="phone,tablet">Duration From</th>
-						    
 						    <th data-hide="phone,tablet">Duration To</th>
 						    <th data-hide="phone,tablet">University</th>
 						    <th data-hide="phone,tablet">Percentage</th>
 						    <th data-hide="phone,tablet">E1_Client Company</th>
 						    <th data-hide="phone,tablet">E1_Payroll Company</th>
 						    <th data-hide="phone,tablet">E1_Designation</th>
-						    
 						    <th data-hide="phone,tablet">E1_Duration From</th>
 						    <th data-hide="phone,tablet">E1_Duration To</th>
 						    <th data-hide="phone,tablet">E1_Location</th>
 						    <th data-hide="phone,tablet">E2_Client Company</th>
 						    <th data-hide="phone,tablet">E2_Payroll Company</th>
 						    <th data-hide="phone,tablet">E2_Designation</th>
-						    
 						    <th data-hide="phone,tablet">E2_Duration From</th>
 						    <th data-hide="phone,tablet">E2_Duration To</th>
 						    <th data-hide="phone,tablet">E2_Location</th>
 						    <th data-hide="phone,tablet">E3_Client Company</th>
 						    <th data-hide="phone,tablet">E3_Payroll Company</th>
 						    <th data-hide="phone,tablet">E3_Designation</th>
-						    
 						    <!--<th data-hide="phone,tablet">Reason_desc</th>-->
-						    
 						    <th data-hide="phone,tablet">E3_Duration From</th>
 						    <th data-hide="phone,tablet">E3_Duration To</th>
 						    <th data-hide="phone,tablet">E3_Location</th>
 						    <th data-hide="phone,tablet">Emp_still</th>
 						    <th data-hide="phone,tablet">Educational Gap in Years</th>
 						    <th data-hide="phone,tablet">Career Gap in Years</th>
-						    
 						    <!--<th data-hide="phone,tablet">Billing</th>-->
 						    <th data-hide="phone,tablet">Referred By</th>
 						    <th data-hide="phone,tablet">Action</th>
@@ -386,7 +347,7 @@ $status = $this->session->flashdata('status');
 						    <!--<td><?php if($row['vendor_code']=="0"){ echo "DirectEmp"; }else{ echo $row['referrer_name']; } ?></td>-->
 						    <td>
 							<a href="<?php echo site_url('vendorlogin/vendorEdit/'.$row['id'])?>" class="btn btn-info btn-xs"><i class="fa fa-edit"></i> </a>
-						       <a  id="delete_box" href="<?php echo site_url('vendorlogin/vendorDelete/'.$row['id'])?>" class="btn btn-danger btn-xs"><i class="glyphicon glyphicon-trash"></i> </a>
+						       <!--<a  id="delete_box" href="<?php echo site_url('vendorlogin/vendorDelete/'.$row['id'])?>" class="btn btn-danger btn-xs"><i class="glyphicon glyphicon-trash"></i> </a>-->
 						  <!-- <a  href="#" data-toggle="modal" data-target="#printPreview"  class="btn btn-primary btn-xs" onclick="printEmployeeDetails('<?php echo $row['id'];?>')"><i class="fa fa-file-pdf-o fa-2x"></i> </a>-->
 						    </td>
 						</tr>
@@ -474,7 +435,7 @@ $status = $this->session->flashdata('status');
 		dom: 'Bfrtip',
 		"pageLength": 100,
 		"scrollX": 100,
-		"scrollY": 350,
+		"scrollY": 300,
 		"ordering":false,
 		"columnDefs": [ {
 		    "searchable": false,
@@ -610,3 +571,4 @@ $status = $this->session->flashdata('status');
 	    });	
 	}
     </script>
+    

@@ -904,7 +904,7 @@ $status = $this->session->flashdata('status');
 				      <input type="text" id="" class="form-control" value="<?php echo $row['file_employee_upload']?>" readonly >
 				    </div>
 				  </div></td>
-				  <td><center><button type="button" class="btn btn-remove btn-default btn-sm removeButton"><i class="fa fa-minus"></i></button></center></td>
+				  <td><center><button type="button" onclick="removeButton1($(this));" class="btn btn-remove btn-default btn-sm removeButton"><i class="fa fa-minus"></i></button></center></td>
                                 </tr>
 				<?php } ?>
 				
