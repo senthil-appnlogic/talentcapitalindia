@@ -92,7 +92,7 @@ class directemployee extends CI_Controller {
 	    //print_r($data['language']);
 	    //exit;
             //$this->load->view('view/header');
-	    $this->load->view('view/headernew');
+	    $this->load->view('view/headerNew');
             //$this->load->view('view/footer');
             $this->load->view('view/internalEmployee _Edit',$loginUser);
 	}

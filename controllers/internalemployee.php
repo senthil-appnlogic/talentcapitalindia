@@ -178,6 +178,17 @@ class internalemployee extends CI_Controller {
 	//exit;
     }
     
+    function update_candidate_status()
+    {
+	$session_username = $this->session->userdata('username_admin');
+	$candidate_status = $this->input->post('update_candidate_status');
+	$candidate_id =$this->input->post('update_candidate_id');
+	
+	$result=$this->emp_model->Change_UpdateCandidate_status($candidate_id,$candidate_status);
+	
+	echo json_encode(array('sccess'=>$candidate_status));
+    }
+    
     function InternalEmpDelete($id,$logintype){
 	$session_data = $this->session->userdata('username_admin');
 	if(!empty($session_data))

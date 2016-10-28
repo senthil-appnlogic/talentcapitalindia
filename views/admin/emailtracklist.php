@@ -34,40 +34,34 @@ $status = $this->session->flashdata('status');
 			    <div id="alert" class="alert alert-success outer"><a href="#" class="close" data-dismiss="alert" aria-label="close" title="close">&times;</a><?php echo $status; ?></div>
 			    <?php
 			} ?>
-			    <!-- <p>
-				<a class="btn btn-primary btn-sm " href="<?php echo site_url('admin/vendorAdd')?>"><i class="fa fa-plus fa-1x"></i> <span class="f-s-14 f-w-500">Add Vendor</span></a>
-			    </p>-->
+			    <p>
+				<!--<a class="btn btn-primary btn-sm " href="<?php echo site_url('admin/vendorAdd')?>"><i class="fa fa-plus fa-1x"></i> <span class="f-s-14 f-w-500">Add Vendor</span></a>-->
+				<button class="btn btn-danger btn-sm" id="removeBtn"><i class="glyphicon glyphicon-trash"></i>&nbsp;Delete selected rows</button>
+			    </p>
 				<div class="table-responsive" style="border: none">
 					<table id="data-table" class="table table-bordered display dataTable" width="100%">
 					  <thead>
 						<tr>
-						    <th>S.No</th>
+						    <th data-class="row_selected">S.No</th>
+						    <th data-class="hidden">Id</th>
 						    <th data-class="expand">Created date</th>
                                                     <th data-class="expand">Reference Code / Referred By</th>
 						    <th data-class="expand">Email</th>
-						    <th data-class="expand">Action</th>
+						    <!--<th data-class="expand">Action</th>-->
 						</tr>
 					    </thead>
 					    <tfoot>
 						<tr>
 						    <th>S.No</th>
+						    <th data-class="hidden">Id</th>
 						    <th data-class="expand">Created date</th>
 						    <th data-class="expand">Reference Code / Referred By</th>
 						    <th data-class="expand">Email</th>
-						    <th data-class="expand">Action</th>
+						   <!-- <th data-class="expand">Action</th>-->
 						</tr>
 					    </tfoot>
 					    <tbody>
-						<?php if(count($emailtrack) > 0){ foreach($emailtrack as $row) {?>
-					       
-						<tr class="oddClass even gradeC">
-						    <td></td>
-						    <td><?php echo $row['cr_date1']; ?></td>
-                                                    <td><?php echo $row['refer_code']; ?> / <?php echo $row['refer_name']; ?></td>
-						    <td><?php echo $row['email']; ?></td>
-						    <td><a  id="delete_box" href="<?php echo site_url('admin/emailTrackDelete/'.$row['id'])?>" class="btn btn-danger btn-xs"><i class="glyphicon glyphicon-trash"></i> </a></td>
-						</tr>
-					    <?php }}?>
+						
 					    </tbody>
 					</table>
 		    
@@ -164,49 +158,175 @@ $status = $this->session->flashdata('status');
 	    
 	    switcherRefresh();
 	 setTimeout(function(){ $('#alert').remove();}, 5000);
-	
-	    var t = $('#data-table').DataTable( {
-		dom: 'Bfrtip',
-		"pageLength": 100,
-		//"scrollX": 100,
-		"scrollY": 350,
-		"ordering":false,
-		buttons: [
-
-                ,{
-                    extend: 'excel',
-                    text: 'excel all'
-                },
-                {
-                    extend: 'excel',
-                    text: 'excel selected',
-                    exportOptions: {
-                        modifier: {
-                            selected: true
-                        }
-                    }
-                }
-		    
-		],
-                select: true,
-	    } );
-	    
-	    t.on( 'order.dt search.dt', function () {
-		t.column(0, {search:'applied', order:'applied'}).nodes().each( function (cell, i) {
-		    cell.innerHTML = i+1;
-		} );
-	    } ).draw();
-	    
-	    t.columns().every( function () {
-		var that = this;
-		$( 'input', this.footer() ).on( 'keyup change', function () {
-		    if ( that.search() !== this.value ) {
-			that
-			    .search( this.value )
-			    .draw();
+	 
+	  //datatable functionality begin
+		var t = $('#data-table').DataTable( {
+		//    dom: 'Bfrtip',
+		//    "pageLength": 100,
+		//    //"scrollX": 100,
+		//    "scrollY": 350,
+		//    "ordering":false,
+		//    buttons: [
+		//  
+		//    ,{
+		//	extend: 'excel',
+		//	text: 'excel all'
+		//    },
+		//    {
+		//	extend: 'excel',
+		//	text: 'excel selected',
+		//	exportOptions: {
+		//	    modifier: {
+		//		selected: true
+		//	    }
+		//	}
+		//    }
+		//	
+		//    ],
+		    //select: true,  //if it is enabled means datatable select working on doubleclick
+		    //"sDom": "<'row'<'col-md-4 no 'f><'col-md-6 trcalign' TRC><'col-md-2 yes'l>r><t><'row'<'col-md-6'i><'col-md-6'p>>",
+		    "sDom": "<'row'<'col-md-4 pull-right 'f>><t><'row'<'col-md-6'i><'col-md-6'p>>",
+		    "bServerSide": true,
+		    "bProcessing": false,
+		    "sAjaxSource": '<?php echo site_url('admin/Fetchallemailtracklists'); ?>',
+		    'responsive': true,
+		    "bStateSave": false,
+		    "lengthMenu": [
+			[10, 20, 50, -1],
+			[10, 20, 50, "All"] // change per page values here
+		    ],
+		    "order": [[ 1, "desc" ]],
+		    "language": {
+		    "sLengthMenu": "_MENU_",
+		    "lengthMenu": " _MENU_ records",
+		    },
+		    columns: [
+			{ data: 'id',"visible": false, "orderable": false},
+			{ data: 'id', "orderable": true},
+			{ data: 'cr_date1', "orderable": false},
+			{ data: 'name', "orderable": false},
+			{ data: 'email', className: "all", "orderable": false,},
+		    ],
+		    'fnServerData': function(sSource, aoData, fnCallback){
+			$.ajax({
+			    'dataType': 'json',
+			    'type'    : 'POST',
+			    'url'     : sSource,
+			    'data'    : aoData,
+			    'success' : fnCallback
+			});
+		    },
+		    "tableTools": {
+			"sSwfPath": "<?php echo site_url()?>assets/plugins/DataTables/swf/copy_csv_xls_pdf.swf",
+			"aButtons": [{"sExtends":"xls","sFileName": "EmailTracking.xls","sTitle": "Email Tracking List","mColumns": [0, 1, 2, 3,4]}]
 		    }
 		} );
-	    } );
+		
+		
+		$('#data-table tbody').on( 'click', 'tr', function () {
+		    $(this).toggleClass('selected');
+		} );
+		
+		var line_id=[];
+		$("#removeBtn").click(function(){
+		    //alert();
+			$('.selected').each(function(){
+				var lineid=$(this).find('td:eq(1)').text();
+				line_id.push(lineid);
+			});
+			//alert(line_id);
+			console.log(line_id);
+			if (line_id.length==0) {
+			alert("Please Select Atleast one row");
+			}
+			
+			else if (confirm("Are you sure you want to delete this?")) {
+			    $.ajax({   
+				type: "POST",  
+				url: "<?php echo base_url('admin/deleteselectedrow');?>",  
+				cache:false,  
+				data: {line_id:line_id},  
+				success: function(res)  
+				{   
+				    $('#data-table').dataTable().fnDraw(true);
+				}  
+			    });
+			}
+		})
+		
+		t.on( 'order.dt search.dt processing.dt page.dt', function () {
+		    t.column(0, {search:'applied', order:'applied'}).nodes().each( function (cell, i) {
+			cell.innerHTML = i+1;
+			var info = t.page.info();
+			var page = info.page+1;             
+			if (page >'1') { 
+			    hal = (page-1) *10;  // u can change this value of ur page
+			    cell.innerHTML = hal+i+1;
+			} 
+		    } );
+		} ).draw();
+		
+		//t.on( 'order.dt search.dt', function () {
+		//    t.column(0, {search:'applied', order:'applied'}).nodes().each( function (cell, i) {
+		//	cell.innerHTML = i+1;
+		//    } );
+		//} ).draw();
+		   
+		t.columns().every( function () {
+		    var that = this;
+		    $( 'input', this.footer() ).on( 'keyup change', function () {
+			if ( that.search() !== this.value ) {
+			    that
+				.search( this.value )
+				.draw();
+			}
+		    } );
+		} );
+	    
+	    //datatable functionality end
+	
+//	    var t = $('#data-table').DataTable( {
+//		dom: 'Bfrtip',
+//		"pageLength": 100,
+//		//"scrollX": 100,
+//		"scrollY": 350,
+//		"ordering":false,
+//		buttons: [
+//
+//                ,{
+//                    extend: 'excel',
+//                    text: 'excel all'
+//                },
+//                {
+//                    extend: 'excel',
+//                    text: 'excel selected',
+//                    exportOptions: {
+//                        modifier: {
+//                            selected: true
+//                        }
+//                    }
+//                }
+//		    
+//		],
+//                select: true,
+//	    } );
+//	    
+//	    t.on( 'order.dt search.dt', function () {
+//		t.column(0, {search:'applied', order:'applied'}).nodes().each( function (cell, i) {
+//		    cell.innerHTML = i+1;
+//		} );
+//	    } ).draw();
+//	    
+//	    t.columns().every( function () {
+//		var that = this;
+//		$( 'input', this.footer() ).on( 'keyup change', function () {
+//		    if ( that.search() !== this.value ) {
+//			that
+//			    .search( this.value )
+//			    .draw();
+//		    }
+//		} );
+//	    } );
 	    
 	} );
 	

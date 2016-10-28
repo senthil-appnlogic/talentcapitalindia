@@ -36,6 +36,15 @@ $CandMail = $this->uri->segment(4);
 .capitalized{
   text-transform: capitalize;
 }
+@media only screen and (max-width: 768px) {
+  .datepicker-dob {
+      width: 95px !important;
+  }
+  .datepicker-dob1 {
+      width: 95px !important;
+  }
+}
+
 
 </style>
 <div  class="container" style="padding-top: 80px;">
@@ -60,7 +69,7 @@ $CandMail = $this->uri->segment(4);
                             
                             <div class="form-group">
                               <label>Hiring Partner Code</label>
-                                <input class="form-control input-md" value="<?php echo $Vcode;?>" name="vendor_code" type="text" placeholder="code" readonly="">
+                                <input class="form-control input-md" value="<?php echo $Vcode;?>" name="vendor_code" id="vendor_code" type="text" placeholder="code" readonly="">
                             </div>
                             
                             <div class="form-group">
@@ -273,7 +282,7 @@ $CandMail = $this->uri->segment(4);
                                 <label>Notice Period <span style="color:#EB8B11">*</span></label>
                                 
 				  <div class="form-group">
-				    <select name="notice_period" class="form-control selectpicker" data-size="10">
+				    <select name="notice_period" class="form-control selectpicker" onchange="getServingPeriod($(this));" data-size="10">
 				       <option disabled selected hidden>Select</option>
 				       <option value="Immediate">Immediate</option>
 					<option value="7">7 Days</option>
@@ -282,12 +291,15 @@ $CandMail = $this->uri->segment(4);
 					<option value="45">45 Days</option>
 					<option value="60">60 Days</option>
 					<option value="90 Days & Above">90 Days & Above</option>
+					<option value="ServingPeriod">Serving Period</option>
 				     </select>
 				  </div>
 				
 			    </div>
-			    
-			    
+			    <div class="form-group serveP hide">
+                              <label>Serving Period End Date</label>
+                                <span class='input-group date'><input type="text" name="serving_period" id="serving_period" class="form-control input-md  datepicker-dob"><span class="input-group-addon" ><span class="glyphicon glyphicon-calendar"></span></span></span>
+                            </div>
 			    
                           <!--  <div class="form-group">
                                 <label>Current CTC <span style="color:#EB8B11">*</span></label>
@@ -858,7 +870,7 @@ $CandMail = $this->uri->segment(4);
                             </div>
                         <div class="col-md-12">                            
                             <div class=""> 
-                          <table class="table table-hover">
+                          <table class="table table-hover" width="100%">
                               <thead>
                                 <tr>
                                   <th><label>Client Company</label></th>
@@ -878,8 +890,8 @@ $CandMail = $this->uri->segment(4);
                                   <td> <input placeholder="Client Company" name="client_comp[]" id="client_comp"  class="form-control input-md" type="text" onclick="alert('Please Fill Details about your Previous Company')"></td>
                                   <td> <input placeholder="Payroll Company" name="payroll_comp[]" id="payroll_comp" class="form-control input-md" type="text" ></td>
                                   <td> <input placeholder="Designation Company" name="designation[]" class="form-control input-md" id="designation" type="text" ></td>
-                                  <td><span class='input-group date'><input type="text" placeholder="" name="emp_duration_from[]" onblur="checkBeforeEmpDuration($(this));" size="35" id="emp_duration_from" class="form-control input-md table_input input-group datepicker-dob" ><span class="input-group-addon" ><span class="glyphicon glyphicon-calendar"></span></span></span></td>
-				  <td><span class='input-group date'><input type="text" placeholder="" name="emp_duration_to[]" size="35" onblur="checkEndEmpDuration($(this));" id="emp_duration_to" class="form-control input-md table_input input-group datepicker-dob endVal"  ><span class="input-group-addon" ><span class="glyphicon glyphicon-calendar"></span></span></span></td>
+                                  <td><span class='input-group date' style="width:100%"><input type="text" placeholder="" name="emp_duration_from[]" onblur="checkBeforeEmpDuration($(this));" size="35" id="emp_duration_from" class="form-control input-md table_input input-group datepicker-dob" ><span class="input-group-addon" ><span class="glyphicon glyphicon-calendar"></span></span></span></td>
+				  <td><span class='input-group date'><input type="text" placeholder="" name="emp_duration_to[]" size="35" onblur="checkEndEmpDuration($(this));" id="emp_duration_to" class="form-control input-md table_input input-group datepicker-dob1 endVal"  ><span class="input-group-addon" ><span class="glyphicon glyphicon-calendar"></span></span></span></td>
                                   <td> <input placeholder="Location" name="location[]" class="form-control input-md" type="text"></td>
 				  <td> <textarea name="empReasonDesc[]" id="empReasonDesc" class="form-control input-md" rows="1" readonly></textarea></td>
                                   <td>
@@ -901,7 +913,7 @@ $CandMail = $this->uri->segment(4);
                                   <td> <input placeholder="Payroll Company" name="payroll_comp[]" id="payroll_comp" class="form-control input-md" type="text" ></td>
                                   <td> <input placeholder="Designation Company" name="designation[]" class="form-control input-md" id="designation" type="text" ></td>
                                   <td><span class='input-group date'><input type="text" placeholder="" name="emp_duration_from[]" onblur="checkEmpDurationMonth();" size="35" id="emp_duration_from" class="form-control input-md table_input input-group datepicker-dob" ><span class="input-group-addon" ><span class="glyphicon glyphicon-calendar"></span></span></span></td>
-				  <td><span class='input-group date'><input type="text" placeholder="" name="emp_duration_to[]" size="35" onblur="checkEndEmpDuration($(this));" id="emp_duration_to" class="form-control input-md table_input input-group datepicker-dob endVal"  ><span class="input-group-addon" ><span class="glyphicon glyphicon-calendar"></span></span></span></td>
+				  <td><span class='input-group date'><input type="text" placeholder="" name="emp_duration_to[]" size="35" onblur="checkEndEmpDuration($(this));" id="emp_duration_to" class="form-control input-md table_input input-group datepicker-dob1 endVal"  ><span class="input-group-addon" ><span class="glyphicon glyphicon-calendar"></span></span></span></td>
                                   <td> <input placeholder="Location" name="location[]" class="form-control input-md" type="text"></td>
 				  <td> <textarea name="empReasonDesc[]" id="empReasonDesc" class="form-control input-md" rows="1" readonly></textarea></td>
                                   <td>
@@ -923,7 +935,7 @@ $CandMail = $this->uri->segment(4);
                                   <td> <input placeholder="Payroll Company" name="payroll_comp[]" id="payroll_comp" class="form-control input-md" type="text" ></td>
                                   <td> <input placeholder="Designation Company" name="designation[]" class="form-control input-md" id="designation" type="text" ></td>
                                   <td><span class='input-group date'><input type="text" placeholder="" name="emp_duration_from[]" onblur="checkEmpDurationMonth();" size="35" id="emp_duration_from" class="form-control input-md table_input input-group datepicker-dob" ><span class="input-group-addon" ><span class="glyphicon glyphicon-calendar"></span></span></span></td>
-				  <td><span class='input-group date'><input type="text" placeholder="" name="emp_duration_to[]" onblur="checkEndEmpDuration($(this));" size="35" id="emp_duration_to" class="form-control input-md table_input input-group datepicker-dob endVal"  ><span class="input-group-addon" ><span class="glyphicon glyphicon-calendar"></span></span></span></td>
+				  <td><span class='input-group date'><input type="text" placeholder="" name="emp_duration_to[]" onblur="checkEndEmpDuration($(this));" size="35" id="emp_duration_to" class="form-control input-md table_input input-group datepicker-dob1 endVal"  ><span class="input-group-addon" ><span class="glyphicon glyphicon-calendar"></span></span></span></td>
                                   <td> <input placeholder="Location" name="location[]" class="form-control input-md" type="text"></td>
 				  <td> <textarea name="empReasonDesc[]" id="empReasonDesc" class="form-control input-md" rows="1" readonly></textarea></td>
                                   <td>
@@ -945,7 +957,7 @@ $CandMail = $this->uri->segment(4);
                                   <td> <input placeholder="Payroll Company" id="payroll_comp" class="form-control input-md" type="text" ></td>
                                   <td> <input placeholder="Designation Company" class="form-control input-md" id="designation" type="text" ></td>
                                   <td><span class='input-group date'><input type="text" placeholder="" onblur="checkEmpDurationMonth();" size="35"  id="emp_duration_from" class="form-control input-md table_input input-group datepicker-dob" ><span class="input-group-addon" ><span class="glyphicon glyphicon-calendar"></span></span></span></td>
-				  <td><span class='input-group date'><input type="text" placeholder="" onblur="checkEndEmpDuration($(this));" id="emp_duration_to" size="35" class="form-control input-md table_input input-group datepicker-dob endVal"  ><span class="input-group-addon" ><span class="glyphicon glyphicon-calendar"></span></span></span></td>
+				  <td><span class='input-group date'><input type="text" placeholder="" onblur="checkEndEmpDuration($(this));" id="emp_duration_to" size="35" class="form-control input-md table_input input-group datepicker-dob1 endVal"  ><span class="input-group-addon" ><span class="glyphicon glyphicon-calendar"></span></span></span></td>
                                   <td> <input placeholder="Location" id="location" class="form-control input-md" type="text"></td>
 				  <td> <textarea id="empReasonDesc" class="form-control input-md" rows="1" readonly></textarea></td>
                                   <td>
@@ -968,6 +980,7 @@ $CandMail = $this->uri->segment(4);
 			  <input id="beforeVal" type="hidden" >
 			  <input id="todayVal" value="0" type="hidden" >
 			  <input id="employeeVal" value="0" type="hidden" >
+			  <input id="present" type="hidden" value="<?php echo date('d-M-Y'); ?>">
                         </div>
                         </div>
 			
@@ -1029,11 +1042,18 @@ $CandMail = $this->uri->segment(4);
 </script>
 <script type="text/javascript">
     $(function () {
-        $('#datetimepicker1').datetimepicker({format:'DD-MMM-YYYY hh:mm A'});
+        $('#datetimepicker1').datetimepicker({
+	  format:'DD-MMM-YYYY',
+	  showClear:true,
+	});
     });
 </script>
 <script>
     $(document).ready(function() {
+      $('.picker-switch.accordion-toggle').on('click',function(){
+	alert("in Data");
+      //$('.odd1.countClass1:first').trigger('click')
+      });
 //      $("input").attr("disabled",true);
 //	$("select").attr("disabled",true);
 //	$(".chosen-choices").addClass('chosen-disabled');
@@ -1042,9 +1062,13 @@ $CandMail = $this->uri->segment(4);
         
         //datepicker();
         $('.datepicker-dob').datetimepicker({
-	    format: 'DD-MMM-YYYY'
-	    
-	});        
+	    format: 'DD-MMM-YYYY',
+	    //showTodayButton:true,
+	});
+	$('.datepicker-dob1').datetimepicker({
+	    format: 'DD-MMM-YYYY',
+	    showTodayButton:true,
+	});
         datepicker1();
         datepicker2();
         $('#form_validation').bootstrapValidator({
@@ -1289,15 +1313,11 @@ $CandMail = $this->uri->segment(4);
                     //}
                     }
                 },
-                preferred_location: {
+                'preferred_location[]': {
                     validators: {
                         notEmpty: {
                             message: 'The Prefered Location is required and can\'t be empty'
-                        },
-                        regexp: {
-                        regexp: /^[a-z\s]+$/i,
-                        message: 'The  Perfered Location can consist of alphabetical characters and spaces only'
-                    }
+                        }
                     }
                 },
                 interview_timing: {
@@ -2043,5 +2063,28 @@ $(function(){
     //function ShowAlert() {
     //  alert();
     //}
+    
+    function getServingPeriod($this){
+      var CurrentVal = $this.val();
+      if (CurrentVal == 'ServingPeriod') {
+	$('.serveP').removeClass('hide');
+      }else{
+	$('.serveP').addClass('hide');
+      }
+    }
+    
+    //function getPresentVal($this){
+    //  //$this.parents('.has-feedback').find('.bootstrap-datetimepicker-widget dropdown-menu usetwentyfour').trigger('focus').fadeOut( 1000 );
+    //  var CurrDate = "<?php echo date('d-M-Y'); ?>";
+    //  //alert(CurrDate);
+    //  $this.parents('.input-group').find('input').val(CurrDate);
+    //  $('#present').val('Present');
+    //}
+    function getPresentVal($this){
+      var CurrDate = $('#present').val();
+      $this.parents('.input-group').find('input').val(CurrDate);
+      $this.parents('.has-feedback').find('.datepicker-dob1').trigger('blur');    
+    }
+    
 </script>
 </script>

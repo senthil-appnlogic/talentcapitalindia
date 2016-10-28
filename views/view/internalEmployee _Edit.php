@@ -38,6 +38,15 @@
 .capitalized{
   text-transform: capitalize;
 }
+@media only screen and (max-width: 768px) {
+  .datepicker-dob {
+      width: 95px !important;
+  }
+  .datepicker-dob1 {
+      width: 95px !important;
+  }
+}
+
 </style>
 <?php
 $status = $this->session->flashdata('status');
@@ -91,7 +100,8 @@ $status = $this->session->flashdata('status');
                             <div class="form-group">
                               <label>Candidate Name <span style="color:#EB8B11">*</span></label>
                                 <input class="form-control input-md capitalized" value="<?php echo $inter_Edit[0]['candidate_name'];?>" name="candidate_name" type="text" placeholder="Name">
-                                <input type="hidden" class="" value="<?php echo $inter_Edit[0]['id'];?>" name="hiddenId" >
+                                <input type="hidden" class="" value="<?php echo $inter_Edit[0]['id'];?>" id="hiddenId" name="hiddenId" >
+				<input type="hidden" class="" value="<?php echo $inter_Edit[0]['update_status'];?>" id="hiddenIdVal" name="hiddenIdVal" >
 				<input type="hidden" class="" value="<?php echo $inter_Edit[0]['vendor_code'];?>" name="vendor_code" >
 				<input type="hidden" class="" value="<?php echo $inter_Edit[0]['referrer_name'];?>" name="ref_name" >
                             </div>
@@ -131,7 +141,7 @@ $status = $this->session->flashdata('status');
 					
 					<div class="form-group">
 					    <label>Primary Skills </label>
-					    <select  multiple class="form-control chzn-select input-sm" name="skills[]" onchange="primaryChange($(this))" >
+					    <select  multiple class="form-control chzn-select input-sm" name="skills[]" id="skills" onchange="primaryChange($(this))" >
 						<?php
 						    $inter_Edit[0]['skills'];
 						    foreach($skills as $row) {
@@ -308,20 +318,24 @@ $status = $this->session->flashdata('status');
                             </div>
 
                             <div class="">
-                                <label>Notice Period <span style="color:#EB8B11">*</span></label>
                                 <div class="row">
-				  <div class="form-group col-md-4">
-				    <select name="notice_period" class="form-control selectpicker" data-size="10">
-				      <option value="Immediate">Immediate</option>
-					<option value="7">7 Days</option>
-					<option value="15">15 Days</option>
-					<option value="30">30 Days</option>
-					<option value="45">45 Days</option>
-					<option value="60">60 Days</option>
-					
-					<option value="90 Days & Above">90 Days & Above</option>
-				     </select>
-				  </div>
+				    <div class="form-group col-md-4">
+					<label>Notice Period <span style="color:#EB8B11">*</span></label>
+					<select name="notice_period" class="form-control selectpicker" onchange="getServingPeriod($(this));" data-size="10">
+					  <option value="Immediate">Immediate</option>
+					    <option value="7">7 Days</option>
+					    <option value="15">15 Days</option>
+					    <option value="30">30 Days</option>
+					    <option value="45">45 Days</option>
+					    <option value="60">60 Days</option>
+					    <option value="90 Days & Above">90 Days & Above</option>
+					    <option value="ServingPeriod">Serving Period</option>
+					 </select>
+				    </div>
+				    <div class="form-group col-md-4 serveP">
+				      <label>Serving Period End Date</label>
+					<span class='input-group date'><input type="text" name="serving_period" value="<?php echo $inter_Edit[0]['servingperiod'];?>" id="serving_period" class="form-control input-md  datepicker-dob"><span class="input-group-addon" ><span class="glyphicon glyphicon-calendar"></span></span></span>
+				    </div>
 				</div>
 			    </div>
 			    			      <div class="">
@@ -875,7 +889,7 @@ $status = $this->session->flashdata('status');
                                   <th><label>Location</label></th>
 				  <th><label>Reason Description</label></th>
 				  <th><label>File Upload</label></th>
-                                  <th><button type="button" onclick="addMore1();" class="btn-add btn btn-default"><i class="fa fa-plus"></i></button></th>
+                                  <th><button type="button" onclick="addMore1();" id="addButton" class="btn-add btn btn-default"><i class="fa fa-plus"></i></button></th>
 				  <th><input type="hidden" name="employer_still" value="<?php echo $inter_Edit[0]['employer_still']; ?>" id="numCnt"</th>
                                 </tr>
                               </thead>
@@ -889,7 +903,7 @@ $status = $this->session->flashdata('status');
                                   <td> <input placeholder="Payroll Company" name="payroll_comp[]" value="<?php echo $row['payroll_comp'];?>" id="payroll_comp" class="form-control input-md" type="text" ></td>
                                   <td> <input placeholder="Designation Company" name="designation[]" value="<?php echo $row['designation'];?>" class="form-control input-md" id="designation" type="text" ></td>
                                   <td><span class='input-group date'><input type="text" placeholder="" value="<?php echo $row['emp_duration_from'];?>" onblur="checkBeforeEmpDuration($(this));" name="emp_duration_from[]" size="35" id="emp_duration_from" class="form-control input-md table_input input-group datepicker-dob" ><span class="input-group-addon" ><span class="glyphicon glyphicon-calendar"></span></span></span></td>
-				  <td><span class='input-group date'><input type="text" placeholder="" value="<?php echo $row['emp_duration_to'];?>" onblur="checkEndEmpDuration($(this));" name="emp_duration_to[]" id="emp_duration_to" size="35" class="form-control input-md table_input input-group datepicker-dob endVal"  ><span class="input-group-addon" ><span class="glyphicon glyphicon-calendar"></span></span></span></td>
+				  <td><span class='input-group date'><input type="text" placeholder="" value="<?php echo $row['emp_duration_to'];?>" onblur="checkEndEmpDuration($(this));" name="emp_duration_to[]" id="emp_duration_to" size="35" class="form-control input-md table_input input-group datepicker-dob1 endVal"  ><span class="input-group-addon" ><span class="glyphicon glyphicon-calendar"></span></span></span></td>
                                   <td> <input placeholder="Location" name="location[]" value="<?php echo $row['location'];?>" class="form-control input-md" type="text"></td>
 				  <td> <textarea name="empReasonDesc[]" id="empReasonDesc" value="<?php echo $row['empReasonDesc'];?>" class="form-control input-md" rows="1" readonly></textarea></td>
                                   <td>
@@ -915,7 +929,7 @@ $status = $this->session->flashdata('status');
                                   <td> <input placeholder="Payroll Company" id="payroll_comp" class="form-control input-md" type="text" ></td>
                                   <td> <input placeholder="Designation Company" class="form-control input-md" id="designation" type="text" ></td>
                                   <td><span class='input-group date'><input type="text" placeholder="" onblur="checkEmpDurationMonth();" id="emp_duration_from" class="form-control input-md table_input input-group datepicker-dob" ><span class="input-group-addon" ><span class="glyphicon glyphicon-calendar"></span></span></span></td>
-				  <td><span class='input-group date'><input type="text" placeholder="" onblur="checkEndEmpDuration($(this));" id="emp_duration_to" class="form-control input-md table_input input-group datepicker-dob endVal"  ><span class="input-group-addon" ><span class="glyphicon glyphicon-calendar"></span></span></span></td>
+				  <td><span class='input-group date'><input type="text" placeholder="" onblur="checkEndEmpDuration($(this));" id="emp_duration_to" class="form-control input-md table_input input-group datepicker-dob1 endVal"  ><span class="input-group-addon" ><span class="glyphicon glyphicon-calendar"></span></span></span></td>
                                   <td> <input placeholder="Location" id="location" class="form-control input-md" type="text"></td>
 				  <td> <textarea id="empReasonDesc" class="form-control input-md" rows="1" readonly></textarea></td>
                                   <td>
@@ -936,6 +950,7 @@ $status = $this->session->flashdata('status');
 			  <input id="beforeVal" value="0" type="hidden" >
 			  <input id="todayVal" value="0" type="hidden" >
 			  <input id="employeeVal" value="0" type="hidden" >
+			  <input id="present" type="hidden" value="<?php echo date('d-M-Y'); ?>">
                         </div>
                         </div>     
                    <!--<div class="col-md-6 col-md-offset-4" style="padding-bottom: 15px;">-->
@@ -1013,6 +1028,7 @@ $status = $this->session->flashdata('status');
 <script type="text/javascript">
   $("#language").chosen();
   $("#Preferedloc").chosen();
+  $("#skills").chosen();
 //$(function () {
 //    $('.datepicker').datepicker({
 //	format: 'dd-mm-yyyy'
@@ -1028,13 +1044,17 @@ $status = $this->session->flashdata('status');
 </script>
 <script>
     $(document).ready(function() {
-      
+	getDisabledField();
         $(".chzn-select").chosen();
 	
         //datepicker();
         $('.datepicker-dob').datetimepicker({
 	    format: 'DD-MMM-YYYY'
-	});        
+	});
+	$('.datepicker-dob1').datetimepicker({
+	    format: 'DD-MMM-YYYY',
+	    showTodayButton:true,
+	});
         datepicker1();
         datepicker2();
         $('#form_validation').bootstrapValidator({
@@ -1208,15 +1228,11 @@ $status = $this->session->flashdata('status');
                     //}
                     }
                 },
-                preferred_location: {
+                'preferred_location[]': {
                     validators: {
                         notEmpty: {
                             message: 'The Prefered Location is required and can\'t be empty'
-                        },
-                        regexp: {
-                        regexp: /^[a-z\s]+$/i,
-                        message: 'The  Perfered Location can consist of alphabetical characters and spaces only'
-                    }
+                        }
                     }
                 },
                 interview_timing: {
@@ -2235,4 +2251,32 @@ function checkDurationMonth() {
     $(".countClass1:visible:nth-last-child(3)").find('[name="emp_duration_to[]"]').removeAttr("data-bv-field");
     $(".countClass1:visible:nth-last-child(3)").find('[name="location[]"]').removeAttr("data-bv-field");
   })
+  
+  function getServingPeriod($this){
+    var CurrentVal = $this.val();
+    if (CurrentVal == 'ServingPeriod') {
+      $('.serveP').removeClass('hide');
+    }else{
+      $('.serveP').addClass('hide');
+    }
+  }
+  
+  function getPresentVal($this){
+    var CurrDate = $('#present').val();
+    $this.parents('.input-group').find('input').val(CurrDate);
+    $this.parents('.has-feedback').find('.datepicker-dob1').trigger('blur');    
+  }
+  
+  function getDisabledField(){
+    var id = $('#hiddenIdVal').val();
+    if (id=='Updated') {
+	$(".chzn-select").attr('disabled', true).trigger("chosen:updated");
+	$("input").attr('disabled',true);
+	$('#addButton').prop('disabled',true);
+	$("select").attr('disabled',true);
+        $('.selectpicker').selectpicker('refresh');
+	
+    }
+  }
+  
 </script>

@@ -56,6 +56,7 @@
 	
 	<!-- ================== BEGIN BASE JS ================== -->
 	<script src="<?php echo base_url();?>assetsAdmin/plugins/pace/pace.min.js"></script>
+	
 	<!-- ================== END BASE JS ================== -->
 
 	
@@ -147,7 +148,8 @@
 						</ul>-->
 					</li>
 					<li class="has-sub <?php if($this->uri->segment(2)=="employee"){echo "active";}?>">
-						<a href="<?php echo site_url('admin/employee');?>">
+						<!--<a href="<//?php echo site_url('admin/employee');?>">-->
+						<a href="<?php echo site_url('admin/candidateDashboard');?>">
 						   <!-- <b class="caret pull-right"></b>-->
 						    <i class="fa fa-users text-warning"></i>
 						    <span>Candidates / Direct Applicant</span> 
@@ -163,16 +165,18 @@
 						    <span>Direct Applicant </span>
 						</a>
 					</li>-->
-					<li class="has-sub <?php if($this->uri->segment(2)=="addUserView"){echo "active";}?>">
-						<a href="<?php echo site_url('admin/addUserView');?>">
-						   <!-- <b class="caret pull-right"></b>-->
+					<li class="has-sub">
+						<a href="javascript:;">
+						    <b class="caret pull-right"></b>
 						    <i class="fa fa-user-secret text-warning"></i>
 						    <span> Talent Capital Users </span>
 						</a>
-						<!--<ul class="sub-menu">
-							<li><a href="">Direct Applicant</a></li>
+						<ul class="sub-menu">
+							<li><a href="<?php echo site_url('admin/addUserView/total');?>">Total</a></li>
+							<li><a href="<?php echo site_url('admin/addUserView/Y');?>">Active</a></li>
+							<li><a href="<?php echo site_url('admin/addUserView/N');?>">Inactive</a></li>
 							
-						</ul>-->
+						</ul>
 					</li>
 					
 					<li class="has-sub <?php if($this->uri->segment(2)=="emailTrack"){echo "active";}?>">
@@ -336,7 +340,14 @@
 	<script src="<?php echo base_url();?>assetsAdmin/plugins/bootstrap-validation/js/bootstrapValidator.js"></script>
                             
 	<script src="<?php echo base_url(); ?>assetsAdmin/bootstrap-datetimepicker2/js/moment-with-locales.js"></script>
-	<script src="<?php echo base_url(); ?>assetsAdmin/bootstrap-datetimepicker2/js/bootstrap-datetimepicker.min.js"></script>    
+	<script src="<?php echo base_url(); ?>assetsAdmin/bootstrap-datetimepicker2/js/bootstrap-datetimepicker.min.js"></script>
+	
+	
+	<script src="<?php echo base_url(); ?>assetsAdmin/plugins/DataTables/js/dataTables.autoFill.js"></script>
+	<script src="<?php echo base_url(); ?>assetsAdmin/plugins/DataTables/js/dataTables.colVis.js"></script>
+	<script src="<?php echo base_url(); ?>assetsAdmin/plugins/DataTables/js/dataTables.fixedHeader.js"></script>
+	<script src="<?php echo base_url(); ?>assetsAdmin/plugins/DataTables/js/dataTables.keyTable.js"></script>
+	<script src="<?php echo base_url(); ?>assetsAdmin/plugins/DataTables/js/dataTables.responsive.js"></script>
 	<!-- ================== END PAGE LEVEL JS ================== -->
 	
 	<script>

@@ -108,6 +108,12 @@ class internalempmodel extends CI_Model {
 	//return $this->db->query($sql, $return_object = TRUE)->result_array();
     }
     
+    function Change_UpdateCandidate_status($candidate_id,$candidate_status)
+    {
+	$sql="update emp_candidate_details set update_status='$candidate_status' where id='$candidate_id'";
+	return $this->db->query($sql);
+    }
+    
     function mailToIntCandidate($CandidateMail,$candidate_status)
     {
 	$body ="<html>

@@ -11,6 +11,7 @@ class admin extends CI_Controller {
 	$this->load->helper('file');
 	$this->load->helper('form');
 	$this->load->helper('cookie');
+	$this->load->library('Datatables');
 	$this->load->helper('dompdf_helper');
 	    $config = Array(
 	       'protocol' => 'smtp',
@@ -275,7 +276,7 @@ class admin extends CI_Controller {
 		
 		$this->talentModel->adminEdit($id);
 		$this->session->set_flashdata('status','A old record updated successfully');
-		redirect("admin/addUserView");
+		redirect("admin/addUserView/total");
 	    }
 	    $data['userEdits']=$this->talentModel->getuserDetailEdit($id);
 	    //print_r($data['userEdits']);exit;
@@ -300,7 +301,16 @@ class admin extends CI_Controller {
     //PDF ENDS 
 //======================================VENDOR PAGE ENDS=====================================================================
 
-//======================================EMPLOYEE PAGE STARTS=====================================================================   
+//======================================EMPLOYEE PAGE STARTS=====================================================================
+
+    function candidateDashboard()
+    {
+	$data['updated']=$this->talentModel->updatedCandCount();
+	$data['yettoupdate']=$this->talentModel->yetToUpdatedCandCount();
+	$data['total']=$this->talentModel->employeesCount();
+	$this->load->view('admin/header');
+	$this->load->view('admin/candidate_dashboard',$data);
+    }
     //ADD
     function employeeAdd()
     {
@@ -374,6 +384,8 @@ class admin extends CI_Controller {
 	if(!empty($session_data))
 	    {
 		$data['employeeDetails']=$this->talentModel->employeeDetails();
+		//echo "<pre>";
+		//print_r($data['employeeDetails']);exit;
 		$data['crdate']=$this->talentModel->getEmployeeCrdate();
 		//echo "<pre>";
 		//print_r($data['employeeDetails'][0]['total_exp_year']);
@@ -385,6 +397,35 @@ class admin extends CI_Controller {
 		redirect('admin/dashboard');
 	    }
     }
+    
+    function updatedEmployee(){
+	$session_data=$this->session->userdata('username_admin');
+	if(!empty($session_data))
+	    {
+		$data['employeeDetails']=$this->talentModel->updatedEmployeeDetails();
+		$data['crdate']=$this->talentModel->getEmployeeCrdate();
+		$this->load->view('admin/header');
+		$this->load->view('admin/employee',$data);
+	    }
+	    else{
+		redirect('admin/dashboard');
+	    }
+    }
+    
+    function yetToUpdateemployee(){
+	$session_data=$this->session->userdata('username_admin');
+	if(!empty($session_data))
+	    {
+		$data['employeeDetails']=$this->talentModel->yetToUpdateEmployeeDetails();
+		$data['crdate']=$this->talentModel->getEmployeeCrdate();
+		$this->load->view('admin/header');
+		$this->load->view('admin/employee',$data);
+	    }
+	    else{
+		redirect('admin/dashboard');
+	    }
+    }
+    
     //EDIT VIEW
     function employeeEditView($id){
 	//$res=$this->talentModel->getCandidateId($id);
@@ -400,19 +441,38 @@ class admin extends CI_Controller {
     
     }
     //DELETE
-     public function employeeDelete($id)
+//     public function employeeDelete($id)
+//    {
+//	$session_data = $this->session->userdata('username_admin');
+//	if(!empty($session_data))
+//	{
+//	    $id=$_POST['id'];
+//	    for ($i = 0; $i < count($id); $i++){
+//		$data = $this->talentModel->getDeleteEmail($id[$i]);
+//		$res = $data[0]['mail_id'];
+//		$this->talentModel->employeeEmailDelete($res);
+//		$this->talentModel->employeeDelete($id[$i]);
+//		$this->session->set_flashdata('status','A  record deleted successfully');
+//	    }
+//	}
+//	else{
+//	    redirect(site_url('admin'));   
+//	}
+//    }
+    
+    public function employeeDelete($id)
     {
 	$session_data = $this->session->userdata('username_admin');
 	if(!empty($session_data))
 	{
-	//$res=$this->talentModel->getCandidateId($id);
-	//$Id = $res[0]['head_id'];
-	$data = $this->talentModel->getDeleteEmail($id);
-	$res = $data[0]['mail_id'];
-	$this->talentModel->employeeEmailDelete($res);
-        $this->talentModel->employeeDelete($id);
-        $this->session->set_flashdata('status','A  record deleted successfully');
-        redirect("admin/employee");
+	    //$res=$this->talentModel->getCandidateId($id);
+	    //$Id = $res[0]['head_id'];
+	    $data = $this->talentModel->getDeleteEmail($id);
+	    $res = $data[0]['mail_id'];
+	    $this->talentModel->employeeEmailDelete($res);
+	    $this->talentModel->employeeDelete($id);
+	    $this->session->set_flashdata('status','A  record deleted successfully');
+	    redirect("admin/employee");
 	}
 	else{
 	    redirect(site_url('admin'));   
@@ -526,13 +586,21 @@ class admin extends CI_Controller {
  
  //======================================ADD USER PAGE STARTS=====================================================================   
   //VIEW
-    function addUserView(){
+    function addUserView($status){
 	$session_data=$this->session->userdata('username_admin');
 	if(!empty($session_data))
 	    {
-		$data['userDetails']=$this->talentModel->userDetails();
-		$this->load->view('admin/header');
-		$this->load->view('admin/addUserView',$data);
+		if($status=="total"){
+		    $data['userDetails']=$this->talentModel->userDetails();
+		    $this->load->view('admin/header');
+		    $this->load->view('admin/addUserView',$data);
+		}else{
+		    //echo $status;exit;
+		    $data['userDetails']=$this->talentModel->userDetails_Y($status);
+		    $this->load->view('admin/header');
+		    $this->load->view('admin/addUserView',$data);
+		}
+		
 	    }
 	    else{
 		redirect('admin/dashboard');
@@ -574,7 +642,7 @@ class admin extends CI_Controller {
 	    if (isset($_POST["Save"])) {
 		$this->talentModel->addUser();
 		$this->session->set_flashdata('status','A New record added successfully');
-		redirect("admin/addUserView");
+		redirect("admin/addUserView/total");
 	    }
 	    $data['clientsDetails']=$this->talentModel->clientsDetails();
 	    $this->load->view('admin/header');
@@ -589,7 +657,7 @@ class admin extends CI_Controller {
 		
 		$this->talentModel->editUser($id);
 		$this->session->set_flashdata('status','A old record updated successfully');
-		redirect("admin/addUserView");
+		redirect("admin/addUserView/total");
 	    }
 	    $data['userEdit']=$this->talentModel->getuserDetails($id);
 	 
@@ -608,7 +676,7 @@ class admin extends CI_Controller {
 	{
         $this->talentModel->userDelete($id);
         $this->session->set_flashdata('status','A  record deleted successfully');
-        redirect("admin/addUserView");
+        redirect("admin/addUserView/total");
 	}
 	else{
 	    
@@ -941,7 +1009,7 @@ class admin extends CI_Controller {
     
     function intEmpEmailTrackDelete($id){
 	$this->talentModel->emailTrackDelete($id);
-	redirect("admin/addUserView");
+	redirect("admin/addUserView/total");
         //$this->session->set_flashdata('status','A  record deleted successfully');
     }
     
@@ -950,5 +1018,34 @@ class admin extends CI_Controller {
 	redirect("admin/hiringPartner");
         //$this->session->set_flashdata('status','A  record deleted successfully');
     }
-
+    
+//    function fetchEmpDetails(){
+//	print_r('sdfsfds');exit;
+//    }
+    
+    //fetching all emailtract lists from database
+    
+    function Fetchallemailtracklists()
+    {
+	//print_r('ss');exit;
+	$check_mail = 'no';
+	//$refer_code = $this->session->userdata('refer_code');
+	$where = "check_mailid = '$check_mail'";
+	//$this->datatables->select('id,cr_date,refer_code,refer_name,email')
+	$this->datatables->select("id,date_format(cr_date, '%e-%b-%y') as 'cr_date1',email,CONCAT(refer_code,' / ', refer_name) AS name",FALSE)
+        ->from('emailtrack')
+	->where($where);
+	echo $this->datatables->generate();
+    }
+    
+    //serverside multiple emailtrackinglist delete in admin dashboard
+    function deleteselectedrow()
+    {
+	$id=$_POST['line_id'];
+	//print_r($id);exit;
+	for($i=0;$i<count($id);$i++) {
+	   $res=$this->talentModel->deletedatafrmdatabase($_POST['line_id'][$i]); 
+	}
+    }
+    
 }	

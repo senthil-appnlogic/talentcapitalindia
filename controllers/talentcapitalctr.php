@@ -260,8 +260,9 @@ class talentcapitalctr extends CI_Controller {
 		//exit;
 		$loginType = "internalEmp";
 		$emailTrack = "yes";
+		$CurrentDate = date('d-M-Y');
 		$this->tc_model->emailtracking($sample,$code,$emailTrack);
-		$result=$this->tc_model->hiringPartnerLinkAdd($code,$loginType,$client);
+		$result=$this->tc_model->hiringPartnerLinkAdd($code,$loginType,$client,$CurrentDate);
 		$this->session->set_flashdata('status', 'Your Information has been Succesfully registered to talent capital');
 		redirect('talentcapitalctr/successMsg');		
 	    }

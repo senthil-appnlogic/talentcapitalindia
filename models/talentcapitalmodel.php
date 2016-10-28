@@ -1,4 +1,6 @@
 <?php
+    
+    //print_r($CurrentDate);exit;
     date_default_timezone_set("Asia/Calcutta");
     class talentcapitalmodel extends CI_Model
     {
@@ -457,6 +459,10 @@
             $profilePic=$folderPath.$data['file_name'];
 	    $primary=$this->input->post('primary_other_skils');
 	    $secondary=$this->input->post('secondary_other_skils');
+	    
+	    $ServeVal = $this->input->post('serving_period');
+	    $Notice = $this->input->post('notice_period');
+	    
 	    //echo $test;exit;
             
 	    //$date = date('d-M-y');
@@ -477,7 +483,7 @@
 		'total_exp_month'=>$this->input->post('total_exp_month'),
                 'relevant_exp_year'=>$this->input->post('relevant_exp_year'),
 		'relevant_exp_month'=>$this->input->post('relevant_exp_month'),
-                'notice_period'=>$this->input->post('notice_period'),
+                'notice_period'=>$Notice,
                 
 		
 		
@@ -509,6 +515,7 @@
 		'check_email'=>$this->input->post('checking'),
 		'check_yn'=>$this->input->post('check_yn'),
 		'yesno'=>$this->input->post('yesno'),
+		'servingperiod'=>$ServeVal,
 		//'cr_date'=>$date
 		//'up_date'=>$this->input->post('up_date')
             );
@@ -632,11 +639,11 @@
 	$this->db->update('emailtrack',$data);
     }
 
-    function hiringPartnerLinkAdd($code,$loginType,$client)
+    function hiringPartnerLinkAdd($code,$loginType,$client,$CurrentDate)
         {
 	    
 	    //echo "<pre>";
-	    //print_r($client);
+	    //print_r($CurrentDate);
 	    //echo "</pre>";
 	    //exit;
 	    
@@ -661,7 +668,11 @@
             $this->upload->do_upload('profile_pic');
             $data = $this->upload->data();
             $profilePic=$folderPath.$data['file_name'];
-	    
+	    $ServeVal = $this->input->post('serving_period');
+	    $Notice = $this->input->post('notice_period');
+	//    if($Notice=='ServingPeriod'){
+	//	$Notice = $ServeVal;
+	//    }
 	    //print_r($resume);
 	    //exit;
             //$date = date('d-M-y');
@@ -683,7 +694,7 @@
 		'profile_pic'=>$profilePic,
 		'relevant_exp_year'=>$this->input->post('relevant_exp_year'),
 		'relevant_exp_month'=>$this->input->post('relevant_exp_month'),
-		'notice_period'=>$this->input->post('notice_period'),
+		'notice_period'=>$Notice,
 		'current_ctc_lakhs'=>$this->input->post('current_ctc_lakhs'),
 		'current_ctc_thousands'=>$this->input->post('current_ctc_thousands'),
 		'expected_ctc_lakhs'=>$this->input->post('expected_ctc_lakhs'),
@@ -712,6 +723,8 @@
 		'check_yn'=>$this->input->post('check_yn'),
 		'yesno'=>$this->input->post('yesno'),
 		'client'=>$client,
+		'servingperiod'=>$ServeVal,
+		'update_status'=>'YettoUpdate',
 		//'cr_date'=>$date
 		//'up_date'=>$this->input->post('up_date')
             );
@@ -728,6 +741,7 @@
 	  //print_r($_FILES);
 	  //echo "</pre>";
 	  //exit;
+	  
 	  
             $files=$_FILES;
 	    for($i=0; $i<$clientCnt; $i++)
@@ -767,6 +781,15 @@
 		    }
 		    
 		}
+		$var = (string)$CurrentDate;
+		$toStr = (string)$_POST['emp_duration_to'][$i];
+		
+		if($toStr == $var){
+		    $tillVal = 'Y';
+		}else{
+		    $tillVal = 'N';
+		}
+		//print_r($tillVal);exit;
 		$data= array(
 		    'head_id'=>$getHeadId,
 		    'client_comp'=>$_POST['client_comp'][$i],
@@ -777,6 +800,7 @@
 		    'location'=>$_POST['location'][$i],
 		    'reason_desc'=>$_POST['empReasonDesc'][$i],
 		    'file_employee_upload'=>$dataStore,
+		    'till_date'=>$tillVal,
 		);
 		//echo "<pre>";
 		//print_r($data);
@@ -1020,6 +1044,7 @@
 		    $profile_pic=$profilePic;
 		    $Check_YN=$this->input->post('check_yn');
 		    $yesno=$this->input->post('yesno');
+		    $ServeVal = $this->input->post('serving_period');
 		    //$date = date('d-M-y');
 		    //$uptodate=$this->input->post('up_date');
 		    //echo $resume;exit;
@@ -1035,7 +1060,8 @@
 				     team_contact_no='$team_contact_no',
 				     resume='$resume',
 				     check_yn='$Check_YN',
-				     yesno='$yesno'
+				     yesno='$yesno',
+				     servingperiod='$ServeVal'
 				     
 				     where id='$id'");
 		    //echo $sql;exit;

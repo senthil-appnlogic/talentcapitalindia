@@ -27,7 +27,7 @@
 							<p><?php  echo $employeesCount[0]['employeesCount']; ?></p>	
 						</div>
 						<div class="stats-link">
-							<a href="<?php echo site_url('admin/employee');?>">View Detail <i class="fa fa-arrow-circle-o-right"></i></a>
+							<a href="<?php echo site_url('admin/candidateDashboard');?>">View Detail <i class="fa fa-arrow-circle-o-right"></i></a>
 						</div>
 					</div>
 				</div>

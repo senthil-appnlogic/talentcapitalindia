@@ -5,6 +5,9 @@ $status = $this->session->flashdata('status');
   tfoot {
       display: table-header-group !important;
   }
+  td.capitalize {
+    text-transform: capitalize;
+  }
 </style>
 <div class="content" id="content">
 			<!-- begin breadcrumb -->
@@ -35,6 +38,10 @@ $status = $this->session->flashdata('status');
 			    <div id="alert" class="alert alert-success outer"><a href="#" class="close" data-dismiss="alert" aria-label="close" title="close">&times;</a><?php echo $status; ?></div>
 			    <?php
 			} ?>
+			
+			    <!--<p>
+				<button class="btn btn-danger btn-sm" id="removeBtn"><i class="glyphicon glyphicon-trash"></i>&nbsp;Delete selected rows</button>
+			    </p>-->
 				<!--<p>
 				   <a class="btn btn-primary btn-sm " href="<?php echo site_url('admin/employeeAdd')?>"><i class="fa fa-plus fa-1x"></i> <span class="f-s-14 f-w-500">Add Employee</span></a>
 				 </p>-->
@@ -43,6 +50,7 @@ $status = $this->session->flashdata('status');
 					  <thead>
 						<tr>
 						    <th>S.No</th>
+						    <th class="hidden">ID</th>
 						    <th data-class="expand">Created Date</th>
 						    <th data-class="expand">Client</th>
 						    <th data-class="expand">Name</th>
@@ -154,6 +162,7 @@ $status = $this->session->flashdata('status');
 					  <tfoot>
 						<tr>
 						    <th>S.No</th>
+						    <th class="hidden">ID</th>
 						    <th data-class="expand">Created Date</th>
 						    <th data-class="expand">Client</th>
 						    <th data-class="expand">Name</th>
@@ -280,9 +289,10 @@ $status = $this->session->flashdata('status');
 						   <a  href="#" data-toggle="modal" data-target="#printPreview"  class="btn btn-primary btn-xs" onclick="printEmployeeDetails('<?php echo $row['id'];?>')"><i class="fa fa-file-pdf-o fa-2x"></i> </a>
 						    </td>-->
 						    <td></td>
+						    <td class="hidden"><?php echo $row['id']; ?></td>
 						    <td><?php echo $row['cr_date1']; ?></td>
 						    <td><?php echo $row['client']; ?></td>
-						    <td style="cursor:pointer;" class="clickable-row" data-href='<?php echo site_url('admin/employeeEditView/'.$row['id'])?>'><u><?php echo $row['candidate_name']; ?></u></td>					    
+						    <td style="cursor:pointer;" class="clickable-row capitalize"><?php echo $row['candidate_name']; ?></td>					    
 						    <td><?php echo $row['mobile_number']; ?></td>
 						    <td ><?php echo $row['mail_id']; ?></td>
 						    <td><?php echo $row['skills']; ?></td>
@@ -592,5 +602,21 @@ $status = $this->session->flashdata('status');
 		    $this.parents('.billingRow').find('.billing').val(check);
 		}
 	    }
+	    
+	//    $('#removeBtn').on('click',function(){
+	//	var user_id=[];
+	//	$('tr.selected').each(function(){
+	//	    var data=$(this).find('td:eq(1)').text();    
+	//	    user_id.push(data);    
+	//	}); 
+	//	$.ajax({
+	//	    type:"post",
+	//	    url:"<?php echo base_url('admin/employeeDelete');?>",
+	//	    data:{id:user_id},
+	//	    success:function(result){
+	//	       window.location.href="<?php echo base_url('admin/employee');?>"
+	//	    },
+	//	});
+	//    });
 	    
 	</script>

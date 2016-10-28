@@ -47,7 +47,8 @@ $status = $this->session->flashdata('status');
 						    <th data-hide="phone,tablet">Email</th>
 						    <th data-hide="phone,tablet">Skills</th>
 						    <th data-hide="phone,tablet">Pan Number</th>
-						    <th>Location</th>
+						    <th data-hide="phone,tablet">Location</th>
+						    <th data-hide="phone,tablet">Update</th>
 						    <th data-hide="phone,tablet">Candidate Status</th>
 						    <th>Action</th>
 						    
@@ -63,7 +64,9 @@ $status = $this->session->flashdata('status');
 						    <td id="EMAIL"><?php echo $row['mail_id']; ?></td>
 						    <td><?php echo $row['skills']; ?></td>				    
 						    <td><?php echo $row['pan_card_no']; ?></td>
-						    <td><?php echo $row['current_location']; ?></td>					     
+						    <td><?php echo $row['current_location']; ?></td>
+						    <td><button onclick="showingUpdateModal(<?php echo $row['id']; ?>)" id="Update_Cand_status_<?php echo $row['id']; ?>" class="btn btn-primary btn-md"><?php echo $row['update_status']; ?></button>
+						    </td>
 						    <td><button onclick="shoingModal(<?php echo $row['id']; ?>)" id="Cand_status_<?php echo $row['id']; ?>" class="btn btn-danger btn-md"><?php echo $row['candidate_status']; ?></button></td>
 						    <td>
 						    <a href="<?php echo site_url('internalemployee/internalEmpEdit/'.$row['id'])?>" class="btn btn-info btn-xs"><i class="fa fa-edit"></i> </a>
@@ -135,6 +138,39 @@ $status = $this->session->flashdata('status');
 				</div>
 				<!-- CANDIDATE STATUS ENDS-->
 				
+				<!-- CANDIDATE STATUS STARTS -->
+				<div id="myModalNew" class="modal fade" role="dialog">
+				    <div class="modal-dialog">
+				      <!-- Modal content-->
+					<div class="modal-content">
+					    <div class="modal-header">
+					      <button type="button" class="close" data-dismiss="modal">&times;</button>
+					      <h4 class="modal-title">Change Candidate Status</h4>
+					    </div>
+					    <div class="modal-body">
+						
+						    <p>Please select the Option</p>
+						    <div class="form-group">
+							<label>Status</label>
+							<select  class="form-control  input-sm" id="update_candidate_status"  name="update_candidate_status">
+							    <option value="Updated">Updated</option>
+							    <option value="YettoUpdate">Yet to Update</option>
+							</select>
+						    </div>
+						    <input type="hidden"  value="" name="update_candidate_id" id="update_candidate_id">
+						    <div>
+							 <button type="button" data-dismiss="modal" onclick="update_candidate_status()" class="btn btn-success" data-dismiss="modal">Submit</button>    
+						    </div>
+					    </div>
+					    <!--<div class="modal-footer">
+					  <button type="button" class="btn btn-default" >Close</button>
+					</div>-->
+				      </div>
+				  
+				    </div>
+				</div>
+				<!-- CANDIDATE STATUS ENDS-->
+				
 
                         </div>
                     </div>
@@ -178,6 +214,36 @@ $status = $this->session->flashdata('status');
 	    } );
 	    
 	} );
+	
+	function showingUpdateModal(id)
+	{
+	    $('#myModalNew').modal({show:true});
+	    $("#update_candidate_id").val(id);
+	}
+	
+	function update_candidate_status()
+	{
+	    var update_candidate_status=$("#update_candidate_status").val();
+	    var update_candidate_id=$("#update_candidate_id").val();
+	    console.log(update_candidate_status);
+	    console.log(update_candidate_id);
+	    
+	    $.ajax({
+		type: "POST",
+		url: "<?=site_url('internalemployee/update_candidate_status')?>",
+		dataType:"json",
+		data:{update_candidate_id:update_candidate_id,update_candidate_status:update_candidate_status} ,                    
+		success: function (json) {
+		    //console.log(json.sccess);
+		    if (json.sccess=="Updated") {
+			$("#Update_Cand_status_"+update_candidate_id).text("Updated");
+		    }
+		    if (json.sccess=="YettoUpdate") {
+			$("#Update_Cand_status_"+update_candidate_id).text("Yet To Update");
+		    }
+		},
+	    });
+	}
 	
 	
 	function shoingModal(id){
